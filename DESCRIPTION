@@ -1,0 +1,11 @@
+Package: googleCloudAutoMLTablesR
+Title: Google Cloud AutoML Tables API Into R
+Version: 0.0.0.9000
+Authors@R: person("Justin", "Marciszewski", 
+                  email = "justin@harborislandanalytics.com", 
+                  role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Depends: R (>= 3.5.1)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
