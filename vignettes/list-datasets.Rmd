@@ -1,0 +1,38 @@
+---
+title: "List Datasets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+## assumes you have client JSON saved to environment argument GAR_CLIENT_JSON
+app_project <- googleAuthR::gar_set_client(
+  scopes = c("https://www.googleapis.com/auth/cloud-platform"))
+
+library(bigQueryR)
+library(googleCloudAutoMLTablesR)
+
+googleAuthR::gar_auth("gcp.oauth")
+```
+
+```{r}
+bqr_list_projects()
+```
+
+```{r}
+datasets <- projects.locations.datasets.list("projects/snappy-way-531/locations/us-central1")
+
+datasets <- datasets[["datasets"]]
+datasets[, c("name", "displayName", "createTime", "etag")]
+```
+
