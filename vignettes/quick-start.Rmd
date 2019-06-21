@@ -21,30 +21,22 @@ knitr::opts_chunk$set(
 app_project <- googleAuthR::gar_set_client(
   scopes = c("https://www.googleapis.com/auth/cloud-platform"))
 
-library(bigQueryR)
 library(googleCloudAutoMLTablesR)
 
-googleAuthR::gar_auth("gcp.oauth")
+googleAuthR::gar_auth("gc.oauth")
 ```
 
 Test authentication and check in correct project: 
 
 ```{r}
-bqr_list_projects()
-```
-
-```{r}
 # assumes you have projectId string set to environment 
 #argument AMLTR_PROJECT_ID
 projectId = Sys.getenv("AMLTR_PROJECT_ID")
-```
-
-
-# Loading data into AutoML Tables 
 
 ## Get list of locations 
-```{r}
 amlt_locations <- amltr_list_locations(projectId = projectId)
+
+amlt_locations
 
 amlt_location <- amlt_locations$locations$name[1]
 ```
@@ -55,3 +47,5 @@ amlt_datasets <- amltr_list_datasets(parent = amlt_location)
 
 amlt_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ```
+
+# Loading data into AutoML Tables 
