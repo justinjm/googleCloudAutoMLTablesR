@@ -5,10 +5,10 @@
 #' @param pageToken A token identifying a page of results for the server to return
 #' @param pageSize Requested page size
 #' @export
-projects.locations.datasets.list <- function(parent,
-                                             filter = NULL,
-                                             pageToken = NULL,
-                                             pageSize = NULL) {
+amltr_list_datasets <- function(parent,
+                                filter = NULL,
+                                pageToken = NULL,
+                                pageSize = NULL) {
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)

@@ -10,7 +10,7 @@ amltr_list_locations <- function(projectId,
                                  pageSize = NULL,
                                  filter = NULL) {
 
-    url <- sprintf("https://automl.googleapis.com/v1beta1/%s/locations",
+    url <- sprintf("https://automl.googleapis.com/v1beta1/projects/%s/locations",
                    projectId)
 
     # automl.projects.locations.list
