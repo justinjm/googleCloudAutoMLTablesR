@@ -7,10 +7,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}
   ---
   
-  ```{r, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
-collapse = TRUE,
-comment = "#>"
+  collapse = TRUE,
+  comment = "#>"
 )
 ```
 
@@ -36,7 +36,7 @@ projectId = Sys.getenv("AMLTR_PROJECT_ID")
 ## Get list of locations 
 amlt_locations <- amltr_list_locations(projectId = projectId)
 
-amlt_locations
+amlt_locations$locations
 
 amlt_location <- amlt_locations$locations$name[1]
 ```
@@ -53,8 +53,11 @@ amlt_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ## Create dataset 
 
 ```{r}
-gcat_create_dataset(Dataset(displayName = "test02",
-                            description = "Description goes here"),
+# https://stackoverflow.com/questions/7799591/creating-tuples-from-two-vectors
+dataset <- Dataset(displayName = "test02",
+                   tablesDatasetMetadata = TablesDatasetMetadata())
+
+gcat_create_dataset(Dataset = dataset,
                     parent = amlt_location)
 ```
 
