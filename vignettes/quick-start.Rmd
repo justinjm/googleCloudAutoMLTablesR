@@ -53,7 +53,6 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ## Create dataset 
 
 ```{r}
-# https://stackoverflow.com/questions/7799591/creating-tuples-from-two-vectors
 dataset <- Dataset(displayName = "test02",
                    tablesDatasetMetadata = TablesDatasetMetadata())
 
