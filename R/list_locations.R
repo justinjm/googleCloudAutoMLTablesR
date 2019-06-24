@@ -5,10 +5,10 @@
 #' @param pageSize The standard list page size
 #' @param filter The standard list filter
 #' @export
-amltr_list_locations <- function(projectId,
-                                 pageToken = NULL,
-                                 pageSize = NULL,
-                                 filter = NULL) {
+gcat_list_locations <- function(projectId,
+                                pageToken = NULL,
+                                pageSize = NULL,
+                                filter = NULL) {
 
     url <- sprintf("https://automl.googleapis.com/v1beta1/projects/%s/locations",
                    projectId)

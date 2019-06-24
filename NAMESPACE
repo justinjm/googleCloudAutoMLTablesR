@@ -2,7 +2,7 @@
 
 export(Dataset)
 export(TablesDatasetMetadata)
-export(amltr_list_datasets)
-export(amltr_list_locations)
 export(gcat_create_dataset)
+export(gcat_list_datasets)
+export(gcat_list_locations)
 importFrom(googleAuthR,gar_api_generator)

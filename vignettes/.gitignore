@@ -1,4 +1,3 @@
 *.html
 *.R
-gcp.oauth
-gc.oauth
+*.oauth

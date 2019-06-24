@@ -23,29 +23,29 @@ app_project <- googleAuthR::gar_set_client(
 
 library(googleCloudAutoMLTablesR)
 
-googleAuthR::gar_auth("gc.oauth")
+googleAuthR::gar_auth("gcat.oauth")
 ```
 
 Test authentication and check in correct project: 
 
 ```{r}
 # assumes you have projectId string set to environment 
-#argument AMLTR_PROJECT_ID
-projectId = Sys.getenv("AMLTR_PROJECT_ID")
+#argument GCAT_PROJECT_ID
+projectId <- Sys.getenv("GCAT_PROJECT_ID")
 
 ## Get list of locations 
-amlt_locations <- amltr_list_locations(projectId = projectId)
+gcat_locations <- gcat_list_locations(projectId = projectId)
 
-amlt_locations$locations
+gcat_locations$locations
 
-amlt_location <- amlt_locations$locations$name[1]
+gcat_location <- gcat_locations$locations$name[1]
 ```
 
 ## Get list of datasets 
 ```{r}
-amlt_datasets <- amltr_list_datasets(parent = amlt_location)
+gcat_datasets <- gcat_list_datasets(parent = gcat_location)
 
-amlt_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
+gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ```
 
 # Loading data into AutoML Tables 
@@ -58,6 +58,6 @@ dataset <- Dataset(displayName = "test02",
                    tablesDatasetMetadata = TablesDatasetMetadata())
 
 gcat_create_dataset(Dataset = dataset,
-                    parent = amlt_location)
+                    parent = gcat_location)
 ```
 
