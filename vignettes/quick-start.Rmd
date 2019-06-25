@@ -5,14 +5,7 @@ vignette: >
   %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
-  ---
-  
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+---
 
 # Setup 
 
@@ -30,18 +23,17 @@ Test authentication and check in correct project:
 
 ```{r}
 # assumes you have projectId string set to environment 
-#argument GCAT_PROJECT_ID
+# argument GCAT_PROJECT_ID
 projectId <- Sys.getenv("GCAT_PROJECT_ID")
 
 ## Get list of locations 
 gcat_locations <- gcat_list_locations(projectId = projectId)
-
-gcat_locations$locations
-
-gcat_location <- gcat_locations$locations$name[1]
+gcat_location <- gcat_locations$locations$name
+gcat_location
 ```
 
 ## Get list of datasets 
+
 ```{r}
 gcat_datasets <- gcat_list_datasets(parent = gcat_location)
 
