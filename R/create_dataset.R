@@ -75,16 +75,14 @@ Dataset <- function(description = NULL,
 #'
 #' @family TablesDatasetMetadata functions
 #' @export
-TablesDatasetMetadata <- function(TablesDatasetMetadata.targetColumnCorrelations = NULL,
-                                  statsUpdateTime = NULL,
+TablesDatasetMetadata <- function(statsUpdateTime = NULL,
                                   targetColumnCorrelations = NULL,
                                   weightColumnSpecId = NULL,
                                   mlUseColumnSpecId = NULL,
                                   primaryTableSpecId = NULL,
                                   targetColumnSpecId = NULL) {
 
-  structure(list(TablesDatasetMetadata.targetColumnCorrelations = TablesDatasetMetadata.targetColumnCorrelations,
-                 statsUpdateTime = statsUpdateTime,
+  structure(list(statsUpdateTime = statsUpdateTime,
                  targetColumnCorrelations = targetColumnCorrelations,
                  weightColumnSpecId = weightColumnSpecId,
                  mlUseColumnSpecId = mlUseColumnSpecId,
