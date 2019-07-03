@@ -14,9 +14,11 @@ vignette: >
 app_project <- googleAuthR::gar_set_client(
   scopes = c("https://www.googleapis.com/auth/cloud-platform"))
 
+library(googleAuthR)
 library(googleCloudAutoMLTablesR)
+options(googleAuthR.verbose = 0)
 
-googleAuthR::gar_auth("gcat.oauth")
+gar_auth("gcat.oauth")
 ```
 
 Test authentication and check in correct project: 
@@ -28,7 +30,10 @@ projectId <- Sys.getenv("GCAT_PROJECT_ID")
 
 ## Get list of locations 
 gcat_locations <- gcat_list_locations(projectId = projectId)
-gcat_location <- gcat_locations$locations$name
+gcat_locations$locations$name
+## manually set location path TODO - @justinjm - update function to handle 
+## location setting 
+gcat_location <- "projects/gc-automl-tables-r/locations/us-central1"
 gcat_location
 ```
 
@@ -45,10 +50,18 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ## Create dataset 
 
 ```{r}
-dataset <- Dataset(displayName = "test02",
-                   tablesDatasetMetadata = TablesDatasetMetadata())
+# rjson::toJSON(Dataset(displayName = "test_02"))
+# rjson::toJSON(Dataset(displayName = "test_02"))
+datasetMetadata <- Dataset(displayName = "test_02")
 
-gcat_create_dataset(Dataset = dataset,
-                    parent = gcat_location)
+# Dataset_json <- rjson::toJSON(Dataset)
+# rjson::fromJSON(Dataset_json)
+gcat_create_dataset(Dataset = datasetMetadata)
+```
+
+
+```{r}
+# view debugging info 
+readRDS("request_debug.rds")
 ```
 
