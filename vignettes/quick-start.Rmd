@@ -48,22 +48,10 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 # Loading data into AutoML Tables 
 
 ## Create dataset 
-
-### build dataset object 
 ```{r}
-# rjson::toJSON(Dataset(displayName = "test_02"))
-# rjson::toJSON(Dataset(displayName = "test_02"))
-
-datasetMetadata <- Dataset(displayName = "test_02",
-                           tablesDatasetMetadata = TablesDatasetMetadata())
-datasetMetadata
-```
-
-### Send API request 
-```{r}
-# Dataset_json <- rjson::toJSON(Dataset)
-# rjson::fromJSON(Dataset_json)
-gcat_create_dataset(Dataset = datasetMetadata)
+dataset <- Dataset(displayName = "test_02")
+gcat_create_dataset(Dataset = dataset,
+                    parent = gcat_location)
 ```
 
 
