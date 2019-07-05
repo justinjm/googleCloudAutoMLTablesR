@@ -1,11 +1,38 @@
-#' Creates a dataset.
+#' #' Creates a dataset
+#'
+#'
+#'
+#'
+gcat_create_dataset <- function(displayName = NULL,
+                                tablesDatasetMetadata = NULL,
+                                parent = gcat_location) {
+
+  ds <- structure(
+
+    list(
+      displayName = displayName,
+      tablesDatasetMetadata = list(),
+      metadata = list()
+    )
+    ,class = c("gar_Dataset", "list")
+    )
+
+  gcat_create_dataset_do_call(ds, parent)
+
+}
+
+
+# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
+
+
+#' Creates a dataset (Internal API call).
 #'
 #' @param parent The resource name of the project to create the dataset for
 #' @importFrom googleAuthR gar_api_generator
 #' @family Dataset functions
 #' @export
-gcat_create_dataset <- function(Dataset,
-                                parent = gcat_location) {
+gcat_create_dataset_do_call <- function(Dataset,
+                                        parent) {
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)

@@ -49,8 +49,7 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 
 ## Create dataset 
 ```{r}
-dataset <- Dataset(displayName = "test_02")
-gcat_create_dataset(Dataset = dataset,
+gcat_create_dataset(displayName = "test_02",
                     parent = gcat_location)
 ```
 
