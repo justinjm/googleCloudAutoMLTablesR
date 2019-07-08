@@ -2,7 +2,8 @@
 
 export(Dataset)
 export(TablesDatasetMetadata)
-export(gcat_create_dataset)
+export(TablesDatasetMetadata.targetColumnCorrelations)
+export(gcat_create_dataset_do_call)
 export(gcat_list_datasets)
 export(gcat_list_locations)
 importFrom(googleAuthR,gar_api_generator)

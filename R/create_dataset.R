@@ -4,15 +4,13 @@
 #'
 #'
 gcat_create_dataset <- function(displayName = NULL,
-                                tablesDatasetMetadata = NULL,
                                 parent = gcat_location) {
 
   ds <- structure(
 
     list(
       displayName = displayName,
-      tablesDatasetMetadata = list(),
-      metadata = list()
+      tablesDatasetMetadata = { }
     )
     ,class = c("gar_Dataset", "list")
     )
