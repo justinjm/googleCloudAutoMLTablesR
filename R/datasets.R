@@ -1,14 +1,29 @@
 #' Lists datasets in a project.
 #'
+#' @param projectId
+#' @param location
+#' @export
+gcat_list_datasets <- function(projectId,
+                               location) {
+
+  location_path <- gcat_location_path(projectId, location)
+
+  gcat_list_datasets_do_call(parent = location_path)
+
+}
+
+#' Lists datasets in a project. (internal API call)
+#'
 #' @param parent The resource name of the project from which to list datasets
 #' @param filter An expression for filtering the results of the request
 #' @param pageToken A token identifying a page of results for the server to return
 #' @param pageSize Requested page size
+#' @keywords internal
 #' @export
-gcat_list_datasets <- function(parent,
-                               filter = NULL,
-                               pageToken = NULL,
-                               pageSize = NULL) {
+gcat_list_datasets_do_call <- function(parent,
+                                       filter = NULL,
+                                       pageToken = NULL,
+                                       pageSize = NULL) {
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)
@@ -26,37 +41,42 @@ gcat_list_datasets <- function(parent,
 
 }
 
-#' Creates a dataset
+#' Check if objecti is Dataset object
 #'
-#'
-#'
-#'
-gcat_create_dataset <- function(displayName = NULL,
-                                parent = gcat_location) {
-
-  ds <- structure(
-
-    list(
-      displayName = displayName,
-      tablesDatasetMetadata = { }
-    )
-    ,class = c("gar_Dataset", "list")
-    )
-
-  gcat_create_dataset_do_call(ds, parent)
-
-}
-
-
 # is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
 
+#' Creates a dataset
+#'
+#' @param displayName
+#' @param
+#' @export
+gcat_create_dataset <- function(projectId,
+                                location,
+                                displayName,
+                                parent) {
+
+  location_path <- gcat_location_path(projectId, location)
+
+  ds <- structure(
+    list(
+      displayName = displayName,
+      tablesDatasetMetadata = list()
+    )
+    ,class = c("gar_Dataset", "list")
+  )
+
+  gcat_create_dataset_do_call(Dataset = ds,
+                              parent = location_path)
+
+}
 
 #' Creates a dataset (Internal API call).
 #'
 #' @param parent The resource name of the project to create the dataset for
 #' @importFrom googleAuthR gar_api_generator
 #' @family Dataset functions
-#' @export
+#' @keywords internal
+#' @noRd
 gcat_create_dataset_do_call <- function(Dataset,
                                         parent) {
 
@@ -97,7 +117,7 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' @return Dataset object
 #'
 #' @family Dataset functions
-#' @export
+#' @noRd
 Dataset <- function(createTime = NULL, textExtractionDatasetMetadata = NULL, videoClassificationDatasetMetadata = NULL,
                     tablesDatasetMetadata = NULL, description = NULL, imageClassificationDatasetMetadata = NULL,
                     etag = NULL, textSentimentDatasetMetadata = NULL, name = NULL, imageObjectDetectionDatasetMetadata = NULL,
@@ -133,7 +153,7 @@ Dataset <- function(createTime = NULL, textExtractionDatasetMetadata = NULL, vid
 #' @return TablesDatasetMetadata object
 #'
 #' @family TablesDatasetMetadata functions
-#' @export
+#' @noRd
 TablesDatasetMetadata <- function(TablesDatasetMetadata.targetColumnCorrelations = NULL,
                                   statsUpdateTime = NULL, targetColumnCorrelations = NULL, weightColumnSpecId = NULL,
                                   mlUseColumnSpecId = NULL, primaryTableSpecId = NULL, targetColumnSpecId = NULL) {
@@ -155,7 +175,7 @@ TablesDatasetMetadata <- function(TablesDatasetMetadata.targetColumnCorrelations
 #' @return TablesDatasetMetadata.targetColumnCorrelations object
 #'
 #' @family TablesDatasetMetadata functions
-#' @export
+#' @noRd
 TablesDatasetMetadata.targetColumnCorrelations <- function() {
   list()
 }

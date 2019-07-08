@@ -4,17 +4,7 @@
 \alias{gcat_list_datasets}
 \title{Lists datasets in a project.}
 \usage{
-gcat_list_datasets(parent, filter = NULL, pageToken = NULL,
-  pageSize = NULL)
-}
-\arguments{
-\item{parent}{The resource name of the project from which to list datasets}
-
-\item{filter}{An expression for filtering the results of the request}
-
-\item{pageToken}{A token identifying a page of results for the server to return}
-
-\item{pageSize}{Requested page size}
+gcat_list_datasets(projectId, location)
 }
 \description{
 Lists datasets in a project.

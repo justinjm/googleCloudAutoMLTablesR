@@ -2,9 +2,9 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_create_dataset}
 \alias{gcat_create_dataset}
-\title{Creates a dataset}
+\title{Check if objecti is Dataset object}
 \usage{
-gcat_create_dataset(displayName = NULL, parent = gcat_location)
+gcat_create_dataset(projectId, location, displayName, parent)
 }
 \description{
 Creates a dataset

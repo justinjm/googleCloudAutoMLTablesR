@@ -31,16 +31,22 @@ projectId <- Sys.getenv("GCAT_PROJECT_ID")
 ## Get list of locations 
 gcat_locations <- gcat_list_locations(projectId = projectId)
 gcat_locations$locations$name
+```
+
+## Set location 
+
+```{r}
 ## manually set location path TODO - @justinjm - update function to handle 
 ## location setting 
-gcat_location <- "projects/gc-automl-tables-r/locations/us-central1"
-gcat_location
+gcat_location <- "us-central1"
+gcat_location_path(projectId, gcat_location)
 ```
 
 ## Get list of datasets 
 
 ```{r}
-gcat_datasets <- gcat_list_datasets(parent = gcat_location)
+gcat_datasets <- gcat_list_datasets(projectId = projectId,
+                                    location = gcat_location)
 
 gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 ```
@@ -49,8 +55,9 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 
 ## Create dataset 
 ```{r}
-gcat_create_dataset(displayName = "test_02",
-                    parent = gcat_location)
+gcat_create_dataset(projectId = projectId,
+                    location = gcat_location,
+                    displayName = "test_02")
 ```
 
 
