@@ -19,7 +19,7 @@ gcat_list_datasets <- function(projectId,
 #' @param pageToken A token identifying a page of results for the server to return
 #' @param pageSize Requested page size
 #' @keywords internal
-#' @export
+#' @noRd
 gcat_list_datasets_do_call <- function(parent,
                                        filter = NULL,
                                        pageToken = NULL,
@@ -60,9 +60,12 @@ gcat_create_dataset <- function(projectId,
   ds <- structure(
     list(
       displayName = displayName,
-      tablesDatasetMetadata = list()
-    )
-    ,class = c("gar_Dataset", "list")
+      tablesDatasetMetadata = structure(
+        list(),
+        names=character(0)
+      )
+    ),
+    class = c("gar_Dataset", "list")
   )
 
   gcat_create_dataset_do_call(Dataset = ds,
@@ -87,7 +90,6 @@ gcat_create_dataset_do_call <- function(Dataset,
                                       "POST",
                                       data_parse_function = function(x) x)
   stopifnot(inherits(Dataset, "gar_Dataset"))
-
   f(the_body = Dataset)
 
 }
