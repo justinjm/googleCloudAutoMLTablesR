@@ -14,10 +14,10 @@ This package is not yet available on CRAN.
 To install the latest, potentially unstable version directly from GitHub:
 
 ```r
-if(!require("ghit")){
-    install.packages("ghit")
+if(!require("remotes")){
+    install.packages("remotes")
 }
-ghit::install_github("justinjm/googleCloudAutoMLTablesR")
+remotes::install_github("justinjm/googleCloudAutoMLTablesR")
 ```
 
 # Source
