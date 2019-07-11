@@ -75,9 +75,9 @@ readRDS("request_debug.rds")
 -> Content-Type: application/json
 -> Accept-Encoding: gzip
 -> Authorization: Bearer xxxx
--> Content-Length: 53
+-> Content-Length: 55
 -> 
->> {"displayName":"test_02","tablesDatasetMetadata":" "}
+>> {"displayName":"test_02","tablesDatasetMetadata":"{ }"}
 
 <- HTTP/1.1 400 Bad Request
 <- Vary: Origin
@@ -85,7 +85,7 @@ readRDS("request_debug.rds")
 <- Vary: Referer
 <- Content-Type: application/json; charset=UTF-8
 <- Content-Encoding: gzip
-<- Date: Thu, 11 Jul 2019 19:34:10 GMT
+<- Date: Thu, 11 Jul 2019 19:38:26 GMT
 <- Server: ESF
 <- Cache-Control: private
 <- X-XSS-Protection: 0
@@ -94,24 +94,24 @@ readRDS("request_debug.rds")
 <- Alt-Svc: quic=":443"; ma=2592000; v="46,43,39"
 <- Transfer-Encoding: chunked
 <- 
-2019-07-11 15:34:10> Request Status Code: 400
-2019-07-11 15:34:10> API returned error: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), " "
-2019-07-11 15:34:10> No retry attempted: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), " "
+2019-07-11 15:38:26> Request Status Code: 400
+2019-07-11 15:38:26> API returned error: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), "{ }"
+2019-07-11 15:38:26> No retry attempted: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), "{ }"
 Scopes: https://www.googleapis.com/auth/cloud-platform
 App key: xxxx.apps.googleusercontent.com
 Method: filepath
-Error: API returned: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), " "
+Error: API returned: Invalid value at 'dataset.tables_dataset_metadata' (type.googleapis.com/google.cloud.automl.v1beta1.TablesDatasetMetadata), "{ }"
 ```
 
 ### Debug 
 
 ```r
 $url
-[1] "https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets"
+[1] "https://automl.googleapis.com/v1beta1/projects/xxxx/locations/us-central1/datasets"
 
 $request_type
 [1] "POST"
 
 $body_json
-{"displayName":"test_02","tablesDatasetMetadata":" "} 
+{"displayName":"test_02","tablesDatasetMetadata":"{ }"} 
 ```
