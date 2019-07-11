@@ -61,9 +61,8 @@ gcat_create_dataset <- function(projectId,
     list(
       displayName = displayName,
       tablesDatasetMetadata = structure(
-        list(),
-        names=character(0)
-      )
+        " ",
+      class = "list")
     ),
     class = c("gar_Dataset", "list")
   )

@@ -64,3 +64,42 @@ gcat_create_dataset(projectId = projectId,
 ```{r}
 readRDS("request_debug.rds")
 ```
+
+
+### Error 
+
+```r
+-> POST /v1beta1/projects/xxxxx/locations/us-central1/datasets HTTP/1.1
+-> Host: automl.googleapis.com
+-> User-Agent: googleAuthR/0.7.0 (gzip)
+-> Accept: application/json, text/xml, application/xml, */*
+-> Content-Type: application/json
+-> Accept-Encoding: gzip
+-> Authorization: Bearer xxxxx
+-> Content-Length: 55
+-> 
+>> {"displayName":"test_02","tablesDatasetMetadata":[" "]}
+
+<- HTTP/1.1 400 Bad Request
+<- Vary: Origin
+<- Vary: X-Origin
+<- Vary: Referer
+<- Content-Type: application/json; charset=UTF-8
+<- Content-Encoding: gzip
+<- Date: Thu, 11 Jul 2019 11:58:17 GMT
+<- Server: ESF
+<- Cache-Control: private
+<- X-XSS-Protection: 0
+<- X-Frame-Options: SAMEORIGIN
+<- X-Content-Type-Options: nosniff
+<- Alt-Svc: quic=":443"; ma=2592000; v="46,43,39"
+<- Transfer-Encoding: chunked
+<- 
+2019-07-11 07:58:17> Request Status Code: 400
+2019-07-11 07:58:17> API returned error: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
+2019-07-11 07:58:17> No retry attempted: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
+Scopes: https://www.googleapis.com/auth/cloud-platform
+App key: xxxxxxxx.apps.googleusercontent.com
+Method: filepath
+Error: API returned: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
+```
