@@ -57,10 +57,15 @@ gcat_create_dataset <- function(projectId,
 
   location_path <- gcat_location_path(projectId, location)
 
+
+  # added unboxing of entry into a list
+  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
+  jubox <- function(x) jsonlite::unbox(x)
+
   ds <- structure(
     list(
-      displayName = displayName,
-      tablesDatasetMetadata = " "
+      displayName = jubox(displayName),
+      tablesDatasetMetadata = jubox(" ")
     ),
     class = c("gar_Dataset", "list")
   )
