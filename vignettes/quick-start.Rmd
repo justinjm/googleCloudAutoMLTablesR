@@ -64,3 +64,17 @@ gcat_create_dataset(projectId = projectId,
 ```{r}
 readRDS("request_debug.rds")
 ```
+
+## Import data from GCS 
+
+### Update dataset 
+
+### Create model 
+
+## Modeling 
+
+### Train Model
+
+### Make batch prediction 
+
+### Evaluate predictions 
