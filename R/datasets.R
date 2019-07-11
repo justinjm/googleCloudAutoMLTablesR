@@ -88,7 +88,8 @@ gcat_create_dataset_do_call <- function(Dataset,
   # automl.projects.locations.datasets.create
   f <- googleAuthR::gar_api_generator(url,
                                       "POST",
-                                      data_parse_function = function(x) x)
+                                      data_parse_function = function(x) x,
+                                      checkTrailingSlash = FALSE)
   stopifnot(inherits(Dataset, "gar_Dataset"))
   f(the_body = Dataset)
 
