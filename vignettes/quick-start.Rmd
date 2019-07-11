@@ -65,7 +65,11 @@ gcat_create_dataset(projectId = projectId,
 readRDS("request_debug.rds")
 ```
 
-## Import data from GCS 
+## Import data 
+
+### from GCS 
+
+### from BigQuery 
 
 ### Update dataset 
 
