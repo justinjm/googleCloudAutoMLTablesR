@@ -86,7 +86,7 @@ readRDS("request_debug.rds")
 <- Vary: Referer
 <- Content-Type: application/json; charset=UTF-8
 <- Content-Encoding: gzip
-<- Date: Thu, 11 Jul 2019 11:58:17 GMT
+<- Date: Thu, 11 Jul 2019 12:06:41 GMT
 <- Server: ESF
 <- Cache-Control: private
 <- X-XSS-Protection: 0
@@ -95,9 +95,9 @@ readRDS("request_debug.rds")
 <- Alt-Svc: quic=":443"; ma=2592000; v="46,43,39"
 <- Transfer-Encoding: chunked
 <- 
-2019-07-11 07:58:17> Request Status Code: 400
-2019-07-11 07:58:17> API returned error: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
-2019-07-11 07:58:17> No retry attempted: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
+2019-07-11 08:06:41> Request Status Code: 400
+2019-07-11 08:06:41> API returned error: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
+2019-07-11 08:06:41> No retry attempted: Invalid JSON payload received. Unknown name "tablesDatasetMetadata" at 'dataset': Proto field is not repeating, cannot start list.
 Scopes: https://www.googleapis.com/auth/cloud-platform
 App key: xxxxxxxx.apps.googleusercontent.com
 Method: filepath
