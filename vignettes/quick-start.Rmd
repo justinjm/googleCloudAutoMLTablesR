@@ -55,19 +55,36 @@ gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
 
 ## Create dataset 
 ```{r}
-gcat_create_dataset(projectId = projectId,
-                    location = gcat_location,
-                    displayName = "test_02")
-```
-
-### view debugging info 
-```{r}
-readRDS("request_debug.rds")
+# TODO @justinjm - fix function, issue #1 
+# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
+# gcat_dataset <- gcat_create_dataset(projectId = projectId,
+#                                     location = gcat_location,
+#                                     displayName = "test_02")
 ```
 
 ## Import data 
 
+### Set dataset 
+Create dataset manually in [GCP console](https://console.cloud.google.com/automl-tables/datasets/) `test_dataset`
+
+```{r}
+gcat_dataset_display_name <- "test_01"
+```
+
 ### from GCS 
+
+```{r}
+gcat_import_data(
+  projectId = projectId,
+  location = gcat_location,
+  displayName = gcat_dataset_display_name,
+  input_gcs = "gs://trial_for_c4m/training_unnested_balanced_FULL.csv")
+```
+
+#### view debugging info 
+```{r}
+readRDS("request_debug.rds")
+```
 
 ### from BigQuery 
 
