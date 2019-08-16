@@ -104,10 +104,10 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' @returns inputConfig object
 gcat_import_data <- function(projectId,
                              location,
-                             displayName,
+                             dataset_display_name,
                              input_gcs) {
 
-  browser()
+  # browser()
 
   idr <- structure(
     list(
@@ -123,10 +123,19 @@ gcat_import_data <- function(projectId,
     class = c("gar_ImportDataRequest", "list")
   )
 
-  idr
+    # get list of datasets
+  datasets <- gcat_list_datasets(projectId = projectId,
+                                 location = location)
 
-  # gcat_import_data_do_call(ImportDataRequest = idr,
-  #                          name = )
+  # extract id of dataset
+  # create url for api call
+  ## `projects/{project-id}/locations/us-central1/datasets/{dataset-id}`
+  location_dataset_name <- subset(datasets,
+                                  displayName == dataset_display_name,
+                                  select = c(name))
+
+  gcat_import_data_do_call(ImportDataRequest = idr,
+                           name = location_dataset_name)
 
 }
 
@@ -155,7 +164,7 @@ gcat_import_data <- function(projectId,
 #' @noRd
 gcat_import_data_do_call <- function(ImportDataRequest,
                                      name) {
-  url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}:importData",
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s:importData",
                  name)
   # automl.projects.locations.datasets.importData
   f <- googleAuthR::gar_api_generator(url,
