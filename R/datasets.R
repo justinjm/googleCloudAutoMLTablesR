@@ -37,7 +37,8 @@ gcat_list_datasets_do_call <- function(parent,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
-  f()
+
+  f()$datasets[, c("displayName", "createTime", "etag", "name")]
 
 }
 

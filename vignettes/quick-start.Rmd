@@ -47,8 +47,7 @@ gcat_location_path(projectId, gcat_location)
 ```{r}
 gcat_datasets <- gcat_list_datasets(projectId = projectId,
                                     location = gcat_location)
-
-gcat_datasets$datasets[, c("displayName", "createTime", "etag", "name")]
+gcat_datasets
 ```
 
 # Loading data into AutoML Tables 
