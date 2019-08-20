@@ -109,19 +109,19 @@ gcat_import_data <- function(projectId,
 
   idr <- structure(
     list(
-      params = list(
-        schema_inference_version = 1
-        ),
       inputConfig = list(
+        params = list(
+          schema_inference_version = 1
+        ),
         gcsSource = list(
           inputUris = input_gcs
-          )
         )
+      )
     ),
     class = c("gar_ImportDataRequest", "list")
   )
 
-    # get list of datasets
+  # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
                                  location = location)
 
