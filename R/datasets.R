@@ -111,7 +111,7 @@ gcat_import_data <- function(projectId,
     list(
       inputConfig = list(
         params = list(
-          schema_inference_version = 1
+          schema_inference_version = "1"
         ),
         gcsSource = list(
           inputUris = input_gcs
