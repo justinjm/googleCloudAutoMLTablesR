@@ -78,13 +78,10 @@ gcat_import_data(
   projectId = projectId,
   location = gcat_location,
   dataset_display_name = gcat_dataset_display_name,
-  # input_gcs = "gs://trial_for_c4m/training_unnested_balanced_FULL.csv"
   input_gcs = "gs://gcatr-dev/bank_marketing.csv"
   )
-```
 
-#### view debugging info 
-```{r}
+# view debugging info #
 readRDS("request_debug.rds")
 ```
 
