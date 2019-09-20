@@ -3,3 +3,4 @@
 .RData
 inst/doc
 *.oauth
+vignettes/request_debug.rds
