@@ -16,7 +16,7 @@ app_project <- googleAuthR::gar_set_client(
 
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
-options(googleAuthR.verbose = 0)
+# options(googleAuthR.verbose = 0)
 
 gar_auth("gcat.oauth")
 ```
@@ -50,51 +50,82 @@ gcat_datasets <- gcat_list_datasets(projectId = projectId,
 gcat_datasets
 ```
 
-# Loading data into AutoML Tables 
+# Importing data into AutoML Tables 
 
-## Create dataset 
+## Options and Workflow
+There are 2 options for loading data into AutoML Tables
+
+1. Google Cloud Storage 
+2. BigQuery
+
+At a high-level, the workflow is:
+
+1. Locate your data in GCP (csv file in GCS bucket or csv file loaded into a BQ table)
+1. Create AutoML Tables dataset
+2. Import data from GCS or BQ into AutoML Tables dataset 
+
+## From Google Cloud Storage
+To load data into AutoML Tables from Google Cloud storage, first do the following:
+
+1. Setup a GCS bucket that is [regional](https://cloud.google.com/automl-tables/docs/prepare#bucket_requirements) and in `us-central1` region
+2. Upload your data file manually or via `googleCloudStorageR`
+
+Now we are ready to create an AutoML tables dataset.
+
+### Create AutoML Tables dataset 
+For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
+
 ```{r}
 # TODO @justinjm - fix function, issue #1 
 # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
 # gcat_dataset <- gcat_create_dataset(projectId = projectId,
 #                                     location = gcat_location,
-#                                     displayName = "test_02")
+#                                     displayName = "test_01")
 ```
 
-## Import data 
-
-### Set dataset 
-Create dataset manually in [GCP console](https://console.cloud.google.com/automl-tables/datasets/) `test_dataset`
-
-```{r}
-gcat_dataset_display_name <- "test_01"
-```
-
-### from GCS 
-Setup a GCS bucket that is [regional](https://cloud.google.com/automl-tables/docs/prepare#bucket_requirements) and in `us-central1` region.
+### Import data 
+Execute import from Google Cloud storage: 
 
 ```{r}
 # gcat_import_data(
 #   projectId = projectId,
 #   location = gcat_location,
-#   dataset_display_name = gcat_dataset_display_name,
+#   dataset_display_name = "test_01",
 #   input_gcs = "gs://gcatr-dev/bank_marketing.csv"
 #   )
 ```
 
-### from BigQuery 
+## From BigQuery 
+To load data into AutoML Tables from BigQuery, first do the following:
+
+1. Setup a BQ dataset 
+2. Upload your data file manually or via `bigQueryR` or `bigrquery`
+
+### Create AutoML Tables dataset 
+For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
+
+```{r}
+# TODO @justinjm - fix function, issue #1 
+# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
+# gcat_dataset <- gcat_create_dataset(projectId = projectId,
+#                                     location = gcat_location,
+#                                     displayName = "test_01_bq")
+```
+
+### Import data 
+Execute import from BigQuery: 
 
 ```{r}
 gcat_import_data(
   projectId = projectId,
   location = gcat_location,
   dataset_display_name = "test_01_bq",
-  # input_source = "bq", # TODO @justinjm - add to function 
-  input_gcs = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
+  input_source = "bq",
+  input_url = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
   )
 
-# view debugging info #
-readRDS("request_debug.rds")
+# view debugging info
+# readRDS("request_debug.rds")
 ```
 
 ### Update dataset 

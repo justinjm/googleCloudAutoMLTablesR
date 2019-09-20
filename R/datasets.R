@@ -107,26 +107,56 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' @param projectId
 #' @param location
 #' @param dataset_display_name
-#' @param input_gcs
+#' @param input_source
+#' @param input_url
 #' @returns inputConfig object
 gcat_import_data <- function(projectId,
                              location,
                              dataset_display_name,
-                             input_gcs) {
+                             input_source = c("bq", "gcs"),
+                             input_url) {
 
-  idr <- structure(
-    list(
-      inputConfig = list(
-        params = list(
-          schema_inference_version = "1"
-        ),
-        gcsSource = list(
-          inputUris = input_gcs
+  message("> Starting data import...")
+
+  input_source <- match.arg(input_source)
+
+  if(input_source == "bq") {
+
+    # BQ
+    import_data_request <- structure(
+      list(
+        inputConfig = list(
+          params = list(
+            schema_inference_version = "1"
+          ),
+          bigquerySource = list(
+            inputUri = input_url
+          )
         )
-      )
-    ),
-    class = c("gar_ImportDataRequest", "list")
-  )
+      ),
+      class = c("gar_ImportDataRequest", "list")
+    )
+
+  } else if(input_source == "gcs") {
+
+    # GCS
+    import_data_request <- structure(
+      list(
+        inputConfig = list(
+          params = list(
+            schema_inference_version = "1"
+          ),
+          gcsSource = list(
+            inputUris = input_url
+          )
+        )
+      ),
+      class = c("gar_ImportDataRequest", "list")
+    )
+
+  } else {
+    message("Error. input_source not bq or gcs")
+  }
 
   # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
@@ -138,8 +168,16 @@ gcat_import_data <- function(projectId,
                                   displayName == dataset_display_name,
                                   select = c(name))
 
-  gcat_import_data_do_call(ImportDataRequest = idr,
-                           name = location_dataset_name)
+  message("> Importing data...")
+
+  tryCatch({
+    gcat_import_data_do_call(ImportDataRequest = import_data_request,
+                             name = location_dataset_name)
+  }, error = function(ex) {
+    stop("ImportDataRequest error: ", ex$message)
+  })
+
+  message("> Import successful")
 
 }
 
