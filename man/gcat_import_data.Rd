@@ -5,7 +5,8 @@
 \title{Import data into AutoML Tables
 https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl}
 \usage{
-gcat_import_data(projectId, location, dataset_display_name, input_gcs)
+gcat_import_data(projectId, location, dataset_display_name,
+  input_source = c("bq", "gcs"), input_url)
 }
 \description{
 Import data into AutoML Tables

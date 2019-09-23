@@ -110,6 +110,7 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' @param input_source
 #' @param input_url
 #' @returns inputConfig object
+#' @export
 gcat_import_data <- function(projectId,
                              location,
                              dataset_display_name,
@@ -203,4 +204,3 @@ gcat_import_data_do_call <- function(ImportDataRequest,
   f(the_body = ImportDataRequest)
 
 }
-
