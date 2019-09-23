@@ -116,19 +116,42 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 Execute import from BigQuery: 
 
 ```{r}
-gcat_import_data(
+# gcat_import_data(
+#   projectId = projectId,
+#   location = gcat_location,
+#   dataset_display_name = "test_01_bq",
+#   input_source = "bq",
+#   input_url = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
+#   )
+```
+
+
+# Updating dataset in AutoML Tables
+AutoML Tables automatically detects your data column type. Depending on the type of your label column, AutoML Tables chooses to run a classification or regression model. If your label column contains only numerical values, but they represent categories, change your label column type to categorical by updating your schema.
+
+Lets first view the table schema and the columns
+
+
+## List table specs 
+
+```{r}
+table_specs <- gcat_list_table_specs(
   projectId = projectId,
   location = gcat_location,
-  dataset_display_name = "test_01_bq",
-  input_source = "bq",
-  input_url = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
+  dataset_display_name = "test_01_bq"
   )
+```
 
+## List column specs 
+
+
+## Visualize column specs 
+
+```{r VIEW-DEBUG}
 # view debugging info
 # readRDS("request_debug.rds")
 ```
 
-### Update dataset 
 
 ### Create model 
 

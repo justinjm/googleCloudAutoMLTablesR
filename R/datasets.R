@@ -204,3 +204,58 @@ gcat_import_data_do_call <- function(ImportDataRequest,
   f(the_body = ImportDataRequest)
 
 }
+
+#' Lists table specs in a dataset
+#' @param projectId
+#' @param location
+#' @param dataset_display_name
+#' @export
+gcat_list_table_specs <- function(projectId,
+                                  location,
+                                  dataset_display_name) {
+
+  # get list of datasets
+  datasets <- gcat_list_datasets(projectId = projectId,
+                                 location = location)
+
+  # extract id of dataset to create url for api call
+  ## `projects/{project-id}/locations/us-central1/datasets/{dataset-id}`
+  location_dataset_name <- subset(datasets,
+                                  displayName == dataset_display_name,
+                                  select = c(name))
+
+
+  gcat_list_table_specs_do_call(parent = location_dataset_name)
+
+
+}
+
+#' Lists table specs in a dataset (Internal call )
+#'
+#'
+#' @param parent The resource name of the dataset to list table specs from
+#' @param filter Filter expression, see go/filtering
+#' @param fieldMask Mask specifying which fields to read
+#' @param pageToken A token identifying a page of results for the server to return
+#' @param pageSize Requested page size
+#' @noRd
+gcat_list_table_specs_do_call <- function(parent,
+                                          filter = NULL,
+                                          fieldMask = NULL,
+                                          pageToken = NULL,
+                                          pageSize = NULL) {
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/tableSpecs",
+                 parent)
+  # automl.projects.locations.datasets.tableSpecs.list
+  pars = list(filter = filter,
+              fieldMask = fieldMask,
+              pageToken = pageToken,
+              pageSize = pageSize)
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      pars_args = rmNullObs(pars),
+                                      data_parse_function = function(x) x)
+
+  f()
+
+}
