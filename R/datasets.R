@@ -256,6 +256,15 @@ gcat_list_table_specs_do_call <- function(parent,
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
 
-  f()
+  browser()
+
+  out <- f()$tableSpecs
+
+  out_data <- out
+
+
+
+
+
 
 }

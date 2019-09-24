@@ -140,7 +140,10 @@ table_specs <- gcat_list_table_specs(
   location = gcat_location,
   dataset_display_name = "test_01_bq"
   )
+
+table_specs
 ```
+
 
 ## List column specs 
 
