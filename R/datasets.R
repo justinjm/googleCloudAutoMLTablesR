@@ -186,10 +186,8 @@ gcat_import_data <- function(projectId,
 
 #' Imports data into a dataset. (Internal API call).
 #'
-#' @param ImportDataRequest The \link{ImportDataRequest} object to pass to this method
+#' @param ImportDataRequest Required, inputConfig JSON body request for importing a dataset
 #' @param name Required, location_dataset_name
-#' @importFrom googleAuthR gar_api_generator
-#' @family ImportDataRequest functions
 #' @noRd
 gcat_import_data_do_call <- function(ImportDataRequest,
                                      name) {
@@ -227,7 +225,6 @@ gcat_list_table_specs <- function(projectId,
 
   gcat_list_table_specs_do_call(parent = location_dataset_name)
 
-
 }
 
 #' Lists table specs in a dataset (Internal call )
@@ -251,20 +248,17 @@ gcat_list_table_specs_do_call <- function(parent,
               fieldMask = fieldMask,
               pageToken = pageToken,
               pageSize = pageSize)
-  f <- googleAuthR::gar_api_generator(url,
+  list_table_specs <- googleAuthR::gar_api_generator(url,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
 
-  browser()
+  out <- list_table_specs()$tableSpecs
 
-  out <- f()$tableSpecs
+  print.gcat_table_specs(out)
 
-  out_data <- out
+  out_names <- c("rowCount", "validRowCount", "columnCount", "name")
 
-
-
-
-
+  out[,out_names]
 
 }
