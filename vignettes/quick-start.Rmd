@@ -127,6 +127,12 @@ Execute import from BigQuery:
 ```
 
 
+View info via `get` api method/function
+
+```{r}
+projects.locations.datasets.get()
+```
+
 # Updating dataset in AutoML Tables
 AutoML Tables automatically detects your data column type. Depending on the type of your label column, AutoML Tables chooses to run a classification or regression model. If your label column contains only numerical values, but they represent categories, change your label column type to categorical by updating your schema.
 

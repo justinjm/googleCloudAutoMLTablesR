@@ -101,6 +101,23 @@ gcat_create_dataset_do_call <- function(Dataset,
 
 }
 
+################################################################################
+# TODO - @justinm - clean up 
+#' Gets a dataset.
+#' 
+#' 
+#' @param name The resource name of the dataset to retrieve
+#' @importFrom googleAuthR gar_api_generator
+#' @export
+projects.locations.datasets.get <- function(name = "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512") {
+    url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+    # automl.projects.locations.datasets.get
+    f <- googleAuthR::gar_api_generator(url, "GET", data_parse_function = function(x) x)
+    f()
+    
+}
+################################################################################
+
 #' Import data into AutoML Tables
 #' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
 #'
@@ -182,8 +199,6 @@ gcat_import_data <- function(projectId,
   message("> Import successful")
 
 }
-
-
 
 #' Imports data into a dataset. (Internal API call).
 #'
