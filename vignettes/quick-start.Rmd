@@ -91,7 +91,8 @@ Execute import from Google Cloud storage:
 #   projectId = projectId,
 #   location = gcat_location,
 #   dataset_display_name = "test_01",
-#   input_gcs = "gs://gcatr-dev/bank_marketing.csv"
+#   input_source = "gcs",
+#   input_url = "gs://gcatr-dev/bank_marketing.csv"
 #   )
 ```
 

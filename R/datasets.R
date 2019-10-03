@@ -177,7 +177,8 @@ gcat_import_data <- function(projectId,
   }, error = function(ex) {
     stop("ImportDataRequest error: ", ex$message)
   })
-
+  # TODO @justinjm - add informative messaging for import
+  # since data does not successfully imports, the import job is :)
   message("> Import successful")
 
 }
