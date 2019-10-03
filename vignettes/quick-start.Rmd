@@ -155,6 +155,14 @@ table_specs
 ## List column specs 
 
 
+```{r}
+gcat_list_column_specs(
+  projectId = projectId,
+  location = gcat_location,
+  dataset_display_name = "test_01_bq"
+  )
+```
+
 ## Visualize column specs 
 
 ```{r VIEW-DEBUG}
