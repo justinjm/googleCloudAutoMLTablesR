@@ -315,7 +315,6 @@ gcat_list_table_specs_do_call <- function(parent,
 
 }
 
-
 # TODO - @justinm - add this for more efficient functions to print info and
 # work with objects
 #' Gets a table spec.
@@ -325,13 +324,12 @@ gcat_list_table_specs_do_call <- function(parent,
 #' @param fieldMask Mask specifying which fields to read
 #' @importFrom googleAuthR gar_api_generator
 #' @export
-projects.locations.datasets.tableSpecs.get <- function(name, fieldMask = NULL) {
-    url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}", name)
-    # automl.projects.locations.datasets.tableSpecs.get
-    pars = list(fieldMask = fieldMask)
-    f <- googleAuthR::gar_api_generator(url, "GET", pars_args = rmNullObs(pars),
-        data_parse_function = function(x) x)
-    f()
-
-}
-
+# projects.locations.datasets.tableSpecs.get <- function(name, fieldMask = NULL) {
+#     url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}", name)
+#     # automl.projects.locations.datasets.tableSpecs.get
+#     pars = list(fieldMask = fieldMask)
+#     f <- googleAuthR::gar_api_generator(url, "GET", pars_args = rmNullObs(pars),
+#         data_parse_function = function(x) x)
+#     f()
+#
+# }
