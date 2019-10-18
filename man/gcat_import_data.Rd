@@ -8,6 +8,9 @@ https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-c
 gcat_import_data(projectId, location, dataset_display_name,
   input_source = c("bq", "gcs"), input_url)
 }
+\arguments{
+\item{location}{location of GCP resources}
+}
 \description{
 Import data into AutoML Tables
 https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl

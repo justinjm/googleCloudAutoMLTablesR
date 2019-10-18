@@ -16,7 +16,7 @@ app_project <- googleAuthR::gar_set_client(
 
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
-# options(googleAuthR.verbose = 0)
+options(googleAuthR.verbose = 0)
 
 gar_auth("gcat.oauth")
 ```
@@ -39,7 +39,8 @@ gcat_locations$locations
 ## manually set location path TODO - @justinjm - update function to handle 
 ## location setting 
 gcat_location <- "us-central1"
-gcat_location_path(projectId, gcat_location)
+gcat_location_path(projectId = projectId, 
+                   location = gcat_location)
 ```
 
 ## Get list of datasets 
@@ -127,10 +128,13 @@ Execute import from BigQuery:
 ```
 
 
-View info via `get` api method/function
+## View dataset 
+Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results: 
 
 ```{r}
-projects.locations.datasets.get()
+dataset <- gcat_get_dataset(projectId = projectId,
+                 location = gcat_location,
+                 datasetId = "TBL4800700863335104512")
 ```
 
 # Updating dataset in AutoML Tables
@@ -167,7 +171,7 @@ gcat_list_column_specs(
 
 ```{r VIEW-DEBUG}
 # view debugging info
-# readRDS("request_debug.rds")
+readRDS("request_debug.rds")
 ```
 
 

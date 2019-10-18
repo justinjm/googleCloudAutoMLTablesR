@@ -2,10 +2,14 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_list_datasets}
 \alias{gcat_list_datasets}
-\title{Lists datasets in a project.}
+\title{Set global dataset name}
 \usage{
 gcat_list_datasets(projectId, location)
 }
+\arguments{
+\item{location}{location of GCP resources}
+}
 \description{
+set a dataset name used for this R session
 Lists datasets in a project.
 }

@@ -1,7 +1,28 @@
+# Store dataset name
+# .gcat_env <- new.env(parent = emptyenv())
+# TODO - @justjm - consider and add this based on GCS R for more efficient workflow,
+# less repitition of parameters in other functions
+# source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
+
+
+# TODO - @justjm - consider adding this
+#' Set global dataset name
+#'
+#' set a dataset name used for this R session
+# gcat_global_dataset <- function(dataset){
+#
+#   dataset <- as.dataset_name(dataset)
+#
+#   .gcat_env$dataset <- dataset
+#   message("Set default dataset name to '", dataset,"'")
+#   return(invisible(.gcat_env$dataset))
+#
+# }
+
 #' Lists datasets in a project.
 #'
 #' @param projectId
-#' @param location
+#' @param location location of GCP resources
 #' @export
 gcat_list_datasets <- function(projectId,
                                location) {
@@ -11,6 +32,11 @@ gcat_list_datasets <- function(projectId,
   gcat_list_datasets_do_call(parent = location_path)
 
 }
+
+#' Check if objecti is Dataset object
+#'
+# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
+# TODO - @justjm - consider adding this
 
 #' Lists datasets in a project. (internal API call)
 #'
@@ -42,15 +68,11 @@ gcat_list_datasets_do_call <- function(parent,
 
 }
 
-#' Check if objecti is Dataset object
-#'
-# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
-
 #' Creates a dataset
 #'
 #' @param projectId
 #' @param displayName
-#' @param location
+#' @param location location of GCP resources
 #' @param parent
 #' @export
 gcat_create_dataset <- function(projectId,
@@ -101,28 +123,42 @@ gcat_create_dataset_do_call <- function(Dataset,
 
 }
 
-################################################################################
-# TODO - @justinm - clean up 
-#' Gets a dataset.
-#' 
-#' 
-#' @param name The resource name of the dataset to retrieve
-#' @importFrom googleAuthR gar_api_generator
+#' Gets a dataset
+#'
+#' @param projectId
+#' @param location location of GCP resources
+#' @param datasetId
 #' @export
-projects.locations.datasets.get <- function(name = "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512") {
-    url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
-    # automl.projects.locations.datasets.get
-    f <- googleAuthR::gar_api_generator(url, "GET", data_parse_function = function(x) x)
-    f()
-    
+gcat_get_dataset <- function(projectId,
+                             location,
+                             datasetId) {
+
+  # need: https://automl.googleapis.com/v1beta1/projects/{project_id}/locations/{locationId}/datasets/{datasetId}
+  # get location path from existing function instead of hard-coding
+  location_path <- gcat_location_path(projectId, location)
+
+  # hard-code url since not sure best way to do dymanically/elsewhere
+  name <- sprintf("%s/datasets/%s", location_path, datasetId)
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      data_parse_function = function(x) x)
+  out <- f()
+
+  print.gcat_dataset(out)
+
+  out
+
 }
-################################################################################
+
 
 #' Import data into AutoML Tables
 #' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
 #'
 #' @param projectId
-#' @param location
+#' @param location location of GCP resources
 #' @param dataset_display_name
 #' @param input_source
 #' @param input_url
