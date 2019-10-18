@@ -4,7 +4,6 @@
 # less repitition of parameters in other functions
 # source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
 
-
 # TODO - @justjm - consider adding this
 #' Set global dataset name
 #'
@@ -38,6 +37,8 @@ gcat_list_datasets <- function(projectId,
 # is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
 # TODO - @justjm - consider adding this
 
+# TODO - @justinjm merge `gcat_list_datasets_do_call` into `gcat_list_datasets`
+# to simplify source code for easier updates later
 #' Lists datasets in a project. (internal API call)
 #'
 #' @param parent The resource name of the project from which to list datasets
@@ -152,7 +153,6 @@ gcat_get_dataset <- function(projectId,
   out
 
 }
-
 
 #' Import data into AutoML Tables
 #' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
@@ -315,11 +315,12 @@ gcat_list_table_specs_do_call <- function(parent,
 
 }
 
-################################################################################
-# TODO - @justinm - add this for more efficient functions to print info and work with objects
+
+# TODO - @justinm - add this for more efficient functions to print info and
+# work with objects
 #' Gets a table spec.
-#' 
-#' 
+#'
+#'
 #' @param name The resource name of the table spec to retrieve
 #' @param fieldMask Mask specifying which fields to read
 #' @importFrom googleAuthR gar_api_generator
@@ -328,9 +329,9 @@ projects.locations.datasets.tableSpecs.get <- function(name, fieldMask = NULL) {
     url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}", name)
     # automl.projects.locations.datasets.tableSpecs.get
     pars = list(fieldMask = fieldMask)
-    f <- googleAuthR::gar_api_generator(url, "GET", pars_args = rmNullObs(pars), 
+    f <- googleAuthR::gar_api_generator(url, "GET", pars_args = rmNullObs(pars),
         data_parse_function = function(x) x)
     f()
-    
+
 }
-################################################################################
+
