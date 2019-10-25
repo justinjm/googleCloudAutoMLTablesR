@@ -137,12 +137,21 @@ Execute import from BigQuery:
 
 ## View dataset 
 
-Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results: 
+Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results.
+
+First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
+
+```{r}
+dataset_display_name <- "test_01_bq"
+datasetId <- "TBL4800700863335104512"
+```
+
+Now we're ready to view the results and get the `tableSpecId` we need for later functions:
 
 ```{r}
 dataset <- gcat_get_dataset(projectId = projectId,
                             location = gcat_location,
-                            datasetId = "TBL4800700863335104512")
+                            datasetId = datasetId)
 ```
 
 # Updating dataset in AutoML Tables
@@ -151,41 +160,44 @@ AutoML Tables automatically detects your data column type. Depending on the type
 
 Lets first view the table schema and the columns
 
-
 ## List table specs 
 
 ```{r}
 table_specs <- gcat_list_table_specs(
   projectId = projectId,
   location = gcat_location,
-  dataset_display_name = "test_01_bq"
+  dataset_display_name = dataset_display_name 
   )
-
-table_specs
 ```
-
 
 ## List column specs 
 
-```{r}
-table_colspecs_list <- gcat_list_column_specs(
-  # projectId = projectId,
-  # location = gcat_location,
-  # dataset_display_name = "test_01_bq"
-  )
-table_colspecs_list
-
-```
-
+Use Primary Table Spec ID (tableSpecId) to get the column specs 
 
 ```{r}
 table_colspecs <- gcat_get_column_specs(  
-  # projectId = projectId,
-  # location = gcat_location,
-  # dataset_display_name = "test_01_bq"
+  projectId = projectId,
+  location = gcat_location,
+  datasetId = datasetId,
+  tableSpecId = "7338035050660757504"
   )
 table_colspecs
 ```
+
+Then the second function to list more details:
+
+```{r}
+table_colspecs_list <- gcat_list_column_specs(
+  projectId = projectId,
+  location = gcat_location,
+  datasetId = datasetId,
+  tableSpecId = "7338035050660757504"
+)
+table_colspecs_list
+```
+
+
+
 
 
 ## Visualize column specs 
