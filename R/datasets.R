@@ -431,12 +431,50 @@ gcat_list_column_specs <- function(projectId,
 
 }
 
-
- # list columnspecs
- # https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
- #
- #
- # GET columspecs
- # https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
-
+# list example urls for ease of reference in developement
+# GET columspecs
+# https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
 #
+# list columnspecs
+# https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
+
+#' Updates a dataset.
+#' @param Dataset The dataset object to pass to this method
+#' @param name Output only
+#' @param updateMask The update mask applies to the resource
+#' @export
+gcat_set_label <- function(Dataset,
+                           name,
+                           updateMask = NULL) {
+
+  # 1, list datasets, get dataset
+
+  # 2, get dataset based on Dataset parament
+  # 3
+
+
+  # list gcat_list_column_specs
+  # column_specs <- gcat_list_column_specs(
+  #   projectId = projectId,
+  #   location = gcat_location,
+  #   datasetId = datasetId,
+  #   tableSpecId = "7338035050660757504"
+  # )
+
+  # 2, get `name` from results
+  # name <- column_specs$name
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+
+  # automl.projects.locations.datasets.patch
+  pars = list(updateMask = updateMask)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "PATCH",
+                                      pars_args = rmNullObs(pars),
+                                      data_parse_function = function(x) x)
+  stopifnot(inherits(Dataset, "gar_Dataset"))
+
+  f(the_body = Dataset)
+
+}

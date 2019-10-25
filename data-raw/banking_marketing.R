@@ -3,6 +3,7 @@ library(dplyr, warn.conflicts = FALSE)
 library(readr)
 library(usethis)
 
+# Source https://datahub.io/machine-learning/bank-marketing
 # https://datahub.io/machine-learning/bank-marketing/r/1.html
 # install.packages("jsonlite", repos="https://cran.rstudio.com/")
 library(jsonlite)
