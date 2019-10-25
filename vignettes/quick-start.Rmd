@@ -168,12 +168,25 @@ table_specs
 ## List column specs 
 
 ```{r}
-gcat_list_column_specs(
-  projectId = projectId,
-  location = gcat_location,
-  dataset_display_name = "test_01_bq"
+table_colspecs_list <- gcat_list_column_specs(
+  # projectId = projectId,
+  # location = gcat_location,
+  # dataset_display_name = "test_01_bq"
   )
+table_colspecs_list
+
 ```
+
+
+```{r}
+table_colspecs <- gcat_get_column_specs(  
+  # projectId = projectId,
+  # location = gcat_location,
+  # dataset_display_name = "test_01_bq"
+  )
+table_colspecs
+```
+
 
 ## Visualize column specs 
 
