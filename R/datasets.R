@@ -268,8 +268,6 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 #'
 #' @param name The resource name of the table spec to retrieve
 #' @param fieldMask Mask specifying which fields to read
-#' @importFrom googleAuthR gar_api_generator
-#' @export
 # gcat_get_table_specs <- function(name, fieldMask = NULL) {
 #     url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}", name)
 #     # automl.projects.locations.datasets.tableSpecs.get
@@ -349,7 +347,7 @@ gcat_list_table_specs_do_call <- function(parent,
 #' Gets a column spec.
 #'
 #'
-#'
+#' @export
 gcat_get_column_specs <- function(projectId,
                                   location,
                                   datasetId,
@@ -373,7 +371,11 @@ gcat_get_column_specs <- function(projectId,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
-  f()
+  response <- f()
+
+  out <- response
+
+  out
 
 }
 
@@ -396,12 +398,6 @@ gcat_list_column_specs <- function(projectId,
                                    pageToken = NULL) {
   # need:
   # "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504"
-  # get location path from existing function instead of hard-coding
-  # location_path <- gcat_location_path(projectId, location)
-  #
-  # # hard-code url since not sure best way to do dymanically/elsewhere
-  # parent <- sprintf("%s/datasets/%s/tableSpecs/%s", location_path, datasetId,
-  #                   tableSpecId)
 
   parent <- gcat_get_column_specs(projectId = projectId,
                                   location = gcat_location,
@@ -409,7 +405,6 @@ gcat_list_column_specs <- function(projectId,
                                   tableSpecId = tableSpecId)
 
   parent <- parent$name
-
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/columnSpecs",
                  parent)
@@ -427,6 +422,10 @@ gcat_list_column_specs <- function(projectId,
   response <- f()
 
   out <- response$columnSpecs
+  # TODO - @justinjm - consider adding function for parsing results in form of nested
+  # dataframes
+  # https://github.com/cloudyr/googleCloudStorageR/blob/master/R/utilities.R
+  # out <- my_reduce_rbind(response)
 
   out
 
@@ -440,4 +439,4 @@ gcat_list_column_specs <- function(projectId,
  # GET columspecs
  # https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
 
-
+#
