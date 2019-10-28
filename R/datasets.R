@@ -83,10 +83,6 @@ gcat_create_dataset <- function(projectId,
 
   location_path <- gcat_location_path(projectId, location)
 
-  # added unboxing of entry into a list
-  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
-  jubox <- function(x) jsonlite::unbox(x)
-
   ds <- structure(
     list(
       displayName = jubox(displayName),
@@ -361,6 +357,7 @@ gcat_get_column_specs <- function(projectId,
   parent <- sprintf("%s/datasets/%s/tableSpecs/%s", location_path, datasetId,
                     tableSpecId)
 
+  # parent <- "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512"
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
                  parent)
 
@@ -421,11 +418,11 @@ gcat_list_column_specs <- function(projectId,
                                       data_parse_function = function(x) x)
   response <- f()
 
-  out <- response$columnSpecs
-  # TODO - @justinjm - consider adding function for parsing results in form of nested
-  # dataframes
+  # TODO - @justinjm - consider adding function for parsing results in form
+  # of nested dataframes
   # https://github.com/cloudyr/googleCloudStorageR/blob/master/R/utilities.R
   # out <- my_reduce_rbind(response)
+  out <- response$columnSpecs
 
   out
 
@@ -439,30 +436,50 @@ gcat_list_column_specs <- function(projectId,
 # https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
 
 #' Updates a dataset.
-#' @param Dataset The dataset object to pass to this method
-#' @param name Output only
-#' @param updateMask The update mask applies to the resource
+#'
 #' @export
-gcat_set_label <- function(Dataset,
-                           name,
+gcat_set_label <- function(projectId,
+                           location,
+                           datasetId,
+                           tableSpecId,
+                           label_column_name,
                            updateMask = NULL) {
 
-  # 1, list datasets, get dataset
+  # get dataset based on Dataset parament
+  dataset_input <- gcat_get_dataset(projectId = projectId,
+                                    location = gcat_location,
+                                    datasetId = datasetId)
 
-  # 2, get dataset based on Dataset parament
-  # 3
+  # set url for API call
+  name <- dataset_input$name
 
+  # get dataset display name for API call body
+  displayName <- dataset_input$displayName
 
-  # list gcat_list_column_specs
-  # column_specs <- gcat_list_column_specs(
-  #   projectId = projectId,
-  #   location = gcat_location,
-  #   datasetId = datasetId,
-  #   tableSpecId = "7338035050660757504"
-  # )
+  # list gcat_list_column_specs to get column spec ID for target column
+  column_specs_input <- gcat_list_column_specs(projectId = projectId,
+                                               location = gcat_location,
+                                               datasetId = datasetId,
+                                               tableSpecId = tableSpecId)
 
-  # 2, get `name` from results
-  # name <- column_specs$name
+  label_column_specs_input <- subset(column_specs_input,
+                                 displayName == label_column_name)
+
+  # set columnSpec Id of label column to set in AutoML tables
+  ## manually set for testing now
+  ## TODO @justinjm - add function to parse this (from name/url field?)
+  target_column_spec_id <- "7181143537470144512"
+
+  # build request body last for easier updating code above
+  Dataset <- structure(
+    list(
+      displayName = jubox(displayName),
+      tablesDatasetMetadata = list(
+        targetColumnSpecId = target_column_spec_id
+      )
+    ),
+    class = c("gar_Dataset", "list")
+  )
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
 
@@ -473,8 +490,11 @@ gcat_set_label <- function(Dataset,
                                       "PATCH",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
+
   stopifnot(inherits(Dataset, "gar_Dataset"))
 
   f(the_body = Dataset)
+
+  out <- f()
 
 }

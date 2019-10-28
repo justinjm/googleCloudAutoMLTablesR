@@ -22,6 +22,10 @@ cat0 <- function(prefix = "", x){
   }
 }
 
+#' Unboxing of entry into a list
+#' https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
+jubox <- function(x) jsonlite::unbox(x)
+
 #' base R safe rbind
 #'
 #' Send in a list of data.fames with different column names

@@ -204,12 +204,13 @@ table_colspecs_list
 Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) as label
 
 ```{r}
-
-gcat_set_label(projectId = projectId,
+library(jsonlite)
+gcat_set_label(
+  projectId = projectId,
   location = gcat_location,
   datasetId = datasetId,
   tableSpecId = "7338035050660757504",
-  label_column_name = "V16"
+  label_column_name = "V16" # projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512
   )
 
 ```
@@ -218,7 +219,7 @@ gcat_set_label(projectId = projectId,
 
 ```{r VIEW-DEBUG}
 # view debugging info
-# readRDS("request_debug.rds")
+readRDS("request_debug.rds")
 ```
 
 
