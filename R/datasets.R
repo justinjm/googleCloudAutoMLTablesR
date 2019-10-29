@@ -411,7 +411,7 @@ gcat_list_column_specs <- function(projectId,
   # "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504"
 
   parent <- gcat_get_column_specs(projectId = projectId,
-                                  location = gcat_location,
+                                  location = location,
                                   datasetId = datasetId,
                                   tableSpecId = tableSpecId)
 
@@ -461,7 +461,7 @@ gcat_set_label <- function(projectId,
 
   # get dataset based on Dataset parament
   dataset_input <- gcat_get_dataset(projectId = projectId,
-                                    location = gcat_location,
+                                    location = location,
                                     datasetId = datasetId)
 
   # set url for API call
@@ -472,7 +472,7 @@ gcat_set_label <- function(projectId,
 
   # list gcat_list_column_specs to get column spec ID for target column
   column_specs_input <- gcat_list_column_specs(projectId = projectId,
-                                               location = gcat_location,
+                                               location = location,
                                                datasetId = datasetId,
                                                tableSpecId = tableSpecId)
 
@@ -511,9 +511,11 @@ gcat_set_label <- function(projectId,
 
   stopifnot(inherits(Dataset, "gar_Dataset"))
 
-  f(the_body = Dataset)
+  response  <- f(the_body = Dataset)
 
-  out <- f()
+  out <- response
+
+  out
 
 }
 

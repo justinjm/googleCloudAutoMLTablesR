@@ -38,17 +38,17 @@ gcat_locations$locations
 ```{r}
 ## manually set location path TODO - @justinjm - update function to handle 
 ## location setting 
-gcat_location <- "us-central1"
+location <- "us-central1"
 gcat_location_path(projectId = projectId, 
-                   location = gcat_location)
+                   location = location)
 ```
 
 ## Get list of datasets 
 
 ```{r}
-gcat_datasets <- gcat_list_datasets(projectId = projectId,
-                                    location = gcat_location)
-gcat_datasets
+datasets_list <- gcat_list_datasets(projectId = projectId,
+                                    location = location)
+datasets_list
 ```
 
 # Importing data into AutoML Tables 
@@ -83,7 +83,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 # TODO @justinjm - fix function, issue #1 
 # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
 # gcat_dataset <- gcat_create_dataset(projectId = projectId,
-#                                     location = gcat_location,
+#                                     location = location,
 #                                     displayName = "test_01")
 ```
 
@@ -94,7 +94,7 @@ Execute import from Google Cloud storage:
 ```{r}
 # gcat_import_data(
 #   projectId = projectId,
-#   location = gcat_location,
+#   location = location,
 #   dataset_display_name = "test_01",
 #   input_source = "gcs",
 #   input_url = "gs://gcatr-dev/bank_marketing.csv"
@@ -116,7 +116,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 # TODO @justinjm - fix function, issue #1 
 # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
 # gcat_dataset <- gcat_create_dataset(projectId = projectId,
-#                                     location = gcat_location,
+#                                     location = location,
 #                                     displayName = "test_01_bq")
 ```
 
@@ -127,7 +127,7 @@ Execute import from BigQuery:
 ```{r}
 # gcat_import_data(
 #   projectId = projectId,
-#   location = gcat_location,
+#   location = location,
 #   dataset_display_name = "test_01_bq",
 #   input_source = "bq",
 #   input_url = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
@@ -150,7 +150,7 @@ Now we're ready to view the results and get the `tableSpecId` we need for later 
 
 ```{r}
 dataset <- gcat_get_dataset(projectId = projectId,
-                            location = gcat_location,
+                            location = location,
                             datasetId = datasetId)
 ```
 
@@ -165,7 +165,7 @@ Lets first view the table schema and the columns
 ```{r}
 table_specs <- gcat_list_table_specs(
   projectId = projectId,
-  location = gcat_location,
+  location = location,
   dataset_display_name = dataset_display_name 
   )
 table_specs
@@ -178,7 +178,7 @@ Use Primary Table Spec ID (tableSpecId) to get the column specs:
 ```{r}
 table_colspecs_list <- gcat_list_column_specs(
   projectId = projectId,
-  location = gcat_location,
+  location = location,
   datasetId = datasetId,
   tableSpecId = "7338035050660757504"
 )
@@ -195,7 +195,7 @@ Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) 
 # library(jsonlite)
 dataset2 <- gcat_set_label(
   projectId = projectId,
-  location = gcat_location,
+  location = location,
   datasetId = datasetId,
   tableSpecId = "7338035050660757504",
   label_column_name = "V16" 
