@@ -341,9 +341,7 @@ gcat_list_table_specs_do_call <- function(parent,
 
   print.gcat_table_specs(out)
 
-  out_names <- c("rowCount", "validRowCount", "columnCount", "name")
-
-  out[,out_names]
+  out
 
 }
 

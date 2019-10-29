@@ -26,6 +26,8 @@ cat0 <- function(prefix = "", x){
 #'
 #' Send in a list of data.fames with different column names
 #'
+#' Taken from googleCloudStorageR by Mark Edmondson
+#'
 #' @return one data.frame
 #' a safe rbind for variable length columns
 #' @noRd
@@ -54,3 +56,22 @@ my_reduce_rbind <- function(x){
   Reduce(rbind, df_same_names)
 }
 
+#' Javascript time to R time
+#'
+#' Taken from googleCloudStorageR by Mark Edmondson
+#'
+#' @keywords internal
+#' @noRd
+js_to_posix <- function(x){
+  as.POSIXct(as.numeric(x) / 1000, origin = "1970-01-01")
+}
+
+#' Timestamp to R date
+#'
+#' Taken from googleCloudStorageR by Mark Edmondson
+#'
+#' @keywords internal
+#' @noRd
+timestamp_to_r <- function(t){
+  as.POSIXct(t, format = "%Y-%m-%dT%H:%M:%S")
+}
