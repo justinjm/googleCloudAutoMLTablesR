@@ -83,6 +83,10 @@ gcat_create_dataset <- function(projectId,
 
   location_path <- gcat_location_path(projectId, location)
 
+  # Unboxing of entry into a list
+  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
+  jubox <- function(x) jsonlite::unbox(x)
+
   ds <- structure(
     list(
       displayName = jubox(displayName),
@@ -472,6 +476,10 @@ gcat_set_label <- function(projectId,
   ## manually set for testing now
   ## TODO @justinjm - add function to parse this (from name/url field?)
   target_column_spec_id <- "7181143537470144512"
+
+  # Unboxing of entry into a list
+  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
+  jubox <- function(x) jsonlite::unbox(x)
 
   # build request body last for easier updating code above
   Dataset <- structure(
