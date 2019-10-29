@@ -330,7 +330,10 @@ gcat_list_table_specs_do_call <- function(parent,
   # TODO @justinjm - add function to cleanup timsetamp
   ### https://github.com/cloudyr/googleCloudStorageR/blob/f558e5b086c02362af0c027ef958d798b985c07b/R/objects.R#L88
   ### x$timeCreated <- timestamp_to_r(x$timeCreated)
-  out <- list_table_specs()$tableSpecs
+
+  response <- list_table_specs()
+
+  out <- response$tableSpecs
 
   print.gcat_table_specs(out)
 
