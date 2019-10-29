@@ -168,24 +168,12 @@ table_specs <- gcat_list_table_specs(
   location = gcat_location,
   dataset_display_name = dataset_display_name 
   )
+table_specs
 ```
 
 ## List column specs 
 
 Use Primary Table Spec ID (tableSpecId) to get the column specs:  
-
-```{r}
-table_colspecs <- gcat_get_column_specs(  
-  projectId = projectId,
-  location = gcat_location,
-  datasetId = datasetId,
-  tableSpecId = "7338035050660757504"
-  )
-table_colspecs
-```
-
-Then the second function to list more details:
-
 
 ```{r}
 table_colspecs_list <- gcat_list_column_specs(
