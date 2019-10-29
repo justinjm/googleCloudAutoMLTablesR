@@ -469,13 +469,13 @@ gcat_set_label <- function(projectId,
                                                datasetId = datasetId,
                                                tableSpecId = tableSpecId)
 
-  label_column_specs_input <- subset(column_specs_input,
-                                 displayName == label_column_name)
-
   # set columnSpec Id of label column to set in AutoML tables
-  ## manually set for testing now
-  ## TODO @justinjm - add function to parse this (from name/url field?)
-  target_column_spec_id <- "7181143537470144512"
+  label_column_specs_input <- subset(column_specs_input,
+                                     displayName == label_column_name)
+
+  # use regex since not sure where else to grab `targetColumnSpecId`?
+  target_column_spec_id <- gsub(".*/columnSpecs/", "",
+                                label_column_specs_input$name)
 
   # Unboxing of entry into a list
   # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
