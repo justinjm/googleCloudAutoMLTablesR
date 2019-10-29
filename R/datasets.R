@@ -348,7 +348,10 @@ gcat_list_table_specs_do_call <- function(parent,
 }
 
 #' Gets a column spec.
-#'
+#' @param projectId
+#' @param location location of GCP resources
+#' @param datasetId
+#' @param tableSpecId
 #'
 #' @export
 gcat_get_column_specs <- function(projectId,
@@ -386,6 +389,10 @@ gcat_get_column_specs <- function(projectId,
 
 #' Lists column specs in a table spec.
 #'
+#' @param projectId
+#' @param location location of GCP resources
+#' @param datasetId
+#' @param tableSpecId
 #' @param parent The resource name of the table spec to list column specs from
 #' @param pageSize Requested page size
 #' @param filter Filter expression, see go/filtering
@@ -435,14 +442,14 @@ gcat_list_column_specs <- function(projectId,
 
 }
 
-# list example urls for ease of reference in developement
-# GET columspecs
-# https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
-#
-# list columnspecs
-# https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
 
 #' Updates a dataset.
+#' @param projectId
+#' @param location location of GCP resources
+#' @param datasetId
+#' @param tableSpecId
+#' @param label_column_name
+#' @param updateMask
 #'
 #' @export
 gcat_set_label <- function(projectId,
@@ -509,3 +516,16 @@ gcat_set_label <- function(projectId,
   out <- f()
 
 }
+
+
+## References
+# list example urls for ease of reference in developement
+# GET columspecs
+# https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
+#
+# list columnspecs
+# https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
+
+# PATCH dataset
+## set target column
+# # projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512

@@ -9,6 +9,8 @@ gcat_list_column_specs(projectId, location, datasetId, tableSpecId,
   pageToken = NULL)
 }
 \arguments{
+\item{location}{location of GCP resources}
+
 \item{pageSize}{Requested page size}
 
 \item{filter}{Filter expression, see go/filtering}

@@ -7,6 +7,11 @@
 gcat_get_column_specs(projectId, location, datasetId, tableSpecId,
   fieldMask = NULL)
 }
+\arguments{
+\item{location}{location of GCP resources}
+
+\item{tableSpecId}{}
+}
 \description{
 Gets a column spec.
 }

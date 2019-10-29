@@ -198,7 +198,7 @@ dataset2 <- gcat_set_label(
   location = gcat_location,
   datasetId = datasetId,
   tableSpecId = "7338035050660757504",
-  label_column_name = "V16" # projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512
+  label_column_name = "V16" 
   )
 dataset2
 ```
