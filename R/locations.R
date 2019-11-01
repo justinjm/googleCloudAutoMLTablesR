@@ -23,8 +23,46 @@ gcat_list_locations <- function(projectId,
                                         "GET",
                                         pars_args = rmNullObs(pars),
                                         data_parse_function = function(x) x)
+    response <- f()
 
-    f()
+    out <- response$locations
+
+    out
+
+}
+
+#' Get a location
+#'
+#' Gets information about a location
+#'
+#' @param projectId project containing location to get
+#' @param locationId location of GCP resources
+#'
+#' @export
+gcat_get_location <- function(projectId,
+                              locationId) {
+
+    locations <- gcat_list_locations(projectId = projectId)
+
+    # change since subset doesn't like input same as column name?
+    location_id <- locationId
+
+    name <- subset(locations,
+                   locationId == location_id,
+                   select = c(name))
+
+    url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
+                   name)
+
+    f <- googleAuthR::gar_api_generator(url,
+                                        "GET",
+                                        data_parse_function = function(x) x)
+
+   response <- f()
+
+   out <- response
+
+   out
 
 }
 

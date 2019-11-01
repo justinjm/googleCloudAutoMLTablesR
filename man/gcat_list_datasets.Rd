@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_list_datasets}
 \alias{gcat_list_datasets}
-\title{Set global dataset name}
+\title{Check if objecti is Dataset object}
 \usage{
 gcat_list_datasets(projectId, location)
 }
@@ -10,6 +10,9 @@ gcat_list_datasets(projectId, location)
 \item{location}{location of GCP resources}
 }
 \description{
+Set global dataset name
+}
+\details{
 set a dataset name used for this R session
 Lists datasets in a project.
 }

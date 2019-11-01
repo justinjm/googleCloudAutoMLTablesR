@@ -29,18 +29,15 @@ Test authentication and check in correct project:
 projectId <- Sys.getenv("GCAT_PROJECT_ID")
 
 ## Get list of locations 
-gcat_locations <- gcat_list_locations(projectId = projectId)
-gcat_locations$locations
+gcat_list_locations(projectId = projectId)
 ```
 
 ## Set location 
 
 ```{r}
-## manually set location path TODO - @justinjm - update function to handle 
-## location setting 
 location <- "us-central1"
-gcat_location_path(projectId = projectId, 
-                   location = location)
+gcat_get_location(projectId = projectId,
+                  locationId = location)
 ```
 
 ## Get list of datasets 

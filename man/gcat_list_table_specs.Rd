@@ -2,16 +2,10 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_list_table_specs}
 \alias{gcat_list_table_specs}
-\title{Gets a table spec.}
+\title{Lists table specs in a dataset}
 \usage{
 gcat_list_table_specs(projectId, location, dataset_display_name)
 }
-\arguments{
-\item{name}{The resource name of the table spec to retrieve}
-
-\item{fieldMask}{Mask specifying which fields to read
-Lists table specs in a dataset}
-}
 \description{
-Gets a table spec.
+Lists table specs in a dataset
 }
