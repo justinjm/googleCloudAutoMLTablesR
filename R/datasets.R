@@ -384,6 +384,36 @@ gcat_get_column_specs <- function(projectId,
 
 }
 
+#' @export
+#'
+gcat_get_column_spec <- function(name,
+                                  fieldMask = NULL) {
+
+
+  # name <- "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512"
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
+                 name)
+
+  # automl.projects.locations.datasets.tableSpecs.columnSpecs.get
+  pars = list(fieldMask = fieldMask)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      pars_args = rmNullObs(pars),
+                                      data_parse_function = function(x) x)
+  response <- f()
+
+  browser()
+
+  out <- response
+
+  out
+
+}
+
+
+
+
 
 #' Lists column specs in a table spec.
 #'
