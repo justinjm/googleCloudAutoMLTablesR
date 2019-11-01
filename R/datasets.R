@@ -4,7 +4,11 @@
 # less repitition of parameters in other functions
 # source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
 
+#' Check if objecti is Dataset object
+#'
+# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
 # TODO - @justjm - consider adding this
+
 #' Set global dataset name
 #'
 #' set a dataset name used for this R session
@@ -17,6 +21,7 @@
 #   return(invisible(.gcat_env$dataset))
 #
 # }
+# TODO - @justjm - consider adding this
 
 #' Lists datasets in a project.
 #'
@@ -32,10 +37,7 @@ gcat_list_datasets <- function(projectId,
 
 }
 
-#' Check if objecti is Dataset object
-#'
-# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
-# TODO - @justjm - consider adding this
+
 
 # TODO - @justinjm merge `gcat_list_datasets_do_call` into `gcat_list_datasets`
 # to simplify source code for easier updates later
@@ -68,6 +70,41 @@ gcat_list_datasets_do_call <- function(parent,
   f()$datasets[, c("displayName", "createTime", "etag", "name")]
 
 }
+
+
+#' Gets a dataset
+#'
+#' @param projectId
+#' @param location location of GCP resources
+#' @param datasetId
+#' @export
+gcat_get_dataset <- function(projectId,
+                             location,
+                             datasetId) {
+
+  # need: https://automl.googleapis.com/v1beta1/projects/{project_id}/locations/{locationId}/datasets/{datasetId}
+  # get location path from existing function instead of hard-coding
+  location_path <- gcat_location_path(projectId, location)
+
+  # hard-code url since not sure best way to do dymanically/elsewhere
+  name <- sprintf("%s/datasets/%s", location_path, datasetId)
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      data_parse_function = function(x) x)
+
+  out <- f()
+
+  print.gcat_dataset(out)
+
+  out
+
+}
+
+
+
 
 #' Creates a dataset
 #'
@@ -126,36 +163,7 @@ gcat_create_dataset_do_call <- function(Dataset,
 
 }
 
-#' Gets a dataset
-#'
-#' @param projectId
-#' @param location location of GCP resources
-#' @param datasetId
-#' @export
-gcat_get_dataset <- function(projectId,
-                             location,
-                             datasetId) {
 
-  # need: https://automl.googleapis.com/v1beta1/projects/{project_id}/locations/{locationId}/datasets/{datasetId}
-  # get location path from existing function instead of hard-coding
-  location_path <- gcat_location_path(projectId, location)
-
-  # hard-code url since not sure best way to do dymanically/elsewhere
-  name <- sprintf("%s/datasets/%s", location_path, datasetId)
-
-  url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
-
-  f <- googleAuthR::gar_api_generator(url,
-                                      "GET",
-                                      data_parse_function = function(x) x)
-
-  out <- f()
-
-  print.gcat_dataset(out)
-
-  out
-
-}
 
 #' Import data into AutoML Tables
 #' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
@@ -261,23 +269,6 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 
 }
 
-# TODO - @justinm - add this for more efficient functions to print info and
-# work with objects
-#' Gets a table spec.
-#'
-#'
-#' @param name The resource name of the table spec to retrieve
-#' @param fieldMask Mask specifying which fields to read
-# gcat_get_table_specs <- function(name, fieldMask = NULL) {
-#     url <- sprintf("https://automl.googleapis.com/v1beta1/{+name}", name)
-#     # automl.projects.locations.datasets.tableSpecs.get
-#     pars = list(fieldMask = fieldMask)
-#     f <- googleAuthR::gar_api_generator(url, "GET", pars_args = rmNullObs(pars),
-#         data_parse_function = function(x) x)
-#     f()
-#
-# }
-
 #' Lists table specs in a dataset
 #' @param projectId
 #' @param location
@@ -344,6 +335,46 @@ gcat_list_table_specs_do_call <- function(parent,
   out
 
 }
+
+
+# TODO - @justinm - add this for more efficient functions to print info and
+# work with objects
+#' Gets a table spec.
+#'
+#'
+#' @param name The resource name of the table spec to retrieve
+#' @param fieldMask Mask specifying which fields to read
+# gcat_get_table_specs <- function(name,
+#                                  fieldMask = NULL) {
+#
+#     url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+#
+#       # automl.projects.locations.datasets.tableSpecs.get
+#     pars = list(fieldMask = fieldMask)
+#
+#     f <- googleAuthR::gar_api_generator(url,
+#                                         "GET",
+#                                         pars_args = rmNullObs(pars),
+#                                         data_parse_function = function(x) x)
+#     f()
+#
+# }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #' Gets a column spec.
 #' @param projectId
