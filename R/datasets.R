@@ -27,32 +27,21 @@
 #'
 #' @param projectId
 #' @param location location of GCP resources
-#' @export
-gcat_list_datasets <- function(projectId,
-                               location) {
-
-  location_path <- gcat_location_path(projectId, location)
-
-  gcat_list_datasets_do_call(parent = location_path)
-
-}
-
-
-
-# TODO - @justinjm merge `gcat_list_datasets_do_call` into `gcat_list_datasets`
-# to simplify source code for easier updates later
-#' Lists datasets in a project. (internal API call)
-#'
 #' @param parent The resource name of the project from which to list datasets
 #' @param filter An expression for filtering the results of the request
 #' @param pageToken A token identifying a page of results for the server to return
 #' @param pageSize Requested page size
-#' @keywords internal
-#' @noRd
-gcat_list_datasets_do_call <- function(parent,
-                                       filter = NULL,
-                                       pageToken = NULL,
-                                       pageSize = NULL) {
+#' @export
+gcat_list_datasets <- function(projectId,
+                               locationId,
+                               filter = NULL,
+                               pageToken = NULL,
+                               pageSize = NULL) {
+
+  location_path <- gcat_get_location(projectId = projectId,
+                                     locationId = locationId)
+
+  parent <- location_path$name
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)
@@ -66,8 +55,11 @@ gcat_list_datasets_do_call <- function(parent,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
+
+  response <- f()
+
   # TODO @justinjm - format `createTime` with utlity function
-  f()$datasets[, c("displayName", "createTime", "etag", "name")]
+  response$datasets[, c("displayName", "createTime", "etag", "name")]
 
 }
 

@@ -149,6 +149,7 @@ Now we're ready to view the results and get the `tableSpecId` we need for later 
 dataset <- gcat_get_dataset(projectId = projectId,
                             location = location,
                             datasetId = datasetId)
+dataset
 ```
 
 # Updating dataset in AutoML Tables
