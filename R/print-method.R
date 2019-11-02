@@ -1,4 +1,12 @@
 #' @export
+print.gcat_location <- function(x,...){
+  cat("==Google Cloud AutoML Table Location==\n")
+  cat0("name:                    ", x$name)
+  cat0("locationId:              ", x$locationId)
+
+}
+
+#' @export
 print.gcat_dataset <- function(x,...){
   cat("==Google Cloud AutoML Table Dataset==\n")
   cat0("displayName:               ", x$displayName)

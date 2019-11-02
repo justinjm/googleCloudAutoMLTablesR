@@ -16,7 +16,8 @@ app_project <- googleAuthR::gar_set_client(
 
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
-options(googleAuthR.verbose = 0)
+# options(googleAuthR.verbose = 0)
+# options(googleAuthR.verbose = 1)
 
 gar_auth("gcat.oauth")
 ```
@@ -36,8 +37,8 @@ gcat_list_locations(projectId = projectId)
 
 ```{r}
 location <- "us-central1"
-gcat_get_location(projectId = projectId,
-                  locationId = location)
+location_path <- gcat_get_location(projectId = projectId,
+                                   locationId = location)
 ```
 
 ## Get list of datasets 

@@ -58,11 +58,13 @@ gcat_get_location <- function(projectId,
                                         "GET",
                                         data_parse_function = function(x) x)
 
-   response <- f()
+    response <- f()
 
-   out <- response
+    print.gcat_location(response)
 
-   out
+    out <- response
+
+    out
 
 }
 
