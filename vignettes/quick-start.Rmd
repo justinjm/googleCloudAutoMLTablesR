@@ -163,13 +163,21 @@ Lets first view the table schema and the columns
 ## List table specs 
 
 ```{r}
-table_specs <- gcat_list_table_specs(
+table_specs_list <- gcat_list_table_specs(
   projectId = projectId,
-  location = location,
-  dataset_display_name = dataset_display_name 
-  )
-table_specs
+  locationId = location,
+  displayName = dataset_display_name 
+)
+table_specs_list 
 ```
+
+```{r}
+table_spec <- gcat_get_table_specs(projectId = projectId,
+                                   locationId = location,
+                                   displayName = dataset_display_name)
+table_spec
+```
+
 
 ## List column specs 
 

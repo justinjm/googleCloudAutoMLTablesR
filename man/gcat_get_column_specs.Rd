@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_get_column_specs}
 \alias{gcat_get_column_specs}
-\title{Gets a table spec.}
+\title{Gets a column spec.}
 \usage{
 gcat_get_column_specs(projectId, location, datasetId, tableSpecId,
   fieldMask = NULL)
@@ -11,12 +11,7 @@ gcat_get_column_specs(projectId, location, datasetId, tableSpecId,
 \item{location}{location of GCP resources}
 
 \item{tableSpecId}{}
-
-\item{fieldMask}{Mask specifying which fields to read
-Gets a column spec.}
-
-\item{name}{The resource name of the table spec to retrieve}
 }
 \description{
-Gets a table spec.
+Gets a column spec.
 }

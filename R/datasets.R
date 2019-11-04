@@ -27,7 +27,7 @@
 #' Lists datasets in a project.
 #'
 #' @param projectId
-#' @param location location of GCP resources
+#' @param locationId location of GCP resources
 #' @param parent The resource name of the project from which to list datasets
 #' @param filter An expression for filtering the results of the request
 #' @param pageToken A token identifying a page of results for the server to return
@@ -76,7 +76,7 @@ gcat_list_datasets <- function(projectId,
 #' Gets a dataset
 #'
 #' @param projectId
-#' @param location location of GCP resources
+#' @param locationId location of GCP resources
 #' @param displayName
 #' @export
 gcat_get_dataset <- function(projectId,
@@ -274,8 +274,8 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 #' Lists table specs in a dataset
 #'
 #' @param projectId name of the dataset to list table specs from
-#' @param location
-#' @param dataset_display_name
+#' @param locationId
+#' @param displayName
 #' @param filter Filter expression, see go/filtering
 #' @param fieldMask Mask specifying which fields to read
 #' @param pageToken A token identifying a page of results for the server to return
@@ -283,24 +283,21 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 #'
 #' @export
 gcat_list_table_specs <- function(projectId,
-                                  location,
-                                  dataset_display_name,
+                                  locationId,
+                                  displayName,
                                   filter = NULL,
                                   fieldMask = NULL,
                                   pageToken = NULL,
                                   pageSize = NULL) {
 
-  # get list of datasets
-  datasets <- gcat_list_datasets(projectId = projectId,
-                                 location = location)
+  # get data set metadata for listing tableSpecs API call
+  dataset <- gcat_get_dataset(projectId = projectId,
+                              locationId = locationId,
+                              displayName = displayName)
 
-  # extract id of dataset to create url for api call
-  ## `projects/{project-id}/locations/us-central1/datasets/{dataset-id}`
-  location_dataset_name <- subset(datasets,
-                                  displayName == dataset_display_name,
-                                  select = c(name))
-
-  parent <- location_dataset_name
+  # sent parent name here for easy insertion into boilerplant googleAuthR
+  # API call function
+  parent <- dataset$name
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/tableSpecs",
                  parent)
@@ -310,44 +307,58 @@ gcat_list_table_specs <- function(projectId,
               pageToken = pageToken,
               pageSize = pageSize)
 
-  list_table_specs <- googleAuthR::gar_api_generator(url,
+  f <- googleAuthR::gar_api_generator(url,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
 
-  response <- list_table_specs()
+  response <- f()
 
   out <- response$tableSpecs
+
+  out
+
+}
+
+#' Gets a table spec.
+#' @param projectId name of the dataset to get a table spec from
+#' @param locationId
+#' @param displayName
+#' @param fieldMask Mask specifying which fields to read
+#'
+#' @export
+gcat_get_table_specs <- function(projectId,
+                                 locationId,
+                                 displayName,
+                                 fieldMask = NULL) {
+
+  table_spec_list <- gcat_list_table_specs(projectId = projectId,
+                                           locationId = locationId,
+                                           displayName = displayName)
+
+  dataset_display_name <- displayName
+
+  name <- subset(table_spec_list,
+                 displayName == dataset_display_name,
+                 select = c(name))
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
+
+  pars = list(fieldMask = fieldMask)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      pars_args = rmNullObs(pars),
+                                      data_parse_function = function(x) x)
+  response <- f()
+
+  out <- response
 
   print.gcat_table_specs(out)
 
   out
 
 }
-
-
-# TODO - @justinm - add this for more efficient functions to print info and
-# work with objects
-#' Gets a table spec.
-#'
-#'
-#' @param name The resource name of the table spec to retrieve
-#' @param fieldMask Mask specifying which fields to read
-# gcat_get_table_specs <- function(name,
-#                                  fieldMask = NULL) {
-#
-#     url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
-#
-#       # automl.projects.locations.datasets.tableSpecs.get
-#     pars = list(fieldMask = fieldMask)
-#
-#     f <- googleAuthR::gar_api_generator(url,
-#                                         "GET",
-#                                         pars_args = rmNullObs(pars),
-#                                         data_parse_function = function(x) x)
-#     f()
-#
-# }
 
 
 
