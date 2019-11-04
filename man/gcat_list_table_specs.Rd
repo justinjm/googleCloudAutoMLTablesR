@@ -4,9 +4,8 @@
 \alias{gcat_list_table_specs}
 \title{Lists table specs in a dataset}
 \usage{
-gcat_list_table_specs(projectId, location, dataset_display_name,
-  filter = NULL, fieldMask = NULL, pageToken = NULL,
-  pageSize = NULL)
+gcat_list_table_specs(projectId, locationId, displayName, filter = NULL,
+  fieldMask = NULL, pageToken = NULL, pageSize = NULL)
 }
 \arguments{
 \item{projectId}{name of the dataset to list table specs from}

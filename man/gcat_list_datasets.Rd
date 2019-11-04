@@ -8,13 +8,13 @@ gcat_list_datasets(projectId, locationId, filter = NULL,
   pageToken = NULL, pageSize = NULL)
 }
 \arguments{
+\item{locationId}{location of GCP resources}
+
 \item{filter}{An expression for filtering the results of the request}
 
 \item{pageToken}{A token identifying a page of results for the server to return}
 
 \item{pageSize}{Requested page size}
-
-\item{location}{location of GCP resources}
 
 \item{parent}{The resource name of the project from which to list datasets}
 }
