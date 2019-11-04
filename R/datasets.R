@@ -268,13 +268,23 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 }
 
 #' Lists table specs in a dataset
-#' @param projectId
+#'
+#' @param projectId name of the dataset to list table specs from
 #' @param location
 #' @param dataset_display_name
+#' @param filter Filter expression, see go/filtering
+#' @param fieldMask Mask specifying which fields to read
+#' @param pageToken A token identifying a page of results for the server to return
+#' @param pageSize Requested page size
+#'
 #' @export
 gcat_list_table_specs <- function(projectId,
                                   location,
-                                  dataset_display_name) {
+                                  dataset_display_name,
+                                  filter = NULL,
+                                  fieldMask = NULL,
+                                  pageToken = NULL,
+                                  pageSize = NULL) {
 
   # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
@@ -286,30 +296,11 @@ gcat_list_table_specs <- function(projectId,
                                   displayName == dataset_display_name,
                                   select = c(name))
 
-
-  gcat_list_table_specs_do_call(parent = location_dataset_name)
-
-}
-
-#' Lists table specs in a dataset (Internal call )
-#'
-#'
-#' @param parent The resource name of the dataset to list table specs from
-#' @param filter Filter expression, see go/filtering
-#' @param fieldMask Mask specifying which fields to read
-#' @param pageToken A token identifying a page of results for the server to return
-#' @param pageSize Requested page size
-#' @noRd
-gcat_list_table_specs_do_call <- function(parent,
-                                          filter = NULL,
-                                          fieldMask = NULL,
-                                          pageToken = NULL,
-                                          pageSize = NULL) {
+  parent <- location_dataset_name
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/tableSpecs",
                  parent)
 
-  # automl.projects.locations.datasets.tableSpecs.list
   pars = list(filter = filter,
               fieldMask = fieldMask,
               pageToken = pageToken,
@@ -319,10 +310,6 @@ gcat_list_table_specs_do_call <- function(parent,
                                       "GET",
                                       pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
-
-  # TODO @justinjm - add function to cleanup timsetamp
-  ### https://github.com/cloudyr/googleCloudStorageR/blob/f558e5b086c02362af0c027ef958d798b985c07b/R/objects.R#L88
-  ### x$timeCreated <- timestamp_to_r(x$timeCreated)
 
   response <- list_table_specs()
 
