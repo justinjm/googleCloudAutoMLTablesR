@@ -4,7 +4,20 @@
 \alias{gcat_list_table_specs}
 \title{Lists table specs in a dataset}
 \usage{
-gcat_list_table_specs(projectId, location, dataset_display_name)
+gcat_list_table_specs(projectId, location, dataset_display_name,
+  filter = NULL, fieldMask = NULL, pageToken = NULL,
+  pageSize = NULL)
+}
+\arguments{
+\item{projectId}{name of the dataset to list table specs from}
+
+\item{filter}{Filter expression, see go/filtering}
+
+\item{fieldMask}{Mask specifying which fields to read}
+
+\item{pageToken}{A token identifying a page of results for the server to return}
+
+\item{pageSize}{Requested page size}
 }
 \description{
 Lists table specs in a dataset

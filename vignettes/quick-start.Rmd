@@ -148,8 +148,9 @@ Now we're ready to view the results and get the `tableSpecId` we need for later 
 
 ```{r}
 dataset <- gcat_get_dataset(projectId = projectId,
-                            location = location,
-                            datasetId = datasetId)
+                            locationId = location,
+                            displayName = dataset_display_name
+                            )
 dataset
 ```
 

@@ -77,18 +77,20 @@ gcat_list_datasets <- function(projectId,
 #'
 #' @param projectId
 #' @param location location of GCP resources
-#' @param datasetId
+#' @param displayName
 #' @export
 gcat_get_dataset <- function(projectId,
-                             location,
-                             datasetId) {
+                             locationId,
+                             displayName) {
 
-  # need: https://automl.googleapis.com/v1beta1/projects/{project_id}/locations/{locationId}/datasets/{datasetId}
-  # get location path from existing function instead of hard-coding
-  location_path <- gcat_location_path(projectId, location)
+  datasets_list <- gcat_list_datasets(projectId = projectId,
+                                      locationId = locationId)
 
-  # hard-code url since not sure best way to do dymanically/elsewhere
-  name <- sprintf("%s/datasets/%s", location_path, datasetId)
+  dataset_display_name <- displayName
+
+  name <- subset(datasets_list,
+                 displayName == dataset_display_name,
+                 select = c(name))
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
 
@@ -96,7 +98,9 @@ gcat_get_dataset <- function(projectId,
                                       "GET",
                                       data_parse_function = function(x) x)
 
-  out <- f()
+  response <- f()
+
+  out <- response
 
   print.gcat_dataset(out)
 
