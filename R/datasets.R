@@ -1,7 +1,8 @@
-# Store dataset name
+#' Store dataset name
+#'
 # .gcat_env <- new.env(parent = emptyenv())
-# TODO - @justjm - consider and add this based on GCS R for more efficient workflow,
-# less repitition of parameters in other functions
+# TODO - @justjm - consider and add this based on GCS R for more
+# efficient workflow, less repitition of parameters in other functions
 # source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
 
 #' Check if objecti is Dataset object
@@ -46,7 +47,14 @@ gcat_list_datasets <- function(projectId,
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)
 
-  # automl.projects.locations.datasets.list
+  parse_ld <- function(x) {
+    x <- x$datasets
+    x$createTime <- timestamp_to_r(x$createTime)
+
+    x
+
+  }
+
   pars = list(filter = filter,
               pageToken = pageToken,
               pageSize = pageSize)
@@ -54,12 +62,13 @@ gcat_list_datasets <- function(projectId,
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
                                       pars_args = rmNullObs(pars),
-                                      data_parse_function = function(x) x)
+                                      data_parse_function = parse_ld)
 
   response <- f()
 
-  # TODO @justinjm - format `createTime` with utlity function
-  response$datasets[, c("displayName", "createTime", "etag", "name")]
+  out <- response
+
+  out[, c("displayName", "createTime", "etag", "name")]
 
 }
 
@@ -94,9 +103,6 @@ gcat_get_dataset <- function(projectId,
   out
 
 }
-
-
-
 
 #' Creates a dataset
 #'

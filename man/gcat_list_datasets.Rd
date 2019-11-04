@@ -2,17 +2,28 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_list_datasets}
 \alias{gcat_list_datasets}
-\title{Check if objecti is Dataset object}
+\title{Store dataset name}
 \usage{
-gcat_list_datasets(projectId, location)
+gcat_list_datasets(projectId, locationId, filter = NULL,
+  pageToken = NULL, pageSize = NULL)
 }
 \arguments{
+\item{filter}{An expression for filtering the results of the request}
+
+\item{pageToken}{A token identifying a page of results for the server to return}
+
+\item{pageSize}{Requested page size}
+
 \item{location}{location of GCP resources}
+
+\item{parent}{The resource name of the project from which to list datasets}
 }
 \description{
-Set global dataset name
+Check if objecti is Dataset object
 }
 \details{
+Set global dataset name
+
 set a dataset name used for this R session
 Lists datasets in a project.
 }
