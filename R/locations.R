@@ -60,11 +60,9 @@ gcat_get_location <- function(projectId,
 
     response <- f()
 
-    print.gcat_location(response)
-
     out <- response
 
-    out
+    structure(out, class = "gcat_location")
 
 }
 

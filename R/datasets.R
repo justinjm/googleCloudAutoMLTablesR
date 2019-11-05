@@ -102,9 +102,7 @@ gcat_get_dataset <- function(projectId,
 
   out <- response
 
-  print.gcat_dataset(out)
-
-  out
+  structure(out, class = "gcat_dataset")
 
 }
 
@@ -354,9 +352,7 @@ gcat_get_table_specs <- function(projectId,
 
   out <- response
 
-  print.gcat_table_specs(out)
-
-  out
+  structure(out, class = "gcat_table_specs")
 
 }
 
