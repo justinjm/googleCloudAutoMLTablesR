@@ -507,16 +507,17 @@ gcat_list_column_specs <- function(projectId,
 #' @param updateMask
 #'
 #' @export
+
 gcat_set_label <- function(projectId,
                            location,
                            datasetId,
                            tableSpecId,
                            label_column_name,
                            updateMask = NULL) {
-
+  # TODO @justinjm - fix since new gcat_get_dataset function changed!
   # get dataset based on Dataset parament
   dataset_input <- gcat_get_dataset(projectId = projectId,
-                                    location = location,
+                                    locationId = location,
                                     datasetId = datasetId)
 
   # set url for API call
