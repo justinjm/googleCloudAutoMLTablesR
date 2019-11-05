@@ -45,7 +45,7 @@ location_path <- gcat_get_location(projectId = projectId,
 
 ```{r}
 datasets_list <- gcat_list_datasets(projectId = projectId,
-                                    location = location)
+                                    locationId = location)
 datasets_list
 ```
 
