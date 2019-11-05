@@ -51,6 +51,18 @@ datasets_list <- gcat_list_datasets(projectId = projectId,
 datasets_list
 ```
 
+### Optional - setting and getting global dataset name
+
+To simplify code for other API calls, you can set a dataset name to a global environment variable:
+
+```{r}
+gcat_global_dataset("test_01")
+```
+
+```{r}
+gcat_get_global_dataset()
+```
+
 # Importing data into AutoML Tables 
 
 ## Options and Workflow

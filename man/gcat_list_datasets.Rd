@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_list_datasets}
 \alias{gcat_list_datasets}
-\title{Store dataset name}
+\title{Lists datasets in a project.}
 \usage{
 gcat_list_datasets(projectId, locationId, filter = NULL,
   pageToken = NULL, pageSize = NULL)
@@ -19,11 +19,5 @@ gcat_list_datasets(projectId, locationId, filter = NULL,
 \item{parent}{The resource name of the project from which to list datasets}
 }
 \description{
-Check if objecti is Dataset object
-}
-\details{
-Set global dataset name
-
-set a dataset name used for this R session
 Lists datasets in a project.
 }

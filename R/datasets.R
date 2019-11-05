@@ -1,28 +1,74 @@
-#' Store dataset name
-#'
-# .gcat_env <- new.env(parent = emptyenv())
-# TODO - @justjm - consider and add this based on GCS R for more
-# efficient workflow, less repitition of parameters in other functions
+## Store dataset name
 # source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
+.gcat_env <- new.env(parent = emptyenv())
 
 #' Check if objecti is Dataset object
 #'
-# is.gcat_dataset <- function(x) inherits(x, "gar_Dataset")
-# TODO - @justjm - consider adding this
+#' @noRd
+#' @import assertthat
+is.gcat_dataset <- function(x) {
+
+  assert_that(is.string(x))
+  inherits(x, "gcat_Dataset")
+}
+
+# TODO - consider adding a check of some kind?
+#' Makes a dataset name
+#' @noRd
+#' @import assertthat
+as.dataset_name <- function(x) {
+
+  out <- x
+
+  assert_that(is.string(out))
+
+  out
+
+}
 
 #' Set global dataset name
 #'
 #' set a dataset name used for this R session
-# gcat_global_dataset <- function(dataset){
-#
-#   dataset <- as.dataset_name(dataset)
-#
-#   .gcat_env$dataset <- dataset
-#   message("Set default dataset name to '", dataset,"'")
-#   return(invisible(.gcat_env$dataset))
-#
-# }
-# TODO - @justjm - consider adding this
+#'
+#' @param dataset dataset name you want this session to use by default or a dataset object
+#' @details
+#'   This sets a dataset to a global environment value so you don't need to
+#' supply the dataset argument to other API calls.
+#'
+#' @return the dataset name (invisvibly)
+#'
+#' @import assertthat
+#' @export
+gcat_global_dataset <- function(dataset){
+
+  dataset <- as.dataset_name(dataset)
+
+  .gcat_env$dataset <- dataset
+  message("Set default dataset name to '", dataset,"'")
+  return(invisible(.gcat_env$dataset))
+
+}
+
+#' Get global dataset name
+#'
+#' Dataset name set this session to use by default
+#'
+#' @return Dataset name
+#'
+#' @details
+#'   Set the dataset name via \link{gcat_global_dataset}
+#'
+#' @export
+gcat_get_global_dataset <- function(){
+
+  if(!exists("dataset", envir = .gcat_env)){
+    stop("Dataset is NULL and couldn't find global dataset name.
+         Set it via gcat_global_dataset")
+  }
+
+  .gcat_env$dataset
+
+}
 
 #' Lists datasets in a project.
 #'
