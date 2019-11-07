@@ -1,6 +1,6 @@
 #' @export
 print.gcat_location <- function(x,...){
-  cat("==Google Cloud AutoML Table Location==\n")
+  cat("==Google Cloud AutoML Tables Location==\n")
   cat0("name:                ", x$name)
   cat0("locationId:          ", x$locationId)
 
@@ -8,7 +8,7 @@ print.gcat_location <- function(x,...){
 
 #' @export
 print.gcat_dataset <- function(x,...){
-  cat("==Google Cloud AutoML Table Dataset==\n")
+  cat("==Google Cloud AutoML Tables Dataset==\n")
   cat0("displayName:         ", x$displayName)
   cat0("exampleCount:        ", x$exampleCount)
   cat0("createTime:          ", as.character(timestamp_to_r(x$createTime)))
@@ -19,7 +19,7 @@ print.gcat_dataset <- function(x,...){
 
 #' @export
 print.gcat_table_specs <- function(x,...){
-  cat("==Google Cloud AutoML TableSpec==\n")
+  cat("==Google Cloud AutoML Tables Table Spec==\n")
   cat0("columnCount:         ", x$columnCount)
   cat0("rowCount:            ", x$rowCount)
   cat0("validRowCount:       ", x$validRowCount)
@@ -29,7 +29,7 @@ print.gcat_table_specs <- function(x,...){
 
 #' @export
 print.gcat_column_spec <- function(x,...){
-  cat("==Google Cloud AutoML Column Spec==\n")
+  cat("==Google Cloud AutoML Tables Column Spec==\n")
   cat0("displayName:         ", x$displayName)
   cat0("dataType:            ", x[["dataType"]][["typeCode"]])
   cat0("distinctValueCount:  ", x[["dataStats"]][["distinctValueCount"]])
