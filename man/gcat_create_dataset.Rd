@@ -8,6 +8,8 @@ gcat_create_dataset(projectId, location, displayName, parent)
 }
 \arguments{
 \item{location}{location of GCP resources}
+
+\item{parent}{}
 }
 \description{
 Creates a dataset

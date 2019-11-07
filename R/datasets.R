@@ -159,6 +159,9 @@ gcat_get_dataset <- function(projectId,
 #' @param displayName
 #' @param location location of GCP resources
 #' @param parent
+#'
+#' @import jsonlite
+#'
 #' @export
 gcat_create_dataset <- function(projectId,
                                 location,
@@ -267,7 +270,8 @@ gcat_import_data <- function(projectId,
   } else {
     message("Error. input_source not bq or gcs")
   }
-
+  # TODO  @justinjm - update these since changing of args to locationId
+  # in other functions
   # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
                                  location = location)
@@ -505,6 +509,7 @@ gcat_get_column_specs <- function(projectId,
 #' @param tableSpecId
 #' @param label_column_name
 #' @param updateMask
+#' @import jsonlite
 #'
 #' @export
 

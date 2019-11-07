@@ -9,8 +9,6 @@ gcat_set_label(projectId, location, datasetId, tableSpecId,
 }
 \arguments{
 \item{location}{location of GCP resources}
-
-\item{updateMask}{}
 }
 \description{
 Updates a dataset.
