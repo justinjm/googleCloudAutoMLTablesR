@@ -30,7 +30,8 @@ as.dataset_name <- function(x) {
 #'
 #' set a dataset name used for this R session
 #'
-#' @param dataset dataset name you want this session to use by default or a dataset object
+#' @param dataset dataset name you want this session to use by default or a
+#' dataset object
 #' @details
 #'   This sets a dataset to a global environment value so you don't need to
 #' supply the dataset argument to other API calls.
@@ -209,8 +210,6 @@ gcat_create_dataset_do_call <- function(Dataset,
 
 }
 
-
-
 #' Import data into AutoML Tables
 #' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
 #'
@@ -295,7 +294,8 @@ gcat_import_data <- function(projectId,
 
 #' Imports data into a dataset. (Internal API call).
 #'
-#' @param ImportDataRequest Required, inputConfig JSON body request for importing a dataset
+#' @param ImportDataRequest Required, inputConfig JSON body request for
+#' importing a dataset
 #' @param name Required, location_dataset_name
 #' @noRd
 gcat_import_data_do_call <- function(ImportDataRequest,
@@ -402,7 +402,55 @@ gcat_get_table_specs <- function(projectId,
 
 }
 
+#' Lists column specs in a table spec.
+#'
+#' @param projectId
+#' @param location location of GCP resources
+#' @param displayName
+#' @param parent The resource name of the table spec to list column specs from
+#' @param pageSize Requested page size
+#' @param filter Filter expression, see go/filtering
+#' @param fieldMask Mask specifying which fields to read
+#' @param pageToken A token identifying a page of results for the server to return
+#' @export
+gcat_list_column_specs <- function(projectId,
+                                   locationId,
+                                   displayName,
+                                   pageSize = NULL,
+                                   filter = NULL,
+                                   fieldMask = NULL,
+                                   pageToken = NULL) {
 
+  table_spec <- gcat_get_table_specs(projectId = projectId,
+                                     locationId = locationId,
+                                     displayName = displayName)
+
+  parent <- table_spec$name
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/columnSpecs",
+                 parent)
+
+  # automl.projects.locations.datasets.tableSpecs.columnSpecs.list
+  pars = list(pageSize = pageSize,
+              filter = filter,
+              fieldMask = fieldMask,
+              pageToken = pageToken)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      pars_args = rmNullObs(pars),
+                                      data_parse_function = function(x) x)
+  response <- f()
+
+  # TODO - @justinjm - consider adding function for parsing results in form
+  # of nested dataframes
+  # https://github.com/cloudyr/googleCloudStorageR/blob/master/R/utilities.R
+  # out <- my_reduce_rbind(response)
+  out <- response$columnSpecs
+
+  out
+
+}
 
 
 
@@ -476,7 +524,7 @@ gcat_get_column_spec <- function(name,
                                       data_parse_function = function(x) x)
   response <- f()
 
-  browser()
+  # browser()
 
   out <- response
 
@@ -488,60 +536,7 @@ gcat_get_column_spec <- function(name,
 
 
 
-#' Lists column specs in a table spec.
-#'
-#' @param projectId
-#' @param location location of GCP resources
-#' @param datasetId
-#' @param tableSpecId
-#' @param parent The resource name of the table spec to list column specs from
-#' @param pageSize Requested page size
-#' @param filter Filter expression, see go/filtering
-#' @param fieldMask Mask specifying which fields to read
-#' @param pageToken A token identifying a page of results for the server to return
-#' @export
-gcat_list_column_specs <- function(projectId,
-                                   location,
-                                   datasetId,
-                                   tableSpecId,
-                                   pageSize = NULL,
-                                   filter = NULL,
-                                   fieldMask = NULL,
-                                   pageToken = NULL) {
-  # need:
-  # "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504"
 
-  parent <- gcat_get_column_specs(projectId = projectId,
-                                  location = location,
-                                  datasetId = datasetId,
-                                  tableSpecId = tableSpecId)
-
-  parent <- parent$name
-
-  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/columnSpecs",
-                 parent)
-
-  # automl.projects.locations.datasets.tableSpecs.columnSpecs.list
-  pars = list(pageSize = pageSize,
-              filter = filter,
-              fieldMask = fieldMask,
-              pageToken = pageToken)
-
-  f <- googleAuthR::gar_api_generator(url,
-                                      "GET",
-                                      pars_args = rmNullObs(pars),
-                                      data_parse_function = function(x) x)
-  response <- f()
-
-  # TODO - @justinjm - consider adding function for parsing results in form
-  # of nested dataframes
-  # https://github.com/cloudyr/googleCloudStorageR/blob/master/R/utilities.R
-  # out <- my_reduce_rbind(response)
-  out <- response$columnSpecs
-
-  out
-
-}
 
 
 #' Updates a dataset.

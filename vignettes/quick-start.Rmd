@@ -177,12 +177,13 @@ Lets first view the table schema and the columns
 ## Get table specifications (tableSpec)
 
 ```{r}
-table_specs_list <- gcat_list_table_specs(
-  projectId = projectId,
-  locationId = location,
-  displayName = dataset_display_name 
-)
-table_specs_list 
+# TODO - @justinjm - consider omitting since only needed for back-end API calls
+# table_specs_list <- gcat_list_table_specs(
+#   projectId = projectId,
+#   locationId = location,
+#   displayName = dataset_display_name 
+# )
+# table_specs_list 
 ```
 
 ```{r}
@@ -198,13 +199,12 @@ table_spec
 Use Primary Table Spec ID (tableSpecId) to get the column specs:  
 
 ```{r}
-table_colspecs_list <- gcat_list_column_specs(
+column_specs_list <- gcat_list_column_specs(
   projectId = projectId,
-  location = location,
-  datasetId = datasetId,
-  tableSpecId = "7338035050660757504"
+  locationId = location,
+  displayName = dataset_display_name
 )
-table_colspecs_list
+column_specs_list
 ```
 
 
