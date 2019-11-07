@@ -4,12 +4,12 @@
 \alias{gcat_list_column_specs}
 \title{Lists column specs in a table spec.}
 \usage{
-gcat_list_column_specs(projectId, location, datasetId, tableSpecId,
+gcat_list_column_specs(projectId, locationId, displayName,
   pageSize = NULL, filter = NULL, fieldMask = NULL,
   pageToken = NULL)
 }
 \arguments{
-\item{location}{location of GCP resources}
+\item{locationId}{location of GCP resources}
 
 \item{pageSize}{Requested page size}
 

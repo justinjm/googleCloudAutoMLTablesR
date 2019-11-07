@@ -177,26 +177,13 @@ Lets first view the table schema and the columns
 ## Get table specifications (tableSpec)
 
 ```{r}
-# TODO - @justinjm - consider omitting since only needed for back-end API calls
-# table_specs_list <- gcat_list_table_specs(
-#   projectId = projectId,
-#   locationId = location,
-#   displayName = dataset_display_name 
-# )
-# table_specs_list 
-```
-
-```{r}
 table_spec <- gcat_get_table_specs(projectId = projectId,
                                    locationId = location,
                                    displayName = dataset_display_name)
 table_spec
 ```
 
-
 ## List column specs 
-
-Use Primary Table Spec ID (tableSpecId) to get the column specs:  
 
 ```{r}
 column_specs_list <- gcat_list_column_specs(
@@ -206,17 +193,19 @@ column_specs_list <- gcat_list_column_specs(
 )
 column_specs_list
 ```
+## Visualize column specs 
 
+TODO - @justinm - add visualization of column specs? 
 
 ### Get info about our target column 
 
 ```{r}
-gcat_get_column_spec(name = "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512")
+gcat_get_column_specs(projectId = projectId,
+                      locationId = location,
+                      displayName = dataset_display_name,
+                      columnDisplayName = "V16"
+                      )
 ```
-
-
-
-## Visualize column specs 
 
 ## Set label or target column 
 

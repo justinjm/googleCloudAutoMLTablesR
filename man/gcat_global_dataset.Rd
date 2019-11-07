@@ -7,7 +7,8 @@
 gcat_global_dataset(dataset)
 }
 \arguments{
-\item{dataset}{dataset name you want this session to use by default or a dataset object}
+\item{dataset}{dataset name you want this session to use by default or a
+dataset object}
 }
 \value{
 the dataset name (invisvibly)

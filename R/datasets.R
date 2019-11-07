@@ -405,7 +405,7 @@ gcat_get_table_specs <- function(projectId,
 #' Lists column specs in a table spec.
 #'
 #' @param projectId
-#' @param location location of GCP resources
+#' @param locationId location of GCP resources
 #' @param displayName
 #' @param parent The resource name of the table spec to list column specs from
 #' @param pageSize Requested page size
@@ -452,66 +452,30 @@ gcat_list_column_specs <- function(projectId,
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #' Gets a column spec.
 #' @param projectId
-#' @param location location of GCP resources
-#' @param datasetId
-#' @param tableSpecId
+#' @param locationId location of GCP resources
+#' @param displayName
 #'
 #' @export
 gcat_get_column_specs <- function(projectId,
-                                  location,
-                                  datasetId,
-                                  tableSpecId,
+                                  locationId,
+                                  displayName,
+                                  columnDisplayName,
                                   fieldMask = NULL) {
 
-  # get location path from existing function instead of hard-coding
-  location_path <- gcat_location_path(projectId, location)
+  column_specs_list <- gcat_list_column_specs(projectId = projectId,
+                                              locationId = locationId,
+                                              displayName = displayName)
 
-  # hard-code url since not sure best way to do dymanically/elsewhere
-  parent <- sprintf("%s/datasets/%s/tableSpecs/%s", location_path, datasetId,
-                    tableSpecId)
+  # rename to aid with debugging and avoid errors in subset()
+  dataset_display_name <- displayName
+  column_display_name <- columnDisplayName
 
-  # parent <- "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512"
-  url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
-                 parent)
+  name <- subset(column_specs_list,
+                 displayName == column_display_name,
+                 select = c(name))
 
-  # automl.projects.locations.datasets.tableSpecs.columnSpecs.get
-  pars = list(fieldMask = fieldMask)
-
-  f <- googleAuthR::gar_api_generator(url,
-                                      "GET",
-                                      pars_args = rmNullObs(pars),
-                                      data_parse_function = function(x) x)
-  response <- f()
-
-  out <- response
-
-  out
-
-}
-
-#' @export
-#'
-gcat_get_column_spec <- function(name,
-                                  fieldMask = NULL) {
-
-
-  # name <- "projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512"
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
                  name)
 
@@ -524,16 +488,11 @@ gcat_get_column_spec <- function(name,
                                       data_parse_function = function(x) x)
   response <- f()
 
-  # browser()
-
   out <- response
 
-  out
+  structure(out, class = "gcat_column_spec")
 
 }
-
-
-
 
 
 

@@ -20,10 +20,19 @@ print.gcat_dataset <- function(x,...){
 #' @export
 print.gcat_table_specs <- function(x,...){
   cat("==Google Cloud AutoML TableSpec==\n")
-  cat0("name:                ", x$name)
   cat0("columnCount:         ", x$columnCount)
   cat0("rowCount:            ", x$rowCount)
   cat0("validRowCount:       ", x$validRowCount)
+  cat0("eTag:                ", x$etag)
+
+}
+
+#' @export
+print.gcat_column_spec <- function(x,...){
+  cat("==Google Cloud AutoML Column Spec==\n")
+  cat0("displayName:         ", x$displayName)
+  cat0("dataType:            ", x[["dataType"]][["typeCode"]])
+  cat0("distinctValueCount:  ", x[["dataStats"]][["distinctValueCount"]])
   cat0("eTag:                ", x$etag)
 
 }

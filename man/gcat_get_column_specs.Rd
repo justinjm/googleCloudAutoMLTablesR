@@ -4,13 +4,13 @@
 \alias{gcat_get_column_specs}
 \title{Gets a column spec.}
 \usage{
-gcat_get_column_specs(projectId, location, datasetId, tableSpecId,
-  fieldMask = NULL)
+gcat_get_column_specs(projectId, locationId, displayName,
+  columnDisplayName, fieldMask = NULL)
 }
 \arguments{
-\item{location}{location of GCP resources}
+\item{locationId}{location of GCP resources}
 
-\item{tableSpecId}{}
+\item{displayName}{}
 }
 \description{
 Gets a column spec.
