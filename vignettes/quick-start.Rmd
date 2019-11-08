@@ -63,12 +63,6 @@ gcat_global_dataset("test_01_bq")
 gcat_get_global_dataset()
 ```
 
-```{r}
-gcat_get_dataset(projectId = projectId,
-                 locationId = location,
-                 displayName = "test_01")
-```
-
 # Importing data into AutoML Tables 
 
 ## Options and Workflow
@@ -110,13 +104,14 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 Execute import from Google Cloud storage: 
 
 ```{r}
-# gcat_import_data(
-#   projectId = projectId,
-#   location = location,
-#   dataset_display_name = "test_01",
-#   input_source = "gcs",
-#   input_url = "gs://gcatr-dev/bank_marketing.csv"
-#   )
+# set url as seperate parameter to keep line length under 80
+# gs_url <- "gs://gcatr-dev/bank_marketing.csv"
+# 
+# gcat_import_data(projectId = projectId,
+#                  location = location,
+#                  dataset_display_name = "test_01",
+#                  input_source = "gcs",
+#                  input_url = gs_url)
 ```
 
 ## From BigQuery 
@@ -143,13 +138,14 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 Execute import from BigQuery: 
 
 ```{r}
-# gcat_import_data(
-#   projectId = projectId,
-#   location = location,
-#   dataset_display_name = "test_01_bq",
-#   input_source = "bq",
-#   input_url = "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
-#   )
+# set url as seperate parameter to keep line length under 80
+# bq_url <- "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
+# 
+# gcat_import_data(projectId = projectId,
+#                  location = location,
+#                  dataset_display_name = "test_01_bq",
+#                  input_source = "bq",
+#                  input_url = bq_url)
 ```
 
 
@@ -191,11 +187,9 @@ table_spec
 ## List column specs 
 
 ```{r}
-column_specs_list <- gcat_list_column_specs(
-  projectId = projectId,
-  locationId = location,
-  displayName = dataset_display_name
-)
+column_specs_list <- gcat_list_column_specs(projectId = projectId,
+                                            locationId = location,
+                                            displayName = dataset_display_name)
 column_specs_list
 ```
 ## Visualize column specs 
@@ -208,8 +202,7 @@ TODO - @justinm - add visualization of column specs?
 gcat_get_column_specs(projectId = projectId,
                       locationId = location,
                       displayName = dataset_display_name,
-                      columnDisplayName = "V16"
-                      )
+                      columnDisplayName = "V16")
 ```
 
 ## Set label or target column 
@@ -218,13 +211,11 @@ Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) 
 
 ```{r}
 # library(jsonlite)
-dataset2 <- gcat_set_label(
-  projectId = projectId,
-  location = location,
-  datasetId = datasetId,
-  tableSpecId = "7338035050660757504",
-  label_column_name = "V16" 
-  )
+dataset2 <- gcat_set_label(projectId = projectId,
+                           location = location,
+                           datasetId = datasetId,
+                           tableSpecId = "7338035050660757504",
+                           label_column_name = "V16")
 dataset2
 ```
 
