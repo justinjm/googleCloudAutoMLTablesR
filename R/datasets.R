@@ -128,7 +128,7 @@ gcat_list_datasets <- function(projectId,
 #' @export
 gcat_get_dataset <- function(projectId,
                              locationId,
-                             displayName) {
+                             displayName = gcat_get_global_dataset()) {
 
   datasets_list <- gcat_list_datasets(projectId = projectId,
                                       locationId = locationId)

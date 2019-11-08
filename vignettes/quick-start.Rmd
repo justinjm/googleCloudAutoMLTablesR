@@ -56,11 +56,17 @@ datasets_list
 To simplify code for other API calls, you can set a dataset name to a global environment variable:
 
 ```{r}
-gcat_global_dataset("test_01")
+gcat_global_dataset("test_01_bq")
 ```
 
 ```{r}
 gcat_get_global_dataset()
+```
+
+```{r}
+gcat_get_dataset(projectId = projectId,
+                 locationId = location,
+                 displayName = "test_01")
 ```
 
 # Importing data into AutoML Tables 
@@ -163,8 +169,7 @@ Now we're ready to view the results and get the `tableSpecId` we need for later 
 ```{r}
 dataset <- gcat_get_dataset(projectId = projectId,
                             locationId = location,
-                            displayName = dataset_display_name
-                            )
+                            displayName = dataset_display_name)
 dataset
 ```
 
