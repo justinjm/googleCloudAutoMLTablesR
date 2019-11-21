@@ -199,10 +199,11 @@ TODO - @justinm - add visualization of column specs?
 ### Get info about our target column 
 
 ```{r}
-gcat_get_column_specs(projectId = projectId,
-                      locationId = location,
-                      displayName = dataset_display_name,
-                      columnDisplayName = "V16")
+column_spec <- gcat_get_column_specs(projectId = projectId,
+                                     locationId = location,
+                                     displayName = dataset_display_name,
+                                     columnDisplayName = "V16")
+column_spec 
 ```
 
 ## Set label or target column 
@@ -210,20 +211,16 @@ gcat_get_column_specs(projectId = projectId,
 Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) as label
 
 ```{r}
-# library(jsonlite)
 dataset2 <- gcat_set_label(projectId = projectId,
-                           location = location,
-                           datasetId = datasetId,
-                           tableSpecId = "7338035050660757504",
-                           label_column_name = "V16")
+                           locationId = location,
+                           displayName = dataset_display_name,
+                           labelColumnDisplayName = "V16")
 dataset2
 ```
 
-
-
 ```{r VIEW-DEBUG}
 # view debugging info
-readRDS("request_debug.rds")
+# readRDS("request_debug.rds")
 ```
 
 

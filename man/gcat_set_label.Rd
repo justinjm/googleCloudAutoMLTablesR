@@ -4,8 +4,8 @@
 \alias{gcat_set_label}
 \title{Updates a dataset.}
 \usage{
-gcat_set_label(projectId, location, datasetId, tableSpecId,
-  label_column_name, updateMask = NULL)
+gcat_set_label(projectId, locationId, displayName, labelColumnDisplayName,
+  updateMask = NULL)
 }
 \arguments{
 \item{location}{location of GCP resources}

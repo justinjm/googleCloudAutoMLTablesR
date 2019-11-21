@@ -4,7 +4,8 @@
 \alias{gcat_get_dataset}
 \title{Gets a dataset}
 \usage{
-gcat_get_dataset(projectId, locationId, displayName)
+gcat_get_dataset(projectId, locationId,
+  displayName = gcat_get_global_dataset())
 }
 \arguments{
 \item{locationId}{location of GCP resources}

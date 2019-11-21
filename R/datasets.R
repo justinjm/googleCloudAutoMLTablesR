@@ -224,8 +224,8 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' @returns inputConfig object
 #' @export
 gcat_import_data <- function(projectId,
-                             location,
-                             dataset_display_name,
+                             location, # fix to match other functions
+                             dataset_display_name, # fix to match other functions
                              input_source = c("bq", "gcs"),
                              input_url) {
 
@@ -457,6 +457,7 @@ gcat_list_column_specs <- function(projectId,
 }
 
 #' Gets a column spec.
+#'
 #' @param projectId
 #' @param locationId location of GCP resources
 #' @param displayName
@@ -498,32 +499,27 @@ gcat_get_column_specs <- function(projectId,
 
 }
 
-
-
-
-
 #' Updates a dataset.
+#'
 #' @param projectId
 #' @param location location of GCP resources
-#' @param datasetId
+#' @param displayName
 #' @param tableSpecId
-#' @param label_column_name
+#' @param labelColumnDisplayName
 #' @param updateMask
 #' @import jsonlite
 #'
 #' @export
-
 gcat_set_label <- function(projectId,
-                           location,
-                           datasetId,
-                           tableSpecId,
-                           label_column_name,
+                           locationId,
+                           displayName,
+                           labelColumnDisplayName,
                            updateMask = NULL) {
-  # TODO @justinjm - fix since new gcat_get_dataset function changed!
-  # get dataset based on Dataset parament
+
+  # Get Dataset info to ensure dataset exists
   dataset_input <- gcat_get_dataset(projectId = projectId,
-                                    locationId = location,
-                                    datasetId = datasetId)
+                                    locationId = locationId,
+                                    displayName = displayName)
 
   # set url for API call
   name <- dataset_input$name
@@ -532,18 +528,19 @@ gcat_set_label <- function(projectId,
   displayName <- dataset_input$displayName
 
   # list gcat_list_column_specs to get column spec ID for target column
-  column_specs_input <- gcat_list_column_specs(projectId = projectId,
-                                               location = location,
-                                               datasetId = datasetId,
-                                               tableSpecId = tableSpecId)
+  column_specs_list <- gcat_list_column_specs(projectId = projectId,
+                                              locationId = locationId,
+                                              displayName = displayName)
 
   # set columnSpec Id of label column to set in AutoML tables
-  label_column_specs_input <- subset(column_specs_input,
-                                     displayName == label_column_name)
+  label_column <- subset(column_specs_list,
+                         displayName == labelColumnDisplayName)
 
+  # TODO @JUSTINJM - ADD ERROR HANDLING IF DISPLAY NAME OF TARGET DOES NOT
+  # EXIST IN DATASET
   # use regex since not sure where else to grab `targetColumnSpecId`?
   target_column_spec_id <- gsub(".*/columnSpecs/", "",
-                                label_column_specs_input$name)
+                                label_column$name)
 
   # Unboxing of entry into a list
   # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
@@ -576,7 +573,7 @@ gcat_set_label <- function(projectId,
 
   out <- response
 
-  out
+  structure(out, class = "gcat_dataset")
 
 }
 
