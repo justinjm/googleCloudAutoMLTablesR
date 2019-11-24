@@ -157,7 +157,6 @@ First, let's set our `dataset_display_name` and `datasetId` in advance for clean
 
 ```{r}
 dataset_display_name <- "test_01_bq"
-datasetId <- "TBL4800700863335104512"
 ```
 
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
@@ -211,20 +210,47 @@ column_spec
 Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) as label
 
 ```{r}
-dataset2 <- gcat_set_label(projectId = projectId,
-                           locationId = location,
-                           displayName = dataset_display_name,
-                           labelColumnDisplayName = "V16")
-dataset2
+dataset <- gcat_set_label(projectId = projectId,
+                          locationId = location,
+                          displayName = dataset_display_name,
+                          labelColumnDisplayName = "V16")
+dataset
 ```
+
+### Create model 
+
+Training or creating a model is done with `gcat_train_model`.
+
+This will be a long-lasting operation. You will recieve an email when the model training completes
+
+```{r}
+gcat_train_model(projectId = projectId,
+                 locationId = location,
+                 datasetDisplayName = "test_01_bq",
+                 modelDisplayName = "01_test_01_bq",
+                 trainBudgetMilliNodeHours = 1000)
+```
+
+More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
+
+To monitor the model training 
+
+
+
+```{r}
+# models_list <- gcat_list_models(projectId = projectId,
+#                                 locationId = location)
+# models_list
+```
+
 
 ```{r VIEW-DEBUG}
 # view debugging info
-# readRDS("request_debug.rds")
+readRDS("request_debug.rds")
 ```
 
 
-### Create model 
+
 
 ## Modeling 
 
