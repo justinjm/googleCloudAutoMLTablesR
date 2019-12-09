@@ -19,7 +19,8 @@ library(googleCloudAutoMLTablesR)
 # options(googleAuthR.verbose = 0)
 # options(googleAuthR.verbose = 1)
 
-gar_auth("gcat.oauth")
+# authenticate
+gar_auth(email = "GAR_EMAIL")
 ```
 
 Test authentication and check in correct project: 
