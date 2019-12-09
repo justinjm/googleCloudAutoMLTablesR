@@ -56,8 +56,6 @@ gcat_train_model <- function(projectId,
 
   message("> Submitting training job request...")
 
-  browser()
-
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
 
