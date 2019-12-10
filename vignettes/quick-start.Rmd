@@ -94,9 +94,9 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 
 ```{r}
 # TODO @justinjm - fix function, issue #1 
-# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
+# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1
 # gcat_dataset <- gcat_create_dataset(projectId = projectId,
-#                                     location = location,
+#                                     locationId = location,
 #                                     displayName = "test_01")
 ```
 

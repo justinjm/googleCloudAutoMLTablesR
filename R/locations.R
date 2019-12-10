@@ -65,20 +65,3 @@ gcat_get_location <- function(projectId,
     structure(out, class = "gcat_location")
 
 }
-
-#' Create location path for use in other fucntions
-#'
-#' @param projectId project containing datasets to list
-#' @param location location of GCP resources
-#'
-#' @export
-gcat_location_path <- function(projectId,
-                               location){
-
-    location_path <- sprintf("projects/%s/locations/%s",
-                             projectId,
-                             location)
-
-    location_path
-
-}

@@ -164,14 +164,16 @@ gcat_get_dataset <- function(projectId,
 #'
 #' @export
 gcat_create_dataset <- function(projectId,
-                                location,
+                                locationId,
                                 displayName,
                                 parent) {
 
-  location_path <- gcat_location_path(projectId, location)
+  location_path <- gcat_get_location(projectId = projectId,
+                                     locationId = locationId)
+
+  parent <- location_path$name
 
   # Unboxing of entry into a list
-  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
   jubox <- function(x) jsonlite::unbox(x)
 
   ds <- structure(
@@ -183,7 +185,7 @@ gcat_create_dataset <- function(projectId,
   )
 
   gcat_create_dataset_do_call(Dataset = ds,
-                              parent = location_path)
+                              parent = parent)
 
 }
 

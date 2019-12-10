@@ -4,12 +4,12 @@
 \alias{gcat_create_dataset}
 \title{Creates a dataset}
 \usage{
-gcat_create_dataset(projectId, location, displayName, parent)
+gcat_create_dataset(projectId, locationId, displayName, parent)
 }
 \arguments{
-\item{location}{location of GCP resources}
-
 \item{parent}{}
+
+\item{location}{location of GCP resources}
 }
 \description{
 Creates a dataset
