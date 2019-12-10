@@ -10,17 +10,15 @@ vignette: >
 # Setup 
 
 ```{r setup}
-# assumes you have client JSON saved to environment argument GAR_CLIENT_JSON
-app_project <- googleAuthR::gar_set_client(
-  scopes = c("https://www.googleapis.com/auth/cloud-platform"))
-
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
-# options(googleAuthR.verbose = 0)
-# options(googleAuthR.verbose = 1)
 
-# authenticate
-gar_auth(email = "GAR_EMAIL")
+gar_auth(email = Sys.getenv("GAR_EMAIL"),
+         scopes = "https://www.googleapis.com/auth/cloud-platform")
+
+# options(googleAuthR.verbose = 0)
+# googleAuthR::gar_token_info(2)
+# googleAuthR::gar_check_existing_token()
 ```
 
 Test authentication and check in correct project: 
@@ -235,8 +233,6 @@ gcat_train_model(projectId = projectId,
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
 
 To monitor the model training 
-
-
 
 ```{r}
 # models_list <- gcat_list_models(projectId = projectId,
