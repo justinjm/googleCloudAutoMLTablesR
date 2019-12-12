@@ -13,12 +13,18 @@ vignette: >
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
 
-gar_auth(email = Sys.getenv("GAR_EMAIL"),
-         scopes = "https://www.googleapis.com/auth/cloud-platform")
-
+# options for debugging to see auth and details on functions later 
+# options(gargle_quiet = FALSE)
 # options(googleAuthR.verbose = 0)
+
+options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
+
+gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
+
+# functions for debugging auth issues 
 # googleAuthR::gar_token_info(2)
 # googleAuthR::gar_check_existing_token()
+# gargle::gargle_oauth_sitrep()
 ```
 
 Test authentication and check in correct project: 
