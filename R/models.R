@@ -39,7 +39,8 @@ gcat_list_models <- function(projectId,
 #'
 #' @param projectId
 #' @param locationId
-#' @param datasetName the full name of your dataset.
+#' @param datasetDisplayName the full name of your dataset.
+#' @param columnDisplayName
 #' @param modelDisplayName the name of the model.
 #' @param trainBudgetMilliNodeHours number of milli-node-hours for training. For example, 1000 = 1 hour.
 #' @param optimizationObjective with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj
@@ -49,6 +50,7 @@ gcat_list_models <- function(projectId,
 gcat_train_model <- function(projectId,
                              locationId,
                              datasetDisplayName = gcat_get_global_dataset(),
+                             columnDisplayName,
                              modelDisplayName,
                              trainBudgetMilliNodeHours = NULL,
                              optimizationObjective = NULL,
@@ -65,6 +67,12 @@ gcat_train_model <- function(projectId,
                               locationId = locationId,
                               displayName = datasetDisplayName)
 
+  # browser()
+  columSpec <- gcat_get_column_specs(projectId,
+                                      locationId,
+                                      displayName = datasetDisplayName,
+                                      columnDisplayName)
+
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models", parent)
 
   # Build model object request body
@@ -72,11 +80,11 @@ gcat_train_model <- function(projectId,
     list(
       datasetId = dataset[["tablesDatasetMetadata"]][["primaryTableSpecId"]],
       displayName = modelDisplayName,
-      tablesDatasetMetadata = list(
+      tablesModelMetadata = list(
         trainBudgetMilliNodeHours = trainBudgetMilliNodeHours,
         optimizationObjective = optimizationObjective,
         targetColumnSpec = list(
-          name = targetColumnSpecName)
+          name = columSpec["name"])
         )
       ), class = c("gcat_Model", "list")
   )
@@ -88,13 +96,13 @@ gcat_train_model <- function(projectId,
 
   stopifnot(inherits(Model, "gcat_Model"))
 
-  # response <- f(the_body = Model)
-  #
-  # out <- response
-  #
-  # structure(out, class = "gcat_model")
-  message("> TEST Training started successfully")
-  message("> Monitor with function 'gcat_get_operation' or in GCP console")
+  response <- f(the_body = Model)
+
+  out <- response
+
+  structure(out, class = "gcat_model")
+  message("> Training started successfully")
+  # message("> Monitor with function 'gcat_get_operation' or in GCP console")
 
 }
 

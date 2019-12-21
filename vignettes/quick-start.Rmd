@@ -14,8 +14,8 @@ library(googleAuthR)
 library(googleCloudAutoMLTablesR)
 
 # options for debugging to see auth and details on functions later 
-# options(gargle_quiet = FALSE)
-# options(googleAuthR.verbose = 0)
+options(gargle_quiet = FALSE)
+options(googleAuthR.verbose = 0)
 
 options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
 
@@ -61,7 +61,7 @@ datasets_list
 To simplify code for other API calls, you can set a dataset name to a global environment variable:
 
 ```{r}
-gcat_global_dataset("test_01_bq")
+gcat_global_dataset("bank_marketing")
 ```
 
 ```{r}
@@ -101,7 +101,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1
 # gcat_dataset <- gcat_create_dataset(projectId = projectId,
 #                                     locationId = location,
-#                                     displayName = "test_01")
+#                                     displayName = "bank_marketing")
 ```
 
 ### Import data 
@@ -110,13 +110,13 @@ Execute import from Google Cloud storage:
 
 ```{r}
 # set url as seperate parameter to keep line length under 80
-# gs_url <- "gs://gcatr-dev/bank_marketing.csv"
-# 
-# gcat_import_data(projectId = projectId,
-#                  location = location,
-#                  dataset_display_name = "test_01",
-#                  input_source = "gcs",
-#                  input_url = gs_url)
+gs_url <- "gs://amlt-test/bank_marketing.csv"
+
+gcat_import_data(projectId = projectId,
+                 location = location,
+                 dataset_display_name = "bank_marketing",
+                 input_source = "gcs",
+                 input_url = gs_url)
 ```
 
 ## From BigQuery 
@@ -161,7 +161,7 @@ Once the import - from GCS or BQ - is completed, you'll recieve an email notific
 First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
 
 ```{r}
-dataset_display_name <- "test_01_bq"
+dataset_display_name <- "bank_marketing"
 ```
 
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
@@ -231,8 +231,9 @@ This will be a long-lasting operation. You will recieve an email when the model 
 ```{r}
 gcat_train_model(projectId = projectId,
                  locationId = location,
-                 datasetDisplayName = "test_01_bq",
-                 modelDisplayName = "01_test_01_bq",
+                 datasetDisplayName = "bank_marketing",
+                 columnDisplayName = "V16",
+                 modelDisplayName = "01_bank_marketing",
                  trainBudgetMilliNodeHours = 1000)
 ```
 
