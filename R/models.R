@@ -47,7 +47,7 @@ gcat_list_models <- function(projectId,
 #' @param targetColumnSpecName with the full column name of your target column (optional).
 #' @family Model functions
 #' @export
-gcat_train_model <- function(projectId,
+gcat_create_model <- function(projectId,
                              locationId,
                              datasetDisplayName = gcat_get_global_dataset(),
                              # columnDisplayName,
@@ -73,10 +73,8 @@ gcat_train_model <- function(projectId,
   #                                     displayName = datasetDisplayName,
   #                                     columnDisplayName)
 
-  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models", parent)
-
   # Build model object request body
-  Model <- structure(
+  create_model_request <- structure(
     list(
       datasetId = dataset[["tablesDatasetMetadata"]][["primaryTableSpecId"]],
       displayName = modelDisplayName,
@@ -86,6 +84,24 @@ gcat_train_model <- function(projectId,
         )
       ), class = c("gcat_Model", "list")
   )
+
+  message("> TEST - API CALL HAPPENS HERE")
+  # gcat_create_model_do_call(Model = create_model_request,
+  #                           parent = parent)
+
+}
+
+#' (Internal API call).
+#' @param Model
+#' @param parent
+#'
+#'
+#' @noRd
+gcat_create_model_do_call <- function(Model,
+                                      parent) {
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models",
+                 parent)
 
   # automl.projects.locations.models.create
   f <- googleAuthR::gar_api_generator(url,
