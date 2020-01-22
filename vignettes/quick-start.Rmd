@@ -234,7 +234,7 @@ options(googleAuthR.verbose = 1)
 gcat_train_model(projectId = projectId,
                  locationId = location,
                  datasetDisplayName = "test_01_bq",
-                 columnDisplayName = "V16",
+                 # columnDisplayName = "V16",
                  modelDisplayName = "test_01_bq_01",
                  trainBudgetMilliNodeHours = 1000)
 ```

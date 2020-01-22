@@ -40,7 +40,7 @@ gcat_list_models <- function(projectId,
 #' @param projectId
 #' @param locationId
 #' @param datasetDisplayName the full name of your dataset.
-#' @param columnDisplayName
+#' @param columnDisplayName XXXXXXXXX
 #' @param modelDisplayName the name of the model.
 #' @param trainBudgetMilliNodeHours number of milli-node-hours for training. For example, 1000 = 1 hour.
 #' @param optimizationObjective with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj
@@ -50,7 +50,7 @@ gcat_list_models <- function(projectId,
 gcat_train_model <- function(projectId,
                              locationId,
                              datasetDisplayName = gcat_get_global_dataset(),
-                             columnDisplayName,
+                             # columnDisplayName,
                              modelDisplayName,
                              trainBudgetMilliNodeHours = NULL,
                              optimizationObjective = NULL,
@@ -67,11 +67,11 @@ gcat_train_model <- function(projectId,
                               locationId = locationId,
                               displayName = datasetDisplayName)
 
-  # browser()
-  columnSpec <- gcat_get_column_specs(projectId,
-                                      locationId,
-                                      displayName = datasetDisplayName,
-                                      columnDisplayName)
+  browser()
+  # columnSpec <- gcat_get_column_specs(projectId,
+  #                                     locationId,
+  #                                     displayName = datasetDisplayName,
+  #                                     columnDisplayName)
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models", parent)
 
@@ -82,9 +82,7 @@ gcat_train_model <- function(projectId,
       displayName = modelDisplayName,
       tablesModelMetadata = list(
         trainBudgetMilliNodeHours = trainBudgetMilliNodeHours,
-        optimizationObjective = optimizationObjective,
-        targetColumnSpec = list(
-          name = columnSpec["name"])
+        optimizationObjective = optimizationObjective
         )
       ), class = c("gcat_Model", "list")
   )
