@@ -14,8 +14,8 @@ library(googleAuthR)
 library(googleCloudAutoMLTablesR)
 
 # options for debugging to see auth and details on functions later 
-options(gargle_quiet = FALSE)
-options(googleAuthR.verbose = 0)
+# options(gargle_quiet = FALSE)
+# options(googleAuthR.verbose = 0)
 
 options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
 
@@ -61,7 +61,7 @@ datasets_list
 To simplify code for other API calls, you can set a dataset name to a global environment variable:
 
 ```{r}
-gcat_global_dataset("bank_marketing")
+gcat_global_dataset("test_01_bq")
 ```
 
 ```{r}
@@ -110,13 +110,13 @@ Execute import from Google Cloud storage:
 
 ```{r}
 # set url as seperate parameter to keep line length under 80
-gs_url <- "gs://amlt-test/bank_marketing.csv"
-
-gcat_import_data(projectId = projectId,
-                 location = location,
-                 dataset_display_name = "bank_marketing",
-                 input_source = "gcs",
-                 input_url = gs_url)
+# gs_url <- "gs://amlt-test/bank_marketing.csv"
+# 
+# gcat_import_data(projectId = projectId,
+#                  location = location,
+#                  dataset_display_name = "bank_marketing",
+#                  input_source = "gcs",
+#                  input_url = gs_url)
 ```
 
 ## From BigQuery 
@@ -161,7 +161,7 @@ Once the import - from GCS or BQ - is completed, you'll recieve an email notific
 First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
 
 ```{r}
-dataset_display_name <- "bank_marketing"
+dataset_display_name <- "test_01_bq"
 ```
 
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
@@ -215,6 +215,7 @@ column_spec
 Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) as label
 
 ```{r}
+# TODO @justinjm - change to "set_target" to align with python sdk?
 dataset <- gcat_set_label(projectId = projectId,
                           locationId = location,
                           displayName = dataset_display_name,
@@ -229,11 +230,12 @@ Training or creating a model is done with `gcat_train_model`.
 This will be a long-lasting operation. You will recieve an email when the model training completes
 
 ```{r}
+options(googleAuthR.verbose = 1)
 gcat_train_model(projectId = projectId,
                  locationId = location,
-                 datasetDisplayName = "bank_marketing",
+                 datasetDisplayName = "test_01_bq",
                  columnDisplayName = "V16",
-                 modelDisplayName = "01_bank_marketing",
+                 modelDisplayName = "01_test_01_bq",
                  trainBudgetMilliNodeHours = 1000)
 ```
 

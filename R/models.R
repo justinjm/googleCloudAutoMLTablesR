@@ -68,7 +68,7 @@ gcat_train_model <- function(projectId,
                               displayName = datasetDisplayName)
 
   # browser()
-  columSpec <- gcat_get_column_specs(projectId,
+  columnSpec <- gcat_get_column_specs(projectId,
                                       locationId,
                                       displayName = datasetDisplayName,
                                       columnDisplayName)
@@ -84,7 +84,7 @@ gcat_train_model <- function(projectId,
         trainBudgetMilliNodeHours = trainBudgetMilliNodeHours,
         optimizationObjective = optimizationObjective,
         targetColumnSpec = list(
-          name = columSpec["name"])
+          name = columnSpec["name"])
         )
       ), class = c("gcat_Model", "list")
   )
