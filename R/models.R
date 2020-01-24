@@ -50,7 +50,7 @@ gcat_list_models <- function(projectId,
 gcat_create_model <- function(projectId,
                              locationId,
                              datasetDisplayName = gcat_get_global_dataset(),
-                             # columnDisplayName,
+                             columnDisplayName,
                              modelDisplayName,
                              trainBudgetMilliNodeHours = NULL,
                              optimizationObjective = NULL,
@@ -67,11 +67,11 @@ gcat_create_model <- function(projectId,
                               locationId = locationId,
                               displayName = datasetDisplayName)
 
-  browser()
-  # columnSpec <- gcat_get_column_specs(projectId,
-  #                                     locationId,
-  #                                     displayName = datasetDisplayName,
-  #                                     columnDisplayName)
+
+  columnSpec <- gcat_get_column_specs(projectId,
+                                      locationId,
+                                      displayName = datasetDisplayName,
+                                      columnDisplayName)
 
   # Build model object request body
   create_model_request <- structure(
@@ -80,14 +80,17 @@ gcat_create_model <- function(projectId,
       displayName = modelDisplayName,
       tablesModelMetadata = list(
         trainBudgetMilliNodeHours = trainBudgetMilliNodeHours,
-        optimizationObjective = optimizationObjective
+        optimizationObjective = optimizationObjective,
+        targetColumnSpec = list(
+          name = column_spec[["name"]]
         )
-      ), class = c("gcat_Model", "list")
+      )
+    ), class = c("gcat_Model", "list")
   )
-
+  # browser()
   message("> TEST - API CALL HAPPENS HERE")
-  # gcat_create_model_do_call(Model = create_model_request,
-  #                           parent = parent)
+  gcat_create_model_do_call(Model = create_model_request,
+                            parent = parent)
 
 }
 
