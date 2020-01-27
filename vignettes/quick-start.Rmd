@@ -230,14 +230,16 @@ Training or creating a model is done with `gcat_train_model`.
 This will be a long-lasting operation. You will recieve an email when the model training completes
 
 ```{r}
-options(googleAuthR.verbose = 1)
+options(googleAuthR.verbose = 0)
 gcat_create_model(projectId = projectId,
                   locationId = location,
                   datasetDisplayName = "test_01_bq",
                   columnDisplayName = "V16",
                   modelDisplayName = "test_01_bq_01",
-                  optimizationObjective = "MAXIMIZE_AU_ROC",
+                  optimizationObjective = "MINIMIZE_LOG_LOSS",
                   trainBudgetMilliNodeHours = 1000)
+# view debugging info
+readRDS("request_debug.rds")
 ```
 
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
@@ -253,7 +255,7 @@ To monitor the model training
 
 ```{r VIEW-DEBUG}
 # view debugging info
-readRDS("request_debug.rds")
+# readRDS("request_debug.rds")
 ```
 
 

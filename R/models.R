@@ -49,7 +49,7 @@ gcat_list_models <- function(projectId,
 #' @export
 gcat_create_model <- function(projectId,
                              locationId,
-                             datasetDisplayName = gcat_get_global_dataset(),
+                             datasetDisplayName,
                              columnDisplayName,
                              modelDisplayName,
                              trainBudgetMilliNodeHours = NULL,
@@ -67,16 +67,18 @@ gcat_create_model <- function(projectId,
                               locationId = locationId,
                               displayName = datasetDisplayName)
 
+  # get dataset ID from url since not sure how else?
+  dataset_id <- gsub(".*/datasets/" , "", dataset$name)
 
-  columnSpec <- gcat_get_column_specs(projectId,
+  column_spec <- gcat_get_column_specs(projectId,
                                       locationId,
                                       displayName = datasetDisplayName,
                                       columnDisplayName)
-
+  # browser()
   # Build model object request body
   create_model_request <- structure(
     list(
-      datasetId = dataset[["tablesDatasetMetadata"]][["primaryTableSpecId"]],
+      datasetId = dataset_id,
       displayName = modelDisplayName,
       tablesModelMetadata = list(
         trainBudgetMilliNodeHours = trainBudgetMilliNodeHours,
@@ -88,7 +90,7 @@ gcat_create_model <- function(projectId,
     ), class = c("gcat_Model", "list")
   )
   # browser()
-  message("> TEST - API CALL HAPPENS HERE")
+  # message("> TEST - API CALL HAPPENS HERE")
   gcat_create_model_do_call(Model = create_model_request,
                             parent = parent)
 

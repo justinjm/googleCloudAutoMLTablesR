@@ -4,13 +4,14 @@
 \alias{gcat_create_model}
 \title{Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.}
 \usage{
-gcat_create_model(projectId, locationId,
-  datasetDisplayName = gcat_get_global_dataset(), modelDisplayName,
-  trainBudgetMilliNodeHours = NULL, optimizationObjective = NULL,
-  targetColumnSpecName = NULL)
+gcat_create_model(projectId, locationId, datasetDisplayName,
+  columnDisplayName, modelDisplayName, trainBudgetMilliNodeHours = NULL,
+  optimizationObjective = NULL, targetColumnSpecName = NULL)
 }
 \arguments{
 \item{datasetDisplayName}{the full name of your dataset.}
+
+\item{columnDisplayName}{XXXXXXXXX}
 
 \item{modelDisplayName}{the name of the model.}
 
@@ -19,8 +20,6 @@ gcat_create_model(projectId, locationId,
 \item{optimizationObjective}{with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj}
 
 \item{targetColumnSpecName}{with the full column name of your target column (optional).}
-
-\item{columnDisplayName}{XXXXXXXXX}
 }
 \description{
 Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.
