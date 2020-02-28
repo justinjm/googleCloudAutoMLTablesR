@@ -9,11 +9,15 @@ gcat_create_model(projectId, locationId, datasetDisplayName,
   optimizationObjective = NULL, targetColumnSpecName = NULL)
 }
 \arguments{
-\item{datasetDisplayName}{the full name of your dataset.}
+\item{projectId}{GCP project iD}
 
-\item{columnDisplayName}{XXXXXXXXX}
+\item{locationId}{the location Id}
 
-\item{modelDisplayName}{the name of the model.}
+\item{datasetDisplayName}{the full name of your dataset}
+
+\item{columnDisplayName}{the full name of the label or target}
+
+\item{modelDisplayName}{the name of the mode}
 
 \item{trainBudgetMilliNodeHours}{number of milli-node-hours for training. For example, 1000 = 1 hour.}
 

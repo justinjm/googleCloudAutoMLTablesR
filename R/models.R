@@ -37,11 +37,11 @@ gcat_list_models <- function(projectId,
 
 #' Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.
 #'
-#' @param projectId
-#' @param locationId
-#' @param datasetDisplayName the full name of your dataset.
-#' @param columnDisplayName XXXXXXXXX
-#' @param modelDisplayName the name of the model.
+#' @param projectId GCP project iD
+#' @param locationId the location Id
+#' @param datasetDisplayName the full name of your dataset
+#' @param columnDisplayName the full name of the label or target
+#' @param modelDisplayName the name of the mode
 #' @param trainBudgetMilliNodeHours number of milli-node-hours for training. For example, 1000 = 1 hour.
 #' @param optimizationObjective with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj
 #' @param targetColumnSpecName with the full column name of your target column (optional).
@@ -56,7 +56,7 @@ gcat_create_model <- function(projectId,
                              optimizationObjective = NULL,
                              targetColumnSpecName = NULL) {
 
-  message("> Submitting training job request...")
+  message("> Submitting model training job request...")
 
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
@@ -74,7 +74,7 @@ gcat_create_model <- function(projectId,
                                       locationId,
                                       displayName = datasetDisplayName,
                                       columnDisplayName)
-  # browser()
+
   # Build model object request body
   create_model_request <- structure(
     list(
@@ -89,10 +89,15 @@ gcat_create_model <- function(projectId,
       )
     ), class = c("gcat_Model", "list")
   )
-  # browser()
-  # message("> TEST - API CALL HAPPENS HERE")
-  gcat_create_model_do_call(Model = create_model_request,
-                            parent = parent)
+
+  tryCatch({
+    gcat_create_model_do_call(Model = create_model_request,
+                              parent = parent)
+  }, error = function(ex) {
+    stop("CreateModelRequest error: ", ex$message)
+  })
+
+
 
 }
 
@@ -120,8 +125,5 @@ gcat_create_model_do_call <- function(Model,
   out <- response
 
   structure(out, class = "gcat_model")
-  message("> Training started successfully")
-  # message("> Monitor with function 'gcat_get_operation' or in GCP console")
 
 }
-
