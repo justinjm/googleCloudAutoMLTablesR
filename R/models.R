@@ -1,7 +1,7 @@
 
 #' List Models
 #'
-#' @param projectId
+#' @param projectId GCP project iD
 #' @param locationId location of GCP resources
 #' @param filter An expression for filtering the results of the request
 #' @param pageToken A token identifying a page of results for the server to return
@@ -29,7 +29,7 @@ gcat_list_models <- function(projectId,
                                       data_parse_function = function(x) x)
   response <- f()
 
-  out <- response
+  out <- response$model
 
   out
 
@@ -48,13 +48,13 @@ gcat_list_models <- function(projectId,
 #' @family Model functions
 #' @export
 gcat_create_model <- function(projectId,
-                             locationId,
-                             datasetDisplayName,
-                             columnDisplayName,
-                             modelDisplayName,
-                             trainBudgetMilliNodeHours = NULL,
-                             optimizationObjective = NULL,
-                             targetColumnSpecName = NULL) {
+                              locationId,
+                              datasetDisplayName,
+                              columnDisplayName,
+                              modelDisplayName,
+                              trainBudgetMilliNodeHours = NULL,
+                              optimizationObjective = NULL,
+                              targetColumnSpecName = NULL) {
 
   message("> Submitting model training job request...")
 
@@ -71,9 +71,9 @@ gcat_create_model <- function(projectId,
   dataset_id <- gsub(".*/datasets/" , "", dataset$name)
 
   column_spec <- gcat_get_column_specs(projectId,
-                                      locationId,
-                                      displayName = datasetDisplayName,
-                                      columnDisplayName)
+                                       locationId,
+                                       displayName = datasetDisplayName,
+                                       columnDisplayName)
 
   # Build model object request body
   create_model_request <- structure(
@@ -96,8 +96,6 @@ gcat_create_model <- function(projectId,
   }, error = function(ex) {
     stop("CreateModelRequest error: ", ex$message)
   })
-
-
 
 }
 

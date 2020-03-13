@@ -244,12 +244,11 @@ gcat_model_01
 
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
 
-To monitor the model training 
 
 ```{r}
-# models_list <- gcat_list_models(projectId = projectId,
-#                                 locationId = location)
-# models_list
+models_list <- gcat_list_models(projectId = projectId,
+                                locationId = location)
+models_list
 ```
 
 
@@ -257,9 +256,6 @@ To monitor the model training
 # view debugging info
 # readRDS("request_debug.rds")
 ```
-
-
-
 
 ## Modeling 
 

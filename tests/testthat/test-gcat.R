@@ -10,6 +10,9 @@
 
 context("Setup")
 
+options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
+googleAuthR::gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
+
 skip_if_no_token <- function() {
   testthat::skip_if_not(googleAuthR::gar_has_token(), "No token")
 }
@@ -35,5 +38,24 @@ test_that("Location List", {
   expect_s3_class(l, "data.frame")
   expect_true(
     all(names(l) %in% c("name","locationId"))
-    )
+  )
 })
+
+context("Models")
+
+test_that("Models list", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_LOCATION_ID")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  l <- gcat_list_models(projectId, locationId)
+
+  expect_s3_class(l, "data.frame")
+  expect_true(
+    all(names(l) %in% c("name", "displayName", "datasetId", "createTime",
+                        "deploymentState", "updateTime", "tablesModelMetadata"))
+  )
+})
+

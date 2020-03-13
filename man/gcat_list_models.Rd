@@ -8,6 +8,8 @@ gcat_list_models(projectId, locationId, filter = NULL,
   pageToken = NULL, pageSize = NULL)
 }
 \arguments{
+\item{projectId}{GCP project iD}
+
 \item{locationId}{location of GCP resources}
 
 \item{filter}{An expression for filtering the results of the request}
