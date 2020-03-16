@@ -8,7 +8,7 @@ gcat_list_locations(projectId, pageToken = NULL, pageSize = NULL,
   filter = NULL)
 }
 \arguments{
-\item{projectId}{The resource that owns the locations collection, if applicable}
+\item{projectId}{the GCP project Id containing locations to fetch}
 
 \item{pageToken}{The standard list page token}
 

@@ -1,6 +1,6 @@
 #' Lists information about the supported locations for this service.
 #'
-#' @param projectId The resource that owns the locations collection, if applicable
+#' @param projectId the GCP project Id containing locations to fetch
 #' @param pageToken The standard list page token
 #' @param pageSize The standard list page size
 #' @param filter The standard list filter
@@ -35,7 +35,7 @@ gcat_list_locations <- function(projectId,
 #'
 #' Gets information about a location
 #'
-#' @param projectId project containing location to get
+#' @param projectId the GCP project Id containing location to fetch
 #' @param locationId location of GCP resources
 #'
 #' @export

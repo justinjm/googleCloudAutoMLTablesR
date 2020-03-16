@@ -28,7 +28,7 @@ test_that("Authentication", {
 
 context("Locations")
 
-test_that("Location List", {
+test_that("We can fetch a list of available GCP locations", {
   skip_if_no_token()
 
   project <- Sys.getenv("GCAT_PROJECT_ID")
@@ -41,9 +41,21 @@ test_that("Location List", {
   )
 })
 
+test_that("We can fetch a GCP location path", {
+  skip_if_no_token()
+
+  location_path <- gcat_get_location(
+    projectId = Sys.getenv("GCAT_PROJECT_ID"),
+    locationId = Sys.getenv("GCAT_LOCATION_ID"))
+
+  expect_true(
+    all(names(location_path) %in% c("name","locationId"))
+  )
+})
+
 context("Models")
 
-test_that("Models list", {
+test_that("We can fetch a list of models", {
   skip_if_no_token()
 
   projectId <- Sys.getenv("GCAT_PROJECT_ID")

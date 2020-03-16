@@ -7,7 +7,7 @@
 gcat_get_location(projectId, locationId)
 }
 \arguments{
-\item{projectId}{project containing location to get}
+\item{projectId}{the GCP project Id containing location to fetch}
 
 \item{locationId}{location of GCP resources}
 }
