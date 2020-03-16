@@ -17,7 +17,7 @@ gcat_create_model(projectId, locationId, datasetDisplayName,
 
 \item{columnDisplayName}{the full name of the label or target}
 
-\item{modelDisplayName}{the name of the mode}
+\item{modelDisplayName}{the name of the model}
 
 \item{trainBudgetMilliNodeHours}{number of milli-node-hours for training. For example, 1000 = 1 hour.}
 

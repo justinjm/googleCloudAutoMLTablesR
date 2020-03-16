@@ -71,3 +71,23 @@ test_that("We can fetch a list of models", {
   )
 })
 
+test_that("We can get a model object", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_LOCATION_ID")
+  modelDisplayName <- Sys.getenv("GCAT_MODEL_DISPLAY_NAME")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  expect_true(modelDisplayName != "")
+
+  model <- gcat_get_model(projectId,
+                          locationId,
+                          modelDisplayName)
+
+  expect_s3_class(model, "gcat_model")
+  expect_true(
+    all(names(model) %in% c("name", "displayName", "datasetId", "createTime",
+                        "deploymentState", "updateTime", "tablesModelMetadata"))
+  )
+})

@@ -41,7 +41,7 @@ gcat_list_models <- function(projectId,
 #' @param locationId the location Id
 #' @param datasetDisplayName the full name of your dataset
 #' @param columnDisplayName the full name of the label or target
-#' @param modelDisplayName the name of the mode
+#' @param modelDisplayName the name of the model
 #' @param trainBudgetMilliNodeHours number of milli-node-hours for training. For example, 1000 = 1 hour.
 #' @param optimizationObjective with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj
 #' @param targetColumnSpecName with the full column name of your target column (optional).
@@ -122,6 +122,77 @@ gcat_create_model_do_call <- function(Model,
 
   out <- response
 
+  out
+
+}
+
+#' Gets a model.
+#' @description Gets a model. Gets the most recent model if multiple models are
+#' named the same
+#'
+#' @param projectId GCP project iD
+#' @param locationId the location Id
+#' @param modelDisplayName the name of the model
+#'
+#' @export
+gcat_get_model <- function(projectId,
+                           locationId,
+                           modelDisplayName) {
+
+  models_list <- gcat_list_models(projectId = projectId,
+                                  locationId = locationId)
+
+  # select most recently created model if multiple models created with same
+  # modelDisplay name. This depends on gcat_list_models() results sorted
+  # by createTime DESC by default
+  model <- subset(models_list,
+                  displayName == modelDisplayName)
+  model <- model[1,]
+  name <- model$name
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
+                 name)
+  # automl.projects.locations.models.get
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      data_parse_function = function(x) x)
+  response <- f()
+
+  out <- response
+
   structure(out, class = "gcat_model")
 
 }
+
+#' Lists model evaluations.
+#'
+#' @param projectId GCP project iD
+#' @param locationId the location Id
+#' @param modelDisplayName the name of the model
+#'
+#' @export
+# gcat_list_model_evaluations <- function(projectId,
+#                                         locationId,
+#                                         modelDisplayName,
+#                                         pageToken = NULL,
+#                                         pageSize = NULL,
+#                                         filter = NULL) {
+#
+#   parent <- gcat_list_models(projectId = projectId,
+#                              locationId = locationId)
+#   # browser()
+#   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/modelEvaluations",
+#                  parent)
+#   # automl.projects.locations.models.modelEvaluations.list
+#   pars = list(pageToken = pageToken, pageSize = pageSize, filter = filter)
+#
+#   f <- googleAuthR::gar_api_generator(url,
+#                                       "GET",
+#                                       pars_args = rmNullObs(pars),
+#                                       data_parse_function = function(x) x)
+#
+#   response <- f()
+#
+#   out <- response
+#
+# }

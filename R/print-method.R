@@ -41,6 +41,9 @@ print.gcat_column_spec <- function(x,...){
 print.gcat_model <- function(x,...){
   cat("==Google Cloud AutoML Tables Model==\n")
   cat0("name:                ", x$name)
-  cat0("createTime:          ", as.character(timestamp_to_r(x[["metadata"]][["createTime"]])))
+  cat0("displayName:         ", x$displayName)
+  cat0("createTime:          ", as.character(timestamp_to_r(x[["createTime"]])))
+  cat0("deploymentState:     ", x$deploymentState)
+  cat0("updateTime:          ", as.character(timestamp_to_r(x[["updateTime"]])))
 
 }

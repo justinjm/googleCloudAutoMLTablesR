@@ -223,9 +223,11 @@ dataset <- gcat_set_label(projectId = projectId,
 dataset
 ```
 
+## Modeling 
+
 ### Create model 
 
-Training or creating a model is done with `gcat_train_model`.
+Training or creating a model is done with `gcat_create_model`.
 
 This will be a long-lasting operation. You will recieve an email when the model training completes
 
@@ -244,11 +246,35 @@ This will be a long-lasting operation. You will recieve an email when the model 
 
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
 
+### Viewing Models
+While you wait - or after your latest model training completes - you can view the list trained models: 
 
 ```{r}
 models_list <- gcat_list_models(projectId = projectId,
                                 locationId = location)
 models_list
+```
+
+After the model has trained, you can get the trainied model with the following:
+
+```{r}
+gcat_model <- gcat_get_model(projectId = projectId,
+                             locationId = location,
+                             modelDisplayName = "test_01_bq_01")
+gcat_model
+```
+
+
+### Evalute the model 
+
+After training has been completed, you can review various performance statistics on the model, such as the accuracy, precision, recall, and so on. The metrics are returned in a nested data structure:
+
+```{r}
+# model_evaluation <- gcat_list_model_evaluations(
+#   projectId = projectId,
+#   locationId = location,
+#   modelDisplayName = "test_01_bq_01"
+# )
 ```
 
 
@@ -257,9 +283,6 @@ models_list
 # readRDS("request_debug.rds")
 ```
 
-## Modeling 
-
-### Train Model
 
 ### Make batch prediction 
 
