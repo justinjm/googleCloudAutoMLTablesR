@@ -1,0 +1,6 @@
+template:
+  params:
+    bootswatch: paper
+navbar:
+  title: googleCloudAutoMLTablesR
+  inverse: false
