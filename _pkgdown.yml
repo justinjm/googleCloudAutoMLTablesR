@@ -1,6 +1,10 @@
+title: "googleCloudAutoMLTablesR"
+authors:
+  name: Justin Marciszewski
 template:
   params:
     bootswatch: paper
+    ganalytics: UA-161482740-1
 navbar:
   title: googleCloudAutoMLTablesR
   inverse: false
