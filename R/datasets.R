@@ -26,14 +26,13 @@ as.dataset_name <- function(x) {
 
 }
 
-#' Set global dataset name
-#'
-#' set a dataset name used for this R session
+#' Set global dataset nameto be used for this R session
 #'
 #' @param dataset dataset name you want this session to use by default or a
 #' dataset object
+#'
 #' @details
-#'   This sets a dataset to a global environment value so you don't need to
+#' This sets a dataset to a global environment value so you don't need to
 #' supply the dataset argument to other API calls.
 #'
 #' @return the dataset name (invisvibly)
@@ -52,12 +51,11 @@ gcat_global_dataset <- function(dataset){
 
 #' Get global dataset name
 #'
-#' Dataset name set this session to use by default
-#'
-#' @return Dataset name
+#' @return a string of the dataset displayName
 #'
 #' @details
-#'   Set the dataset name via \link{gcat_global_dataset}
+#' Dataset name set this session to use by default. Set the dataset name
+#' via \link{gcat_global_dataset}
 #'
 #' @export
 gcat_get_global_dataset <- function(){
@@ -73,18 +71,12 @@ gcat_get_global_dataset <- function(){
 
 #' Lists datasets in a project.
 #'
-#' @param projectId
+#' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param parent The resource name of the project from which to list datasets
-#' @param filter An expression for filtering the results of the request
-#' @param pageToken A token identifying a page of results for the server to return
-#' @param pageSize Requested page size
+#'
 #' @export
 gcat_list_datasets <- function(projectId,
-                               locationId,
-                               filter = NULL,
-                               pageToken = NULL,
-                               pageSize = NULL) {
+                               locationId) {
 
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
@@ -102,13 +94,8 @@ gcat_list_datasets <- function(projectId,
 
   }
 
-  pars = list(filter = filter,
-              pageToken = pageToken,
-              pageSize = pageSize)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = parse_ld)
 
   response <- f()
@@ -122,9 +109,12 @@ gcat_list_datasets <- function(projectId,
 
 #' Gets a dataset
 #'
-#' @param projectId
+#' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param displayName
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+#'
 #' @export
 gcat_get_dataset <- function(projectId,
                              locationId,
@@ -155,18 +145,18 @@ gcat_get_dataset <- function(projectId,
 
 #' Creates a dataset
 #'
-#' @param projectId
-#' @param displayName
-#' @param location location of GCP resources
-#' @param parent
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @import jsonlite
 #'
 #' @export
 gcat_create_dataset <- function(projectId,
                                 locationId,
-                                displayName,
-                                parent) {
+                                displayName) {
 
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
@@ -191,10 +181,11 @@ gcat_create_dataset <- function(projectId,
 
 #' Creates a dataset (Internal API call).
 #'
-#' @param Dataset
-#' @param parent The resource name of the project to create the dataset for
-#' @importFrom googleAuthR gar_api_generator
+#' @param Dataset a dataset object
+#' @param parent the resource name of the project to create the dataset for
+#'
 #' @family Dataset functions
+#'
 #' @keywords internal
 #' @noRd
 gcat_create_dataset_do_call <- function(Dataset,
@@ -215,15 +206,19 @@ gcat_create_dataset_do_call <- function(Dataset,
 
 }
 
-#' Import data into AutoML Tables
-#' https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
+#' Import data into AutoML Tables from BigQuery or Google Cloud Storage
 #'
-#' @param projectId
-#' @param location location of GCP resources
-#' @param dataset_display_name
-#' @param input_source
-#' @param input_url
-#' @returns inputConfig object
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param dataset_display_name the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+#' @param input_source a string "bq" or "gcs" to specific the source data location,
+#' BigQuery or Google Cloud Storage
+#' @param input_url a string, location of source data up to 2000 characters long
+#' 1. BigQuery URI or path to a table e.g. bq://projectId.bqDatasetId.bqTableId
+#' 2. Google Cloud Storage URI or full object path, e.g. gs://bucket/directory/object.csv
+#'
 #' @export
 gcat_import_data <- function(projectId,
                              location, # fix to match other functions
@@ -323,22 +318,16 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 
 #' Lists table specs in a dataset
 #'
-#' @param projectId name of the dataset to list table specs from
-#' @param locationId
-#' @param displayName
-#' @param filter Filter expression, see go/filtering
-#' @param fieldMask Mask specifying which fields to read
-#' @param pageToken A token identifying a page of results for the server to return
-#' @param pageSize Requested page size
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
 gcat_list_table_specs <- function(projectId,
                                   locationId,
-                                  displayName,
-                                  filter = NULL,
-                                  fieldMask = NULL,
-                                  pageToken = NULL,
-                                  pageSize = NULL) {
+                                  displayName) {
 
   # get data set metadata for listing tableSpecs API call
   dataset <- gcat_get_dataset(projectId = projectId,
@@ -352,14 +341,8 @@ gcat_list_table_specs <- function(projectId,
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/tableSpecs",
                  parent)
 
-  pars = list(filter = filter,
-              fieldMask = fieldMask,
-              pageToken = pageToken,
-              pageSize = pageSize)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
 
   response <- f()
@@ -370,17 +353,18 @@ gcat_list_table_specs <- function(projectId,
 
 }
 
-#' Gets a table spec.
-#' @param projectId name of the dataset to get a table spec from
-#' @param locationId
-#' @param displayName
-#' @param fieldMask Mask specifying which fields to read
+#' Gets a table spec
+#'
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
 gcat_get_table_specs <- function(projectId,
                                  locationId,
-                                 displayName,
-                                 fieldMask = NULL) {
+                                 displayName) {
 
   table_spec_list <- gcat_list_table_specs(projectId = projectId,
                                            locationId = locationId,
@@ -394,11 +378,8 @@ gcat_get_table_specs <- function(projectId,
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
 
-  pars = list(fieldMask = fieldMask)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
   response <- f()
 
@@ -410,22 +391,16 @@ gcat_get_table_specs <- function(projectId,
 
 #' Lists column specs in a table spec.
 #'
-#' @param projectId
+#' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param displayName
-#' @param parent The resource name of the table spec to list column specs from
-#' @param pageSize Requested page size
-#' @param filter Filter expression, see go/filtering
-#' @param fieldMask Mask specifying which fields to read
-#' @param pageToken A token identifying a page of results for the server to return
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+#'
 #' @export
 gcat_list_column_specs <- function(projectId,
                                    locationId,
-                                   displayName,
-                                   pageSize = NULL,
-                                   filter = NULL,
-                                   fieldMask = NULL,
-                                   pageToken = NULL) {
+                                   displayName) {
 
   table_spec <- gcat_get_table_specs(projectId = projectId,
                                      locationId = locationId,
@@ -436,15 +411,8 @@ gcat_list_column_specs <- function(projectId,
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/columnSpecs",
                  parent)
 
-  # automl.projects.locations.datasets.tableSpecs.columnSpecs.list
-  pars = list(pageSize = pageSize,
-              filter = filter,
-              fieldMask = fieldMask,
-              pageToken = pageToken)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
   response <- f()
 

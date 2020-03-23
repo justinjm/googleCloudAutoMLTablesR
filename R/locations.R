@@ -24,8 +24,9 @@ gcat_list_locations <- function(projectId) {
 
 #' Get information about a location
 #'
-#' @param projectId  GCP project id
-#' @param locationId location of GCP resources
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources, retrieved by
+#' \link{gcat_list_locations}
 #'
 #' @export
 #'
