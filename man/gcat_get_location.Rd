@@ -2,15 +2,19 @@
 % Please edit documentation in R/locations.R
 \name{gcat_get_location}
 \alias{gcat_get_location}
-\title{Get a location}
+\title{Get information about a location}
 \usage{
 gcat_get_location(projectId, locationId)
 }
 \arguments{
-\item{projectId}{the GCP project Id containing location to fetch}
+\item{projectId}{GCP project id}
 
 \item{locationId}{location of GCP resources}
 }
 \description{
-Gets information about a location
+Get information about a location
 }
+\seealso{
+Other loctions functions: \code{\link{gcat_list_locations}}
+}
+\concept{loctions functions}

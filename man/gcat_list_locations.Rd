@@ -2,20 +2,17 @@
 % Please edit documentation in R/locations.R
 \name{gcat_list_locations}
 \alias{gcat_list_locations}
-\title{Lists information about the supported locations for this service.}
+\title{Lists information about the supported locations}
 \usage{
-gcat_list_locations(projectId, pageToken = NULL, pageSize = NULL,
-  filter = NULL)
+gcat_list_locations(projectId)
 }
 \arguments{
-\item{projectId}{the GCP project Id containing locations to fetch}
-
-\item{pageToken}{The standard list page token}
-
-\item{pageSize}{The standard list page size}
-
-\item{filter}{The standard list filter}
+\item{projectId}{GCP project Id to fetch a list of locations from}
 }
 \description{
-Lists information about the supported locations for this service.
+Lists information about the supported locations
 }
+\seealso{
+Other loctions functions: \code{\link{gcat_get_location}}
+}
+\concept{loctions functions}

@@ -1,27 +1,18 @@
-#' Lists information about the supported locations for this service.
+#' Lists information about the supported locations
 #'
-#' @param projectId the GCP project Id containing locations to fetch
-#' @param pageToken The standard list page token
-#' @param pageSize The standard list page size
-#' @param filter The standard list filter
+#' @param projectId GCP project Id to fetch a list of locations from
 #'
 #' @export
-gcat_list_locations <- function(projectId,
-                                pageToken = NULL,
-                                pageSize = NULL,
-                                filter = NULL) {
+#'
+#' @family loctions functions
+gcat_list_locations <- function(projectId) {
 
     url <- sprintf("https://automl.googleapis.com/v1beta1/projects/%s/locations",
                    projectId)
 
-    # automl.projects.locations.list
-    pars = list(pageToken = pageToken,
-                pageSize = pageSize,
-                filter = filter)
-
     f <- googleAuthR::gar_api_generator(url,
                                         "GET",
-                                        pars_args = rmNullObs(pars),
+                                        # pars_args = rmNullObs(pars),
                                         data_parse_function = function(x) x)
     response <- f()
 
@@ -31,14 +22,14 @@ gcat_list_locations <- function(projectId,
 
 }
 
-#' Get a location
+#' Get information about a location
 #'
-#' Gets information about a location
-#'
-#' @param projectId the GCP project Id containing location to fetch
+#' @param projectId  GCP project id
 #' @param locationId location of GCP resources
 #'
 #' @export
+#'
+#' @family loctions functions
 gcat_get_location <- function(projectId,
                               locationId) {
 
