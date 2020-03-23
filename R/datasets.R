@@ -428,9 +428,16 @@ gcat_list_column_specs <- function(projectId,
 
 #' Gets a column spec.
 #'
-#' @param projectId
+#' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param displayName
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+#' @param columnDisplayName The name of the column to show in the interface.
+#' The name can be up to 100 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
+#' and forward slashes(/), and must start with a letter or a digit.
+#' @param fieldMask Mask specifying which fields to read.
 #'
 #' @export
 gcat_get_column_specs <- function(projectId,
@@ -471,12 +478,17 @@ gcat_get_column_specs <- function(projectId,
 
 #' Updates a dataset.
 #'
-#' @param projectId
-#' @param location location of GCP resources
-#' @param displayName
-#' @param tableSpecId
-#' @param labelColumnDisplayName
-#' @param updateMask
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param displayName the name of the dataset that is shown in the interface.
+#' The name can be up to 32 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
+#' @param labelColumnDisplayName The name of the column to show in the interface.
+#' The name can be up to 100 characters long and can consist only of ASCII
+#' Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
+#' and forward slashes(/), and must start with a letter or a digit.
+#' @param updateMask The update mask applies to the resource.
+#'
 #' @import jsonlite
 #'
 #' @export
@@ -547,15 +559,3 @@ gcat_set_label <- function(projectId,
 
 }
 
-
-## References
-# list example urls for ease of reference in developement
-# GET columspecs
-# https://automl.googleapis.com/v1beta1/projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/
-#
-# list columnspecs
-# https://automl.googleapis.com/v1beta1/projects/gc-automl-tables-r/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/?
-
-# PATCH dataset
-## set target column
-# # projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/7181143537470144512

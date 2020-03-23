@@ -2,16 +2,27 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_import_data}
 \alias{gcat_import_data}
-\title{Import data into AutoML Tables
-https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl}
+\title{Import data into AutoML Tables from BigQuery or Google Cloud Storage}
 \usage{
 gcat_import_data(projectId, location, dataset_display_name,
   input_source = c("bq", "gcs"), input_url)
 }
 \arguments{
-\item{location}{location of GCP resources}
+\item{projectId}{GCP project id}
+
+\item{dataset_display_name}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
+
+\item{input_source}{a string "bq" or "gcs" to specific the source data location,
+BigQuery or Google Cloud Storage}
+
+\item{input_url}{a string, location of source data up to 2000 characters long
+1. BigQuery URI or path to a table e.g. bq://projectId.bqDatasetId.bqTableId
+2. Google Cloud Storage URI or full object path, e.g. gs://bucket/directory/object.csv}
+
+\item{locationId}{location of GCP resources}
 }
 \description{
-Import data into AutoML Tables
-https://cloud.google.com/automl-tables/docs/datasets#automl-tables-example-cli-curl
+Import data into AutoML Tables from BigQuery or Google Cloud Storage
 }

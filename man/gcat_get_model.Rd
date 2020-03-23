@@ -7,13 +7,13 @@
 gcat_get_model(projectId, locationId, modelDisplayName)
 }
 \arguments{
-\item{projectId}{GCP project iD}
+\item{projectId}{GCP project id}
 
-\item{locationId}{the location Id}
+\item{locationId}{location of GCP resources}
 
-\item{modelDisplayName}{the name of the model}
+\item{modelDisplayName}{the name of the model shown in the interface}
 }
 \description{
-Gets a model. Gets the most recent model if multiple models are
-named the same
+Gets information about a trained model. Gets the most recent
+model if multiple models are named the same
 }

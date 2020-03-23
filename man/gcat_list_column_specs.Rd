@@ -4,22 +4,16 @@
 \alias{gcat_list_column_specs}
 \title{Lists column specs in a table spec.}
 \usage{
-gcat_list_column_specs(projectId, locationId, displayName,
-  pageSize = NULL, filter = NULL, fieldMask = NULL,
-  pageToken = NULL)
+gcat_list_column_specs(projectId, locationId, displayName)
 }
 \arguments{
+\item{projectId}{GCP project id}
+
 \item{locationId}{location of GCP resources}
 
-\item{pageSize}{Requested page size}
-
-\item{filter}{Filter expression, see go/filtering}
-
-\item{fieldMask}{Mask specifying which fields to read}
-
-\item{pageToken}{A token identifying a page of results for the server to return}
-
-\item{parent}{The resource name of the table spec to list column specs from}
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 }
 \description{
 Lists column specs in a table spec.

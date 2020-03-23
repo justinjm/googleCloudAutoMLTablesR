@@ -141,12 +141,29 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>projectId</th>
+      <td><p>GCP project id</p></td>
+    </tr>
+    <tr>
       <th>locationId</th>
       <td><p>location of GCP resources</p></td>
     </tr>
     <tr>
       <th>displayName</th>
-      <td></td>
+      <td><p>the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
+    </tr>
+    <tr>
+      <th>columnDisplayName</th>
+      <td><p>The name of the column to show in the interface.
+The name can be up to 100 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
+and forward slashes(/), and must start with a letter or a digit.</p></td>
+    </tr>
+    <tr>
+      <th>fieldMask</th>
+      <td><p>Mask specifying which fields to read.</p></td>
     </tr>
     </table>
 

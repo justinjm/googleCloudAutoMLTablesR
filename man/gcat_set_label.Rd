@@ -8,7 +8,20 @@ gcat_set_label(projectId, locationId, displayName, labelColumnDisplayName,
   updateMask = NULL)
 }
 \arguments{
-\item{location}{location of GCP resources}
+\item{projectId}{GCP project id}
+
+\item{locationId}{location of GCP resources}
+
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
+
+\item{labelColumnDisplayName}{The name of the column to show in the interface.
+The name can be up to 100 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
+and forward slashes(/), and must start with a letter or a digit.}
+
+\item{updateMask}{The update mask applies to the resource.}
 }
 \description{
 Updates a dataset.

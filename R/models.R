@@ -1,11 +1,13 @@
-
 #' List Models
 #'
-#' @param projectId GCP project iD
+#' @param projectId GCP project id
 #' @param locationId location of GCP resources
 #' @param filter An expression for filtering the results of the request
 #' @param pageToken A token identifying a page of results for the server to return
 #' @param pageSize Requested page size
+#'
+
+#' @family Model functions
 #' @export
 gcat_list_models <- function(projectId,
                              locationId,
@@ -35,16 +37,22 @@ gcat_list_models <- function(projectId,
 
 }
 
-#' Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.
+#' Creates a model
 #'
-#' @param projectId GCP project iD
-#' @param locationId the location Id
+#' @description
+#' Returns a Model in the responsefield when it completes. When you create a
+#' model, several model evaluations are created for it:
+#' a global evaluation, and one evaluation for each annotation spec.
+#'
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
 #' @param datasetDisplayName the full name of your dataset
 #' @param columnDisplayName the full name of the label or target
-#' @param modelDisplayName the name of the model
+#' @param modelDisplayName the name of the model shown in the interface
 #' @param trainBudgetMilliNodeHours number of milli-node-hours for training. For example, 1000 = 1 hour.
 #' @param optimizationObjective with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj
 #' @param targetColumnSpecName with the full column name of your target column (optional).
+#'
 #' @family Model functions
 #' @export
 gcat_create_model <- function(projectId,
@@ -100,9 +108,8 @@ gcat_create_model <- function(projectId,
 }
 
 #' (Internal API call).
-#' @param Model
-#' @param parent
-#'
+#' @param Model a model object
+#' @param parent the name of parent resource
 #'
 #' @noRd
 gcat_create_model_do_call <- function(Model,
@@ -127,12 +134,13 @@ gcat_create_model_do_call <- function(Model,
 }
 
 #' Gets a model.
-#' @description Gets a model. Gets the most recent model if multiple models are
-#' named the same
 #'
-#' @param projectId GCP project iD
-#' @param locationId the location Id
-#' @param modelDisplayName the name of the model
+#' @description Gets information about a trained model. Gets the most recent
+#' model if multiple models are named the same
+#'
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param modelDisplayName the name of the model shown in the interface
 #'
 #' @export
 gcat_get_model <- function(projectId,
@@ -166,9 +174,9 @@ gcat_get_model <- function(projectId,
 
 #' Lists model evaluations.
 #'
-#' @param projectId GCP project iD
+#' @param projectId GCP project id
 #' @param locationId the location Id
-#' @param modelDisplayName the name of the model
+#' @param modelDisplayName the name of the model shown in the interface
 #'
 #' @export
 # gcat_list_model_evaluations <- function(projectId,

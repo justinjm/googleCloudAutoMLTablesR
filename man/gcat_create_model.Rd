@@ -2,22 +2,22 @@
 % Please edit documentation in R/models.R
 \name{gcat_create_model}
 \alias{gcat_create_model}
-\title{Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.}
+\title{Creates a model}
 \usage{
 gcat_create_model(projectId, locationId, datasetDisplayName,
   columnDisplayName, modelDisplayName, trainBudgetMilliNodeHours = NULL,
   optimizationObjective = NULL, targetColumnSpecName = NULL)
 }
 \arguments{
-\item{projectId}{GCP project iD}
+\item{projectId}{GCP project id}
 
-\item{locationId}{the location Id}
+\item{locationId}{location of GCP resources}
 
 \item{datasetDisplayName}{the full name of your dataset}
 
 \item{columnDisplayName}{the full name of the label or target}
 
-\item{modelDisplayName}{the name of the model}
+\item{modelDisplayName}{the name of the model shown in the interface}
 
 \item{trainBudgetMilliNodeHours}{number of milli-node-hours for training. For example, 1000 = 1 hour.}
 
@@ -26,6 +26,11 @@ gcat_create_model(projectId, locationId, datasetDisplayName,
 \item{targetColumnSpecName}{with the full column name of your target column (optional).}
 }
 \description{
-Creates a model.Returns a Model in the responsefield when it completes.When you create a model, several model evaluations are created for it:a global evaluation, and one evaluation for each annotation spec.
+Returns a Model in the responsefield when it completes. When you create a
+model, several model evaluations are created for it:
+a global evaluation, and one evaluation for each annotation spec.
+}
+\seealso{
+Other Model functions: \code{\link{gcat_list_models}}
 }
 \concept{Model functions}

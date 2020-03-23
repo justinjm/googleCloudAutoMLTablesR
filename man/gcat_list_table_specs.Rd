@@ -4,19 +4,16 @@
 \alias{gcat_list_table_specs}
 \title{Lists table specs in a dataset}
 \usage{
-gcat_list_table_specs(projectId, locationId, displayName, filter = NULL,
-  fieldMask = NULL, pageToken = NULL, pageSize = NULL)
+gcat_list_table_specs(projectId, locationId, displayName)
 }
 \arguments{
-\item{projectId}{name of the dataset to list table specs from}
+\item{projectId}{GCP project id}
 
-\item{filter}{Filter expression, see go/filtering}
+\item{locationId}{location of GCP resources}
 
-\item{fieldMask}{Mask specifying which fields to read}
-
-\item{pageToken}{A token identifying a page of results for the server to return}
-
-\item{pageSize}{Requested page size}
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 }
 \description{
 Lists table specs in a dataset

@@ -2,16 +2,19 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_get_table_specs}
 \alias{gcat_get_table_specs}
-\title{Gets a table spec.}
+\title{Gets a table spec}
 \usage{
-gcat_get_table_specs(projectId, locationId, displayName,
-  fieldMask = NULL)
+gcat_get_table_specs(projectId, locationId, displayName)
 }
 \arguments{
-\item{projectId}{name of the dataset to get a table spec from}
+\item{projectId}{GCP project id}
 
-\item{fieldMask}{Mask specifying which fields to read}
+\item{locationId}{location of GCP resources}
+
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 }
 \description{
-Gets a table spec.
+Gets a table spec
 }

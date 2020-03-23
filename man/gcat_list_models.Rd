@@ -8,7 +8,7 @@ gcat_list_models(projectId, locationId, filter = NULL,
   pageToken = NULL, pageSize = NULL)
 }
 \arguments{
-\item{projectId}{GCP project iD}
+\item{projectId}{GCP project id}
 
 \item{locationId}{location of GCP resources}
 
@@ -21,3 +21,7 @@ gcat_list_models(projectId, locationId, filter = NULL,
 \description{
 List Models
 }
+\seealso{
+Other Model functions: \code{\link{gcat_create_model}}
+}
+\concept{Model functions}

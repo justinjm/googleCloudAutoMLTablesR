@@ -134,36 +134,24 @@
     <p>Lists column specs in a table spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_list_column_specs</span>(<span class='no'>projectId</span>, <span class='no'>locationId</span>, <span class='no'>displayName</span>,
-  <span class='kw'>pageSize</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>filter</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>fieldMask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>pageToken</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>gcat_list_column_specs</span>(<span class='no'>projectId</span>, <span class='no'>locationId</span>, <span class='no'>displayName</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>projectId</th>
+      <td><p>GCP project id</p></td>
+    </tr>
+    <tr>
       <th>locationId</th>
       <td><p>location of GCP resources</p></td>
     </tr>
     <tr>
-      <th>pageSize</th>
-      <td><p>Requested page size</p></td>
-    </tr>
-    <tr>
-      <th>filter</th>
-      <td><p>Filter expression, see go/filtering</p></td>
-    </tr>
-    <tr>
-      <th>fieldMask</th>
-      <td><p>Mask specifying which fields to read</p></td>
-    </tr>
-    <tr>
-      <th>pageToken</th>
-      <td><p>A token identifying a page of results for the server to return</p></td>
-    </tr>
-    <tr>
-      <th>parent</th>
-      <td><p>The resource name of the table spec to list column specs from</p></td>
+      <th>displayName</th>
+      <td><p>the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
     </tr>
     </table>
 

@@ -4,12 +4,16 @@
 \alias{gcat_create_dataset}
 \title{Creates a dataset}
 \usage{
-gcat_create_dataset(projectId, locationId, displayName, parent)
+gcat_create_dataset(projectId, locationId, displayName)
 }
 \arguments{
-\item{parent}{}
+\item{projectId}{GCP project id}
 
-\item{location}{location of GCP resources}
+\item{locationId}{location of GCP resources}
+
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 }
 \description{
 Creates a dataset

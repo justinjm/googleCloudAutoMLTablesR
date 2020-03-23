@@ -9,7 +9,8 @@ gcat_get_location(projectId, locationId)
 \arguments{
 \item{projectId}{GCP project id}
 
-\item{locationId}{location of GCP resources}
+\item{locationId}{location of GCP resources, retrieved by
+\link{gcat_list_locations}}
 }
 \description{
 Get information about a location

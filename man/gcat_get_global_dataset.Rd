@@ -7,11 +7,12 @@
 gcat_get_global_dataset()
 }
 \value{
-Dataset name
+a string of the dataset displayName
 }
 \description{
-Dataset name set this session to use by default
+Get global dataset name
 }
 \details{
-Set the dataset name via \link{gcat_global_dataset}
+Dataset name set this session to use by default. Set the dataset name
+via \link{gcat_global_dataset}
 }

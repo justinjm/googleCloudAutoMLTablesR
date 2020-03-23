@@ -8,7 +8,13 @@ gcat_get_dataset(projectId, locationId,
   displayName = gcat_get_global_dataset())
 }
 \arguments{
+\item{projectId}{GCP project id}
+
 \item{locationId}{location of GCP resources}
+
+\item{displayName}{the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 }
 \description{
 Gets a dataset

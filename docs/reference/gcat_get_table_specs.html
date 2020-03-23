@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Gets a table spec. — gcat_get_table_specs • googleCloudAutoMLTablesR</title>
+<title>Gets a table spec — gcat_get_table_specs • googleCloudAutoMLTablesR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Gets a table spec. — gcat_get_table_specs" />
-<meta property="og:description" content="Gets a table spec." />
+<meta property="og:title" content="Gets a table spec — gcat_get_table_specs" />
+<meta property="og:description" content="Gets a table spec" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -125,28 +125,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Gets a table spec.</h1>
+    <h1>Gets a table spec</h1>
     
     <div class="hidden name"><code>gcat_get_table_specs.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Gets a table spec.</p>
+    <p>Gets a table spec</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_get_table_specs</span>(<span class='no'>projectId</span>, <span class='no'>locationId</span>, <span class='no'>displayName</span>,
-  <span class='kw'>fieldMask</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>gcat_get_table_specs</span>(<span class='no'>projectId</span>, <span class='no'>locationId</span>, <span class='no'>displayName</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>projectId</th>
-      <td><p>name of the dataset to get a table spec from</p></td>
+      <td><p>GCP project id</p></td>
     </tr>
     <tr>
-      <th>fieldMask</th>
-      <td><p>Mask specifying which fields to read</p></td>
+      <th>locationId</th>
+      <td><p>location of GCP resources</p></td>
+    </tr>
+    <tr>
+      <th>displayName</th>
+      <td><p>the name of the dataset that is shown in the interface.
+The name can be up to 32 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
     </tr>
     </table>
 

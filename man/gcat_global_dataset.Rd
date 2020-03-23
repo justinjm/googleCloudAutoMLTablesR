@@ -2,7 +2,7 @@
 % Please edit documentation in R/datasets.R
 \name{gcat_global_dataset}
 \alias{gcat_global_dataset}
-\title{Set global dataset name}
+\title{Set global dataset nameto be used for this R session}
 \usage{
 gcat_global_dataset(dataset)
 }
@@ -14,7 +14,7 @@ dataset object}
 the dataset name (invisvibly)
 }
 \description{
-set a dataset name used for this R session
+Set global dataset nameto be used for this R session
 }
 \details{
 This sets a dataset to a global environment value so you don't need to
