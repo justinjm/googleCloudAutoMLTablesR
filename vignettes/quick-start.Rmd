@@ -28,8 +28,10 @@ gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
 ```
 
 ```{r}
+projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+location <- "us-central1"
 gcat_region_set("us-central1")
-gcat_project_set(Sys.getenv("GCAT_DEFAULT_PROJECT_ID"))
+gcat_project_set(projectId)
 ```
 
 ## Get list of datasets 

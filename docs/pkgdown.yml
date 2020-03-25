@@ -2,5 +2,7 @@ pandoc: 2.3.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
 articles:
+  locations: locations.html
   quick-start: quick-start.html
+  setup: setup.html
 

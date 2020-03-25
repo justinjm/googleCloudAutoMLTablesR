@@ -4,7 +4,7 @@
 \alias{gcat_list_locations}
 \title{Lists information about the supported locations}
 \usage{
-gcat_list_locations(projectId)
+gcat_list_locations(projectId = gcat_project_get())
 }
 \arguments{
 \item{projectId}{GCP project Id to fetch a list of locations from}

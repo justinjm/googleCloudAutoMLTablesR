@@ -4,7 +4,8 @@
 \alias{gcat_get_dataset}
 \title{Gets a dataset}
 \usage{
-gcat_get_dataset(projectId, locationId,
+gcat_get_dataset(projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
   displayName = gcat_get_global_dataset())
 }
 \arguments{

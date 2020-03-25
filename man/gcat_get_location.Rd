@@ -4,7 +4,8 @@
 \alias{gcat_get_location}
 \title{Get information about a location}
 \usage{
-gcat_get_location(projectId, locationId)
+gcat_get_location(projectId = gcat_project_get(),
+  locationId = gcat_region_get())
 }
 \arguments{
 \item{projectId}{GCP project id}
