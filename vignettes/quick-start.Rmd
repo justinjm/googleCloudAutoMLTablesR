@@ -32,7 +32,7 @@ Test authentication and check in correct project:
 ```{r}
 # assumes you have projectId string set to environment 
 # argument GCAT_PROJECT_ID
-projectId <- Sys.getenv("GCAT_PROJECT_ID")
+projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
 
 ## Get list of locations 
 locations_list <- gcat_list_locations(projectId = projectId)
