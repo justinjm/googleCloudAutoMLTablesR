@@ -111,8 +111,8 @@ gcat_list_datasets <- function(projectId = gcat_project_get(),
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
-gcat_get_dataset <- function(projectId,
-                             locationId,
+gcat_get_dataset <- function(projectId = gcat_project_get(),
+                             locationId = gcat_region_get(),
                              displayName = gcat_get_global_dataset()) {
 
   datasets_list <- gcat_list_datasets(projectId = projectId,

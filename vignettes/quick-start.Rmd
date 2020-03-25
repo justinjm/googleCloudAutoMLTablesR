@@ -150,9 +150,7 @@ dataset_display_name <- "test_01_bq"
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
 
 ```{r}
-dataset <- gcat_get_dataset(projectId = projectId,
-                            locationId = location,
-                            displayName = dataset_display_name)
+dataset <- gcat_get_dataset(displayName = dataset_display_name)
 dataset
 ```
 
