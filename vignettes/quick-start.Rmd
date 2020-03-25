@@ -27,32 +27,15 @@ gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
 # gargle::gargle_oauth_sitrep()
 ```
 
-Test authentication and check in correct project: 
-
 ```{r}
-# assumes you have projectId string set to environment 
-# argument GCAT_PROJECT_ID
-projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
-
-## Get list of locations 
-locations_list <- gcat_list_locations(projectId = projectId)
-locations_list
-```
-
-## Set location 
-
-```{r}
-location <- "us-central1"
-location_path <- gcat_get_location(projectId = projectId,
-                                   locationId = location)
-location_path
+gcat_region_set("us-central1")
+gcat_project_set(Sys.getenv("GCAT_DEFAULT_PROJECT_ID"))
 ```
 
 ## Get list of datasets 
 
 ```{r}
-datasets_list <- gcat_list_datasets(projectId = projectId,
-                                    locationId = location)
+datasets_list <- gcat_list_datasets()
 datasets_list
 ```
 

@@ -1,0 +1,40 @@
+---
+title: "Locations"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{my-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Setup
+
+```{r setup}
+library(googleAuthR)
+library(googleCloudAutoMLTablesR)
+
+options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
+
+gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
+```
+
+
+```{r}
+# assumes you have projectId string set to environment argument GCAT_DEFAULT_PROJECT_ID
+gcat_region_set("us-central1")
+gcat_project_set(Sys.getenv("GCAT_DEFAULT_PROJECT_ID"))
+```
+
+## Get list of locations 
+
+```{r}
+locations_list <- gcat_list_locations()
+locations_list
+```
+
+## Set location 
+
+```{r}
+location_path <- gcat_get_location()
+location_path
+```

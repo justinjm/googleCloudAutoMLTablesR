@@ -71,13 +71,12 @@ gcat_get_global_dataset <- function(){
 #' @param locationId location of GCP resources
 #'
 #' @export
-gcat_list_datasets <- function(projectId,
-                               locationId) {
+gcat_list_datasets <- function(projectId = gcat_project_get(),
+                               locationId = gcat_region_get()) {
 
-  location_path <- gcat_get_location(projectId = projectId,
-                                     locationId = locationId)
-
-  parent <- location_path$name
+  parent <- sprintf("projects/%s/locations/%s",
+                    projectId,
+                    locationId)
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)

@@ -31,7 +31,7 @@ context("Locations")
 test_that("We can fetch a list of available GCP locations", {
   skip_if_no_token()
 
-  project <- Sys.getenv("GCAT_PROJECT_ID")
+  project <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
   expect_true(project != "")
   l <- gcat_list_locations(project)
 
@@ -45,8 +45,8 @@ test_that("We can fetch a GCP location path", {
   skip_if_no_token()
 
   location_path <- gcat_get_location(
-    projectId = Sys.getenv("GCAT_PROJECT_ID"),
-    locationId = Sys.getenv("GCAT_LOCATION_ID"))
+    projectId = Sys.getenv("GCAT_DEFAULT_PROJECT_ID"),
+    locationId = Sys.getenv("GCAT_DEFAULT_REGION"))
 
   expect_true(
     all(names(location_path) %in% c("name","locationId"))
@@ -58,8 +58,8 @@ context("Models")
 test_that("We can fetch a list of models", {
   skip_if_no_token()
 
-  projectId <- Sys.getenv("GCAT_PROJECT_ID")
-  locationId <- Sys.getenv("GCAT_LOCATION_ID")
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
   expect_true(projectId != "")
   expect_true(locationId != "")
   l <- gcat_list_models(projectId, locationId)
@@ -74,8 +74,8 @@ test_that("We can fetch a list of models", {
 test_that("We can get a model object", {
   skip_if_no_token()
 
-  projectId <- Sys.getenv("GCAT_PROJECT_ID")
-  locationId <- Sys.getenv("GCAT_LOCATION_ID")
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
   modelDisplayName <- Sys.getenv("GCAT_MODEL_DISPLAY_NAME")
   expect_true(projectId != "")
   expect_true(locationId != "")

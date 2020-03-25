@@ -5,7 +5,7 @@
 #' @export
 #'
 #' @family loctions functions
-gcat_list_locations <- function(projectId) {
+gcat_list_locations <- function(projectId = gcat_project_get()) {
 
     url <- sprintf("https://automl.googleapis.com/v1beta1/projects/%s/locations",
                    projectId)
@@ -31,8 +31,8 @@ gcat_list_locations <- function(projectId) {
 #' @export
 #'
 #' @family loctions functions
-gcat_get_location <- function(projectId,
-                              locationId) {
+gcat_get_location <- function(projectId = gcat_project_get(),
+                              locationId = gcat_region_get()) {
 
     locations <- gcat_list_locations(projectId = projectId)
 
