@@ -1,7 +1,3 @@
-## Store dataset name
-# source: https://github.com/cloudyr/googleCloudStorageR/blob/5beb3b481b/R/buckets.R#L2
-.gcat_env <- new.env(parent = emptyenv())
-
 #' Check if objecti is Dataset object
 #'
 #' @noRd
