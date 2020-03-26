@@ -53,6 +53,41 @@ test_that("We can fetch a GCP location path", {
   )
 })
 
+context("Datasets")
+
+test_that("We can fetch a list of datasets", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  l <- gcat_list_datasets(projectId, locationId)
+
+  expect_s3_class(l, "data.frame")
+  expect_true(
+    all(names(l) %in% c("displayName", "createTime", "etag", "name"))
+  )
+})
+
+test_that("We can get a dataset object", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
+  displayName <- Sys.getenv("GCAT_DATASET_DISPLAY_NAME")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  expect_true(displayName != "")
+  l <- gcat_get_dataset(projectId, locationId, displayName)
+
+  expect_s3_class(l, "gcat_dataset")
+  expect_true(
+    all(names(l) %in% c("name", "displayName", "createTime", "etag",
+                        "exampleCount", "tablesDatasetMetadata"))
+  )
+})
+
 context("Models")
 
 test_that("We can fetch a list of models", {
