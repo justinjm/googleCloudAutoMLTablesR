@@ -95,13 +95,12 @@ Execute import from Google Cloud storage:
 
 ```{r}
 # set url as seperate parameter to keep line length under 80
-# gs_url <- "gs://amlt-test/bank_marketing.csv"
-# 
-# gcat_import_data(projectId = projectId,
-#                  location = location,
-#                  dataset_display_name = "bank_marketing",
-#                  input_source = "gcs",
-#                  input_url = gs_url)
+gs_url <- "gs://gcatr-dev/bank_marketing.csv"
+
+gcat_import_job <- gcat_import_data(displayName = "test_02_gcs",
+                                    input_source = "gcs",
+                                    input_url = gs_url)
+gcat_import_job
 ```
 
 ## From BigQuery 

@@ -205,7 +205,7 @@ gcat_create_dataset_do_call <- function(Dataset,
 #'
 #' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param dataset_display_name the name of the dataset that is shown in the interface.
+#' @param displayName the name of the dataset that is shown in the interface.
 #' The name can be up to 32 characters long and can consist only of ASCII
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #' @param input_source a string "bq" or "gcs" to specific the source data location,
@@ -215,9 +215,9 @@ gcat_create_dataset_do_call <- function(Dataset,
 #' 2. Google Cloud Storage URI or full object path, e.g. gs://bucket/directory/object.csv
 #'
 #' @export
-gcat_import_data <- function(projectId,
-                             location, # fix to match other functions
-                             dataset_display_name, # fix to match other functions
+gcat_import_data <- function(projectId = gcat_project_get(),
+                             locationId = gcat_region_get(),
+                             displayName = gcat_get_global_dataset(),
                              input_source = c("bq", "gcs"),
                              input_url) {
 
@@ -262,29 +262,25 @@ gcat_import_data <- function(projectId,
   } else {
     message("Error. input_source not bq or gcs")
   }
-  # TODO  @justinjm - update these since changing of args to locationId
-  # in other functions
+
   # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
-                                 location = location)
-
+                                 locationId = locationId)
   # extract id of dataset to create url for api call
   ## `projects/{project-id}/locations/us-central1/datasets/{dataset-id}`
-  location_dataset_name <- subset(datasets,
-                                  displayName == dataset_display_name,
-                                  select = c(name))
 
-  message("> Importing data...")
+  name <- datasets[datasets$displayName==displayName,c("name")]
+
+  message("> Submitting data import job...")
 
   tryCatch({
     gcat_import_data_do_call(ImportDataRequest = import_data_request,
-                             name = location_dataset_name)
+                             name = name)
   }, error = function(ex) {
     stop("ImportDataRequest error: ", ex$message)
   })
-  # TODO @justinjm - add informative messaging for import
-  # since data does not successfully imports, the import job is :)
-  message("> Import successful")
+
+  message("> Data import job submitted successfully")
 
 }
 
