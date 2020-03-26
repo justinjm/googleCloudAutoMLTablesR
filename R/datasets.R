@@ -266,9 +266,9 @@ gcat_import_data <- function(projectId = gcat_project_get(),
   # get list of datasets
   datasets <- gcat_list_datasets(projectId = projectId,
                                  locationId = locationId)
+
   # extract id of dataset to create url for api call
   ## `projects/{project-id}/locations/us-central1/datasets/{dataset-id}`
-
   name <- datasets[datasets$displayName==displayName,c("name")]
 
   message("> Submitting data import job...")
@@ -279,8 +279,6 @@ gcat_import_data <- function(projectId = gcat_project_get(),
   }, error = function(ex) {
     stop("ImportDataRequest error: ", ex$message)
   })
-
-  message("> Data import job submitted successfully")
 
 }
 
@@ -303,7 +301,12 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 
   stopifnot(inherits(ImportDataRequest, "gar_ImportDataRequest"))
 
-  f(the_body = ImportDataRequest)
+  response <- f(the_body = ImportDataRequest)
+
+  out <- response
+
+  # structure(out, class = "gcat_operation")
+  out
 
 }
 

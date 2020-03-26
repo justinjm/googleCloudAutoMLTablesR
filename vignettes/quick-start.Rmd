@@ -97,7 +97,7 @@ Execute import from Google Cloud storage:
 # set url as seperate parameter to keep line length under 80
 gs_url <- "gs://gcatr-dev/bank_marketing.csv"
 
-gcat_import_job <- gcat_import_data(displayName = "test_02_gcs",
+gcat_import_job <- gcat_import_data(displayName = "test_03_gcs",
                                     input_source = "gcs",
                                     input_url = gs_url)
 gcat_import_job
