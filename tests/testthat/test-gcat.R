@@ -142,6 +142,27 @@ test_that("We can get a list of column specs", {
   )
 })
 
+test_that("We can get a column spec", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
+  displayName <- Sys.getenv("GCAT_DATASET_DISPLAY_NAME")
+  columnDisplayName <- Sys.getenv("GCAT_COLUMN_SPEC_DISPLAY_NAME")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  expect_true(displayName != "")
+  expect_true(columnDisplayName != "")
+  l <- gcat_get_column_spec(projectId, locationId, displayName,
+                            columnDisplayName)
+
+  expect_s3_class(l, "gcat_column_spec")
+  expect_true(
+    all(names(l) %in% c("name", "dataType", "displayName", "dataStats",
+                        "etag" ))
+  )
+})
+
 context("Models")
 
 test_that("We can fetch a list of models", {

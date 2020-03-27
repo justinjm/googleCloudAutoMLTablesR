@@ -183,10 +183,8 @@ TODO - @justinm - add visualization of column specs?
 ### Get info about our target column 
 
 ```{r}
-column_spec <- gcat_get_column_specs(projectId = projectId,
-                                     locationId = location,
-                                     displayName = dataset_display_name,
-                                     columnDisplayName = "V16")
+gcat_global_dataset("test_01_bq")
+column_spec <- gcat_get_column_spec(columnDisplayName = "V16")
 column_spec 
 ```
 

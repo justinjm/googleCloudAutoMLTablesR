@@ -425,36 +425,26 @@ gcat_list_column_specs <- function(projectId = gcat_project_get(),
 #' The name can be up to 100 characters long and can consist only of ASCII
 #' Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
 #' and forward slashes(/), and must start with a letter or a digit.
-#' @param fieldMask Mask specifying which fields to read.
 #'
 #' @export
-gcat_get_column_specs <- function(projectId,
-                                  locationId,
-                                  displayName,
-                                  columnDisplayName,
-                                  fieldMask = NULL) {
+gcat_get_column_spec <- function(projectId = gcat_project_get(),
+                                 locationId = gcat_region_get(),
+                                 displayName = gcat_get_global_dataset(),
+                                 columnDisplayName) {
 
   column_specs_list <- gcat_list_column_specs(projectId = projectId,
                                               locationId = locationId,
                                               displayName = displayName)
 
-  # rename to aid with debugging and avoid errors in subset()
-  dataset_display_name <- displayName
-  column_display_name <- columnDisplayName
-
-  name <- subset(column_specs_list,
-                 displayName == column_display_name,
-                 select = c(name))
+  # extract id of dataset to create url for api call
+  ## `projects/projectid/locations/locationId/datasets/datasetId/tableSpecs/tablespecId/columnSpecs/columnSpecId``
+  name <- column_specs_list[column_specs_list$displayName==columnDisplayName,c("name")]
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
                  name)
 
-  # automl.projects.locations.datasets.tableSpecs.columnSpecs.get
-  pars = list(fieldMask = fieldMask)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
   response <- f()
 
