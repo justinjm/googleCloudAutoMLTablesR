@@ -118,10 +118,10 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">projectId &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"GCAT_DEFAULT_PROJECT_ID"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">location &lt;-<span class="st"> "us-central1"</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span>(<span class="st">"us-central1"</span>)</a></code></pre></div>
-<pre><code>## 2020-03-27 11:03:21&gt; Region set to us-central1</code></pre>
+<pre><code>## 2020-03-27 12:11:37&gt; Region set to us-central1</code></pre>
 <pre><code>## [1] "us-central1"</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span>(projectId)</a></code></pre></div>
-<pre><code>## 2020-03-27 11:03:21&gt; ProjectId set to gc-automl-tables-r</code></pre>
+<pre><code>## 2020-03-27 12:11:37&gt; ProjectId set to gc-automl-tables-r</code></pre>
 <pre><code>## [1] "gc-automl-tables-r"</code></pre>
 <div id="get-list-of-datasets" class="section level2">
 <h2 class="hasAnchor">
@@ -129,19 +129,19 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">datasets_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_datasets.html">gcat_list_datasets</a></span>()</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">datasets_list</a></code></pre></div>
 <pre><code>##   displayName          createTime
-## 1 test_03_gcs 2020-03-26 19:17:53
-## 2 test_02_gcs 2020-03-26 19:06:14
-## 3  test_01_bq 2019-08-24 18:30:35
+## 1  test_01_bq 2019-08-24 18:30:35
+## 2 test_03_gcs 2020-03-26 19:17:53
+## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFqvh_JMxN7rV2uQyUK4HWZbC4T6iKpHvkJtpYNE23efk757zMQYcqdueNCY3478
-## 2 AB3BwFqyxMEF8RqyVZ3g-UbxKlHaFAceoit6kkewphD3noAcxCRLxfVQHVosG8JPSYm9
-## 3 AB3BwFptW2wXHXKLXBv5OtywtsKOb2NMKkOJotIaWQIyGv9_kaahGMwQ9TAZ7RJqEPRI
-## 4 AB3BwFp59PvU_PJQ8Ni_WNmC2aTgoy3Dini6WK9_tYhKfRySecOVuD01q7-sOLEzAmBN
+## 1 AB3BwFr-VL-A1eozWvH6VvH5jr0JoQsy3EYNLBsr6b9k8b1g1hQtkP2qsVy9Y5eBai0=
+## 2 AB3BwFqpQnY6nRrnxAWsai0qPnGwLg6iFJholW7Br9aDf9FgOfu7kdi_09yKb5oRU6MP
+## 3 AB3BwFo8nm5aJs_ixb1sBgWM2kRfy7SSgILNmyRI0WgAlBnHGxxSeoXu30UYN0n_pCT9
+## 4 AB3BwFqtz4phqAJF7wjRe-jTSOEjkkm13RRHdrpoeOHJACkNa8vfYUcl3xY4S9-JHttS
 ##                                                                          name
-## 1 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
-## 2 projects/736862006196/locations/us-central1/datasets/TBL4897961462904913920
-## 3 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
+## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
+## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
+## 3 projects/736862006196/locations/us-central1/datasets/TBL4897961462904913920
 ## 4 projects/736862006196/locations/us-central1/datasets/TBL7889488510502043648</code></pre>
 <div id="optional---setting-and-getting-global-dataset-name" class="section level3">
 <h3 class="hasAnchor">
@@ -185,12 +185,13 @@
 <div id="create-automl-tables-dataset" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-automl-tables-dataset" class="anchor"></a>Create AutoML Tables dataset</h3>
+<p>Currently does not work!</p>
 <p>For now, one has to manually create dataset via <a href="https://console.cloud.google.com/automl-tables/datasets/">GCP console</a></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="co"># </span><span class="al">TODO</span><span class="co"> @justinjm - fix function, issue #1 </span></a>
-<a class="sourceLine" id="cb14-2" data-line-number="2"><span class="co"># https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1</span></a>
-<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="co"># gcat_dataset &lt;- gcat_create_dataset(projectId = projectId,</span></a>
-<a class="sourceLine" id="cb14-4" data-line-number="4"><span class="co">#                                     locationId = location,</span></a>
-<a class="sourceLine" id="cb14-5" data-line-number="5"><span class="co">#                                     displayName = "bank_marketing")</span></a></code></pre></div>
+<p>See open <a href="https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1">issue</a> for more.</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">gcat_dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_create_dataset.html">gcat_create_dataset</a></span>(<span class="dt">projectId =</span> projectId,</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">                                    <span class="dt">locationId =</span> location,</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">                                    <span class="dt">displayName =</span> <span class="st">"test_01_bq"</span>)</a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">gcat_dataset</a></code></pre></div>
 </div>
 <div id="import-data" class="section level3">
 <h3 class="hasAnchor">
@@ -217,13 +218,13 @@
 <div id="create-automl-tables-dataset-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#create-automl-tables-dataset-1" class="anchor"></a>Create AutoML Tables dataset</h3>
+<p>Currently does not work!</p>
 <p>For now, one has to manually create dataset via <a href="https://console.cloud.google.com/automl-tables/datasets/">GCP console</a></p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="co"># </span><span class="al">TODO</span><span class="co"> @justinjm - fix function, issue #1 </span></a>
-<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="co"># https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  </span></a>
-<a class="sourceLine" id="cb16-3" data-line-number="3">gcat_dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_create_dataset.html">gcat_create_dataset</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb16-4" data-line-number="4">                                    <span class="dt">location =</span> location,</a>
-<a class="sourceLine" id="cb16-5" data-line-number="5">                                    <span class="dt">displayName =</span> <span class="st">"test_01_bq"</span>)</a>
-<a class="sourceLine" id="cb16-6" data-line-number="6">gcat_dataset</a></code></pre></div>
+<p>See open <a href="https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1">issue</a> for more.</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1">gcat_dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_create_dataset.html">gcat_create_dataset</a></span>(<span class="dt">projectId =</span> projectId,</a>
+<a class="sourceLine" id="cb16-2" data-line-number="2">                                    <span class="dt">location =</span> location,</a>
+<a class="sourceLine" id="cb16-3" data-line-number="3">                                    <span class="dt">displayName =</span> <span class="st">"test_01_bq"</span>)</a>
+<a class="sourceLine" id="cb16-4" data-line-number="4">gcat_dataset</a></code></pre></div>
 </div>
 <div id="import-data-1" class="section level3">
 <h3 class="hasAnchor">
@@ -244,11 +245,9 @@
 <h2 class="hasAnchor">
 <a href="#view-dataset" class="anchor"></a>View dataset</h2>
 <p>Once the import - from GCS or BQ - is completed, you’ll recieve an email notification. Locate the <code>datasetId</code> in the GCP console or via <code>gcat_list_datasets</code> function. (e.g. - will be in the form <code>TBL123456789</code>) Once the data import is completed, we can then sanity check the results.</p>
-<p>First, let’s set our <code>dataset_display_name</code> and <code>datasetId</code> in advance for cleaner code later:</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">dataset_display_name &lt;-<span class="st"> "test_01_bq"</span></a></code></pre></div>
 <p>Now we’re ready to view the results and get the <code>tableSpecId</code> we need for later functions:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1">dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_dataset.html">gcat_get_dataset</a></span>()</a>
-<a class="sourceLine" id="cb19-2" data-line-number="2">dataset</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1">dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_dataset.html">gcat_get_dataset</a></span>()</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2">dataset</a></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Dataset==
 ## displayName:          test_01_bq 
 ## exampleCount:         45211 
@@ -266,21 +265,19 @@
 <div id="get-table-specifications-tablespec" class="section level2">
 <h2 class="hasAnchor">
 <a href="#get-table-specifications-tablespec" class="anchor"></a>Get table specifications (tableSpec)</h2>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1">table_spec &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_table_specs.html">gcat_get_table_specs</a></span>()</a>
-<a class="sourceLine" id="cb21-2" data-line-number="2">table_spec</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" data-line-number="1">table_spec &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_table_specs.html">gcat_get_table_specs</a></span>()</a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">table_spec</a></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Table Spec==
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFoKWRlQKmUNOi0K2VxEZNnamCMKpsPN1keIRsiEcAFdxq6lg-XofO4k9OSIFXM9</code></pre>
+## eTag:                 AB3BwFqwsVunKGxQVe2HP_bl4u24e6-tlpZAtA-v9Tf60key5qBShDQ6VZJ0YxbPE5GG</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
 <a href="#list-column-specs" class="anchor"></a>List column specs</h2>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" data-line-number="1">column_specs_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_column_specs.html">gcat_list_column_specs</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb23-2" data-line-number="2">                                            <span class="dt">locationId =</span> location,</a>
-<a class="sourceLine" id="cb23-3" data-line-number="3">                                            <span class="dt">displayName =</span> dataset_display_name)</a>
-<a class="sourceLine" id="cb23-4" data-line-number="4">column_specs_list</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" data-line-number="1">column_specs_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_column_specs.html">gcat_list_column_specs</a></span>()</a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">column_specs_list</a></code></pre></div>
 <pre><code>##                                                                                                                                          name
 ## 1  projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/1416536014435909632
 ## 2  projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512/tableSpecs/7338035050660757504/columnSpecs/6172337220939153408
@@ -408,23 +405,23 @@
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFqYjpb4d9HdJtDhWsGTBfCB6BjZB1UTiH9NRM0M5zaeC8TPTRzRim32t5DVZtbg
-## 2  AB3BwFoqYv67qeEWWhzP7kLdUoY77CLkmEnAAfXYbfnClNyI8obnqJ1RVVgUF-JJqSl8
-## 3  AB3BwFo2O83YZ-KfzXu2wXDwnfen6dtiAlsekpoOn1NMnlJGV8SdFVQES1idOFkpI8Jl
-## 4  AB3BwFpJEgIsPaWd9Dl9J6_HglxmoY2-_Hxn2XGb7PafapNtpCnstByFYRZckHG8We07
-## 5  AB3BwFpP4oxvUEzlrJ-g7T7erJs0cR0qHSVquesXbchty7TfIOmmzNi3A3FOkT406VaR
-## 6  AB3BwFqBp2QvrUOK2vRC0mAUaylH-LCmR47Hp0M7_aNZfIFWrQzU6STtSo8K52xAkmt2
-## 7  AB3BwFrJhWk6zXdojl0AE7R2bNt5KD4zgs-m9R29ndO5LdGiueBM87s0UlGiyK2jELVl
-## 8  AB3BwFpZWviO-b8F_9Ml2SDQg1Scp7JUf5d35dKRuJ9Ne-FPE0WNNyZIsQOvFXswBCBk
-## 9  AB3BwFrkGKsXZfPOh_SMQ1FYFVj4kwPSLEYk4F9gO_oMp0vtDeyrPm7HoqQK294zFIMd
-## 10 AB3BwFrlZau3dIPhd-BmzRanw5ROIH_z_dFfg3ToUy6_LfzpU7hct4xSMIuzW-1MyLZo
-## 11 AB3BwFpPI7r7OCwptpZLag_RJThPy0nOV7mfGhm4rf3VaIfmrW6nW0JhSpOV00yhdgWX
-## 12 AB3BwFr1lecYWEA9cr2d_4ey-XIVlrE8we6T5IaLjG3-3Nmp7sFaXQdYID6fkHuzhJGu
-## 13 AB3BwFq1xT7HpFzCaMuVZyyx-Wle57BhXpFvh9XJBkx6N4cjmmaQZfs3cLmq5iO1l1kn
-## 14 AB3BwFpb81xTu7LPcr_0axdDMk-Pfj8FVdWgM0pF0FT0KUZrfqBC-_ctWEwaw4DLzM_e
-## 15 AB3BwFpArp6eMlBDzYr-s5it11-xFd6WF0RDpI0-0bm8N5cEhwiwkPGYkmtNkX4kP3C7
-## 16 AB3BwFo0oeC37lq6NzhMWRLWU-JIYez30YHR6DwjAFhoEoQtIoaNru_7zYSnQWZ8QKj5
-## 17 AB3BwFoPox1d8KvL1ynh_NNahsU6c6Zd5NbzQrUfLtGKxPJ-O7ondfJnUtp7ZvdZPS0G</code></pre>
+## 1  AB3BwFqyLqq0zvwQTqahz3uDruuUkedfwTYyiFwIoKwohPJiFtl9CetQ2U1ioPdCguFw
+## 2  AB3BwFrSD8ayxGlTNSSbNi_fdzOJuFP83Jr65d0KqLhmmy806jOmNyLmwVerAe1bxYmd
+## 3  AB3BwFoonscSfQJTBYWs930Io59pcyFQoWHCyRbRb3DWhJtPfi1X8Iv2Y8HietY6IaOb
+## 4  AB3BwFqTaY8D65-OkAEkE65lvmRSzG2hd3PQOsYgljRevC-V8RyXECbn47rVnEyE9WQI
+## 5  AB3BwFp9klOAtBEe1hGutLFZEfXF7rRxfH5JhzjNSdQUGRK79KbpohR3Jpx6wh0NHi5r
+## 6  AB3BwFqB_KF4XaT3m5_7y-11bUO0dUs8LTAHHwnkm-gnjwuza04IbMbquAKhlUWNwIiC
+## 7  AB3BwFrj9Rslg49_0M3-3xfHiK7fTT_2d3o0pbNuQQEz0pmvtU21V1zWKs4MoiMpBg39
+## 8  AB3BwFrXSb7kJdvranZ8neV_Z2xUP6W_KTanqCQZSYb-VLDLkbfxhboDzKvsA6pSuszs
+## 9  AB3BwFpWIAvNd3PcYxudgofeQ1ZLbCSWOfoJGskRUuSXg1MujzVjvyrqU4HMFti6vuHs
+## 10 AB3BwFpR69CFN5QVr83QctS1m7ubHFwZPbAuzZYxYXdPO1dcst-b5J7044zdEGHp2EGH
+## 11 AB3BwFoAaSFOiWhSxnjUDQzERbrVukJ1O3L63zng6Afojvjvbn90QW0Qj4ovAjeq7dog
+## 12 AB3BwFpwzvWwgyDnCRYtdg7aUNiCXrSVpTiTVaBXgaN6cXumnYkBwNm7dVkzHt4VdZI7
+## 13 AB3BwFo5SLuc7LvcqLtYTOTM61cph34V9HgqlEBt2sEMZn-49zTYnqlw4DFsTJFcZQpw
+## 14 AB3BwFrFG8NrDIzPvt195IF88hc-4l5-aK9VIXb4N0a4shaJ0vJlCWe63AsslTU4bNQd
+## 15 AB3BwFokfDiM3nA4j5LDYM7GA5AllfHKClDTOnbrVr4TycEEwHI8wv3sgdseq5un1xGc
+## 16 AB3BwFpYptHAjaekC_DgGbHBG8p-z_Afkm79R7IHRI2a-8qYBR0Yq0BmZNpw-lMpvyKq
+## 17 AB3BwFpijLRlFuHEYpVxkoI47lBjjKR8QIfEC7tq3HfneGvBFsNl01Ip17aAmw3_6vqw</code></pre>
 </div>
 <div id="visualize-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -433,28 +430,21 @@
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" data-line-number="1">column_spec &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_column_specs.html">gcat_get_column_specs</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb25-2" data-line-number="2">                                     <span class="dt">locationId =</span> location,</a>
-<a class="sourceLine" id="cb25-3" data-line-number="3">                                     <span class="dt">displayName =</span> dataset_display_name,</a>
-<a class="sourceLine" id="cb25-4" data-line-number="4">                                     <span class="dt">columnDisplayName =</span> <span class="st">"V16"</span>)</a>
-<a class="sourceLine" id="cb25-5" data-line-number="5">column_spec </a></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">column_spec &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_column_spec.html">gcat_get_column_spec</a></span>(<span class="dt">columnDisplayName =</span> <span class="st">"V16"</span>)</a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">column_spec </a></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Column Spec==
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFo460sSoLvTr_urhJXqF8nJq60_MBQufLFtLSsSdvOpSW4lHfVWGJ7KM1eE0qZs</code></pre>
+## eTag:                 AB3BwFpRBN0bNnUNrGCn_sit425pFVdvIZQsZRwXGePESiSbpxYcKKzzcbQERZ4pvctX</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
 <h2 class="hasAnchor">
 <a href="#set-label-or-target-column" class="anchor"></a>Set label or target column</h2>
 <p>Set V16 or outcome <a href="https://datahub.io/machine-learning/bank-marketing">source</a> as label</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="co"># </span><span class="al">TODO</span><span class="co"> @justinjm - change to "set_target" to align with python sdk?</span></a>
-<a class="sourceLine" id="cb27-2" data-line-number="2">dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_set_label.html">gcat_set_label</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb27-3" data-line-number="3">                          <span class="dt">locationId =</span> location,</a>
-<a class="sourceLine" id="cb27-4" data-line-number="4">                          <span class="dt">displayName =</span> dataset_display_name,</a>
-<a class="sourceLine" id="cb27-5" data-line-number="5">                          <span class="dt">labelColumnDisplayName =</span> <span class="st">"V16"</span>)</a>
-<a class="sourceLine" id="cb27-6" data-line-number="6">dataset</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" data-line-number="1">dataset &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_set_target_column.html">gcat_set_target_column</a></span>(<span class="dt">columnDisplayName =</span> <span class="st">"V16"</span>)</a>
+<a class="sourceLine" id="cb26-2" data-line-number="2">dataset</a></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Dataset==
 ## displayName:          test_01_bq 
 ## exampleCount:         45211 
@@ -471,25 +461,25 @@
 <a href="#create-model" class="anchor"></a>Create model</h3>
 <p>Training or creating a model is done with <code>gcat_create_model</code>.</p>
 <p>This will be a long-lasting operation. You will recieve an email when the model training completes</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="co"># gcat_model_01 &lt;- gcat_create_model(</span></a>
-<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="co">#   projectId = projectId,</span></a>
-<a class="sourceLine" id="cb29-3" data-line-number="3"><span class="co">#   locationId = location,</span></a>
-<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="co">#   datasetDisplayName = "test_01_bq",</span></a>
-<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="co">#   columnDisplayName = "V16",</span></a>
-<a class="sourceLine" id="cb29-6" data-line-number="6"><span class="co">#   modelDisplayName = "test_01_bq_01",</span></a>
-<a class="sourceLine" id="cb29-7" data-line-number="7"><span class="co">#   optimizationObjective = "MINIMIZE_LOG_LOSS",</span></a>
-<a class="sourceLine" id="cb29-8" data-line-number="8"><span class="co">#   trainBudgetMilliNodeHours = 1000)</span></a>
-<a class="sourceLine" id="cb29-9" data-line-number="9"></a>
-<a class="sourceLine" id="cb29-10" data-line-number="10"><span class="co"># gcat_model_01</span></a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" data-line-number="1">gcat_model_<span class="dv">01</span> &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_create_model.html">gcat_create_model</a></span>(</a>
+<a class="sourceLine" id="cb28-2" data-line-number="2">  <span class="dt">projectId =</span> projectId,</a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">  <span class="dt">locationId =</span> location,</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4">  <span class="dt">datasetDisplayName =</span> <span class="st">"test_01_bq"</span>,</a>
+<a class="sourceLine" id="cb28-5" data-line-number="5">  <span class="dt">columnDisplayName =</span> <span class="st">"V16"</span>,</a>
+<a class="sourceLine" id="cb28-6" data-line-number="6">  <span class="dt">modelDisplayName =</span> <span class="st">"test_01_bq_01"</span>,</a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">  <span class="dt">optimizationObjective =</span> <span class="st">"MINIMIZE_LOG_LOSS"</span>,</a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">  <span class="dt">trainBudgetMilliNodeHours =</span> <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb28-9" data-line-number="9"></a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">gcat_model_<span class="dv">01</span></a></code></pre></div>
 <p>More details here: <a href="https://cloud.google.com/automl-tables/docs/train">Training models|AutoML Tables Documentation</a></p>
 </div>
 <div id="viewing-models" class="section level3">
 <h3 class="hasAnchor">
 <a href="#viewing-models" class="anchor"></a>Viewing Models</h3>
 <p>While you wait - or after your latest model training completes - you can view the list trained models:</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb30-1" data-line-number="1">models_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_models.html">gcat_list_models</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb30-2" data-line-number="2">                                <span class="dt">locationId =</span> location)</a>
-<a class="sourceLine" id="cb30-3" data-line-number="3">models_list</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1">models_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_models.html">gcat_list_models</a></span>(<span class="dt">projectId =</span> projectId,</a>
+<a class="sourceLine" id="cb29-2" data-line-number="2">                                <span class="dt">locationId =</span> location)</a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">models_list</a></code></pre></div>
 <pre><code>##                                                                        name
 ## 1 projects/736862006196/locations/us-central1/models/TBL5977433391753068544
 ## 2 projects/736862006196/locations/us-central1/models/TBL2283918747355840512
@@ -535,10 +525,10 @@
 ## 2                                        1000
 ## 3                                         994</code></pre>
 <p>After the model has trained, you can get the trainied model with the following:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb32-1" data-line-number="1">gcat_model &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_model.html">gcat_get_model</a></span>(<span class="dt">projectId =</span> projectId,</a>
-<a class="sourceLine" id="cb32-2" data-line-number="2">                             <span class="dt">locationId =</span> location,</a>
-<a class="sourceLine" id="cb32-3" data-line-number="3">                             <span class="dt">modelDisplayName =</span> <span class="st">"test_01_bq_01"</span>)</a>
-<a class="sourceLine" id="cb32-4" data-line-number="4">gcat_model</a></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">gcat_model &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_get_model.html">gcat_get_model</a></span>(<span class="dt">projectId =</span> projectId,</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2">                             <span class="dt">locationId =</span> location,</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3">                             <span class="dt">modelDisplayName =</span> <span class="st">"test_01_bq_01"</span>)</a>
+<a class="sourceLine" id="cb31-4" data-line-number="4">gcat_model</a></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Model==
 ## name:                 projects/736862006196/locations/us-central1/models/TBL5977433391753068544 
 ## displayName:          test_01_bq_01 
@@ -550,13 +540,13 @@
 <h3 class="hasAnchor">
 <a href="#evalute-the-model" class="anchor"></a>Evalute the model</h3>
 <p>After training has been completed, you can review various performance statistics on the model, such as the accuracy, precision, recall, and so on. The metrics are returned in a nested data structure:</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># model_evaluation &lt;- gcat_list_model_evaluations(</span></a>
-<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co">#   projectId = projectId,</span></a>
-<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="co">#   locationId = location,</span></a>
-<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="co">#   modelDisplayName = "test_01_bq_01"</span></a>
-<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="co"># )</span></a></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="co"># view debugging info</span></a>
-<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="co"># readRDS("request_debug.rds")</span></a></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="co"># model_evaluation &lt;- gcat_list_model_evaluations(</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="co">#   projectId = projectId,</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="co">#   locationId = location,</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="co">#   modelDisplayName = "test_01_bq_01"</span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="co"># )</span></a></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="co"># view debugging info</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="co"># readRDS("request_debug.rds")</span></a></code></pre></div>
 </div>
 <div id="make-batch-prediction" class="section level3">
 <h3 class="hasAnchor">

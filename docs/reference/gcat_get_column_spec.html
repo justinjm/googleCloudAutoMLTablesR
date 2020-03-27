@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Lists column specs in a table spec. — gcat_list_column_specs • googleCloudAutoMLTablesR</title>
+<title>Gets a column spec. — gcat_get_column_spec • googleCloudAutoMLTablesR</title>
 
 
 <!-- jquery -->
@@ -35,8 +35,8 @@
 
 
 
-<meta property="og:title" content="Lists column specs in a table spec. — gcat_list_column_specs" />
-<meta property="og:description" content="Lists column specs in a table spec." />
+<meta property="og:title" content="Gets a column spec. — gcat_get_column_spec" />
+<meta property="og:description" content="Gets a column spec." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -131,18 +131,18 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Lists column specs in a table spec.</h1>
+    <h1>Gets a column spec.</h1>
     
-    <div class="hidden name"><code>gcat_list_column_specs.Rd</code></div>
+    <div class="hidden name"><code>gcat_get_column_spec.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Lists column specs in a table spec.</p>
+    <p>Gets a column spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_list_column_specs</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
+    <pre class="usage"><span class='fu'>gcat_get_column_spec</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
   <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(),
-  <span class='kw'>displayName</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_get_global_dataset.html'>gcat_get_global_dataset</a></span>())</pre>
+  <span class='kw'>displayName</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_get_global_dataset.html'>gcat_get_global_dataset</a></span>(), <span class='no'>columnDisplayName</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -160,6 +160,13 @@
       <td><p>the name of the dataset that is shown in the interface.
 The name can be up to 32 characters long and can consist only of ASCII
 Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
+    </tr>
+    <tr>
+      <th>columnDisplayName</th>
+      <td><p>The name of the column to show in the interface.
+The name can be up to 100 characters long and can consist only of ASCII
+Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
+and forward slashes(/), and must start with a letter or a digit.</p></td>
     </tr>
     </table>
 
