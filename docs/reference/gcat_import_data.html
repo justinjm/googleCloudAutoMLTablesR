@@ -140,8 +140,10 @@
     <p>Import data into AutoML Tables from BigQuery or Google Cloud Storage</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_import_data</span>(<span class='no'>projectId</span>, <span class='no'>location</span>, <span class='no'>dataset_display_name</span>,
-  <span class='kw'>input_source</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bq"</span>, <span class='st'>"gcs"</span>), <span class='no'>input_url</span>)</pre>
+    <pre class="usage"><span class='fu'>gcat_import_data</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
+  <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(),
+  <span class='kw'>displayName</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_get_global_dataset.html'>gcat_get_global_dataset</a></span>(), <span class='kw'>input_source</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bq"</span>,
+  <span class='st'>"gcs"</span>), <span class='no'>input_url</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +153,11 @@
       <td><p>GCP project id</p></td>
     </tr>
     <tr>
-      <th>dataset_display_name</th>
+      <th>locationId</th>
+      <td><p>location of GCP resources</p></td>
+    </tr>
+    <tr>
+      <th>displayName</th>
       <td><p>the name of the dataset that is shown in the interface.
 The name can be up to 32 characters long and can consist only of ASCII
 Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
@@ -166,10 +172,6 @@ BigQuery or Google Cloud Storage</p></td>
       <td><p>a string, location of source data up to 2000 characters long
 1. BigQuery URI or path to a table e.g. bq://projectId.bqDatasetId.bqTableId
 2. Google Cloud Storage URI or full object path, e.g. gs://bucket/directory/object.csv</p></td>
-    </tr>
-    <tr>
-      <th>locationId</th>
-      <td><p>location of GCP resources</p></td>
     </tr>
     </table>
 

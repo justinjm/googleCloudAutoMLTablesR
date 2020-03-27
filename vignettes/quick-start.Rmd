@@ -139,10 +139,15 @@ gcat_dataset_import <- gcat_import_data(projectId = projectId,
 gcat_dataset_import
 ```
 
-
 ## View dataset 
 
 Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results.
+
+First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
+
+```{r}
+dataset_display_name <- "test_01_bq"
+```
 
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
 
