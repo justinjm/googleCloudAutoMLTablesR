@@ -79,14 +79,17 @@ Now we are ready to create an AutoML tables dataset.
 
 ### Create AutoML Tables dataset 
 
+Currently does not work! 
+
 For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
 
-```{r}
-# TODO @justinjm - fix function, issue #1 
-# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1
-# gcat_dataset <- gcat_create_dataset(projectId = projectId,
-#                                     locationId = location,
-#                                     displayName = "bank_marketing")
+See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
+
+```r
+gcat_dataset <- gcat_create_dataset(projectId = projectId,
+                                    locationId = location,
+                                    displayName = "test_01_bq")
+gcat_dataset
 ```
 
 ### Import data 
@@ -112,11 +115,13 @@ To load data into AutoML Tables from BigQuery, first do the following:
 
 ### Create AutoML Tables dataset 
 
+Currently does not work! 
+
 For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
 
+See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
+
 ```r
-# TODO @justinjm - fix function, issue #1 
-# https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
 gcat_dataset <- gcat_create_dataset(projectId = projectId,
                                     location = location,
                                     displayName = "test_01_bq")
@@ -142,12 +147,6 @@ gcat_dataset_import
 ## View dataset 
 
 Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results.
-
-First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
-
-```{r}
-dataset_display_name <- "test_01_bq"
-```
 
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
 
@@ -183,7 +182,6 @@ TODO - @justinm - add visualization of column specs?
 ### Get info about our target column 
 
 ```{r}
-gcat_global_dataset("test_01_bq")
 column_spec <- gcat_get_column_spec(columnDisplayName = "V16")
 column_spec 
 ```
@@ -205,17 +203,17 @@ Training or creating a model is done with `gcat_create_model`.
 
 This will be a long-lasting operation. You will recieve an email when the model training completes
 
-```{r}
-# gcat_model_01 <- gcat_create_model(
-#   projectId = projectId,
-#   locationId = location,
-#   datasetDisplayName = "test_01_bq",
-#   columnDisplayName = "V16",
-#   modelDisplayName = "test_01_bq_01",
-#   optimizationObjective = "MINIMIZE_LOG_LOSS",
-#   trainBudgetMilliNodeHours = 1000)
+```r
+gcat_model_01 <- gcat_create_model(
+  projectId = projectId,
+  locationId = location,
+  datasetDisplayName = "test_01_bq",
+  columnDisplayName = "V16",
+  modelDisplayName = "test_01_bq_01",
+  optimizationObjective = "MINIMIZE_LOG_LOSS",
+  trainBudgetMilliNodeHours = 1000)
 
-# gcat_model_01
+gcat_model_01
 ```
 
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
