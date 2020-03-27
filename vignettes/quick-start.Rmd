@@ -193,11 +193,7 @@ column_spec
 Set V16 or outcome [source](https://datahub.io/machine-learning/bank-marketing) as label
 
 ```{r}
-# TODO @justinjm - change to "set_target" to align with python sdk?
-dataset <- gcat_set_label(projectId = projectId,
-                          locationId = location,
-                          displayName = dataset_display_name,
-                          labelColumnDisplayName = "V16")
+dataset <- gcat_set_target_column(columnDisplayName = "V16")
 dataset
 ```
 

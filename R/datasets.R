@@ -461,20 +461,18 @@ gcat_get_column_spec <- function(projectId = gcat_project_get(),
 #' @param displayName the name of the dataset that is shown in the interface.
 #' The name can be up to 32 characters long and can consist only of ASCII
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
-#' @param labelColumnDisplayName The name of the column to show in the interface.
+#' @param columnDisplayName The name of the column to show in the interface.
 #' The name can be up to 100 characters long and can consist only of ASCII
 #' Latin letters A-Z and a-z, ASCII digits 0-9, underscores(_),
 #' and forward slashes(/), and must start with a letter or a digit.
-#' @param updateMask The update mask applies to the resource.
 #'
 #' @import jsonlite
 #'
 #' @export
-gcat_set_label <- function(projectId,
-                           locationId,
-                           displayName,
-                           labelColumnDisplayName,
-                           updateMask = NULL) {
+gcat_set_target_column <- function(projectId = gcat_project_get(),
+                                   locationId = gcat_region_get(),
+                                   displayName = gcat_get_global_dataset(),
+                                   columnDisplayName) {
 
   # Get Dataset info to ensure dataset exists
   dataset_input <- gcat_get_dataset(projectId = projectId,
@@ -484,9 +482,6 @@ gcat_set_label <- function(projectId,
   # set url for API call
   name <- dataset_input$name
 
-  # get dataset display name for API call body
-  displayName <- dataset_input$displayName
-
   # list gcat_list_column_specs to get column spec ID for target column
   column_specs_list <- gcat_list_column_specs(projectId = projectId,
                                               locationId = locationId,
@@ -494,16 +489,13 @@ gcat_set_label <- function(projectId,
 
   # set columnSpec Id of label column to set in AutoML tables
   label_column <- subset(column_specs_list,
-                         displayName == labelColumnDisplayName)
+                         displayName == columnDisplayName)
 
-  # TODO @JUSTINJM - ADD ERROR HANDLING IF DISPLAY NAME OF TARGET DOES NOT
-  # EXIST IN DATASET
   # use regex since not sure where else to grab `targetColumnSpecId`?
   target_column_spec_id <- gsub(".*/columnSpecs/", "",
                                 label_column$name)
 
   # Unboxing of entry into a list
-  # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1#issuecomment-510526353
   jubox <- function(x) jsonlite::unbox(x)
 
   # build request body last for easier updating code above
@@ -519,12 +511,8 @@ gcat_set_label <- function(projectId,
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
 
-  # automl.projects.locations.datasets.patch
-  pars = list(updateMask = updateMask)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "PATCH",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
 
   stopifnot(inherits(Dataset, "gar_Dataset"))
