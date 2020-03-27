@@ -319,9 +319,9 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
-gcat_list_table_specs <- function(projectId,
-                                  locationId,
-                                  displayName) {
+gcat_list_table_specs <- function(projectId = gcat_project_get(),
+                                  locationId = gcat_region_get(),
+                                  displayName = gcat_get_global_dataset()) {
 
   # get data set metadata for listing tableSpecs API call
   dataset <- gcat_get_dataset(projectId = projectId,
@@ -356,19 +356,17 @@ gcat_list_table_specs <- function(projectId,
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
-gcat_get_table_specs <- function(projectId,
-                                 locationId,
-                                 displayName) {
+gcat_get_table_specs <- function(projectId = gcat_project_get(),
+                                 locationId = gcat_region_get(),
+                                 displayName = gcat_get_global_dataset()) {
 
   table_spec_list <- gcat_list_table_specs(projectId = projectId,
                                            locationId = locationId,
                                            displayName = displayName)
 
-  dataset_display_name <- displayName
-
-  name <- subset(table_spec_list,
-                 displayName == dataset_display_name,
-                 select = c(name))
+  # extract id of dataset to create url for api call
+  # /projects/project-id/locations/location/datasets/dataset-id/tableSpecs/
+  name <- table_spec_list[,c("name")]
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s", name)
 

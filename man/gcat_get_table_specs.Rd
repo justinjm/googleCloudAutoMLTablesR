@@ -4,7 +4,9 @@
 \alias{gcat_get_table_specs}
 \title{Gets a table spec}
 \usage{
-gcat_get_table_specs(projectId, locationId, displayName)
+gcat_get_table_specs(projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  displayName = gcat_get_global_dataset())
 }
 \arguments{
 \item{projectId}{GCP project id}

@@ -93,7 +93,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 
 Execute import from Google Cloud storage: 
 
-```{r}
+```r
 # set url as seperate parameter to keep line length under 80
 gs_url <- "gs://gcatr-dev/bank_marketing.csv"
 
@@ -114,27 +114,29 @@ To load data into AutoML Tables from BigQuery, first do the following:
 
 For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
 
-```{r}
+```r
 # TODO @justinjm - fix function, issue #1 
 # https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1  
-# gcat_dataset <- gcat_create_dataset(projectId = projectId,
-#                                     location = location,
-#                                     displayName = "test_01_bq")
+gcat_dataset <- gcat_create_dataset(projectId = projectId,
+                                    location = location,
+                                    displayName = "test_01_bq")
+gcat_dataset
 ```
 
 ### Import data 
 
 Execute import from BigQuery: 
 
-```{r}
+```r
 # set url as seperate parameter to keep line length under 80
-# bq_url <- "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
-# 
-# gcat_import_data(projectId = projectId,
-#                  location = location,
-#                  dataset_display_name = "test_01_bq",
-#                  input_source = "bq",
-#                  input_url = bq_url)
+bq_url <- "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
+
+gcat_dataset_import <- gcat_import_data(projectId = projectId,
+                                        location = location,
+                                        dataset_display_name = "test_01_bq",
+                                        input_source = "bq",
+                                        input_url = bq_url)
+gcat_dataset_import
 ```
 
 
@@ -142,16 +144,10 @@ Execute import from BigQuery:
 
 Once the import - from GCS or BQ - is completed, you'll recieve an email notification. Locate the `datasetId` in the GCP console or via `gcat_list_datasets` function. (e.g. - will be in the form `TBL123456789`) Once the data import is completed, we can then sanity check the results.
 
-First, let's set our `dataset_display_name` and `datasetId` in advance for cleaner code later:
-
-```{r}
-dataset_display_name <- "test_01_bq"
-```
-
 Now we're ready to view the results and get the `tableSpecId` we need for later functions:
 
 ```{r}
-dataset <- gcat_get_dataset(displayName = dataset_display_name)
+dataset <- gcat_get_dataset()
 dataset
 ```
 
@@ -164,9 +160,7 @@ Lets first view the table schema and the columns
 ## Get table specifications (tableSpec)
 
 ```{r}
-table_spec <- gcat_get_table_specs(projectId = projectId,
-                                   locationId = location,
-                                   displayName = dataset_display_name)
+table_spec <- gcat_get_table_specs()
 table_spec
 ```
 

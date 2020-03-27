@@ -88,6 +88,42 @@ test_that("We can get a dataset object", {
   )
 })
 
+test_that("We can get a list of table specs", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
+  displayName <- Sys.getenv("GCAT_DATASET_DISPLAY_NAME")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  expect_true(displayName != "")
+  l <- gcat_list_table_specs(projectId, locationId, displayName)
+
+  expect_s3_class(l, "data.frame")
+  expect_true(
+    all(names(l) %in% c("name", "rowCount", "validRowCount", "inputConfigs",
+                        "etag", "columnCount"))
+  )
+})
+
+test_that("We can get a table spec", {
+  skip_if_no_token()
+
+  projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+  locationId <- Sys.getenv("GCAT_DEFAULT_REGION")
+  displayName <- Sys.getenv("GCAT_DATASET_DISPLAY_NAME")
+  expect_true(projectId != "")
+  expect_true(locationId != "")
+  expect_true(displayName != "")
+  l <- gcat_get_table_specs(projectId, locationId, displayName)
+
+  expect_s3_class(l, "gcat_table_specs")
+  expect_true(
+    all(names(l) %in% c("name", "rowCount", "validRowCount", "inputConfigs",
+                        "etag", "columnCount"))
+  )
+})
+
 context("Models")
 
 test_that("We can fetch a list of models", {

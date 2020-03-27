@@ -4,13 +4,17 @@
 \alias{gcat_import_data}
 \title{Import data into AutoML Tables from BigQuery or Google Cloud Storage}
 \usage{
-gcat_import_data(projectId, location, dataset_display_name,
-  input_source = c("bq", "gcs"), input_url)
+gcat_import_data(projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  displayName = gcat_get_global_dataset(), input_source = c("bq",
+  "gcs"), input_url)
 }
 \arguments{
 \item{projectId}{GCP project id}
 
-\item{dataset_display_name}{the name of the dataset that is shown in the interface.
+\item{locationId}{location of GCP resources}
+
+\item{displayName}{the name of the dataset that is shown in the interface.
 The name can be up to 32 characters long and can consist only of ASCII
 Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.}
 
@@ -20,8 +24,6 @@ BigQuery or Google Cloud Storage}
 \item{input_url}{a string, location of source data up to 2000 characters long
 1. BigQuery URI or path to a table e.g. bq://projectId.bqDatasetId.bqTableId
 2. Google Cloud Storage URI or full object path, e.g. gs://bucket/directory/object.csv}
-
-\item{locationId}{location of GCP resources}
 }
 \description{
 Import data into AutoML Tables from BigQuery or Google Cloud Storage
