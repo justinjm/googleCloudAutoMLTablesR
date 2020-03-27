@@ -2,32 +2,20 @@
 #'
 #' @param projectId GCP project id
 #' @param locationId location of GCP resources
-#' @param filter An expression for filtering the results of the request
-#' @param pageToken A token identifying a page of results for the server to return
-#' @param pageSize Requested page size
 #'
-
 #' @family Model functions
 #' @export
-gcat_list_models <- function(projectId,
-                             locationId,
-                             filter = NULL,
-                             pageToken = NULL,
-                             pageSize = NULL) {
+gcat_list_models <- function(projectId = gcat_project_get(),
+                             locationId = gcat_region_get()) {
 
-  location_path <- gcat_get_location(projectId = projectId,
-                                     locationId = locationId)
-
-  parent <- location_path$name
+  parent <- sprintf("projects/%s/locations/%s",
+                    projectId,
+                    locationId)
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models", parent)
 
-  # automl.projects.locations.models.list
-  pars = list(filter = filter, pageToken = pageToken, pageSize = pageSize)
-
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
-                                      pars_args = rmNullObs(pars),
                                       data_parse_function = function(x) x)
   response <- f()
 
@@ -142,9 +130,10 @@ gcat_create_model_do_call <- function(Model,
 #' @param locationId location of GCP resources
 #' @param modelDisplayName the name of the model shown in the interface
 #'
+#' @family Model functions
 #' @export
-gcat_get_model <- function(projectId,
-                           locationId,
+gcat_get_model <- function(projectId = gcat_project_get(),
+                           locationId = gcat_region_get(),
                            modelDisplayName) {
 
   models_list <- gcat_list_models(projectId = projectId,
@@ -160,7 +149,7 @@ gcat_get_model <- function(projectId,
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s",
                  name)
-  # automl.projects.locations.models.get
+
   f <- googleAuthR::gar_api_generator(url,
                                       "GET",
                                       data_parse_function = function(x) x)

@@ -4,24 +4,19 @@
 \alias{gcat_list_models}
 \title{List Models}
 \usage{
-gcat_list_models(projectId, locationId, filter = NULL,
-  pageToken = NULL, pageSize = NULL)
+gcat_list_models(projectId = gcat_project_get(),
+  locationId = gcat_region_get())
 }
 \arguments{
 \item{projectId}{GCP project id}
 
 \item{locationId}{location of GCP resources}
-
-\item{filter}{An expression for filtering the results of the request}
-
-\item{pageToken}{A token identifying a page of results for the server to return}
-
-\item{pageSize}{Requested page size}
 }
 \description{
 List Models
 }
 \seealso{
-Other Model functions: \code{\link{gcat_create_model}}
+Other Model functions: \code{\link{gcat_create_model}},
+  \code{\link{gcat_get_model}}
 }
 \concept{Model functions}

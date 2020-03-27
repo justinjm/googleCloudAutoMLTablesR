@@ -4,7 +4,8 @@
 \alias{gcat_get_model}
 \title{Gets a model.}
 \usage{
-gcat_get_model(projectId, locationId, modelDisplayName)
+gcat_get_model(projectId = gcat_project_get(),
+  locationId = gcat_region_get(), modelDisplayName)
 }
 \arguments{
 \item{projectId}{GCP project id}
@@ -17,3 +18,8 @@ gcat_get_model(projectId, locationId, modelDisplayName)
 Gets information about a trained model. Gets the most recent
 model if multiple models are named the same
 }
+\seealso{
+Other Model functions: \code{\link{gcat_create_model}},
+  \code{\link{gcat_list_models}}
+}
+\concept{Model functions}

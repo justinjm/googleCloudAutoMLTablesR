@@ -31,6 +31,7 @@ model, several model evaluations are created for it:
 a global evaluation, and one evaluation for each annotation spec.
 }
 \seealso{
-Other Model functions: \code{\link{gcat_list_models}}
+Other Model functions: \code{\link{gcat_get_model}},
+  \code{\link{gcat_list_models}}
 }
 \concept{Model functions}

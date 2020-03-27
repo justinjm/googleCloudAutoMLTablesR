@@ -222,17 +222,14 @@ More details here: [Training models|AutoML Tables Documentation](https://cloud.g
 While you wait - or after your latest model training completes - you can view the list trained models: 
 
 ```{r}
-models_list <- gcat_list_models(projectId = projectId,
-                                locationId = location)
+models_list <- gcat_list_models()
 models_list
 ```
 
 After the model has trained, you can get the trainied model with the following:
 
 ```{r}
-gcat_model <- gcat_get_model(projectId = projectId,
-                             locationId = location,
-                             modelDisplayName = "test_01_bq_01")
+gcat_model <- gcat_get_model(modelDisplayName = "test_01_bq_01")
 gcat_model
 ```
 
