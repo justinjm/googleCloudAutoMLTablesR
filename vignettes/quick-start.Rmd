@@ -172,11 +172,10 @@ table_spec
 ## List column specs 
 
 ```{r}
-column_specs_list <- gcat_list_column_specs(projectId = projectId,
-                                            locationId = location,
-                                            displayName = dataset_display_name)
+column_specs_list <- gcat_list_column_specs()
 column_specs_list
 ```
+
 ## Visualize column specs 
 
 TODO - @justinm - add visualization of column specs? 

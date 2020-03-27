@@ -390,9 +390,9 @@ gcat_get_table_specs <- function(projectId = gcat_project_get(),
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
 #' @export
-gcat_list_column_specs <- function(projectId,
-                                   locationId,
-                                   displayName) {
+gcat_list_column_specs <- function(projectId = gcat_project_get(),
+                                   locationId = gcat_region_get(),
+                                   displayName = gcat_get_global_dataset()) {
 
   table_spec <- gcat_get_table_specs(projectId = projectId,
                                      locationId = locationId,
@@ -408,10 +408,6 @@ gcat_list_column_specs <- function(projectId,
                                       data_parse_function = function(x) x)
   response <- f()
 
-  # TODO - @justinjm - consider adding function for parsing results in form
-  # of nested dataframes
-  # https://github.com/cloudyr/googleCloudStorageR/blob/master/R/utilities.R
-  # out <- my_reduce_rbind(response)
   out <- response$columnSpecs
 
   out
