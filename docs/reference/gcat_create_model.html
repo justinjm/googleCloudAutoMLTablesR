@@ -144,8 +144,10 @@ model, several model evaluations are created for it:
 a global evaluation, and one evaluation for each annotation spec.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_create_model</span>(<span class='no'>projectId</span>, <span class='no'>locationId</span>, <span class='no'>datasetDisplayName</span>,
-  <span class='no'>columnDisplayName</span>, <span class='no'>modelDisplayName</span>, <span class='kw'>trainBudgetMilliNodeHours</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+    <pre class="usage"><span class='fu'>gcat_create_model</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
+  <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(),
+  <span class='kw'>datasetDisplayName</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_get_global_dataset.html'>gcat_get_global_dataset</a></span>(), <span class='no'>columnDisplayName</span>,
+  <span class='no'>modelDisplayName</span>, <span class='kw'>trainBudgetMilliNodeHours</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>optimizationObjective</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>targetColumnSpecName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -187,7 +189,8 @@ a global evaluation, and one evaluation for each annotation spec.</p>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Model functions: <code><a href='gcat_list_models.html'>gcat_list_models</a></code></p></div>
+    <div class='dont-index'><p>Other Model functions: <code><a href='gcat_get_model.html'>gcat_get_model</a></code>,
+  <code><a href='gcat_list_models.html'>gcat_list_models</a></code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

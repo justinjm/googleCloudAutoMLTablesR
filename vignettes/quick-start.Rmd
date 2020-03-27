@@ -49,9 +49,13 @@ To simplify code for other API calls, you can set a dataset name to a global env
 gcat_global_dataset("test_01_bq")
 ```
 
+Then you can retrieve it like so: 
+
 ```{r}
 gcat_get_global_dataset()
 ```
+
+The example workflow in the rest of this vignette uses this function to keep the code as concise as possible. 
 
 # Importing data into AutoML Tables 
 
@@ -86,9 +90,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
 
 ```r
-gcat_dataset <- gcat_create_dataset(projectId = projectId,
-                                    locationId = location,
-                                    displayName = "test_01_bq")
+gcat_dataset <- gcat_create_dataset(displayName = "test_01_bq")
 gcat_dataset
 ```
 
@@ -122,9 +124,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
 
 ```r
-gcat_dataset <- gcat_create_dataset(projectId = projectId,
-                                    location = location,
-                                    displayName = "test_01_bq")
+gcat_dataset <- gcat_create_dataset(displayName = "test_01_bq")
 gcat_dataset
 ```
 
@@ -136,9 +136,7 @@ Execute import from BigQuery:
 # set url as seperate parameter to keep line length under 80
 bq_url <- "bq://gc-automl-tables-r.gcatr_dev.bank_marketing"
 
-gcat_dataset_import <- gcat_import_data(projectId = projectId,
-                                        location = location,
-                                        dataset_display_name = "test_01_bq",
+gcat_dataset_import <- gcat_import_data(dataset_display_name = "test_01_bq",
                                         input_source = "bq",
                                         input_url = bq_url)
 gcat_dataset_import
@@ -205,8 +203,6 @@ This will be a long-lasting operation. You will recieve an email when the model 
 
 ```r
 gcat_model_01 <- gcat_create_model(
-  projectId = projectId,
-  locationId = location,
   datasetDisplayName = "test_01_bq",
   columnDisplayName = "V16",
   modelDisplayName = "test_01_bq_01",

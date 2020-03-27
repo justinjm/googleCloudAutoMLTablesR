@@ -151,8 +151,8 @@ gcat_get_dataset <- function(projectId = gcat_project_get(),
 #' @import jsonlite
 #'
 #' @export
-gcat_create_dataset <- function(projectId,
-                                locationId,
+gcat_create_dataset <- function(projectId = gcat_project_get(),
+                                locationId = gcat_region_get(),
                                 displayName) {
 
   location_path <- gcat_get_location(projectId = projectId,

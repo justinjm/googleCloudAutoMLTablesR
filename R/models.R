@@ -43,9 +43,9 @@ gcat_list_models <- function(projectId = gcat_project_get(),
 #'
 #' @family Model functions
 #' @export
-gcat_create_model <- function(projectId,
-                              locationId,
-                              datasetDisplayName,
+gcat_create_model <- function(projectId = gcat_project_get(),
+                              locationId = gcat_region_get(),
+                              datasetDisplayName = gcat_get_global_dataset(),
                               columnDisplayName,
                               modelDisplayName,
                               trainBudgetMilliNodeHours = NULL,
@@ -168,8 +168,8 @@ gcat_get_model <- function(projectId = gcat_project_get(),
 #' @param modelDisplayName the name of the model shown in the interface
 #'
 #' @export
-# gcat_list_model_evaluations <- function(projectId,
-#                                         locationId,
+# gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
+#                                         locationId = gcat_region_get(),
 #                                         modelDisplayName,
 #                                         pageToken = NULL,
 #                                         pageSize = NULL,

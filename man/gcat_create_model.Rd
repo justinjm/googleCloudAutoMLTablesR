@@ -4,8 +4,10 @@
 \alias{gcat_create_model}
 \title{Creates a model}
 \usage{
-gcat_create_model(projectId, locationId, datasetDisplayName,
-  columnDisplayName, modelDisplayName, trainBudgetMilliNodeHours = NULL,
+gcat_create_model(projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  datasetDisplayName = gcat_get_global_dataset(), columnDisplayName,
+  modelDisplayName, trainBudgetMilliNodeHours = NULL,
   optimizationObjective = NULL, targetColumnSpecName = NULL)
 }
 \arguments{
