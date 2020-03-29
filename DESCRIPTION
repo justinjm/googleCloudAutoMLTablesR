@@ -3,12 +3,12 @@ Title: Google Cloud AutoML Tables API Into R
 Version: 0.0.0.9000
 Authors@R: person("Justin", "Marciszewski", 
                   email = "justin@harborislandanalytics.com", 
-                  role = c("aut", "cre"))
-Description: Interact with Google Cloud AutoML Tables 
-    API <https://cloud.google.com/automl-tables/docs/apis>
+                  role = c("aut", "cre"),
+                  comment = c(ORCID = "0000-0002-8251-4982"))
+Description: A tool to interact with the Google Cloud AutoML Tables API.
 URL: https://code.justinmarciszewski.me/googleCloudAutoMLTablesR/
 BugReports: https://github.com/justinjm/googleCloudAutoMLTablesR/issues
-Depends: R (>= 3.5.3)
+Depends: R (>= 3.5.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

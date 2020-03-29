@@ -108,10 +108,10 @@
 <a class="sourceLine" id="cb1-6" data-line-number="6"><span class="kw"><a href="https://code.markedmondson.me/googleAuthR//reference/gar_auth_service.html">gar_auth_service</a></span>(<span class="dt">json_file =</span> <span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"GAR_SERVICE_JSON"</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># assumes you have projectId string set to environment argument GCAT_DEFAULT_PROJECT_ID</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="kw"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span>(<span class="st">"us-central1"</span>)</a></code></pre></div>
-<pre><code>## 2020-03-27 14:19:20&gt; Region set to us-central1</code></pre>
+<pre><code>## 2020-03-29 19:58:12&gt; Region set to us-central1</code></pre>
 <pre><code>## [1] "us-central1"</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span>(<span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"GCAT_DEFAULT_PROJECT_ID"</span>))</a></code></pre></div>
-<pre><code>## 2020-03-27 14:19:20&gt; ProjectId set to gc-automl-tables-r</code></pre>
+<pre><code>## 2020-03-29 19:58:12&gt; ProjectId set to gc-automl-tables-r</code></pre>
 <pre><code>## [1] "gc-automl-tables-r"</code></pre>
 <div id="get-list-of-locations" class="section level2">
 <h2 class="hasAnchor">
@@ -119,8 +119,8 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">locations_list &lt;-<span class="st"> </span><span class="kw"><a href="../reference/gcat_list_locations.html">gcat_list_locations</a></span>()</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2">locations_list</a></code></pre></div>
 <pre><code>##                                                name  locationId
-## 1 projects/gc-automl-tables-r/locations/us-central1 us-central1
-## 2          projects/gc-automl-tables-r/locations/eu          eu</code></pre>
+## 1          projects/gc-automl-tables-r/locations/eu          eu
+## 2 projects/gc-automl-tables-r/locations/us-central1 us-central1</code></pre>
 </div>
 <div id="set-location" class="section level2">
 <h2 class="hasAnchor">
