@@ -1,4 +1,8 @@
 # googleCloudAutoMLTablesR
+
+[![Build Status](https://travis-ci.org/justinjm/googleCloudAutoMLTablesR.svg?branch=master)](https://travis-ci.org/justinjm/googleCloudAutoMLTablesR)
+[![codecov](https://codecov.io/gh/justinjm/googleCloudAutoMLTablesR/branch/master/graph/badge.svg)](https://codecov.io/gh/justinjm/googleCloudAutoMLTablesR)
+
 An R interface to [Google Cloud AutoML Tables](https://cloud.google.com/automl-tables/)
 
 Documentation for REST API [here](https://cloud.google.com/automl-tables/docs/reference/rest/) 
