@@ -118,10 +118,10 @@
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">projectId &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"GCAT_DEFAULT_PROJECT_ID"</span>)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2">location &lt;-<span class="st"> "us-central1"</span></a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span>(<span class="st">"us-central1"</span>)</a></code></pre></div>
-<pre><code>## 2020-03-29 20:38:10&gt; Region set to us-central1</code></pre>
+<pre><code>## 2020-03-29 20:43:02&gt; Region set to us-central1</code></pre>
 <pre><code>## [1] "us-central1"</code></pre>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="kw"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span>(projectId)</a></code></pre></div>
-<pre><code>## 2020-03-29 20:38:10&gt; ProjectId set to gc-automl-tables-r</code></pre>
+<pre><code>## 2020-03-29 20:43:02&gt; ProjectId set to gc-automl-tables-r</code></pre>
 <pre><code>## [1] "gc-automl-tables-r"</code></pre>
 <div id="get-list-of-datasets" class="section level2">
 <h2 class="hasAnchor">
@@ -134,10 +134,10 @@
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFq4bjMkZJ2MNXJTao_lc6Ih_Hv8YPmfpTAKSELL9uyiGM1waRUpCX9lQDvE-bQ=
-## 2 AB3BwFoHRnOPYa8qzDhRQTpQX0pxxxpAFeV5gPyhfJUupdi46_JLUnOl1VATpuWh7VKv
-## 3 AB3BwFrTdNsPQSnDnbg0nwQGORtscfVVYVuKAzE3KTYYVR6OqJIP9zclf3xk8L_GS3vH
-## 4 AB3BwFrC4or88EHS0QDvdBuVrF-zv7YzgNdRcUezBL9wbeWVl_H-RtheHZ1dv3-1J7zr
+## 1 AB3BwFr6ENONA7FbYREeCsc5aa4J6xNuTe7EJHCD68lyrkH4fNCLhbGmmdhN3cdTiCs=
+## 2 AB3BwFr_c9ibB9ykjdeGufhNC_qSwWOPaXG0Akk442AwyCBHII2JLclTlBHLay5ULUYg
+## 3 AB3BwFrRatmJD8nkfX8GIqonSibJgDzR9ZxBTm7wSLPf2Fhii8Nn__Ob9mK4q0Qf6uze
+## 4 AB3BwFp-CyyQHAftzddb-__7t-o4uHJhnTzGlGN2Au3fsEKsQR3Bv9k_L5j5NRW-OfuE
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -267,7 +267,7 @@
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFqEW1HC6bUE8W5drBXBtq5NYTywaXmtkSlv6YmvEZBoYj4yyJe9sLLbFlq-Ouwi</code></pre>
+## eTag:                 AB3BwFrmUCfzTR_XhlZjfjGLh1D-mWCdgeb7qp2V-6KSDPS7_WMZk0dKemAATFzTS8x6</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -401,23 +401,23 @@
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFplsmBP9cQFWNXNEIaZsdw3Ph0D5wnVj6l89B7AP6-Yh7G_vX2GD6__zM7j5foY
-## 2  AB3BwFrKiUtFSwD-FtxavlAZzwRIMc6lbXn-0QqFJWV7mnDVhJc-GiNSlEkX7h3u4BoT
-## 3  AB3BwFokc3RWDhi1TkoMKW4LnRGqTCzwxhMWrPmyJEvG_dropyZo2fDT9qcxNkRSrtqv
-## 4  AB3BwFopup0-cgRZc1rEXh8zzf7lTp_Xly2fXdwVoocG4pO-cD54pFJyoEXWskw9H_kd
-## 5  AB3BwFrQ7qrLPtRmPyesDko9PxlmwUKB6-d-1deo5t-iwP3uKJKtVLa4P3pbquKTRgIa
-## 6  AB3BwFpBcRAc8tdz70s9OB3SLQx4PwWPUHUSxbU2HxhoTVJ52ZM2cWtQAPH7r_sidQMG
-## 7  AB3BwFqrl-UmPARXTndYCAHbtbSVfVmisQfxFXB7cZPE2xDY5sMRFeI1HOpYKK7GrL5A
-## 8  AB3BwFq4UAgwsXx95Qjx-uRejsCvb-Wohq3bGAoNtczmFuKQizNJbC5bdS3OmCpaUGn6
-## 9  AB3BwFpwVqSmwuanUlxbV9uXHF1GZrugrmsqNzx7apIvRZ-8YHjHRedrmOhL6jCzCcdb
-## 10 AB3BwFr78IkyE2GX1poX9r62DnnqLmnlKsfXS6gM-7Z3OUqSr2GOgBIag2WMC5b1HotA
-## 11 AB3BwFqaP_3vCA64V3sP6lHrW9ZFgmnBBPMeQ_rDpiV7tLSQ0nngIrB5bX1HTQTcIZWy
-## 12 AB3BwFpmovg4Djw9oQCBjZ81ztrQegp5BbDDUYU5diW-TQ6z4GJvZd-nedPExGEXoj-S
-## 13 AB3BwFrCwHgsk3yhqWe7HNcEwbGazYN4jiN2nbOQMisNCc-vLRrwv8WbPAKLIZkpEamu
-## 14 AB3BwFqAHvKF-jWzBJJMRhB4ZLNxlRnVWdI2rQG08Gxblo6f5HB7Z2a-2gc-7fWKU20Y
-## 15 AB3BwFq50hGktKoOLgboPF64f_GW4qiR4nw071oSP94vEG6Sy3ueyaoN8LDc2ItwSGiY
-## 16 AB3BwFqPrjRaS1yfe7mhrqHX65HAY-e33ZV6I7BCFk8Y8imBmsBQDTGqWvSBlw0qizPM
-## 17 AB3BwFpgR-jlzh7yM3JpON1m619ZH0a30-zXs9LIXhmP1sBlgU_3Lg3drU138Vc7Tnss</code></pre>
+## 1  AB3BwFp0lCOzUjfoej1GgDYuSKvSOyxqU615x5WFeBp7WJqeS1qFXWnaz0ksatfKGDPH
+## 2  AB3BwFo6lhG9x21XBcNSio2FiTncYluVOlgdCtcBLsZjM5ZxwSdW4wXMSco34rtQuHfh
+## 3  AB3BwFrab4x3Ybvak6CUoHjU32-wAapTQZ2HF-xsuuigOPwdL_nIe6ZiCrpMU_X4fqN5
+## 4  AB3BwFrdmin4ogtTPUo1kEXJEeA-G2UWKRLi0vz3U1WiNShLuPAHHBd1Jk_RdpnGTlk1
+## 5  AB3BwFqyrvcAzS2z4IffKYGF4y-Xi-pHoiQHmN--T87QpHYBZGIXggWZu-C2yRX_QHq_
+## 6  AB3BwFoLpMAazYRZgHOYV7bKLyk5i6k_oYLJIH3hnHBjWM_MPAC_ydHs4Y-rPl-vXwFR
+## 7  AB3BwFp0AMYzC1l34IN7IkIJhACHg9qacg7Us1ljcYxQ7_UbBl3PzTBRrITmA5RivRIU
+## 8  AB3BwFqB95TDW1kHDsuQwB4TSC678h9mBCErl9xd8TxX8Srh9I0wWeOCuIx6MmlTJxlm
+## 9  AB3BwFpKcr_tQ_3QKK6jUQYtQTD2v4ytg5Lsf-J2iQ3URQZlyfvD6BoeOht0bB2fD-YO
+## 10 AB3BwFpcsH6pNI67d_n4NBHxloyT7fsqRMLr_qzuz8EUU417CtYSMqcyAUGUWE_gFyfN
+## 11 AB3BwFplzoSyk_LQfiTZKyFpTOJuhqUKVxQqgeISVXB8O9SgeXZ8y0J-oMZeM7Iwdzrq
+## 12 AB3BwFpBROnpHNa0hUbzZxXJZlZOQ8hU8KgWa6V-ip1RxLlS0W2gSCCik9EA9kOA0Yd9
+## 13 AB3BwFpJxiQv65TurK_qKdBzQat91AkmPYLOfLIucYKP2BEDmBU8Juup4iMGPNzc6BTm
+## 14 AB3BwFow1IvfSs8HTDmHavIBdYIxc--bxSC5oRWJSfAB77MeGiGT6r7ny-FYMrUS3NzY
+## 15 AB3BwFoKfZZDyRDr88qbXIYml_Hu_MYydDRaPnDHFTv7R7lzyG7xfIJqjCeyJRkZyMo_
+## 16 AB3BwFrEkm7p5deqOJzsaq0P0jsAK9nre_9WYHHxTdAY85AtqgHOUx4DWBWDhOyRSX5P
+## 17 AB3BwFr3ytflVOLHHjDjpiQRyNAdh79L0Hk9qOuSDmtC-2UjcWcAXyWhd4pJVKYIAda2</code></pre>
 </div>
 <div id="visualize-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -432,7 +432,7 @@
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFrxUU1CZxjg0H6h5Mk5LsardlBjp7Ah-hwVl5VGka5cRlCLDq8j6gsxptaqj-9N</code></pre>
+## eTag:                 AB3BwFqdBWHz1mZcnxzizSm-N8Z0N6DMeOUF9TUZm9Q-o4bF7xSUVnJeHESdzmXctkiX</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">

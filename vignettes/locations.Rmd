@@ -9,7 +9,7 @@ vignette: >
 
 # Setup
 
-```{r setup}
+```r
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
 
@@ -19,22 +19,42 @@ gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
 ```
 
 
-```{r}
+```r
 # assumes you have projectId string set to environment argument GCAT_DEFAULT_PROJECT_ID
 gcat_region_set("us-central1")
 gcat_project_set(Sys.getenv("GCAT_DEFAULT_PROJECT_ID"))
 ```
 
+```
+2020-03-29 20:39:26> Region set to us-central1
+[1] "us-central1"
+2020-03-29 20:39:26> ProjectId set to gc-automl-tables-r
+[1] "gc-automl-tables-r"
+```
+
 ## Get list of locations 
 
-```{r}
+```r
 locations_list <- gcat_list_locations()
 locations_list
 ```
 
+```
+                                               name  locationId
+1          projects/gc-automl-tables-r/locations/eu          eu
+2 projects/gc-automl-tables-r/locations/us-central1 us-central1
+```
+
+
 ## Set location 
 
-```{r}
+```r
 location_path <- gcat_get_location()
 location_path
+```
+
+```
+==Google Cloud AutoML Tables Location==
+name:                 projects/gc-automl-tables-r/locations/us-central1 
+locationId:           us-central1 
 ```
