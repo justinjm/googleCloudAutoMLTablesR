@@ -215,6 +215,7 @@ gcat_model_01
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
 
 ### Viewing Models
+
 While you wait - or after your latest model training completes - you can view the list trained models: 
 
 ```{r}
@@ -248,7 +249,40 @@ After training has been completed, you can review various performance statistics
 # readRDS("request_debug.rds")
 ```
 
-
 ### Make batch prediction 
 
+There are two different prediction modes: online and batch. The following cell shows you how to make a batch prediction.
+
+```r
+batch_predictions <- gcat_batch_predict(
+  modelDisplayName = "test_01_bq_01",
+  inputSource = "gs://gcatr-dev/bank_marketing_batch_01.csv",
+  outputTarget = "gs://gcatr-dev/predictions/"
+)
+```
+
 ### Evaluate predictions 
+
+## Deployment 
+
+### Deploy model 
+
+```r
+deployed_model <- gcat_deploy_model(modelDisplayName = "test_01_bq_01")
+```
+
+### Make online prediction 
+
+Now that our model is deployed, we can use it to make online predictions. First, let's created a hypothetical record to predict on it: 
+
+```r
+example_record <- 
+```
+
+Then we can invoke the `[predict()](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict)` API 
+
+```r
+online_predictions <- gcat_predict(record = example_record,
+                                   modelDisplayName = "test_01_bq_01")
+```
+
