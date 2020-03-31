@@ -236,11 +236,12 @@ gcat_model
 After training has been completed, you can review various performance statistics on the model, such as the accuracy, precision, recall, and so on. The metrics are returned in a nested data structure:
 
 ```{r}
-# model_evaluation <- gcat_list_model_evaluations(
-#   projectId = projectId,
-#   locationId = location,
-#   modelDisplayName = "test_01_bq_01"
-# )
+model_evaluation <- gcat_list_model_evaluations(
+  projectId = projectId,
+  locationId = location,
+  modelDisplayName = "test_01_bq_01"
+)
+model_evaluation
 ```
 
 
@@ -276,10 +277,10 @@ deployed_model <- gcat_deploy_model(modelDisplayName = "test_01_bq_01")
 Now that our model is deployed, we can use it to make online predictions. First, let's created a hypothetical record to predict on it: 
 
 ```r
-example_record <- 
+example_record <- as.data.frame()
 ```
 
-Then we can invoke the `[predict()](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict)` API 
+Then we can invoke the `[predict()](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict)` API like so: 
 
 ```r
 online_predictions <- gcat_predict(record = example_record,

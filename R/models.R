@@ -167,29 +167,36 @@ gcat_get_model <- function(projectId = gcat_project_get(),
 #' @param locationId the location Id
 #' @param modelDisplayName the name of the model shown in the interface
 #'
+#' @family Model functions
 #' @export
-# gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
-#                                         locationId = gcat_region_get(),
-#                                         modelDisplayName,
-#                                         pageToken = NULL,
-#                                         pageSize = NULL,
-#                                         filter = NULL) {
-#
-#   parent <- gcat_list_models(projectId = projectId,
-#                              locationId = locationId)
-#   # browser()
-#   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/modelEvaluations",
-#                  parent)
-#   # automl.projects.locations.models.modelEvaluations.list
-#   pars = list(pageToken = pageToken, pageSize = pageSize, filter = filter)
-#
-#   f <- googleAuthR::gar_api_generator(url,
-#                                       "GET",
-#                                       pars_args = rmNullObs(pars),
-#                                       data_parse_function = function(x) x)
-#
-#   response <- f()
-#
-#   out <- response
-#
-# }
+gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
+                                        locationId = gcat_region_get(),
+                                        modelDisplayName) {
+
+  model <- gcat_get_model(modelDisplayName = modelDisplayName)
+
+  parent <- model$name
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/modelEvaluations",
+                 parent)
+
+  parse_lm <- function(x) {
+    x <- x$modelEvaluation
+    x$createTime <- timestamp_to_r(x$createTime)
+
+    x
+
+  }
+
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "GET",
+                                      data_parse_function = parse_lm)
+
+  response <- f()
+
+  out <- response
+
+  out
+
+}
