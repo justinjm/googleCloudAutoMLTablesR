@@ -90,7 +90,7 @@ For now, one has to manually create dataset via [GCP console](https://console.cl
 See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
 
 ```{r}
-gcat_dataset <- gcat_create_dataset(displayName = "test_07_bq")
+gcat_dataset <- gcat_create_dataset(displayName = "test_10_bq")
 gcat_dataset
 ```
 

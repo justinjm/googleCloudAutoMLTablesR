@@ -148,8 +148,6 @@ gcat_get_dataset <- function(projectId = gcat_project_get(),
 #' The name can be up to 32 characters long and can consist only of ASCII
 #' Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.
 #'
-#' @import jsonlite
-#'
 #' @export
 gcat_create_dataset <- function(projectId = gcat_project_get(),
                                 locationId = gcat_region_get(),
@@ -160,25 +158,8 @@ gcat_create_dataset <- function(projectId = gcat_project_get(),
 
   parent <- location_path$name
 
-  ds <- sprintf('{"displayName": "%s","tablesDatasetMetadata": { }}',
+  Dataset <- sprintf('{"displayName": "%s","tablesDatasetMetadata": { }}',
                 displayName)
-
-  gcat_create_dataset_do_call(Dataset = ds,
-                              parent = parent)
-
-}
-
-#' Creates a dataset (Internal API call).
-#'
-#' @param Dataset a dataset object
-#' @param parent the resource name of the project to create the dataset for
-#'
-#' @family Dataset functions
-#'
-#' @keywords internal
-#' @noRd
-gcat_create_dataset_do_call <- function(Dataset,
-                                        parent) {
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
                  parent)
@@ -189,7 +170,11 @@ gcat_create_dataset_do_call <- function(Dataset,
                                       data_parse_function = function(x) x,
                                       checkTrailingSlash = FALSE)
 
-  f(the_body = Dataset)
+  response <- f(the_body = Dataset)
+
+  out <- response
+
+  structure(out, class = "gcat_dataset")
 
 }
 
