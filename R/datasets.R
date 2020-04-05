@@ -160,16 +160,8 @@ gcat_create_dataset <- function(projectId = gcat_project_get(),
 
   parent <- location_path$name
 
-  # Unboxing of entry into a list
-  jubox <- function(x) jsonlite::unbox(x)
-
-  ds <- structure(
-    list(
-      displayName = jubox(displayName),
-      tablesDatasetMetadata = jubox("{ }")
-    ),
-    class = c("gar_Dataset", "list")
-  )
+  ds <- sprintf('{"displayName": "%s","tablesDatasetMetadata": { }}',
+                displayName)
 
   gcat_create_dataset_do_call(Dataset = ds,
                               parent = parent)
@@ -196,8 +188,6 @@ gcat_create_dataset_do_call <- function(Dataset,
                                       "POST",
                                       data_parse_function = function(x) x,
                                       checkTrailingSlash = FALSE)
-
-  stopifnot(inherits(Dataset, "gar_Dataset"))
 
   f(the_body = Dataset)
 
