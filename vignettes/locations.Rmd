@@ -28,8 +28,8 @@ gcat_project_set(Sys.getenv("GCAT_DEFAULT_PROJECT_ID"))
 ```
 2020-03-29 20:39:26> Region set to us-central1
 [1] "us-central1"
-2020-03-29 20:39:26> ProjectId set to gc-automl-tables-r
-[1] "gc-automl-tables-r"
+2020-03-29 20:39:26> ProjectId set to project-id
+[1] "project-id"
 ```
 
 ## Get list of locations 
@@ -41,8 +41,8 @@ locations_list
 
 ```
                                                name  locationId
-1          projects/gc-automl-tables-r/locations/eu          eu
-2 projects/gc-automl-tables-r/locations/us-central1 us-central1
+1          projects/project-id/locations/eu          eu
+2 projects/project-id/locations/us-central1 us-central1
 ```
 
 
@@ -55,6 +55,6 @@ location_path
 
 ```
 ==Google Cloud AutoML Tables Location==
-name:                 projects/gc-automl-tables-r/locations/us-central1 
+name:                 projects/project-id/locations/us-central1 
 locationId:           us-central1 
 ```
