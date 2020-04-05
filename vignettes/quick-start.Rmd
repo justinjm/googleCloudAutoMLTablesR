@@ -7,27 +7,36 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r global, echo = FALSE}
+# knitr::opts_chunk$set(eval = FALSE)
+```
+
+# Summary 
+
+This is a quick start tutorial for training a model using GCP AutoML Tables.
+
 # Setup 
 
-```{r setup}
+Before we start preparing data and training a model, we need to perform some authentication and setup steps. Typically this is the least fun and also the most important :) 
+
+## Authentication 
+
+First, we load the 2 R packages we need and then authenticate using a GCP Service account  
+
+```{r auth}
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
-
-# options for debugging to see auth and details on functions later 
-# options(gargle_quiet = FALSE)
-# options(googleAuthR.verbose = 0)
 
 options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
 
 gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
-
-# functions for debugging auth issues 
-# googleAuthR::gar_token_info(2)
-# googleAuthR::gar_check_existing_token()
-# gargle::gargle_oauth_sitrep()
 ```
 
-```{r}
+## Set global arguments 
+
+To make things easier later on, we set some global arguements for our GCP project and the region of the GCP resources within our project: 
+
+```{r gcat-global-arguements}
 projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
 location <- "us-central1"
 gcat_region_set("us-central1")

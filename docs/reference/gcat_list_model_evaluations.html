@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates a model — gcat_create_model • googleCloudAutoMLTablesR</title>
+<title>Lists model evaluations. — gcat_list_model_evaluations • googleCloudAutoMLTablesR</title>
 
 
 <!-- jquery -->
@@ -35,10 +35,8 @@
 
 
 
-<meta property="og:title" content="Creates a model — gcat_create_model" />
-<meta property="og:description" content="Returns a Model in the responsefield when it completes. When you create a
-model, several model evaluations are created for it:
-a global evaluation, and one evaluation for each annotation spec." />
+<meta property="og:title" content="Lists model evaluations. — gcat_list_model_evaluations" />
+<meta property="og:description" content="Lists model evaluations." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -133,22 +131,17 @@ a global evaluation, and one evaluation for each annotation spec." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates a model</h1>
+    <h1>Lists model evaluations.</h1>
     
-    <div class="hidden name"><code>gcat_create_model.Rd</code></div>
+    <div class="hidden name"><code>gcat_list_model_evaluations.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns a Model in the responsefield when it completes. When you create a
-model, several model evaluations are created for it:
-a global evaluation, and one evaluation for each annotation spec.</p>
+    <p>Lists model evaluations.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_create_model</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
-  <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(),
-  <span class='kw'>datasetDisplayName</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_get_global_dataset.html'>gcat_get_global_dataset</a></span>(), <span class='no'>columnDisplayName</span>,
-  <span class='no'>modelDisplayName</span>, <span class='kw'>trainBudgetMilliNodeHours</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>optimizationObjective</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>targetColumnSpecName</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>gcat_list_model_evaluations</span>(<span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
+  <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(), <span class='no'>modelDisplayName</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -159,38 +152,18 @@ a global evaluation, and one evaluation for each annotation spec.</p>
     </tr>
     <tr>
       <th>locationId</th>
-      <td><p>location of GCP resources</p></td>
-    </tr>
-    <tr>
-      <th>datasetDisplayName</th>
-      <td><p>the full name of your dataset</p></td>
-    </tr>
-    <tr>
-      <th>columnDisplayName</th>
-      <td><p>the full name of the label or target</p></td>
+      <td><p>the location Id</p></td>
     </tr>
     <tr>
       <th>modelDisplayName</th>
       <td><p>the name of the model shown in the interface</p></td>
     </tr>
-    <tr>
-      <th>trainBudgetMilliNodeHours</th>
-      <td><p>number of milli-node-hours for training. For example, 1000 = 1 hour.</p></td>
-    </tr>
-    <tr>
-      <th>optimizationObjective</th>
-      <td><p>with the metric to optimize (optional). See https://cloud.google.com/automl-tables/docs/train#opt-obj</p></td>
-    </tr>
-    <tr>
-      <th>targetColumnSpecName</th>
-      <td><p>with the full column name of your target column (optional).</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Other Model functions: <code><a href='gcat_get_model.html'>gcat_get_model</a></code>,
-  <code><a href='gcat_list_model_evaluations.html'>gcat_list_model_evaluations</a></code>,
+    <div class='dont-index'><p>Other Model functions: <code><a href='gcat_create_model.html'>gcat_create_model</a></code>,
+  <code><a href='gcat_get_model.html'>gcat_get_model</a></code>,
   <code><a href='gcat_list_models.html'>gcat_list_models</a></code></p></div>
 
   </div>
