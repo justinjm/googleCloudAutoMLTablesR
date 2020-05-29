@@ -153,12 +153,18 @@ gcat_create_dataset <- function(projectId = gcat_project_get(),
                                 locationId = gcat_region_get(),
                                 displayName) {
 
+  existing_datasets <- gcat_list_datasets(projectId, locationId)
+
+  if(displayName %in% existing_datasets$displayName) {
+    stop("Existing dataset already exists, must specify new, unique name.")
+  }
+
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
 
   parent <- location_path$name
 
-  Dataset <- sprintf('{"displayName": "%s","tablesDatasetMetadata": { }}',
+    Dataset <- sprintf('{"displayName": "%s","tablesDatasetMetadata": { }}',
                 displayName)
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s/datasets",
