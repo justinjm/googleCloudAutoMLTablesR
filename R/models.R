@@ -52,6 +52,12 @@ gcat_create_model <- function(projectId = gcat_project_get(),
                               optimizationObjective = NULL,
                               targetColumnSpecName = NULL) {
 
+  existing_models <- gcat_list_models(projectId, locationId)
+
+  if(modelDisplayName %in% existing_models$displayName) {
+    stop("Model with specified modelDisplayName exists, specify unique modelDisplayName.")
+  }
+
   message("> Submitting model training job request...")
 
   location_path <- gcat_get_location(projectId = projectId,

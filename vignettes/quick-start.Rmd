@@ -92,14 +92,10 @@ Now we are ready to create an AutoML tables dataset.
 
 ### Create AutoML Tables dataset 
 
-Currently does not work! 
-
-For now, one has to manually create dataset via [GCP console](https://console.cloud.google.com/automl-tables/datasets/) 
-
-See open [issue](https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1) for more.
+Create a AutoML Tables dataset (with a unique `displayName`):
 
 ```{r}
-gcat_dataset <- gcat_create_dataset(displayName = "test_11_bq")
+gcat_dataset <- gcat_create_dataset(displayName = "test_01_bq")
 gcat_dataset
 ```
 
@@ -210,7 +206,7 @@ Training or creating a model is done with `gcat_create_model`.
 
 This will be a long-lasting operation. You will recieve an email when the model training completes
 
-```r
+```{r}
 gcat_model_01 <- gcat_create_model(
   datasetDisplayName = "test_01_bq",
   columnDisplayName = "V16",
