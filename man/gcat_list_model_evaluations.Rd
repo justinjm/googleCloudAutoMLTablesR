@@ -4,8 +4,11 @@
 \alias{gcat_list_model_evaluations}
 \title{Lists model evaluations.}
 \usage{
-gcat_list_model_evaluations(projectId = gcat_project_get(),
-  locationId = gcat_region_get(), modelDisplayName)
+gcat_list_model_evaluations(
+  projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  modelDisplayName
+)
 }
 \arguments{
 \item{projectId}{GCP project id}
@@ -18,8 +21,9 @@ gcat_list_model_evaluations(projectId = gcat_project_get(),
 Lists model evaluations.
 }
 \seealso{
-Other Model functions: \code{\link{gcat_create_model}},
-  \code{\link{gcat_get_model}},
-  \code{\link{gcat_list_models}}
+Other Model functions: 
+\code{\link{gcat_create_model}()},
+\code{\link{gcat_get_model}()},
+\code{\link{gcat_list_models}()}
 }
 \concept{Model functions}

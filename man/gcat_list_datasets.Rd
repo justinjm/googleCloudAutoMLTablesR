@@ -4,8 +4,10 @@
 \alias{gcat_list_datasets}
 \title{Lists datasets in a project.}
 \usage{
-gcat_list_datasets(projectId = gcat_project_get(),
-  locationId = gcat_region_get())
+gcat_list_datasets(
+  projectId = gcat_project_get(),
+  locationId = gcat_region_get()
+)
 }
 \arguments{
 \item{projectId}{GCP project id}

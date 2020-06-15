@@ -16,7 +16,7 @@ Imports:
     assertthat (>= 0.2.1),
     googleAuthR (>= 0.3),
     jsonlite (>= 1.6)
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 Suggests: 
     knitr,
     rmarkdown,

@@ -4,8 +4,11 @@
 \alias{gcat_create_dataset}
 \title{Creates a dataset (DOES NOT WORK)}
 \usage{
-gcat_create_dataset(projectId = gcat_project_get(),
-  locationId = gcat_region_get(), displayName)
+gcat_create_dataset(
+  projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  displayName
+)
 }
 \arguments{
 \item{projectId}{GCP project id}

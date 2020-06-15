@@ -13,6 +13,7 @@ gcat_list_locations(projectId = gcat_project_get())
 Lists information about the supported locations
 }
 \seealso{
-Other loctions functions: \code{\link{gcat_get_location}}
+Other loctions functions: 
+\code{\link{gcat_get_location}()}
 }
 \concept{loctions functions}

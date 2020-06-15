@@ -4,10 +4,13 @@
 \alias{gcat_import_data}
 \title{Import data into AutoML Tables from BigQuery or Google Cloud Storage}
 \usage{
-gcat_import_data(projectId = gcat_project_get(),
+gcat_import_data(
+  projectId = gcat_project_get(),
   locationId = gcat_region_get(),
-  displayName = gcat_get_global_dataset(), input_source = c("bq",
-  "gcs"), input_url)
+  displayName = gcat_get_global_dataset(),
+  input_source = c("bq", "gcs"),
+  input_url
+)
 }
 \arguments{
 \item{projectId}{GCP project id}

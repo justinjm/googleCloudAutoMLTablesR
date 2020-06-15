@@ -4,8 +4,10 @@
 \alias{gcat_get_location}
 \title{Get information about a location}
 \usage{
-gcat_get_location(projectId = gcat_project_get(),
-  locationId = gcat_region_get())
+gcat_get_location(
+  projectId = gcat_project_get(),
+  locationId = gcat_region_get()
+)
 }
 \arguments{
 \item{projectId}{GCP project id}
@@ -17,6 +19,7 @@ gcat_get_location(projectId = gcat_project_get(),
 Get information about a location
 }
 \seealso{
-Other loctions functions: \code{\link{gcat_list_locations}}
+Other loctions functions: 
+\code{\link{gcat_list_locations}()}
 }
 \concept{loctions functions}

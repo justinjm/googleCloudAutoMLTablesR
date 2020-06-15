@@ -4,20 +4,26 @@
 \alias{gcat_list_models}
 \title{List Models}
 \usage{
-gcat_list_models(projectId = gcat_project_get(),
-  locationId = gcat_region_get())
+gcat_list_models(
+  projectId = gcat_project_get(),
+  locationId = gcat_region_get(),
+  detail = c("summary", "full")
+)
 }
 \arguments{
 \item{projectId}{GCP project id}
 
 \item{locationId}{location of GCP resources}
+
+\item{detail}{Set level of detail}
 }
 \description{
 List Models
 }
 \seealso{
-Other Model functions: \code{\link{gcat_create_model}},
-  \code{\link{gcat_get_model}},
-  \code{\link{gcat_list_model_evaluations}}
+Other Model functions: 
+\code{\link{gcat_create_model}()},
+\code{\link{gcat_get_model}()},
+\code{\link{gcat_list_model_evaluations}()}
 }
 \concept{Model functions}

@@ -4,9 +4,12 @@
 \alias{gcat_get_column_spec}
 \title{Gets a column spec.}
 \usage{
-gcat_get_column_spec(projectId = gcat_project_get(),
+gcat_get_column_spec(
+  projectId = gcat_project_get(),
   locationId = gcat_region_get(),
-  displayName = gcat_get_global_dataset(), columnDisplayName)
+  displayName = gcat_get_global_dataset(),
+  columnDisplayName
+)
 }
 \arguments{
 \item{projectId}{GCP project id}

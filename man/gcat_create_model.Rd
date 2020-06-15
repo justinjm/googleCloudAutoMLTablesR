@@ -4,11 +4,16 @@
 \alias{gcat_create_model}
 \title{Creates a model}
 \usage{
-gcat_create_model(projectId = gcat_project_get(),
+gcat_create_model(
+  projectId = gcat_project_get(),
   locationId = gcat_region_get(),
-  datasetDisplayName = gcat_get_global_dataset(), columnDisplayName,
-  modelDisplayName, trainBudgetMilliNodeHours = NULL,
-  optimizationObjective = NULL, targetColumnSpecName = NULL)
+  datasetDisplayName = gcat_get_global_dataset(),
+  columnDisplayName,
+  modelDisplayName,
+  trainBudgetMilliNodeHours = NULL,
+  optimizationObjective = NULL,
+  targetColumnSpecName = NULL
+)
 }
 \arguments{
 \item{projectId}{GCP project id}
@@ -33,8 +38,9 @@ model, several model evaluations are created for it:
 a global evaluation, and one evaluation for each annotation spec.
 }
 \seealso{
-Other Model functions: \code{\link{gcat_get_model}},
-  \code{\link{gcat_list_model_evaluations}},
-  \code{\link{gcat_list_models}}
+Other Model functions: 
+\code{\link{gcat_get_model}()},
+\code{\link{gcat_list_model_evaluations}()},
+\code{\link{gcat_list_models}()}
 }
 \concept{Model functions}

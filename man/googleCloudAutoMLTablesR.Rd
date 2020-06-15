@@ -3,8 +3,4 @@
 \docType{package}
 \name{googleCloudAutoMLTablesR}
 \alias{googleCloudAutoMLTablesR}
-\alias{googleCloudAutoMLTablesR-package}
 \title{Interact with Google Cloud AutoML Tables with R}
-\description{
-Interact with Google Cloud AutoML Tables with R
-}

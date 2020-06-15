@@ -4,9 +4,12 @@
 \alias{gcat_set_target_column}
 \title{Updates a dataset.}
 \usage{
-gcat_set_target_column(projectId = gcat_project_get(),
+gcat_set_target_column(
+  projectId = gcat_project_get(),
   locationId = gcat_region_get(),
-  displayName = gcat_get_global_dataset(), columnDisplayName)
+  displayName = gcat_get_global_dataset(),
+  columnDisplayName
+)
 }
 \arguments{
 \item{projectId}{GCP project id}
