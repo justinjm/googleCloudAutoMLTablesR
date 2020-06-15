@@ -2,11 +2,15 @@
 #'
 #' @param projectId GCP project id
 #' @param locationId location of GCP resources
+#' @param detail Set level of detail
 #'
 #' @family Model functions
 #' @export
 gcat_list_models <- function(projectId = gcat_project_get(),
-                             locationId = gcat_region_get()) {
+                             locationId = gcat_region_get(),
+                             detail = c("summary","full")) {
+
+  detail <- match.arg(detail)
 
   parent <- sprintf("projects/%s/locations/%s",
                     projectId,
@@ -21,7 +25,15 @@ gcat_list_models <- function(projectId = gcat_project_get(),
 
   out <- response$model
 
-  out
+  out_names <- switch(detail,
+                      summary = c("displayName",
+                                  "datasetId",
+                                  "createTime",
+                                  "deploymentState",
+                                  "updateTime"),
+                      full = TRUE)
+
+  out[,out_names]
 
 }
 

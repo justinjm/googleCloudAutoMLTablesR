@@ -197,8 +197,8 @@ test_that("We can fetch a list of models", {
 
   expect_s3_class(l, "data.frame")
   expect_true(
-    all(names(l) %in% c("name", "displayName", "datasetId", "createTime",
-                        "deploymentState", "updateTime", "tablesModelMetadata"))
+    all(names(l) %in% c("displayName", "datasetId", "createTime",
+                        "deploymentState", "updateTime"))
   )
 })
 
