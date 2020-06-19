@@ -144,7 +144,8 @@ gcat_get_model <- function(projectId = gcat_project_get(),
                            modelDisplayName) {
 
   models_list <- gcat_list_models(projectId = projectId,
-                                  locationId = locationId)
+                                  locationId = locationId,
+                                  detail = "full")
 
   # select most recently created model if multiple models created with same
   # modelDisplay name. This depends on gcat_list_models() results sorted
