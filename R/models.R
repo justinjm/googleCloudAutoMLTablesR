@@ -70,7 +70,7 @@ gcat_create_model <- function(projectId = gcat_project_get(),
     stop("Model with specified modelDisplayName exists, specify unique modelDisplayName.")
   }
 
-  message("> Submitting model training job request...")
+  myMessage("Submitting model training job request...", level = 3)
 
   location_path <- gcat_get_location(projectId = projectId,
                                      locationId = locationId)
@@ -84,13 +84,13 @@ gcat_create_model <- function(projectId = gcat_project_get(),
   # get dataset ID from url since not sure how else?
   dataset_id <- gsub(".*/datasets/" , "", dataset$name)
 
-  column_spec <- gcat_get_column_specs(projectId,
-                                       locationId,
-                                       displayName = datasetDisplayName,
-                                       columnDisplayName)
+  column_spec <- gcat_get_column_spec(projectId,
+                                      locationId,
+                                      displayName = datasetDisplayName,
+                                      columnDisplayName)
 
   # Build model object request body
-  create_model_request <- structure(
+  create_model_request_body <- structure(
     list(
       datasetId = dataset_id,
       displayName = modelDisplayName,
@@ -105,37 +105,25 @@ gcat_create_model <- function(projectId = gcat_project_get(),
   )
 
   tryCatch({
-    gcat_create_model_do_call(Model = create_model_request,
-                              parent = parent)
-  }, error = function(ex) {
-    stop("CreateModelRequest error: ", ex$message)
+    url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models",
+                   parent)
+
+    # automl.projects.locations.models.create
+    f <- googleAuthR::gar_api_generator(url,
+                                        "POST",
+                                        data_parse_function = function(x) x)
+
+    stopifnot(inherits(create_model_request_body, "gcat_Model"))
+
+    response <- f(the_body = create_model_request_body)
+
+    out <- response
+
+    structure(out, class = "gcat_Operation")
+
+  }, error = function(e) {
+    stop("CreateModelRequest error: ", e$message)
   })
-
-}
-
-#' (Internal API call).
-#' @param Model a model object
-#' @param parent the name of parent resource
-#'
-#' @noRd
-gcat_create_model_do_call <- function(Model,
-                                      parent) {
-
-  url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models",
-                 parent)
-
-  # automl.projects.locations.models.create
-  f <- googleAuthR::gar_api_generator(url,
-                                      "POST",
-                                      data_parse_function = function(x) x)
-
-  stopifnot(inherits(Model, "gcat_Model"))
-
-  response <- f(the_body = Model)
-
-  out <- response
-
-  out
 
 }
 
