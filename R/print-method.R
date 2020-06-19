@@ -38,6 +38,15 @@ print.gcat_column_spec <- function(x,...){
 }
 
 #' @export
+print.gcat_operation <- function(x,...){
+  cat("==Google Cloud AutoML Tables Operation==\n")
+  cat0("name:                ", x$name)
+  cat0("createTime:          ", as.character(timestamp_to_r(x[["metadata"]][["createTime"]])))
+  cat0("updateTime:          ", as.character(timestamp_to_r(x[["metadata"]][["updateTime"]])))
+
+}
+
+#' @export
 print.gcat_model <- function(x,...){
   cat("==Google Cloud AutoML Tables Model==\n")
   cat0("name:                ", x$name)
@@ -47,3 +56,4 @@ print.gcat_model <- function(x,...){
   cat0("updateTime:          ", as.character(timestamp_to_r(x[["updateTime"]])))
 
 }
+

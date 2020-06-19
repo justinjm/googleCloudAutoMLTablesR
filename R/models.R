@@ -101,28 +101,29 @@ gcat_create_model <- function(projectId = gcat_project_get(),
           name = column_spec[["name"]]
         )
       )
-    ), class = c("gcat_Model", "list")
+    ), class = c("gcat_model", "list")
   )
 
   tryCatch({
     url <- sprintf("https://automl.googleapis.com/v1beta1/%s/models",
                    parent)
 
-    # automl.projects.locations.models.create
-    f <- googleAuthR::gar_api_generator(url,
-                                        "POST",
-                                        data_parse_function = function(x) x)
+    f <- googleAuthR::gar_api_generator(
+      url,
+      "POST",
+      data_parse_function = function(x) x)
 
-    stopifnot(inherits(create_model_request_body, "gcat_Model"))
+    stopifnot(inherits(create_model_request_body, "gcat_model"))
 
     response <- f(the_body = create_model_request_body)
 
     out <- response
 
-    structure(out, class = "gcat_Operation")
+    structure(out, class = "gcat_operation")
 
   }, error = function(e) {
     stop("CreateModelRequest error: ", e$message)
+
   })
 
 }
