@@ -208,3 +208,36 @@ gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
   out
 
 }
+
+#' Perform a batch prediction. Unlike the online Predict,
+#' batchprediction result won't be immediately available in the response.
+#' Instead,a long running operation object is returned.
+#' User can poll the operationresult via GetOperationmethod.
+#' Once the operation is done, BatchPredictResult is returned in the response
+#' field.
+#'
+#' @param modelDisplayName
+#' @param inputSource
+#' @param outputTarget
+#'
+#' @family BatchPredictRequest functions
+#' @export
+gcat_batch_predict <- function(modelDisplayName,
+                               inputSource,
+                               outputTarget) {
+
+
+  url <- sprintf("https://automl.googleapis.com/v1beta1/%s:batchPredict",
+                 name)
+
+
+  # automl.projects.locations.models.batchPredict
+  f <- googleAuthR::gar_api_generator(url,
+                                      "POST",
+                                      data_parse_function = function(x) x)
+
+  stopifnot(inherits(BatchPredictRequest, "gar_BatchPredictRequest"))
+
+  f(the_body = BatchPredictRequest)
+
+}
