@@ -1,13 +1,3 @@
-# TODO - move this to test function
-# assumes you have client JSON saved to environment argument GAR_CLIENT_JSON
-# app_project <- googleAuthR::gar_set_client(
-#   scopes = c("https://www.googleapis.com/auth/cloud-platform"))
-#
-# library(googleAuthR)
-# library(googleCloudAutoMLTablesR)
-#
-# gar_auth("gcat.oauth")
-
 context("Setup")
 
 options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
