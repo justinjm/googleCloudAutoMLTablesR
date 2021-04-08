@@ -229,15 +229,14 @@ gcat_batch_predict <- function(modelDisplayName,
   # inputSource <- match.arg(input_source)
 
   # get name of model
-  gcat_get_model(modelDisplayName = modelDisplayName)
+  model <- gcat_get_model(modelDisplayName = modelDisplayName)
+  name <- model$name
+  browser()
 
   # GCS
   batch_predict_request <- structure(
     list(
       inputConfig = list(
-        params = list(
-          name = modelDisplayName
-        ),
         gcsSource = list(
           inputUris = inputSource
         )
@@ -251,10 +250,8 @@ gcat_batch_predict <- function(modelDisplayName,
     class = c("gar_BatchPredictRequest", "list")
   )
 
-  browser()
-
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s:batchPredict",
-                 modelDisplayName)
+                 name)
 
   # automl.projects.locations.models.batchPredict
   f <- googleAuthR::gar_api_generator(url,
