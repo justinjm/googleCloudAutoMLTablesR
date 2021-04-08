@@ -216,9 +216,9 @@ gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
 #' Once the operation is done, BatchPredictResult is returned in the response
 #' field.
 #'
-#' @param modelDisplayName
-#' @param inputSource
-#' @param outputTarget
+#' @param modelDisplayName the name of the model shown in the interface
+#' @param inputSource  Google Cloud Storage URIs to input files, up to 2000 characters long. Full object path, e.g. gs://bucket/directory/object.csv
+#' @param outputTarget STRING Required. Google Cloud Storage URI to output directory, up to 2000 characters long. Prefix path: gs://bucket/directory The requesting user must have write permission to the bucket. The directory is created if it doesn't exist.
 #'
 #' @family BatchPredictRequest functions
 #' @export
@@ -226,18 +226,47 @@ gcat_batch_predict <- function(modelDisplayName,
                                inputSource,
                                outputTarget) {
 
+  # inputSource <- match.arg(input_source)
+
+  # get name of model
+  gcat_get_model(modelDisplayName = modelDisplayName)
+
+  # GCS
+  batch_predict_request <- structure(
+    list(
+      inputConfig = list(
+        params = list(
+          name = modelDisplayName
+        ),
+        gcsSource = list(
+          inputUris = inputSource
+        )
+      ),
+      outputConfig = list(
+        gcsDestination = list(
+          outputUriPrefix = outputTarget
+        )
+      )
+    ),
+    class = c("gar_BatchPredictRequest", "list")
+  )
+
+  browser()
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s:batchPredict",
-                 name)
-
+                 modelDisplayName)
 
   # automl.projects.locations.models.batchPredict
   f <- googleAuthR::gar_api_generator(url,
                                       "POST",
                                       data_parse_function = function(x) x)
 
-  stopifnot(inherits(BatchPredictRequest, "gar_BatchPredictRequest"))
+  stopifnot(inherits(batch_predict_request, "gar_BatchPredictRequest"))
 
-  f(the_body = BatchPredictRequest)
+  response <- f(the_body = batch_predict_request)
+
+  out <- response
+
+  out
 
 }

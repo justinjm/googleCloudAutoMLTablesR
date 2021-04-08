@@ -252,7 +252,7 @@ model_evaluation
 
 There are two different prediction modes: online and batch. The following cell shows you how to make a batch prediction.
 
-```r
+```{r}
 batch_predictions <- gcat_batch_predict(
   modelDisplayName = "test_01_bq_01",
   inputSource = "gs://gcatr-dev/bank_marketing_batch_01.csv",
