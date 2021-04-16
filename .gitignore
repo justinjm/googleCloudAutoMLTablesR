@@ -4,3 +4,4 @@
 inst/doc
 *.oauth
 vignettes/request_debug.rds
+googlecloudrunner-auth-key.json
