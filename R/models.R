@@ -212,15 +212,12 @@ gcat_list_model_evaluations <- function(projectId = gcat_project_get(),
 #' Perform a batch prediction. Unlike the online Predict,
 #' batchprediction result won't be immediately available in the response.
 #' Instead,a long running operation object is returned.
-#' User can poll the operationresult via GetOperationmethod.
-#' Once the operation is done, BatchPredictResult is returned in the response
-#' field.
 #'
 #' @param modelDisplayName the name of the model shown in the interface
 #' @param inputSource  Google Cloud Storage URIs to input files, up to 2000 characters long. Full object path, e.g. gs://bucket/directory/object.csv
 #' @param outputTarget STRING Required. Google Cloud Storage URI to output directory, up to 2000 characters long. Prefix path: gs://bucket/directory The requesting user must have write permission to the bucket. The directory is created if it doesn't exist.
 #'
-#' @family BatchPredictRequest functions
+#' @family Model functions
 #' @export
 gcat_batch_predict <- function(modelDisplayName,
                                inputSource,
@@ -247,7 +244,7 @@ gcat_batch_predict <- function(modelDisplayName,
         )
       )
     ),
-    class = c("gar_BatchPredictRequest", "list")
+    class = c("gcat_BatchPredictRequest", "list")
   )
 
   url <- sprintf("https://automl.googleapis.com/v1beta1/%s:batchPredict",
@@ -258,7 +255,7 @@ gcat_batch_predict <- function(modelDisplayName,
                                       "POST",
                                       data_parse_function = function(x) x)
 
-  stopifnot(inherits(batch_predict_request, "gar_BatchPredictRequest"))
+  stopifnot(inherits(batch_predict_request, "gcat_BatchPredictRequest"))
 
   response <- f(the_body = batch_predict_request)
 

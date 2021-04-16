@@ -22,6 +22,7 @@ Lists model evaluations.
 }
 \seealso{
 Other Model functions: 
+\code{\link{gcat_batch_predict}()},
 \code{\link{gcat_create_model}()},
 \code{\link{gcat_get_model}()},
 \code{\link{gcat_list_models}()}

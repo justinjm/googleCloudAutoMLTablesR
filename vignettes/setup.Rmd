@@ -20,6 +20,7 @@ vignette: >
 e.g. your `.Renviron` should have:
 
 ```
+# .Renviron
 GAR_SERVICE_JSON="/Users/me/auth/auth.json"
 GCAT_DEFAULT_PROJECT_ID="my-project"
 GCAT_DEFAULT_REGION="us-central1"

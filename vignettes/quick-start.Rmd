@@ -242,12 +242,6 @@ model_evaluation <- gcat_list_model_evaluations(
 model_evaluation
 ```
 
-
-```{r VIEW-DEBUG}
-# view debugging info
-# readRDS("request_debug.rds")
-```
-
 ### Make batch prediction 
 
 There are two different prediction modes: online and batch. The following cell shows you how to make a batch prediction.
@@ -258,6 +252,11 @@ batch_predictions <- gcat_batch_predict(
   inputSource = "gs://gcatr-dev/bank_marketing_batch_01.csv",
   outputTarget = "gs://gcatr-dev/predictions/"
 )
+```
+
+```{r VIEW-DEBUG}
+# view debugging info
+# readRDS("request_debug.rds")
 ```
 
 ### Evaluate predictions 
@@ -278,7 +277,7 @@ Now that our model is deployed, we can use it to make online predictions. First,
 example_record <- as.data.frame()
 ```
 
-Then we can invoke the `[predict()](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict)` API like so: 
+Then we can invoke the [predict API ](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict) like so: 
 
 ```r
 online_predictions <- gcat_predict(record = example_record,

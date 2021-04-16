@@ -23,6 +23,7 @@ model if multiple models are named the same
 }
 \seealso{
 Other Model functions: 
+\code{\link{gcat_batch_predict}()},
 \code{\link{gcat_create_model}()},
 \code{\link{gcat_list_model_evaluations}()},
 \code{\link{gcat_list_models}()}

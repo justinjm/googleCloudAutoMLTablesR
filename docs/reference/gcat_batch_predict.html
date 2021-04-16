@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Creates a dataset (DOES NOT WORK) — gcat_create_dataset • googleCloudAutoMLTablesR</title>
+<title>Perform a batch prediction. Unlike the online Predict,
+batchprediction result won't be immediately available in the response.
+Instead,a long running operation object is returned. — gcat_batch_predict • googleCloudAutoMLTablesR</title>
 
 
 <!-- jquery -->
@@ -39,8 +41,12 @@
 
 
 
-<meta property="og:title" content="Creates a dataset (DOES NOT WORK) — gcat_create_dataset" />
-<meta property="og:description" content="Currently broken, see issue for more." />
+<meta property="og:title" content="Perform a batch prediction. Unlike the online Predict,
+batchprediction result won't be immediately available in the response.
+Instead,a long running operation object is returned. — gcat_batch_predict" />
+<meta property="og:description" content="Perform a batch prediction. Unlike the online Predict,
+batchprediction result won't be immediately available in the response.
+Instead,a long running operation object is returned." />
 
 
 
@@ -139,40 +145,45 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Creates a dataset (DOES NOT WORK)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/justinjm/googleCloudAutoMLTablesR/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
-    <div class="hidden name"><code>gcat_create_dataset.Rd</code></div>
+    <h1>Perform a batch prediction. Unlike the online Predict,
+batchprediction result won't be immediately available in the response.
+Instead,a long running operation object is returned.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/justinjm/googleCloudAutoMLTablesR/blob/master/R/models.R'><code>R/models.R</code></a></small>
+    <div class="hidden name"><code>gcat_batch_predict.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Currently broken, see <a href='https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1'>issue</a> for more.</p>
+    <p>Perform a batch prediction. Unlike the online Predict,
+batchprediction result won't be immediately available in the response.
+Instead,a long running operation object is returned.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>gcat_create_dataset</span>(
-  <span class='kw'>projectId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_project_get.html'>gcat_project_get</a></span>(),
-  <span class='kw'>locationId</span> <span class='kw'>=</span> <span class='fu'><a href='gcat_region_get.html'>gcat_region_get</a></span>(),
-  <span class='no'>displayName</span>
-)</pre>
+    <pre class="usage"><span class='fu'>gcat_batch_predict</span>(<span class='no'>modelDisplayName</span>, <span class='no'>inputSource</span>, <span class='no'>outputTarget</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>projectId</th>
-      <td><p>GCP project id</p></td>
+      <th>modelDisplayName</th>
+      <td><p>the name of the model shown in the interface</p></td>
     </tr>
     <tr>
-      <th>locationId</th>
-      <td><p>location of GCP resources</p></td>
+      <th>inputSource</th>
+      <td><p>Google Cloud Storage URIs to input files, up to 2000 characters long. Full object path, e.g. gs://bucket/directory/object.csv</p></td>
     </tr>
     <tr>
-      <th>displayName</th>
-      <td><p>the name of the dataset that is shown in the interface.
-The name can be up to 32 characters long and can consist only of ASCII
-Latin letters A-Z and a-z, underscores (_), and ASCII digits 0-9.</p></td>
+      <th>outputTarget</th>
+      <td><p>STRING Required. Google Cloud Storage URI to output directory, up to 2000 characters long. Prefix path: gs://bucket/directory The requesting user must have write permission to the bucket. The directory is created if it doesn't exist.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>Other Model functions: 
+<code><a href='gcat_create_model.html'>gcat_create_model</a>()</code>,
+<code><a href='gcat_get_model.html'>gcat_get_model</a>()</code>,
+<code><a href='gcat_list_model_evaluations.html'>gcat_list_model_evaluations</a>()</code>,
+<code><a href='gcat_list_models.html'>gcat_list_models</a>()</code></p></div>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
