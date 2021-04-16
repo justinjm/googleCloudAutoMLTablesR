@@ -33,6 +33,8 @@ print(yaml)
 
 bb <- cr_build_make(yaml = yaml)
 
-cr_buildtrigger_repo("justinjm/googleCloudAutoMLTablesR", branch = "master")
+github <- cr_buildtrigger_repo(
+  "justinjm/googleCloudAutoMLTablesR",
+  branch = "master")
 
-cr_buildtrigger(bb, name = "test-pkgdown1", trigger = github)
+# cr_buildtrigger(bb, name = "test-pkgdown1", trigger = github)
