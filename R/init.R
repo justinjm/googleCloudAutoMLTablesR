@@ -12,8 +12,8 @@ gcat_region_set <- function(region = c("us-central1",
 
   .gcat_env$region <- region
 
-  myMessage("Region set to ", .gcat_env$region, level = 3)
-  .gcat_env$region
+  myMessage("Region set to '", .gcat_env$region, "'", level = 3)
+  return(invisible(.gcat_env$region))
 }
 
 #' Get Region Set
@@ -46,12 +46,12 @@ gcat_project_set <- function(projectId){
 
   .gcat_env$project <- projectId
 
-  myMessage("ProjectId set to ", .gcat_env$project, level = 3)
-  .gcat_env$project
+  myMessage("ProjectId set to '", .gcat_env$project, "'", level = 3)
+  return(invisible(.gcat_env$project))
 }
 
 #' Get ProjectId
-#' 
+#'
 #' @export
 gcat_project_get <- function(){
 
