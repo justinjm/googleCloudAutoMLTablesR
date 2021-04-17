@@ -14,7 +14,7 @@ This is a quick start tutorial for training a model using GCP AutoML Tables.
 
 # Setup 
 
-## Configure your own Google Cloud Platform project 
+## 1. Configure your own Google Cloud Platform project 
 
 1. [Select or create a GCP project.](https://console.cloud.google.com/cloud-resource-manager). When you first create an account, you get a $300 free credit towards your compute/storage costs.
 2. [Make sure that billing is enabled for your project.](https://cloud.google.com/billing/docs/how-to/modify-project)
@@ -37,7 +37,7 @@ Create a [Google Cloud Storage Bucket](https://console.cloud.google.com/storage)
 
 ### 4. Configure R environment 
 
-#### Install R packages 
+#### 5. Install R packages 
 
 Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already): 
 
@@ -49,7 +49,7 @@ if(length(new.packages)) install.packages(new.packages)
 remotes::install_github("justinjm/googleCloudAutoMLTablesR")
 ``` 
 
-#### .Renviron
+#### 6. .Renviron
 
 Create a file called `.Renviron` in your project's working directory and use the following environemtn arguments: 
 
@@ -68,7 +68,7 @@ GCAT_DEFAULT_REGION="us-central1"
 
 Save the `.Renviron` file and restart your R session to load the environment variables 
 
-## Authentication 
+# Authentication 
 
 Load the 2 R packages we need and then authenticate using the Service account we just created: 
 
@@ -92,6 +92,8 @@ location <- "us-central1"
 gcat_region_set("us-central1")
 gcat_project_set(projectId)
 ```
+
+# Viewing AutoML Tables datasets 
 
 ## Get list of datasets 
 
@@ -241,9 +243,9 @@ dataset <- gcat_set_target_column(columnDisplayName = "V16")
 dataset
 ```
 
-## Modeling 
+# Modeling 
 
-### Create model 
+## Create model 
 
 Training or creating a model is done with `gcat_create_model`.
 
@@ -262,7 +264,7 @@ gcat_model
 
 More details here: [Training models|AutoML Tables Documentation](https://cloud.google.com/automl-tables/docs/train)
 
-### Viewing Models
+## Viewing Models
 
 While you wait - or after your latest model training completes - you can view the list trained models: 
 
@@ -279,7 +281,7 @@ gcat_model
 ```
 
 
-### Evalute the model 
+## Evalute the model 
 
 After training has been completed, you can review various performance statistics on the model, such as the accuracy, precision, recall, and so on. The metrics are returned in a nested data structure:
 
@@ -309,17 +311,17 @@ batch_predictions <- gcat_batch_predict(
 # readRDS("request_debug.rds")
 ```
 
-### Evaluate predictions 
+## Evaluate predictions 
 
-## Deployment 
+# Deployment 
 
-### Deploy model 
+## Deploy model 
 
 ```r
 deployed_model <- gcat_deploy_model(modelDisplayName = "test_01_bq_01")
 ```
 
-### Make online prediction 
+## Make online prediction 
 
 Now that our model is deployed, we can use it to make online predictions. First, let's created a hypothetical record to predict on it: 
 
