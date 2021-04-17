@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quick Start • googleCloudAutoMLTablesR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -26,7 +26,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -156,7 +156,7 @@
   
    checking for file 
   
-✔  checking for file ‘/tmp/Rtmpl5qmWH/remotes10252adfa23/justinjm-googleCloudAutoMLTablesR-ade3a04/DESCRIPTION’ (344ms)
+✔  checking for file ‘/tmp/RtmpGM9tyE/remotes1014edc69e/justinjm-googleCloudAutoMLTablesR-0071567/DESCRIPTION’
 ## 
   
 ─  preparing ‘googleCloudAutoMLTablesR’:
@@ -166,10 +166,6 @@
 ## 
   
   
-  
-   
-  
-   checking for LF line-endings in source and make files and shell scripts
   
 ─  checking for LF line-endings in source and make files and shell scripts
 ## 
@@ -182,7 +178,7 @@
   
    
 ## </code></pre>
-<pre><code>## Installing package into '/tmp/RtmpYMlgyf/temp_libpath16773cbb2'
+<pre><code>## Installing package into '/tmp/RtmpvYgigi/temp_libpath160174e69'
 ## (as 'lib' is unspecified)</code></pre>
 </div>
 <div id="renviron" class="section level4">
@@ -227,10 +223,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 22:38:35&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-17 22:58:06&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 22:38:35&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-17 22:58:06&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
 </div>
 <div id="viewing-automl-tables-datasets" class="section level1">
@@ -248,10 +244,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFqp_6BbWOeVZiNgf4u43mndA-3hfnBRqpKp936q5pshUbFm9w8UlAN5Ce3OpVXG
-## 2 AB3BwFq91LaE2v2Q1lKYYzccqLmEPSVyRWe5RtdU8H4jCTm_Tbp6F1mMwenj44DFz8C5
-## 3 AB3BwFpQiA4rW4eoYq-KfsnAbgHQpZkSrGHGHcBmGsnaUF4wFIRVKp2F1smeMFZU1jga
-## 4 AB3BwFpCsS04Ef5Qf3yrVnZyCIvI7jrgSPXRVe41ajYF-IxTq13Gy58oojTM6S5fSM3R
+## 1 AB3BwFrKDN2kCV2MXtcSo3gyFtQS3zfRv7LKJ2t2T9oY7wMBPmhtJeLVt52oT-fCjEw=
+## 2 AB3BwFp2gZ2OC3h1iL3zs31gJfe_rzsfJ434qh6tspAWtDJcJTgUlSTnkNFZ8cp8UrYW
+## 3 AB3BwFquvonH-0xEVyFF1_eSlF48E21BeYLftt_xKA1GBxrNzegMnVFjF7xcuv-wMmjj
+## 4 AB3BwFpCOKGPOusmXSxSrLoJl3kKykyQdCFFj26mfHchHsaAY7aWkGwL9dyqO4vpT0ch
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -385,7 +381,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFqqQqaLy9l5KkUNVjo3v8j4whhAD-f1_hab4UuQFzALiy86ymfpUX2Qe-aBFw0k</code></pre>
+## eTag:                 AB3BwFqCfQG91B8nmplSPgu89tjfJAKiVorAC65PYGYfMtfsUe3Gext8K5gFUQzlfGqA</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -520,23 +516,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFq1IeIgQjMEKt4OiV64fzY-X9IiEu8XAIhmv3W4qgyLOMOdrC5uBvBBlvzgePKQ
-## 2  AB3BwFrg9u031psSseJ9kgFt6_KHW9OMsIM6mens2nhvTF1THvLiRlmx3rc2Ne-qperS
-## 3  AB3BwFr1J1JndCc3l3nbrc_VeGIVO9NmKwjpRgR6pOa_kF2SO9njjja4UrNJ6tbjyU6D
-## 4  AB3BwFqwyQrXBG-O3USHoSvX4mpjmt9tkR-KMIEheOJfitpWKMSnasnE8-5UcdeN7CqJ
-## 5  AB3BwFp_jcxumCge28nf82XDRk8kpzCZa-4x362uSARkpk3jIB39JhSS1PCj78P2aBx7
-## 6  AB3BwFqqHGHd41FWTbh3Oz2zKTNFCLtYSEDE7znLcWS3B3BD5okrIKYuhJtHOXHhU48V
-## 7  AB3BwFpZCsqOh7tTeOm_bYqPM3ZAgdXK9RTI0FXFvFooPbDUTAXUCfBAwp99vFAjewtF
-## 8  AB3BwFo0XWwTxA_ZLcuh6Zda2YiJ2tJ78f5MbXoUmHXRj9dShyWbPoYybo03c2EL3EM3
-## 9  AB3BwFpSHk-6RJe5xE7ODw28HgxIlCGlt9SA3w3dWHswWH-KgdgBLVDVX4yoyqADAwnZ
-## 10 AB3BwFoqZS7C6LU8o3FQULaLDIn-6INxdzMGCIf2VrXTlOlacrU1CMPJ7BTGDGbn1Luf
-## 11 AB3BwFo9DncwvoRNrKF0iwo20gB-q79-nyg2p2wko4t9g8lHBFHj4G1pYBD2ZGsAbK1z
-## 12 AB3BwFrs7YT3FKTVOZYPKvxHF3MDKGOecx6Ak-feVs9_8THQGFW86ftAvqLThxQCa76w
-## 13 AB3BwFr71kDP9X9sl6a6JenhHiAJQmngWMf7mqNxAPbF0aGFf3YvB4MUNy8eXNbqMUgx
-## 14 AB3BwFo8L_FWHRDWdL9ZeAXWXEfGy4lmaH2qij2SzIBx0x4zkQSRfewX8YLWuy3d24y7
-## 15 AB3BwFqgLIHm4HHrvXlepHDz8WDxKlDvNE3uISvXPAplSv6EghftI5Q9xhyyp7Bts3ao
-## 16 AB3BwFoyIH9blAL48NB1yywa7Q5IBl9VXymTe3cLU-pN_JZhPKGAtVMSCNAelkrLnuJb
-## 17 AB3BwFplBnYulGhQb_ub49OeZ5TD-75dc-4kql-22mFWn1cgaWDkHrYYDcHpPN-i-du3</code></pre>
+## 1  AB3BwFq5OzIHJmOomZJwwFIPkTdnHVKIvUBanI02OCIHgk5CWFscfFHxMbS9mSmoXi90
+## 2  AB3BwFrn3YsjVIspoRhzRzLJ9P4dKovepw0eOn9BoiWNeLFMFJx9guEAxK0Xv_hHNlnB
+## 3  AB3BwFquWbTWdhusNLZBxWDnY60HxMM2k3HOO5ODzOYPM50ngBeejYdpKtC7IEXmAn8B
+## 4  AB3BwFrHiXHL3G9iqO54SUkjWBPAk2du2d8Rr-rgd4ngG_Vlt3Ox8lNDnT4xNsTL42Hp
+## 5  AB3BwFr5ala7dfgdHTByKNl6u_nmjq_bIdX7dBoc6AjsktZ5DjiHKYHNOkf_kB5A7PNi
+## 6  AB3BwFpKJJPqhjuzA683sedZ2dp0DutbxZ9m00oj81cUngqL-Hmnvx8TOwq55SpzJrkA
+## 7  AB3BwFpbzMraimMGJxQfcTr8WD7smUmcJYsH7syUQK6i2kMGJ7L2v3rJOAyjYVQ7QjGw
+## 8  AB3BwFrRAmSvgGr5ZKNpjJqM0I3aGusLPUxELtFiEcHJt9BEjw8nzrxjggpMQZgEJBE4
+## 9  AB3BwFqVFYehtSR0CWadE_j61tGisWWbni0stP-q1WzPGY1c_-e8dlGmMRF3m9LbcYH7
+## 10 AB3BwFpwbd7CL-mULHhkY2SRUNv_f-dOl_krtC4BGC9wXu8jE8PpTQr_DHiHjWM86T7k
+## 11 AB3BwFqNfu4xBdtLewNyjnODmJ1N5w5ov7t2OjSmzy0M9jOs-R0YLl3clCAaF7qu0tRX
+## 12 AB3BwFojR1jwRYMWjDd_T3jWoAc_p76Y9_4CxatQ7K7zSqrNlv2Xu6JPieR53LwYOGRQ
+## 13 AB3BwFonPhfXrdEVEmi6RT9g4WFGb3clFAhAq7GAHFbTHOtJP2Mbg7vfpu1LdVtUgYUb
+## 14 AB3BwFpa6tpngTBnd1Rg2c_2pOh0PZcblZahiA294eYSLYd29Ubnwyu65ed7-OJ87_SP
+## 15 AB3BwFrkJD6OFf4mulSiRdNQA0o5bmyNaJb--LAea3C3RDSMmWFN6dJTsYkJLxXuZbX1
+## 16 AB3BwFoieU3cCp6L1v5OYa7iwbwKHxfAdD-q9gC3Tvgp7jFN9wctUsAceoq2jUp0imtH
+## 17 AB3BwFppH4Ge6g7x7ynTMlNqk8_GBa2qoD4UveVMNX98HZNZOxrMZ2mG0RZSsdWgkxSi</code></pre>
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -547,7 +543,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFp7IaEjI8-qcDKTyffwfdrQv_D_5Hxgv9RZBOHpXeKx541CUv-fwBxY7icfM3XI</code></pre>
+## eTag:                 AB3BwFp7e72fBDfM_3nX5iwHoIXDpoMfljCtVAFMpJp1iNX9lfh49oQFmjStT12rdUk-</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
@@ -754,7 +750,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Justin Marciszewski.</p>
+  <p>Developed by <a href="https://www.justinmarciszewski.me/">Justin Marciszewski</a>.</p>
 </div>
 
 <div class="pkgdown">
