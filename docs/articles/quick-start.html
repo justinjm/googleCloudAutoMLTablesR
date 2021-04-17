@@ -115,7 +115,7 @@
 <a href="#setup" class="anchor"></a>Setup</h1>
 <div id="configure-your-own-google-cloud-platform-project" class="section level2">
 <h2 class="hasAnchor">
-<a href="#configure-your-own-google-cloud-platform-project" class="anchor"></a>Configure your own Google Cloud Platform project</h2>
+<a href="#configure-your-own-google-cloud-platform-project" class="anchor"></a>1. Configure your own Google Cloud Platform project</h2>
 <ol style="list-style-type: decimal">
 <li>
 <a href="https://console.cloud.google.com/cloud-resource-manager">Select or create a GCP project.</a>. When you first create an account, you get a $300 free credit towards your compute/storage costs.</li>
@@ -145,7 +145,7 @@
 <a href="#configure-r-environment" class="anchor"></a>4. Configure R environment</h3>
 <div id="install-r-packages" class="section level4">
 <h4 class="hasAnchor">
-<a href="#install-r-packages" class="anchor"></a>Install R packages</h4>
+<a href="#install-r-packages" class="anchor"></a>5. Install R packages</h4>
 <p>Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list.of.packages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"remotes"</span>, <span class="st">"googleAuthR"</span><span class="op">)</span>
@@ -158,9 +158,9 @@
 ##   
   
   
-   checking for file ‘/tmp/Rtmpbeb6NR/remotes12c6cbef737/justinjm-googleCloudAutoMLTablesR-09e6ed5/DESCRIPTION’ ...
+   checking for file ‘/tmp/RtmpmeAXjN/remotes12b2bea902f/justinjm-googleCloudAutoMLTablesR-617292e/DESCRIPTION’ ...
   
-✔  checking for file ‘/tmp/Rtmpbeb6NR/remotes12c6cbef737/justinjm-googleCloudAutoMLTablesR-09e6ed5/DESCRIPTION’
+✔  checking for file ‘/tmp/RtmpmeAXjN/remotes12b2bea902f/justinjm-googleCloudAutoMLTablesR-617292e/DESCRIPTION’ (348ms)
 ## 
   
 ─  preparing ‘googleCloudAutoMLTablesR’:
@@ -173,8 +173,6 @@
   
    
   
-   checking for LF line-endings in source and make files and shell scripts
-  
 ─  checking for LF line-endings in source and make files and shell scripts
 ## 
   
@@ -186,12 +184,12 @@
   
    
 ## </code></pre>
-<pre><code>## Installing package into '/tmp/RtmpBZ0M4h/temp_libpath1147e4302'
+<pre><code>## Installing package into '/tmp/RtmpBwABsi/temp_libpath131f118ea'
 ## (as 'lib' is unspecified)</code></pre>
 </div>
 <div id="renviron" class="section level4">
 <h4 class="hasAnchor">
-<a href="#renviron" class="anchor"></a>.Renviron</h4>
+<a href="#renviron" class="anchor"></a>6. .Renviron</h4>
 <p>Create a file called <code>.Renviron</code> in your project’s working directory and use the following environemtn arguments:</p>
 <ul>
 <li>
@@ -211,9 +209,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 </div>
 </div>
 </div>
-<div id="authentication" class="section level2">
-<h2 class="hasAnchor">
-<a href="#authentication" class="anchor"></a>Authentication</h2>
+</div>
+<div id="authentication" class="section level1">
+<h1 class="hasAnchor">
+<a href="#authentication" class="anchor"></a>Authentication</h1>
 <p>Load the 2 R packages we need and then authenticate using the Service account we just created:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://code.markedmondson.me/googleAuthR/">googleAuthR</a></span><span class="op">)</span>
@@ -222,7 +221,6 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>googleAuthR.scopes.selected <span class="op">=</span> <span class="st">"https://www.googleapis.com/auth/cloud-platform"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://code.markedmondson.me/googleAuthR//reference/gar_auth_service.html">gar_auth_service</a></span><span class="op">(</span>json_file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GAR_SERVICE_JSON"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-</div>
 <div id="set-global-arguments" class="section level2">
 <h2 class="hasAnchor">
 <a href="#set-global-arguments" class="anchor"></a>Set global arguments</h2>
@@ -231,11 +229,15 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 20:56:59&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-17 22:09:06&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 20:56:59&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-17 22:09:06&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
+</div>
+<div id="viewing-automl-tables-datasets" class="section level1">
+<h1 class="hasAnchor">
+<a href="#viewing-automl-tables-datasets" class="anchor"></a>Viewing AutoML Tables datasets</h1>
 <div id="get-list-of-datasets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#get-list-of-datasets" class="anchor"></a>Get list of datasets</h2>
@@ -248,10 +250,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFoNNE4YZ3do2XImf3n03_F-M96PTVHlsDB9Qxe3GUKRYGnYJnlC8NcNlqVJ774=
-## 2 AB3BwFrKdaHqjzyoUe7berJL-0wgcgkaIhC3qZGwAeIgjoulLqxGYwPoN0qdPSipMHDI
-## 3 AB3BwFr5s8QyIYWq_Am1tJGIGfvOOMuzXF6WJb4TYDslmCy1YyAX6Csj3mbzTWTprDgk
-## 4 AB3BwFoIbqL9imCM2ksXqoxDay3HKxJDEfeTHpUiqlbQp_xMBv_LQchCEAGbqoJvfQ8x
+## 1 AB3BwFrHcoicoXDKli4c-k4Q9-XS0EzGeduT047Cn64oZZd4iogYp124snzWuJfRS-o=
+## 2 AB3BwFqBpFkIRoifNV-C5F164se9BJqatLBS-iJWhi4RwCNRnJ3EUGKynu4fhtU_XvGN
+## 3 AB3BwFqomAGRlALLodggyXSvs7RBxMifc1M7iqdik3NBSuRNsKja0L0bGOG4vAXG1LG1
+## 4 AB3BwFqrkRWVQ5CyEJT888Aq-Wa-ZTZaQsmgcZE-w1fmfCscOfDGkJcyl_vCfsgpVECS
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -385,7 +387,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFr0r4RZSCDwm3xz22IrATjdQ38DH5J3RjJhltmenqL7Uhk0uGkB-Q7VRoNbi9mI</code></pre>
+## eTag:                 AB3BwFomqpkSAu07uxLPPcph1B6czohPdHVYdmcimZJhQIIP1dXFDllIzpLKvgz5YmO9</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -520,23 +522,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFolA2jefrmX3-hMA3ZbAOjhiWCzxfgFPMUiR3WhqV4ZBhmJgQNocfM2tbiFkCmW
-## 2  AB3BwFoTf-2evyFbfETExgn1VU9m4nhPAwvibd-HtEEn8TIh0L5yT-5ADjTGmQpD0Zw6
-## 3  AB3BwFqYsPkvQvSbACqWGPcOOnTcJxeTDL9G4sHqiVN9MScYfxGYJVSNvjMH_GVCxGdd
-## 4  AB3BwFrj0Wfk2GnM2evnXO_y9n12doVwgx6Dsb4TbdBZ1xHzLyrKu2bF3A3L58zsb8ax
-## 5  AB3BwFq2G39yuulUt1q25Jc4UazxcqAog9rJvnobBLMUxCq8aBo_nsYESPNQAgKI5yIg
-## 6  AB3BwFr-HthoZLyXEgZKZACtBN79DwLZIAj583iPWo4AoDdBe9FSdEnEMhKPnTOz4UPy
-## 7  AB3BwFoE7iFAqZVJXdL2sxRzxiP5YWgAh60uDTZFpOuuy_pNMW6nMAU-r21HG1T0cnuS
-## 8  AB3BwFqdKYjWmmb30SMxJ7j8ILxmzcFWFkiQAbW8YVZC2vb_akaojgEcrntDtUzr9CHR
-## 9  AB3BwFqQlwS6d-pkyX7VICO1mWFvEwgzZ0htS7jHS-e9Xe4yFmJJkqtFzI95U-jGy1_B
-## 10 AB3BwFrAPsB7kZYVHqjK4F5ait8XQLBMr-jSZkmQK1lL-gD7hvT1536FbqNpI_mdSZ7I
-## 11 AB3BwFo5hYWIWJmbcuk5Kz0rqNcFgjSe8367lu3MqnJj2Lyh8OkNF0neMaUNZYBcfYXS
-## 12 AB3BwFp_YIJl1S2zvWWgNEEUblDao3ob-BGybR1Om5MrQIZRQkQeXHIQdkPWcgI1Ygp9
-## 13 AB3BwFrh47QDJyjtex9CaJRkNc__WTeeTgLlXBVYGUwAXyWUqwKLuXreQ4IFRItpIo1a
-## 14 AB3BwFonjh4itm5jl_JudgZ35Ii6Rfkf29UmSzdUYSQ7nNT9E_dy1f5Gg_w0-StciRub
-## 15 AB3BwFqj9LPTD8lHhLKjw8lefDy4MhoUlSlqbRSRz1RnfagPE7ACmATJmci6RPWSDhVn
-## 16 AB3BwFpw49DT6_BWrNgU4-wZ9TYWGGWdxJQwkkoL2hl4Ufwjcg-jlVG1g7k3VQl40EkZ
-## 17 AB3BwFoTwGWDfTnlsP8cEDGDE8VCFAr3oo9K6Ij6xnTC2G1yk8s70U3U8IdAa-EH3AY9</code></pre>
+## 1  AB3BwFqmBpOSDFxvdOpzctXQNOxKArTSVX3s4zDvZxC-PXr_o8S9PcKvfre7gM5G2GqA
+## 2  AB3BwFqzkwiXdXzaAKbhcaZ644YoEIRxLutx0DhCoGqL5jYXqB_MWBmycN9acLENVtqj
+## 3  AB3BwFqbySMavHXaX1OseIbeTM1kj0dm8bJQ_Z_u0KS2ZtTQYAY0-hK3awcCosQi97LC
+## 4  AB3BwFpi7iAeGF1UhmNHapC4B6xo6x-RrUWH67fVVDiq6cdA05oVADJGvFhH_m-5e2bg
+## 5  AB3BwFrokkMHU9X04mVrQ0pwsNuJei4p2lHbCqf5FUSy8Hul4cfGF84nBn5_Nsz6vhE-
+## 6  AB3BwFq4Utt5u3dOouihRwRxS8sOE-XGKwwaUe5kHMJuB8qe_QfNV5EtJsd3AH7IPh71
+## 7  AB3BwFqRjn3Nblz8rAAmjfrhFmQs56ElZ9w5N3pHfIvy4mF_t2hkZfYn5wxuHh09PUFn
+## 8  AB3BwFogci0pvhvTQW31HmzGg2jFxdWpY88ZDlRk-wBK4anQW7wKvPDrk0ElTNcfLM00
+## 9  AB3BwFoZOS22Ii4rQ9pNUYkViwwTnbaasS_jJhVLIAoyI68sevqEzZ95yz3I0PaqghXu
+## 10 AB3BwFrSOfW5hksLINoXxxaT5JgQPQcJWrHKALKxkZdg4LeeDWHMYzSJ_7qugc6Fl1mv
+## 11 AB3BwFqsVkGXDTHWPYkuFmCyoewp4YqoZbKI12I6KR_u3VW9K1ww0XckBURRWAQiZ2_u
+## 12 AB3BwFpIsWC3SdIlg6YnPdbvz0mi4tcOSQ3q9V7d7I2m4HWuY26hKi_GMf1USJTMjr90
+## 13 AB3BwFpQZsW04j0UOJ73DOtrWErEtpd-YKRDWOdA9XO6W5pTy_yRcHGF6JQCXOgsn2l6
+## 14 AB3BwFqoyu7lckZzMaWN3l7WOVcbrjwc8Ig1VaiISTODWGBPujKu2sdkx8TV-fgWxVfy
+## 15 AB3BwFouAbfyoFqrY5o3gNrZ8aHJ6Am3_A5f97NxRWDbtanhzXi08n8p8NhJk5KcpJHQ
+## 16 AB3BwFpfNWWfyQGBwiP6sTJO4w39l2Jz3zdhX1cKCdpGLQ6yJ8kcBAugBiqoBnBzK7pL
+## 17 AB3BwFo8bGdX_BuK_tiTXOQn1qTwU4x5jqe3ULT9VyfUtc7pcrqM72sl6E9G4K8XYjwT</code></pre>
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -547,7 +549,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFql4bv9fug0E68k3EPRgcoAHSLlY7NFFU8bOVK9vTdRzpLxI6aTD1pFs72ohUhO</code></pre>
+## eTag:                 AB3BwFo3KoGaqx6NyHkR-f6MPsNK0wL4TpsruIKV40IKlw31Ioq8SiAXjundUirAqT_L</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
@@ -565,12 +567,13 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## targetColumnSpecId:   7181143537470144512 
 ## statsUpdateTime:      2019-10-28 19:32:47</code></pre>
 </div>
-<div id="modeling" class="section level2">
+</div>
+<div id="modeling" class="section level1">
+<h1 class="hasAnchor">
+<a href="#modeling" class="anchor"></a>Modeling</h1>
+<div id="create-model" class="section level2">
 <h2 class="hasAnchor">
-<a href="#modeling" class="anchor"></a>Modeling</h2>
-<div id="create-model" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-model" class="anchor"></a>Create model</h3>
+<a href="#create-model" class="anchor"></a>Create model</h2>
 <p>Training or creating a model is done with <code>gcat_create_model</code>.</p>
 <p>This will be a long-lasting operation. You will recieve an email when the model training completes</p>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
@@ -584,9 +587,9 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <span class="va">gcat_model</span></code></pre></div>
 <p>More details here: <a href="https://cloud.google.com/automl-tables/docs/train">Training models|AutoML Tables Documentation</a></p>
 </div>
-<div id="viewing-models" class="section level3">
-<h3 class="hasAnchor">
-<a href="#viewing-models" class="anchor"></a>Viewing Models</h3>
+<div id="viewing-models" class="section level2">
+<h2 class="hasAnchor">
+<a href="#viewing-models" class="anchor"></a>Viewing Models</h2>
 <p>While you wait - or after your latest model training completes - you can view the list trained models:</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">models_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gcat_list_models.html">gcat_list_models</a></span><span class="op">(</span><span class="op">)</span>
@@ -608,9 +611,9 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## deploymentState:      UNDEPLOYED 
 ## updateTime:           2020-03-13 16:15:51</code></pre>
 </div>
-<div id="evalute-the-model" class="section level3">
-<h3 class="hasAnchor">
-<a href="#evalute-the-model" class="anchor"></a>Evalute the model</h3>
+<div id="evalute-the-model" class="section level2">
+<h2 class="hasAnchor">
+<a href="#evalute-the-model" class="anchor"></a>Evalute the model</h2>
 <p>After training has been completed, you can review various performance statistics on the model, such as the accuracy, precision, recall, and so on. The metrics are returned in a nested data structure:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">model_evaluation</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gcat_list_model_evaluations.html">gcat_list_model_evaluations</a></span><span class="op">(</span>
@@ -715,7 +718,6 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 9                             failure, other, success, unknown        &lt;NA&gt;
 ## 10                            failure, other, success, unknown        &lt;NA&gt;
 ## 11                                                        NULL       other</code></pre>
-</div>
 <div id="make-batch-prediction" class="section level3">
 <h3 class="hasAnchor">
 <a href="#make-batch-prediction" class="anchor"></a>Make batch prediction</h3>
@@ -742,23 +744,24 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="co"># view debugging info</span>
 <span class="co"># readRDS("request_debug.rds")</span></code></pre></div>
 </div>
-<div id="evaluate-predictions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#evaluate-predictions" class="anchor"></a>Evaluate predictions</h3>
 </div>
-</div>
-<div id="deployment" class="section level2">
+<div id="evaluate-predictions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#deployment" class="anchor"></a>Deployment</h2>
-<div id="deploy-model" class="section level3">
-<h3 class="hasAnchor">
-<a href="#deploy-model" class="anchor"></a>Deploy model</h3>
+<a href="#evaluate-predictions" class="anchor"></a>Evaluate predictions</h2>
+</div>
+</div>
+<div id="deployment" class="section level1">
+<h1 class="hasAnchor">
+<a href="#deployment" class="anchor"></a>Deployment</h1>
+<div id="deploy-model" class="section level2">
+<h2 class="hasAnchor">
+<a href="#deploy-model" class="anchor"></a>Deploy model</h2>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">deployed_model</span> <span class="op">&lt;-</span> <span class="fu">gcat_deploy_model</span><span class="op">(</span>modelDisplayName <span class="op">=</span> <span class="st">"test_01_bq_01"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="make-online-prediction" class="section level3">
-<h3 class="hasAnchor">
-<a href="#make-online-prediction" class="anchor"></a>Make online prediction</h3>
+<div id="make-online-prediction" class="section level2">
+<h2 class="hasAnchor">
+<a href="#make-online-prediction" class="anchor"></a>Make online prediction</h2>
 <p>Now that our model is deployed, we can use it to make online predictions. First, let’s created a hypothetical record to predict on it:</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_record</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html">as.data.frame</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -766,7 +769,6 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">online_predictions</span> <span class="op">&lt;-</span> <span class="fu">gcat_predict</span><span class="op">(</span>record <span class="op">=</span> <span class="va">example_record</span>,
                                    modelDisplayName <span class="op">=</span> <span class="st">"test_01_bq_01"</span><span class="op">)</span></code></pre></div>
-</div>
 </div>
 </div>
   </div>
