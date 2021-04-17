@@ -305,34 +305,3 @@ batch_predictions <- gcat_batch_predict(
   outputTarget = "gs://gcatr-dev/predictions/"
 )
 ```
-
-```{r VIEW-DEBUG}
-# view debugging info
-# readRDS("request_debug.rds")
-```
-
-## Evaluate predictions 
-
-# Deployment 
-
-## Deploy model 
-
-```r
-deployed_model <- gcat_deploy_model(modelDisplayName = "test_01_bq_01")
-```
-
-## Make online prediction 
-
-Now that our model is deployed, we can use it to make online predictions. First, let's created a hypothetical record to predict on it: 
-
-```r
-example_record <- as.data.frame()
-```
-
-Then we can invoke the [predict API ](https://googleapis.dev/python/automl/latest/gapic/v1beta1/tables.html#google.cloud.automl_v1beta1.tables.tables_client.TablesClient.predict) like so: 
-
-```r
-online_predictions <- gcat_predict(record = example_record,
-                                   modelDisplayName = "test_01_bq_01")
-```
-
