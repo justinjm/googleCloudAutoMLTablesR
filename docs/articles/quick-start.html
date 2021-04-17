@@ -158,11 +158,9 @@
 ##   
   
   
-   checking 
+   checking for file ‘/tmp/Rtmpbeb6NR/remotes12c6cbef737/justinjm-googleCloudAutoMLTablesR-09e6ed5/DESCRIPTION’ ...
   
-   checking for file 
-  
-✔  checking for file ‘/tmp/Rtmpjaga3N/remotes12b408f1a69/justinjm-googleCloudAutoMLTablesR-01be24a/DESCRIPTION’ (352ms)
+✔  checking for file ‘/tmp/Rtmpbeb6NR/remotes12c6cbef737/justinjm-googleCloudAutoMLTablesR-09e6ed5/DESCRIPTION’
 ## 
   
 ─  preparing ‘googleCloudAutoMLTablesR’:
@@ -170,6 +168,12 @@
   
 ✔  checking DESCRIPTION meta-information
 ## 
+  
+  
+  
+   
+  
+   checking for LF line-endings in source and make files and shell scripts
   
 ─  checking for LF line-endings in source and make files and shell scripts
 ## 
@@ -182,7 +186,7 @@
   
    
 ## </code></pre>
-<pre><code>## Installing package into '/tmp/RtmpNvav0f/temp_libpath1277f7215'
+<pre><code>## Installing package into '/tmp/RtmpBZ0M4h/temp_libpath1147e4302'
 ## (as 'lib' is unspecified)</code></pre>
 </div>
 <div id="renviron" class="section level4">
@@ -227,10 +231,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 20:43:59&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-17 20:56:59&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 20:43:59&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-17 20:56:59&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
 <div id="get-list-of-datasets" class="section level2">
 <h2 class="hasAnchor">
@@ -244,10 +248,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFrkM5ONrV6Y12qazHJFdU_b7UomLZkB6Uwq1VAlBei_irLCyhUktbTW7Moc60WV
-## 2 AB3BwFr6-mcFAHULqKrt_7HbkYSa1Hw6ymisw68c3h7XZ5-0WVFVyrI4ZXwavGyoMj0-
-## 3 AB3BwFpTaqmwQZzKLL927wuCb0jftlPiyTK9roZ38com7qk5bVJQMe93c_Fnge5gT33s
-## 4 AB3BwFqYHhM6GzBX-j9QLsuUE_seS5Z6n0br37pd3GexswnVJYZO3x41RzwwbORhmsy4
+## 1 AB3BwFoNNE4YZ3do2XImf3n03_F-M96PTVHlsDB9Qxe3GUKRYGnYJnlC8NcNlqVJ774=
+## 2 AB3BwFrKdaHqjzyoUe7berJL-0wgcgkaIhC3qZGwAeIgjoulLqxGYwPoN0qdPSipMHDI
+## 3 AB3BwFr5s8QyIYWq_Am1tJGIGfvOOMuzXF6WJb4TYDslmCy1YyAX6Csj3mbzTWTprDgk
+## 4 AB3BwFoIbqL9imCM2ksXqoxDay3HKxJDEfeTHpUiqlbQp_xMBv_LQchCEAGbqoJvfQ8x
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -381,7 +385,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFq1nwKvEIV53hZ30ZN2SgYe4gAVvC5hat8dULVCsSH3FppJ-UlUlvMiE-4R1XR3</code></pre>
+## eTag:                 AB3BwFr0r4RZSCDwm3xz22IrATjdQ38DH5J3RjJhltmenqL7Uhk0uGkB-Q7VRoNbi9mI</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -516,23 +520,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFohi1kvIJ_e3JSrMQkt_1fl90S0rmHtk-iHHBVVbRbFYQRP06_-0ILMMj1Gmp-3
-## 2  AB3BwFqrNdUM3LvlW4GRxWSCiP1ZXiPj-pX89Y-PVXztzNd85YVqgJMtKYVsh6Rc3O_E
-## 3  AB3BwFrw30kiz3_kdUz9ZZ3feotaZ8mrLRNtZgG9YPA_H-gUpPbZSvIFqkfE-0eCI7vh
-## 4  AB3BwFpdDR3ZyDANi-U1mLysQ9SykJ1AEA0-U3Na4jliM5k-zRX4dAufbsEy6vtNew7t
-## 5  AB3BwFoee6nZ5ly67bLqI3YOcv60l4je2wKZcCmCwRJSrr26LjKU10-6gXOX8SsQmYhH
-## 6  AB3BwFpsiIKr9IJcbQ1JBy21GBq4q87Qpdoamv_mQi-fXxK0VnTKqKN77qIs7_976jMv
-## 7  AB3BwFrkx8gdLrkDxzUive9dggxboxu_DNTl7uulwc258m3T75lfd59DzIFPzr05q5_h
-## 8  AB3BwFrP1TLhGLutLNGeW3UmCntkLtCJJgCqha4vHc3oVAcy8De-oQwwQLkXk52aFW_p
-## 9  AB3BwFoi1R0SuaHrQEEbfqOTdF5OXegl5BCBq2VYC-7JgAoxdNGdvBWf_g9K3ACGebI2
-## 10 AB3BwFo6qfFmpmxlvwK2EvmmAmCEvGoUkbwph41zx_ft2k6YXgrxXumqK51YN9OFO5cE
-## 11 AB3BwFp_4gySSveyD8mPOSg7yIT7pDlXiHTzEjwF-tC58TVqUyeYQY0Pw5pAyr1Q_ago
-## 12 AB3BwFqXDza0cfIfXTtqSjmHqakrXigGW0MsyW3rj3FChZBLufsQfh2JnSjJv3QH0MHK
-## 13 AB3BwFq5iev_KvmBm8YErw9TYKC-QPk0dIgy2BLxBzn7tsM3KV1URBo1YF6wahvFQviz
-## 14 AB3BwFqXneHnYD9roWIuPkbwqMpHNYBk36mE0u05rkDCI8nT9a4xzB1TnpHfBCtxQPEA
-## 15 AB3BwFpxTQGCnI97leuH00AdIR2NT2qRnfiv6slwaYfgUYxuG934N2bP-33hJ_-q3dT9
-## 16 AB3BwFoKSN-gN5i-CommXW0a8X2b5h9J-WGCfEAAnhb0SLm7gN6SLmWcUxixtKpkpO7U
-## 17 AB3BwFr8z1f_WSywXSEEAF8HGcEu_pA3wxeBbTrLEtdtGHUv13n8FkHRiTcXdZt-hdpr</code></pre>
+## 1  AB3BwFolA2jefrmX3-hMA3ZbAOjhiWCzxfgFPMUiR3WhqV4ZBhmJgQNocfM2tbiFkCmW
+## 2  AB3BwFoTf-2evyFbfETExgn1VU9m4nhPAwvibd-HtEEn8TIh0L5yT-5ADjTGmQpD0Zw6
+## 3  AB3BwFqYsPkvQvSbACqWGPcOOnTcJxeTDL9G4sHqiVN9MScYfxGYJVSNvjMH_GVCxGdd
+## 4  AB3BwFrj0Wfk2GnM2evnXO_y9n12doVwgx6Dsb4TbdBZ1xHzLyrKu2bF3A3L58zsb8ax
+## 5  AB3BwFq2G39yuulUt1q25Jc4UazxcqAog9rJvnobBLMUxCq8aBo_nsYESPNQAgKI5yIg
+## 6  AB3BwFr-HthoZLyXEgZKZACtBN79DwLZIAj583iPWo4AoDdBe9FSdEnEMhKPnTOz4UPy
+## 7  AB3BwFoE7iFAqZVJXdL2sxRzxiP5YWgAh60uDTZFpOuuy_pNMW6nMAU-r21HG1T0cnuS
+## 8  AB3BwFqdKYjWmmb30SMxJ7j8ILxmzcFWFkiQAbW8YVZC2vb_akaojgEcrntDtUzr9CHR
+## 9  AB3BwFqQlwS6d-pkyX7VICO1mWFvEwgzZ0htS7jHS-e9Xe4yFmJJkqtFzI95U-jGy1_B
+## 10 AB3BwFrAPsB7kZYVHqjK4F5ait8XQLBMr-jSZkmQK1lL-gD7hvT1536FbqNpI_mdSZ7I
+## 11 AB3BwFo5hYWIWJmbcuk5Kz0rqNcFgjSe8367lu3MqnJj2Lyh8OkNF0neMaUNZYBcfYXS
+## 12 AB3BwFp_YIJl1S2zvWWgNEEUblDao3ob-BGybR1Om5MrQIZRQkQeXHIQdkPWcgI1Ygp9
+## 13 AB3BwFrh47QDJyjtex9CaJRkNc__WTeeTgLlXBVYGUwAXyWUqwKLuXreQ4IFRItpIo1a
+## 14 AB3BwFonjh4itm5jl_JudgZ35Ii6Rfkf29UmSzdUYSQ7nNT9E_dy1f5Gg_w0-StciRub
+## 15 AB3BwFqj9LPTD8lHhLKjw8lefDy4MhoUlSlqbRSRz1RnfagPE7ACmATJmci6RPWSDhVn
+## 16 AB3BwFpw49DT6_BWrNgU4-wZ9TYWGGWdxJQwkkoL2hl4Ufwjcg-jlVG1g7k3VQl40EkZ
+## 17 AB3BwFoTwGWDfTnlsP8cEDGDE8VCFAr3oo9K6Ij6xnTC2G1yk8s70U3U8IdAa-EH3AY9</code></pre>
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -543,7 +547,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFos0lT66xTV1pGrejNbQ0FdNW-1_JoJLxGd1TOTfFQXtVoHos9FeNfqr7NYPhoD</code></pre>
+## eTag:                 AB3BwFql4bv9fug0E68k3EPRgcoAHSLlY7NFFU8bOVK9vTdRzpLxI6aTD1pFs72ohUhO</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
