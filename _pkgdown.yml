@@ -8,3 +8,34 @@ template:
 navbar:
   title: googleCloudAutoMLTablesR
   inverse: false
+reference:
+  - title: "Authentication"
+    contents:
+      - gcat_project_get
+      - gcat_project_set
+  - title: "Datasets"
+    contents:
+      - gcat_create_dataset
+      - gcat_get_column_spec
+      - gcat_get_dataset
+      - gcat_get_global_dataset
+      - gcat_get_table_specs
+      - gcat_global_dataset
+      - gcat_import_data
+      - gcat_list_column_specs
+      - gcat_list_datasets
+      - gcat_list_table_specs
+      - gcat_set_target_column
+  - title: "Locations"
+    contents:
+      - gcat_get_location
+      - gcat_list_locations
+      - gcat_region_set
+      - gcat_region_get
+  - title: "Models"
+    contents:
+      - gcat_batch_predict
+      - gcat_create_model
+      - gcat_get_model
+      - gcat_list_model_evaluations
+      - gcat_list_models
