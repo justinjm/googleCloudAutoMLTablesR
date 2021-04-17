@@ -170,6 +170,7 @@
 ##   
    checking for file ‘/private/var/folders/d2/v16yt4mj50g0dlcqwjzbkts00000gn/T/RtmpxEheJg/remotes1734f47c3a3d/justinjm-googleCloudAutoMLTablesR-c91b875/DESCRIPTION’ ...
   
+<<<<<<< HEAD
 ✓  checking for file ‘/private/var/folders/d2/v16yt4mj50g0dlcqwjzbkts00000gn/T/RtmpxEheJg/remotes1734f47c3a3d/justinjm-googleCloudAutoMLTablesR-c91b875/DESCRIPTION’ (335ms)
 ## 
   
@@ -179,6 +180,24 @@
    checking DESCRIPTION meta-information ...
   
 ✓  checking DESCRIPTION meta-information
+=======
+  
+   checking for file ‘/tmp/Rtmp58X12P/remotes12ba9f99f2/justinjm-googleCloudAutoMLTablesR-c706af8/DESCRIPTION’ ...
+  
+   checking for file ‘/tmp/Rtmp58X12P/remotes12ba9f99f2/justinjm-googleCloudAutoMLTablesR-c706af8/DESCRIPTION’ ... 
+  
+   checking for file ‘/tmp/Rtmp58X12P/remotes12ba9f99f2/justinjm-googleCloudAutoMLTablesR-c706af8/DESCRIPTION’ ... OK
+  
+✔  checking for file ‘/tmp/Rtmp58X12P/remotes12ba9f99f2/justinjm-googleCloudAutoMLTablesR-c706af8/DESCRIPTION’
+## 
+  
+─  preparing ‘googleCloudAutoMLTablesR’:
+## 
+  
+   checking DESCRIPTION meta-information ...
+  
+✔  checking DESCRIPTION meta-information
+>>>>>>> origin/master
 ## 
   
 ─  checking for LF line-endings in source and make files and shell scripts
@@ -187,12 +206,18 @@
 ─  checking for empty or unneeded directories
 ## 
   
+  
+  
 ─  building ‘googleCloudAutoMLTablesR_0.0.0.9000.tar.gz’
 ## 
   
    
 ## </code></pre>
+<<<<<<< HEAD
 <pre><code>## Installing package into '/private/var/folders/d2/v16yt4mj50g0dlcqwjzbkts00000gn/T/RtmpmZsA4A/temp_libpath171db1b8794a4'
+=======
+<pre><code>## Installing package into '/tmp/RtmpXntpug/temp_libpath1334af091'
+>>>>>>> origin/master
 ## (as 'lib' is unspecified)</code></pre>
 </div>
 <div id="renviron" class="section level4">
@@ -233,12 +258,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <h2 class="hasAnchor">
 <a href="#set-global-arguments" class="anchor"></a>Set global arguments</h2>
 <p>To make things easier later on, we set some global arguements for our GCP project and the region of the GCP resources within our project:</p>
+<<<<<<< HEAD
 <div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">projectId</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">"GCAT_DEFAULT_PROJECT_ID"</span>)
 <span class="no">location</span> <span class="kw">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span>(<span class="st">"us-central1"</span>)</pre></body></html></div>
 <pre><code>## 2021-04-17 18:32:34&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span>(<span class="no">projectId</span>)</pre></body></html></div>
 <pre><code>## 2021-04-17 18:32:34&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+=======
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
+<span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
+<span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
+<pre><code>## 2021-04-17 22:15:41&gt; Region set to 'us-central1'</code></pre>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
+<pre><code>## 2021-04-17 22:15:41&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+>>>>>>> origin/master
 </div>
 </div>
 <div id="viewing-automl-tables-datasets" class="section level1">
@@ -255,10 +291,17 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
+<<<<<<< HEAD
 ## 1 AB3BwFqzzvLkVcPEf5ZU7gl-2cB_4d3izUIrV3MMnOnPVXdEjP7mYu-LHVyxSafYkR1o
 ## 2 AB3BwFqNm1-9r1xh6KXamMzpF18ERsN4L0og2zsL9K923L6Vuh0ShQ64bwaPQay_ZIoU
 ## 3 AB3BwFoFaw1ICMpS0-vK9M31JivJyuHdB-M7n941r1-yeEu75NL08q5uhCI-sYjDj1ML
 ## 4 AB3BwFqZtS_uJ_xImWwbnOe5PhIv8yeLeFzAZYYRQ8ymLpf37gyBQ_iDKsv7gTGHKI53
+=======
+## 1 AB3BwFoCu_JjGvMQ8NrcJgLn_H2ezo5D3U21I8qf_VscnBhUIM0lNIuKzkH6hW7tJGUA
+## 2 AB3BwFrpTDDw7kgLViEOIsT6YIBtWQR1_CnDUBresdGKk7CO_PLGJUpuI-9HEf9Bm_6R
+## 3 AB3BwFoEunNH9rK0J50gB5GKAy-KJHDV2V77JQpDNKNQowBR-XPvkb7_oLtq2KIBcD-q
+## 4 AB3BwFo0rjTqMCF9epJqgY06NeHSkVwPvgwH0SF7zCi3k36W6AmRNinjXf4uA8vq7BQS
+>>>>>>> origin/master
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -384,7 +427,11 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
+<<<<<<< HEAD
 ## eTag:                 AB3BwFqxR77Xv_YX5Dq5Meaqt1ZqVjZCnfuyUTufKASRicF2f4FLYGN2YPKXCBFQPLYD</code></pre>
+=======
+## eTag:                 AB3BwFq2ZYMHWb9lEoxQhXmNEd6erzcOhCVjoCfQYSmtsZ4sGlYKTTk5v4AydKTaqfss</code></pre>
+>>>>>>> origin/master
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -518,6 +565,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
+<<<<<<< HEAD
 ## 1  AB3BwFpcS5oj0E-Hgcaa6tKY-3b8Al11gxFeYXpG3c1c2SAgfwMVJjQi1LmYG_TPDUmt
 ## 2  AB3BwFq_5uw5FfeszuGyuAY_vRVfRXfBXSJN_Cmm75G84Yabs-Aw3X-2ZpMX0sNuKxW8
 ## 3  AB3BwFqtui1WYXueVMoUno3HZKxZiU0Wv3Znq4xQyGNJqUhp-PJX4rf0m6Ug-MeJJLIM
@@ -535,6 +583,25 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 15 AB3BwFoZfGK0HJRM-Jz2RAfVmwacfEkNOzXnWzLaXZXitWT8YtPUIcQ6L5y6a9Ox4TQE
 ## 16 AB3BwFryRIY8IUZD6IM5VvnvlikPcMmUQnyWUwkt3NU1GpwxmLPMupulqTpoHlu3YdfM
 ## 17 AB3BwFrNbWkfcWqbu96NNiiCIw1nbJQdBG3GrcryT5y2JsnloOXaK_HcUSrl3aima-Od</code></pre>
+=======
+## 1  AB3BwFo6UuRwxOtic13xdso63A-u2d-T_JLl3uWHl6fvL3TiFkDoruu0YPyPSTcO8lZf
+## 2  AB3BwFrRh3hHLeB61YcQKIouDoU3hoLtcG0KXzg-AizETkOl_XEMkCv-PJKXxyHVu0hk
+## 3  AB3BwFrKsL-VjsRjTWz9YgUbD9Vi_5LjJnoMEIm3IOm_hJmGgP-E_NswQDY1FY8QKlX-
+## 4  AB3BwFqlmeuOftyeuTIdTf9J-xd-vplFGin3rND10E23Bx3mdZxS4kNDFjejXi6_8748
+## 5  AB3BwFq-OELeHgN5a55ZuGWPQrb90Lt7PH7tJqHjBPkHLYR0Cxfj2ULCj8Q7BIBH3PJa
+## 6  AB3BwFoIkcefy2vY4ADB2St7HLG8AYNHV9tZ2mLjZhcyZI-CCg1Usoc49lMLtHx5Sh3b
+## 7  AB3BwFqiX3pIaohYv5BoHcwwMBmvGL-y3PbiL5omN8UeO7nh43AAuIrpZxMeG0RoK_gn
+## 8  AB3BwFoPTcroCIHGhAm5jzeJBePGX7Dkft3nFl4VqgiOipoYWl7X1Qri3lGg1V95HZi5
+## 9  AB3BwFqARhOS78BKORbEfirGEH23W6exL9zCEBWv7L3X7CsolBktGzgjL5Nr_tKJHusl
+## 10 AB3BwFq5ngwUy12gPExwjaJ8hbRlyp6We4_1vQS-57OEz6CQgH2JwW6uBRsctpP_EyqD
+## 11 AB3BwFrZQnllUDzb-at4QLwqCMEfMZFxqN5_9PovDEzl2o3gJfmsu2xEXk5uzYZUez9R
+## 12 AB3BwFpc2dUplmCy21TQfXwW7lX1JYtZQZsVL-qIlgKa60dR7P5xO_PQgC1oWkbXxYBY
+## 13 AB3BwFpqdx1UvHxlvTXA9QIajjErUudHMdQTJucBJ0gzFlKt7VmQ9qGMD8Q_N-UztfnE
+## 14 AB3BwFrGT8FriY7TGQlxU7mE1KJ1HFlWTtMbT7w3pl6MIDC6CQ7Q1ZFir0Z5j8C2bM1f
+## 15 AB3BwFonUvBXoQV8yZOYvWHQfaZtiuPe0hDP41ytqAZf1f5fGcHmd1xuSvs6PeXvAxur
+## 16 AB3BwFqXgG0Si75LvX9h2nhSsiMKfrDAq39m40_6Lkw24hgVza0ZEoudkdggoduEVwVp
+## 17 AB3BwFo_390aPZFbvX18F6Ltq7gIT0mnTW0EEtIkSAkVmVPlP2Ijyi-A6zcF1yuWZmQC</code></pre>
+>>>>>>> origin/master
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -544,7 +611,11 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
+<<<<<<< HEAD
 ## eTag:                 AB3BwForl2fGmjgxNaX51RpZ3n7HjzFLg-ZIunrenJWgENCIifjCaggpu-F0yYn0_UnD</code></pre>
+=======
+## eTag:                 AB3BwFrUzdqUnpxhyhiHUhx-E45pOP051cHN4aTEM5OitdQ2OT9VFYN6bTC3SG4BM0jH</code></pre>
+>>>>>>> origin/master
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
