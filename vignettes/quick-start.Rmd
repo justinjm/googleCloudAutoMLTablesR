@@ -1,5 +1,6 @@
 ---
 title: "Quick Start"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{quick-start}
@@ -17,11 +18,65 @@ This is a quick start tutorial for training a model using GCP AutoML Tables.
 
 # Setup 
 
-Before we start preparing data and training a model, we need to perform some authentication and setup steps. Typically this is the least fun and also the most important :) 
+## Configure your own Google Cloud Platform project 
+
+1. [Select or create a GCP project.](https://console.cloud.google.com/cloud-resource-manager). When you first create an account, you get a $300 free credit towards your compute/storage costs.
+2. [Make sure that billing is enabled for your project.](https://cloud.google.com/billing/docs/how-to/modify-project)
+3. [Enable the AI Platform APIs and Compute Engine APIs.](https://console.cloud.google.com/flows/enableapi?apiid=ml.googleapis.com,compute_component)
+4. [Enable AutoML API.](https://console.cloud.google.com/apis/library/automl.googleapis.com?q=automl)
+
+  
+## 2. Create a service account and grant permissions 
+
+1. In the GCP Console, go to the [**Create service account key** page](https://console.cloud.google.com/apis/credentials/serviceaccountkey).
+2. From the **Service account** drop-down list, select **New service account**.
+3. In the **Service account name** field, enter a name.
+4. From the **Role** drop-down list, select **AutoML > AutoML Admin**, **Storage > Storage Admin** and **BigQuery > BigQuery Admin**.
+5. Click _Create_. A JSON file that contains your key downloads to your local environment.
+6. Save the json file and copy the pathname for an upcoming step
+
+### 3. Create Google Cloud Storage Bucket 
+
+Create a [Google Cloud Storage Bucket](https://console.cloud.google.com/storage) and save the name for use in an upcoming step. 
+
+### 4. Configure R environment 
+
+#### Install R packages 
+
+Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already): 
+
+```{r install_packages}
+list.of.packages <- c("remotes", "googleAuthR")
+new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
+if(length(new.packages)) install.packages(new.packages)
+
+remotes::install_github("justinjm/googleCloudAutoMLTablesR")
+
+``` 
+
+#### .Renviron
+
+Create a file called `.Renviron` in your project's working directory and use the following environemtn arguments: 
+
+* `GAR_SERVICE_JSON` - path to service account (JSON) keyfile downloaded before and copied 
+* `GCAT_DEFAULT_PROJECT_ID` - string of your GCP project you configured before 
+* `GCAT_DEFAULT_REGION` - region of GCP resorces that can be one of: `"us-central1"` or `"eu"` 
+
+e.g. your `.Renviron` should look like: 
+
+```
+# .Renviron
+GAR_SERVICE_JSON="/Users/me/auth/auth.json"
+GCAT_DEFAULT_PROJECT_ID="my-project"
+GCAT_DEFAULT_REGION="us-central1"
+```
+
+Save the `.Renviron` file and restart your R session to load the environment variables 
 
 ## Authentication 
 
-First, we load the 2 R packages we need and then authenticate using a GCP Service account  
+Load the 2 R packages we need and then authenticate using the Service account we just created: 
+
 
 ```{r auth}
 library(googleAuthR)
