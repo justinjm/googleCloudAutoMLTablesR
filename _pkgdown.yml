@@ -1,13 +1,17 @@
 title: "googleCloudAutoMLTablesR"
+url: https://code.justinmarciszewski.me/googleCloudAutoMLTablesR/
+home:
+  strip_header: true
 authors:
-  name: Justin Marciszewski
+  Justin Marciszewski:
+    href: https://www.justinmarciszewski.me/
 template:
   params:
-    bootswatch: paper
+    bootswatch: cosmo
     ganalytics: UA-161482740-1
 navbar:
-  title: googleCloudAutoMLTablesR
-  inverse: false
+  title: quick-start
+  type: inverse
 reference:
   - title: "Authentication"
     contents:
