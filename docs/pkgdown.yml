@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   quick-start: quick-start.html
-last_built: 2021-04-17T22:57Z
+last_built: 2021-04-18T12:39Z
 urls:
   reference: https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//reference
   article: https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//articles

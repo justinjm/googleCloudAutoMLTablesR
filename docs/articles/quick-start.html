@@ -90,7 +90,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Quick Start</h1>
             
-            <h4 class="date">2021-04-17</h4>
+            <h4 class="date">2021-04-18</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/justinjm/googleCloudAutoMLTablesR/blob/master/vignettes/quick-start.Rmd"><code>vignettes/quick-start.Rmd</code></a></small>
       <div class="hidden name"><code>quick-start.Rmd</code></div>
@@ -156,7 +156,9 @@
   
    checking for file 
   
-✔  checking for file ‘/tmp/RtmpGM9tyE/remotes1014edc69e/justinjm-googleCloudAutoMLTablesR-0071567/DESCRIPTION’
+   checking for file ‘/tmp/Rtmpc4gnRF/remotes10223afae50/justinjm-googleCloudAutoMLTablesR-7ddce40/DESCRIPTION’ ...
+  
+✔  checking for file ‘/tmp/Rtmpc4gnRF/remotes10223afae50/justinjm-googleCloudAutoMLTablesR-7ddce40/DESCRIPTION’ (335ms)
 ## 
   
 ─  preparing ‘googleCloudAutoMLTablesR’:
@@ -164,8 +166,6 @@
   
 ✔  checking DESCRIPTION meta-information
 ## 
-  
-  
   
 ─  checking for LF line-endings in source and make files and shell scripts
 ## 
@@ -178,7 +178,7 @@
   
    
 ## </code></pre>
-<pre><code>## Installing package into '/tmp/RtmpvYgigi/temp_libpath160174e69'
+<pre><code>## Installing package into '/tmp/RtmpyOUl1h/temp_libpath1731ea18a'
 ## (as 'lib' is unspecified)</code></pre>
 </div>
 <div id="renviron" class="section level4">
@@ -223,10 +223,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 22:58:06&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-18 12:39:43&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-17 22:58:06&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-18 12:39:43&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
 </div>
 <div id="viewing-automl-tables-datasets" class="section level1">
@@ -244,10 +244,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFrKDN2kCV2MXtcSo3gyFtQS3zfRv7LKJ2t2T9oY7wMBPmhtJeLVt52oT-fCjEw=
-## 2 AB3BwFp2gZ2OC3h1iL3zs31gJfe_rzsfJ434qh6tspAWtDJcJTgUlSTnkNFZ8cp8UrYW
-## 3 AB3BwFquvonH-0xEVyFF1_eSlF48E21BeYLftt_xKA1GBxrNzegMnVFjF7xcuv-wMmjj
-## 4 AB3BwFpCOKGPOusmXSxSrLoJl3kKykyQdCFFj26mfHchHsaAY7aWkGwL9dyqO4vpT0ch
+## 1 AB3BwFryZuZbDl3MlwjihDvDBMZU2RDfQPwoOLXpEDe7KoulC0mabRYgpaEqqDKSaaoa
+## 2 AB3BwFqBswzPEwPMDO75sK77TzU8D2khseYMyMmZoeyD0A-u9QRceFr5Wohjo8ZG5f-e
+## 3 AB3BwFpCN73A9rIRxsRDdJf_UQGUexJf6zWWOOazYDGrJPqhlP8gSrO1qaOGLVifpug_
+## 4 AB3BwFoec3I08EXYyij5aIxN_Z6rji75VPnJg9n7btrmZiOBOz4e5RZSZequpRGHr9bU
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -381,7 +381,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFqCfQG91B8nmplSPgu89tjfJAKiVorAC65PYGYfMtfsUe3Gext8K5gFUQzlfGqA</code></pre>
+## eTag:                 AB3BwFrYuzCXEnrMKanhjExH70lP7V3zNODTNN3TGWOElZYgLxqyzgmdxi8bOociZTa3</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -516,23 +516,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFq5OzIHJmOomZJwwFIPkTdnHVKIvUBanI02OCIHgk5CWFscfFHxMbS9mSmoXi90
-## 2  AB3BwFrn3YsjVIspoRhzRzLJ9P4dKovepw0eOn9BoiWNeLFMFJx9guEAxK0Xv_hHNlnB
-## 3  AB3BwFquWbTWdhusNLZBxWDnY60HxMM2k3HOO5ODzOYPM50ngBeejYdpKtC7IEXmAn8B
-## 4  AB3BwFrHiXHL3G9iqO54SUkjWBPAk2du2d8Rr-rgd4ngG_Vlt3Ox8lNDnT4xNsTL42Hp
-## 5  AB3BwFr5ala7dfgdHTByKNl6u_nmjq_bIdX7dBoc6AjsktZ5DjiHKYHNOkf_kB5A7PNi
-## 6  AB3BwFpKJJPqhjuzA683sedZ2dp0DutbxZ9m00oj81cUngqL-Hmnvx8TOwq55SpzJrkA
-## 7  AB3BwFpbzMraimMGJxQfcTr8WD7smUmcJYsH7syUQK6i2kMGJ7L2v3rJOAyjYVQ7QjGw
-## 8  AB3BwFrRAmSvgGr5ZKNpjJqM0I3aGusLPUxELtFiEcHJt9BEjw8nzrxjggpMQZgEJBE4
-## 9  AB3BwFqVFYehtSR0CWadE_j61tGisWWbni0stP-q1WzPGY1c_-e8dlGmMRF3m9LbcYH7
-## 10 AB3BwFpwbd7CL-mULHhkY2SRUNv_f-dOl_krtC4BGC9wXu8jE8PpTQr_DHiHjWM86T7k
-## 11 AB3BwFqNfu4xBdtLewNyjnODmJ1N5w5ov7t2OjSmzy0M9jOs-R0YLl3clCAaF7qu0tRX
-## 12 AB3BwFojR1jwRYMWjDd_T3jWoAc_p76Y9_4CxatQ7K7zSqrNlv2Xu6JPieR53LwYOGRQ
-## 13 AB3BwFonPhfXrdEVEmi6RT9g4WFGb3clFAhAq7GAHFbTHOtJP2Mbg7vfpu1LdVtUgYUb
-## 14 AB3BwFpa6tpngTBnd1Rg2c_2pOh0PZcblZahiA294eYSLYd29Ubnwyu65ed7-OJ87_SP
-## 15 AB3BwFrkJD6OFf4mulSiRdNQA0o5bmyNaJb--LAea3C3RDSMmWFN6dJTsYkJLxXuZbX1
-## 16 AB3BwFoieU3cCp6L1v5OYa7iwbwKHxfAdD-q9gC3Tvgp7jFN9wctUsAceoq2jUp0imtH
-## 17 AB3BwFppH4Ge6g7x7ynTMlNqk8_GBa2qoD4UveVMNX98HZNZOxrMZ2mG0RZSsdWgkxSi</code></pre>
+## 1  AB3BwFrK1oeDdxn5zzMBfnZo_nNCvQe9Hz9V5CwEq08BqeticY5h8z59VAGba852VkDR
+## 2  AB3BwFoCX972ZdWzXfQYNMVtcDsIuVU9q3BVVMwPyDLd2BOKF_Nx3FbOtqNX-lxBLB7k
+## 3  AB3BwFpR2YwIIqKlLL7YcNtRm1vQdv13KJ-WtLHWP0eCJRSmtBWJ1cnfBrqFHng5v75i
+## 4  AB3BwFocemPh3BFtLheNBGft9-5zdGJbspYo66ThoLQpR1lxqy2egfaaENNcK9mJE8RL
+## 5  AB3BwFrSeTh5wXI57xoOtgQZywI3LioSaMzo0xL-M8y7U4cv8jyJEpi066z_MYDUE1Zw
+## 6  AB3BwFqp0lrK0cbWitpvaqFQfxGL_GIw6WYbkhWrCfvSQlXb5ZQk1-7Sdsco-7AwuCNs
+## 7  AB3BwFptYr0seICaPIiQxkcPyj-HSUXkZOOeZh9EzM1yp93YR-9RkByPvR71WbVYdI70
+## 8  AB3BwFqn--ZFJqyqojUlhAsA1vTptAmqB2eaj5m3tAeNZGObkGc3MZvWf-XWIVqx7XS_
+## 9  AB3BwFpRRRmJ51IGSuvRAERMfL5K8BiugdINSalX6eCsZTcvsug1z6yXyMC20Y3mJ165
+## 10 AB3BwFo3hcBUl1gqWOqNmy0xBpFcsRpW_3DGA7WJmQdNy-DPYkfrpQFxckD-VvidGZn2
+## 11 AB3BwFpmn_gjmAIrRcbPOESZ8JXze8S5nDFttpmFop01QVIkqUoQV-jmo6J6gNwsmNre
+## 12 AB3BwFqefxUCrzsiy-JhYt0GswOuulInB2uXaSWidluZH4lIk8Qo6WMADSN9cr-_oIaH
+## 13 AB3BwFqjUbGnRSvBCc3F0pztc_0qq6FWgdWuS2I_V9vTS3EOpDy5yoHPGUi5IdmjNEcy
+## 14 AB3BwFoKZhXggfSUJqlrt08V_qCDZFRUXo4CwNn4eowkmvyhgOBFQ0NcPh9m2VX-1Qm1
+## 15 AB3BwFrnxHRdpVjRhENkY3aekTjHGwNBURJrcos_cpVznIPqOKYthLReGF0acaz18mqW
+## 16 AB3BwFqNwqDHFGcy1WkV3r0U8H2NHtHl9BV5UBeEsSfr980L0v3jdJL3ITr_z9MM2h67
+## 17 AB3BwFp1silc1YR4Hw8K_NaZoqtk4jB_XaTmHER3HFw2u2JUJI2jz0DfBMyS5K2khLv5</code></pre>
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -543,7 +543,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFp7e72fBDfM_3nX5iwHoIXDpoMfljCtVAFMpJp1iNX9lfh49oQFmjStT12rdUk-</code></pre>
+## eTag:                 AB3BwFqhmtxuttiL8q7zHqH3MOJn7nXJD1XK3i0buWCajHq-n6Y1O4yHwXNyWZanfOMy</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
@@ -721,19 +721,26 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
   modelDisplayName <span class="op">=</span> <span class="st">"test_01_bq_01"</span>,
   inputSource <span class="op">=</span> <span class="st">"gs://gcatr-dev/bank_marketing_batch_01.csv"</span>,
   outputTarget <span class="op">=</span> <span class="st">"gs://gcatr-dev/predictions/"</span>
-<span class="op">)</span></code></pre></div>
-<pre><code>## Called from: gcat_batch_predict(modelDisplayName = "test_01_bq_01", inputSource = "gs://gcatr-dev/bank_marketing_batch_01.csv", 
-##     outputTarget = "gs://gcatr-dev/predictions/")
-## debug: batch_predict_request &lt;- structure(list(inputConfig = list(gcsSource = list(inputUris = inputSource)), 
-##     outputConfig = list(gcsDestination = list(outputUriPrefix = outputTarget))), 
-##     class = c("gcat_BatchPredictRequest", "list"))
-## debug: url &lt;- sprintf("https://automl.googleapis.com/v1beta1/%s:batchPredict", 
-##     name)
-## debug: f &lt;- googleAuthR::gar_api_generator(url, "POST", data_parse_function = function(x) x)
-## debug: stopifnot(inherits(batch_predict_request, "gcat_BatchPredictRequest"))
-## debug: response &lt;- f(the_body = batch_predict_request)
-## debug: out &lt;- response
-## debug: out</code></pre>
+<span class="op">)</span>
+<span class="va">batch_predictions</span></code></pre></div>
+<pre><code>## $name
+## [1] "projects/736862006196/locations/us-central1/operations/TBL9066126755797925888"
+## 
+## $metadata
+## $metadata$`@type`
+## [1] "type.googleapis.com/google.cloud.automl.v1beta1.OperationMetadata"
+## 
+## $metadata$createTime
+## [1] "2021-04-18T12:39:54.790041Z"
+## 
+## $metadata$updateTime
+## [1] "2021-04-18T12:39:54.790041Z"
+## 
+## $metadata$batchPredictDetails
+## $metadata$batchPredictDetails$inputConfig
+## $metadata$batchPredictDetails$inputConfig$gcsSource
+## $metadata$batchPredictDetails$inputConfig$gcsSource$inputUris
+## [1] "gs://gcatr-dev/bank_marketing_batch_01.csv"</code></pre>
 </div>
 </div>
 </div>
