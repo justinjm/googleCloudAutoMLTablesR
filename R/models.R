@@ -228,7 +228,6 @@ gcat_batch_predict <- function(modelDisplayName,
   # get name of model
   model <- gcat_get_model(modelDisplayName = modelDisplayName)
   name <- model$name
-  browser()
 
   # GCS
   batch_predict_request <- structure(

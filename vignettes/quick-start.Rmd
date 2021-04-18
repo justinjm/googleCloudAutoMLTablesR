@@ -304,4 +304,5 @@ batch_predictions <- gcat_batch_predict(
   inputSource = "gs://gcatr-dev/bank_marketing_batch_01.csv",
   outputTarget = "gs://gcatr-dev/predictions/"
 )
+batch_predictions
 ```
