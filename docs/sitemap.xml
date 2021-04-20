@@ -13,6 +13,9 @@
     <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//reference/gcat_create_model.html</loc>
   </url>
   <url>
+    <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//reference/gcat_delete_dataset.html</loc>
+  </url>
+  <url>
     <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//reference/gcat_get_column_spec.html</loc>
   </url>
   <url>
@@ -77,6 +80,9 @@
   </url>
   <url>
     <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//reference/rmNullObs.html</loc>
+  </url>
+  <url>
+    <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//articles/datasets.html</loc>
   </url>
   <url>
     <loc>https://code.justinmarciszewski.me/googleCloudAutoMLTablesR//articles/quick-start.html</loc>
