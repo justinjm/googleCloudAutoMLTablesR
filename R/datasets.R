@@ -293,6 +293,46 @@ gcat_import_data_do_call <- function(ImportDataRequest,
 
 }
 
+#' Deletes a dataset
+#'
+#' @param projectId GCP project id
+#' @param locationId location of GCP resources
+#' @param displayName the name of the dataset that is shown in the interface.
+#'
+#'
+#' @export
+gcat_delete_dataset <- function(projectId = gcat_project_get(),
+                                locationId = gcat_region_get(),
+                                displayName) {
+
+  datasets_list <- gcat_list_datasets(projectId = projectId,
+                                      locationId = locationId)
+
+  dataset_display_name <- displayName
+
+  name <- subset(datasets_list,
+                 displayName == dataset_display_name,
+                 select = c(name))
+
+  if (dim(name)[1] == 0) {
+    stop(sprintf("Dataset %s does not exist. Please check the dataset displayname is correct and try again.",
+                 displayName))
+  }
+
+  url <- sprintf("https://automl.googleapis.com/v1/%s", name)
+
+  f <- googleAuthR::gar_api_generator(url,
+                                      "DELETE",
+                                      data_parse_function = function(x) x)
+
+  response <- f()
+
+  response
+
+}
+
+
+
 #' Lists table specs in a dataset
 #'
 #' @param projectId GCP project id

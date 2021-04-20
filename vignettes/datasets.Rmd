@@ -1,0 +1,61 @@
+---
+title: "Datasets"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{datasets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+# knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Setup 
+
+```{r auth, warning=FALSE}
+library(googleAuthR)
+library(googleCloudAutoMLTablesR)
+
+options(googleAuthR.scopes.selected = "https://www.googleapis.com/auth/cloud-platform")
+
+gar_auth_service(json_file = Sys.getenv("GAR_SERVICE_JSON"))
+```
+
+# Set global arguements 
+
+```{r gcat-global-arguements}
+projectId <- Sys.getenv("GCAT_DEFAULT_PROJECT_ID")
+location <- "us-central1"
+gcat_region_set("us-central1")
+gcat_project_set(projectId)
+```
+
+# Create a dataset 
+
+```{r}
+gcat_dataset <- gcat_create_dataset(displayName = "example_dataset01")
+gcat_dataset
+```
+
+# List datasets 
+
+```{r}
+datasets_list <- gcat_list_datasets()
+datasets_list
+```
+
+# Delete dataset 
+
+```{r}
+gcat_delete_result <- gcat_delete_dataset(displayName = "example_dataset01")
+gcat_delete_result
+```
+
+# List datasets
+
+```{r}
+gcat_list_datasets()
+```
+
