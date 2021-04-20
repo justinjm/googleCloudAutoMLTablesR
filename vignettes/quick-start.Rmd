@@ -41,7 +41,7 @@ Create a [Google Cloud Storage Bucket](https://console.cloud.google.com/storage)
 
 Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already): 
 
-```{r install_packages}
+```{r install_packages, eval=FALSE}
 list.of.packages <- c("remotes", "googleAuthR")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages)
@@ -73,7 +73,7 @@ Save the `.Renviron` file and restart your R session to load the environment var
 Load the 2 R packages we need and then authenticate using the Service account we just created: 
 
 
-```{r auth}
+```{r auth, warning=FALSE}
 library(googleAuthR)
 library(googleCloudAutoMLTablesR)
 
