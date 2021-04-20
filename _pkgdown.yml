@@ -10,7 +10,7 @@ template:
     bootswatch: cosmo
     ganalytics: UA-161482740-1
 navbar:
-  title: googleCloudAutoMLTablesR
+  title: quick-start
   type: inverse
 reference:
   - title: "Authentication"
