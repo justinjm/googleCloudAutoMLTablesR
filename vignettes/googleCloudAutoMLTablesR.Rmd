@@ -1,10 +1,10 @@
 ---
-title: "Quick Start"
+title: "googleCloudAutoMLTablesR"
 author: "Justin Marciszewski"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{quick-start}
+  %\VignetteIndexEntry{googleCloudAutoMLTablesR}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
