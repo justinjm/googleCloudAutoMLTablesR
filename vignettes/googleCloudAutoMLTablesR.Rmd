@@ -32,13 +32,13 @@ This is a quick start tutorial for training a model using GCP AutoML Tables.
 5. Click _Create_. A JSON file that contains your key downloads to your local environment.
 6. Save the json file and copy the pathname for an upcoming step
 
-### 3. Create Google Cloud Storage Bucket 
+## 3. Create Google Cloud Storage Bucket 
 
 Create a [Google Cloud Storage Bucket](https://console.cloud.google.com/storage) and save the name for use in an upcoming step. 
 
-### 4. Configure R environment 
+## 4. Configure R environment 
 
-#### 5. Install R packages 
+### Install R packages 
 
 Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already): 
 
@@ -50,7 +50,7 @@ if(length(new.packages)) install.packages(new.packages)
 remotes::install_github("justinjm/googleCloudAutoMLTablesR")
 ``` 
 
-#### 6. .Renviron
+### .Renviron
 
 Create a file called `.Renviron` in your project's working directory and use the following environemtn arguments: 
 
