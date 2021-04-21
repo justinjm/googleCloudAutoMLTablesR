@@ -120,10 +120,10 @@
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-21 00:21:01&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-21 00:46:37&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-21 00:21:01&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-21 00:46:37&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
 <div id="create-a-dataset" class="section level1">
 <h1 class="hasAnchor">
@@ -133,7 +133,7 @@
 <span class="va">gcat_dataset</span></code></pre></div>
 <pre><code>## ==Google Cloud AutoML Tables Dataset==
 ## displayName:          example_dataset01 
-## createTime:           2021-04-21 00:21:03 
+## createTime:           2021-04-21 00:46:39 
 ## statsUpdateTime:      1970-01-01</code></pre>
 </div>
 <div id="list-datasets" class="section level1">
@@ -143,19 +143,19 @@
 <code class="sourceCode R"><span class="va">datasets_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gcat_list_datasets.html">gcat_list_datasets</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">datasets_list</span></code></pre></div>
 <pre><code>##         displayName          createTime
-## 1 example_dataset01 2021-04-21 00:21:03
+## 1 example_dataset01 2021-04-21 00:46:39
 ## 2        test_01_bq 2019-08-24 18:30:35
 ## 3       test_03_gcs 2020-03-26 19:17:53
 ## 4       test_02_gcs 2020-03-26 19:06:14
 ## 5           test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFrDLWvSdt0JVFfX2yddBfnMy36txPSmTgdSQSUt6c1Gz4q2hGQZdQG-LU_t-0Y=
-## 2 AB3BwFq91AT1ARj4KAgggfCFsIWGR648hsx-zGdXdI4eEf1_8_Tm_ReX7buigk0to-UF
-## 3 AB3BwFpjEmBgKm0U0Qpv-Ev51YCDz-NgC-F8XAYuT2DRGHKYmX4iDjTjJKCFtDp_iZiZ
-## 4 AB3BwFqIRcBeX13icICmq05hcmHC3nLD8PE52qb9abTNL-37w6mYLmvzDZDZvJN5pnDW
-## 5 AB3BwFoUQVyUFpG3GWPrqIQySwsSR96SJT7-x130BbAg-mAC4E_IRv6Ujop245JLnQrB
+## 1 AB3BwFon6jasb-sTiHyxb_l4B_91K2WmsmDaVge0To_HY-soIdYQ2gZb2xwnvS78s6q0
+## 2 AB3BwFqjspjbS18QHCoqmy08FP3FZgSlRJBQYrxZcqESUKtA3xsFWtc8NM381Mv2BoQ=
+## 3 AB3BwFph6dXuICuvVWY5esR3NMNlwvGznYpvhtfWDwjLp9RrA5YhZrnQNyAiSFMuvldD
+## 4 AB3BwFr8wZvzfgsg2okLSbgayIV5r-x_XQSKVHd6DSc-KLrXD_6rQH6Y2acQIHxi5Ywj
+## 5 AB3BwFrazeDFD9JXW5cvjoaEp6QkZwbBgQdSj40737t-aqvLxoZhToIbX9EC4LhWoGrA
 ##                                                                          name
-## 1  projects/736862006196/locations/us-central1/datasets/TBL930336920435687424
+## 1 projects/736862006196/locations/us-central1/datasets/TBL3549743053705052160
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 3 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
 ## 4 projects/736862006196/locations/us-central1/datasets/TBL4897961462904913920
@@ -168,17 +168,17 @@
 <code class="sourceCode R"><span class="va">gcat_delete_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gcat_delete_dataset.html">gcat_delete_dataset</a></span><span class="op">(</span>displayName <span class="op">=</span> <span class="st">"example_dataset01"</span><span class="op">)</span>
 <span class="va">gcat_delete_result</span></code></pre></div>
 <pre><code>## $name
-## [1] "projects/736862006196/locations/us-central1/operations/TBL1226731995057356800"
+## [1] "projects/736862006196/locations/us-central1/operations/TBL6055998170482081792"
 ## 
 ## $metadata
 ## $metadata$`@type`
 ## [1] "type.googleapis.com/google.cloud.automl.v1.OperationMetadata"
 ## 
 ## $metadata$createTime
-## [1] "2021-04-21T00:21:04.360923Z"
+## [1] "2021-04-21T00:46:40.750208Z"
 ## 
 ## $metadata$updateTime
-## [1] "2021-04-21T00:21:04.360923Z"
+## [1] "2021-04-21T00:46:40.750208Z"
 ## 
 ## $metadata$deleteDetails
 ## named list()
@@ -202,10 +202,10 @@
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFoeRp8zmjaI_IVkuE2fJL463dHf-QuLci41KeVwYWAvJyBDNAVwCAAVFvPv1gol
-## 2 AB3BwFqwqCDFyOpzftL_-6hf7Cej2QL04L9QTY1SNkGrrSMcMYtJCcAndh_vJGyXjNrH
-## 3 AB3BwFoK5xhabCzPyHwa-C35QsZ3u3coyMP36SPEfUJV6mW43bGnx8yAg0wSR24uxi1o
-## 4 AB3BwFrwahwj0UJoK8fwm5GFXMguPniarwZprsze3nN80StaRAWG2T6x_YJsiLXvzyrl
+## 1 AB3BwFoH6y8gAII5oQAxE1jkoKDEYAsvpIeQDoYxCbfOdHLRiIKZFgkF8UQRff3vFO4=
+## 2 AB3BwFroLW5mSQeV95zjE2YZpCTV4P92LA8BBaYyiqeMIxUOKAi-4xBP049wmSD7w9kE
+## 3 AB3BwFrByDMR6oqJvioVnNpq2oKeCtvxc1ukhnsgG_fmWum20xRZdjlhMKXLq4jaqk5b
+## 4 AB3BwFqwvel-mzozIaAtdFJTOgbHRDZIwBxFffTfHZtVJU9AhAIdSz3I2M6vkNMzhlRM
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024

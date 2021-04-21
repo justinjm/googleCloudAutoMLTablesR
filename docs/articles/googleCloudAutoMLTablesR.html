@@ -133,17 +133,18 @@
 <li>Click <em>Create</em>. A JSON file that contains your key downloads to your local environment.</li>
 <li>Save the json file and copy the pathname for an upcoming step</li>
 </ol>
-<div id="create-google-cloud-storage-bucket" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create-google-cloud-storage-bucket" class="anchor"></a>3. Create Google Cloud Storage Bucket</h3>
+</div>
+<div id="create-google-cloud-storage-bucket" class="section level2">
+<h2 class="hasAnchor">
+<a href="#create-google-cloud-storage-bucket" class="anchor"></a>3. Create Google Cloud Storage Bucket</h2>
 <p>Create a <a href="https://console.cloud.google.com/storage">Google Cloud Storage Bucket</a> and save the name for use in an upcoming step.</p>
 </div>
-<div id="configure-r-environment" class="section level3">
+<div id="configure-r-environment" class="section level2">
+<h2 class="hasAnchor">
+<a href="#configure-r-environment" class="anchor"></a>4. Configure R environment</h2>
+<div id="install-r-packages" class="section level3">
 <h3 class="hasAnchor">
-<a href="#configure-r-environment" class="anchor"></a>4. Configure R environment</h3>
-<div id="install-r-packages" class="section level4">
-<h4 class="hasAnchor">
-<a href="#install-r-packages" class="anchor"></a>5. Install R packages</h4>
+<a href="#install-r-packages" class="anchor"></a>Install R packages</h3>
 <p>Run the following chunk to install the required R packages to complete this tutorial (checking to see if they are installed first and only install if not already):</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">list.of.packages</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"remotes"</span>, <span class="st">"googleAuthR"</span><span class="op">)</span>
@@ -152,9 +153,9 @@
 
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"justinjm/googleCloudAutoMLTablesR"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="renviron" class="section level4">
-<h4 class="hasAnchor">
-<a href="#renviron" class="anchor"></a>6. .Renviron</h4>
+<div id="renviron" class="section level3">
+<h3 class="hasAnchor">
+<a href="#renviron" class="anchor"></a>.Renviron</h3>
 <p>Create a file called <code>.Renviron</code> in your project’s working directory and use the following environemtn arguments:</p>
 <ul>
 <li>
@@ -171,7 +172,6 @@ GAR_SERVICE_JSON="/Users/me/auth/auth.json"
 GCAT_DEFAULT_PROJECT_ID="my-project"
 GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <p>Save the <code>.Renviron</code> file and restart your R session to load the environment variables</p>
-</div>
 </div>
 </div>
 </div>
@@ -194,10 +194,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <code class="sourceCode R"><span class="va">projectId</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">"GCAT_DEFAULT_PROJECT_ID"</span><span class="op">)</span>
 <span class="va">location</span> <span class="op">&lt;-</span> <span class="st">"us-central1"</span>
 <span class="fu"><a href="../reference/gcat_region_set.html">gcat_region_set</a></span><span class="op">(</span><span class="st">"us-central1"</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-21 00:21:07&gt; Region set to 'us-central1'</code></pre>
+<pre><code>## 2021-04-21 00:46:43&gt; Region set to 'us-central1'</code></pre>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/gcat_project_set.html">gcat_project_set</a></span><span class="op">(</span><span class="va">projectId</span><span class="op">)</span></code></pre></div>
-<pre><code>## 2021-04-21 00:21:07&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
+<pre><code>## 2021-04-21 00:46:43&gt; ProjectId set to 'gc-automl-tables-r'</code></pre>
 </div>
 </div>
 <div id="viewing-automl-tables-datasets" class="section level1">
@@ -215,10 +215,10 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 3 test_02_gcs 2020-03-26 19:06:14
 ## 4     test_01 2019-06-20 12:26:51
 ##                                                                   etag
-## 1 AB3BwFoIG1T52dbFlLfGfGQ4yugo3nRvOZLS58dNTU_9apBZ_-x3Zm1_gDgW386HMubX
-## 2 AB3BwFpCZ91QGyVhrgxvbeira0jla7n3E1AEKa42aorsxUc_6LoXDXTQ_pPi7Gh6BkWV
-## 3 AB3BwFpBXge8eY-oXjq9bt3qrbHMXaiYp_MObpguDgX7of1keeRQaiei1moIQrKSM9uw
-## 4 AB3BwFoOy1C_UYF8TApcbT1dgx1ru_8J6JH55DHqaq0HdrxFFWzcu4NDjFCOS35GMRL9
+## 1 AB3BwFoC1imPoD-vw-qs0w4nRobEt9IUonBpsNUv6C4XF5upYKzsO_mav8xtjkR5gmQ=
+## 2 AB3BwFpjjrOK1aS80tnMnuXuy-QErsB0uO1El4ahgo0UjXYwhlsnaSqnAoY69AUi9fZb
+## 3 AB3BwFr3Mjr-8hl1oh-cORwk5jGce1BxcZLVyiP3pxrtxUcAnduwmG67lZnfTrk2gJfH
+## 4 AB3BwFr4ZFc2zgiJmoZ1RHZRC5qP-czmyUcvUuSH9h1f61-zPcXU3nfxuhE9cqomygNt
 ##                                                                          name
 ## 1 projects/736862006196/locations/us-central1/datasets/TBL4800700863335104512
 ## 2 projects/736862006196/locations/us-central1/datasets/TBL4077180430816641024
@@ -352,7 +352,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## columnCount:          17 
 ## rowCount:             45211 
 ## validRowCount:        45211 
-## eTag:                 AB3BwFrhRNi8Ql5d8QTW2gKxTAwkCchhqDKSFnaT22NDB_cAbO9La1U6oPzoOTal4fdx</code></pre>
+## eTag:                 AB3BwFrdvTumnUtQljG_URdo5mzep05YDAHZ-dqzpcuc5QmnHdQ55pmtnHphJPBqV18f</code></pre>
 </div>
 <div id="list-column-specs" class="section level2">
 <h2 class="hasAnchor">
@@ -487,23 +487,23 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## 16                                                                                                                                                  unknown, failure, other, success, 36959, 4901, 1840, 1511
 ## 17                                                                                                                                                                                          1, 2, 39922, 5289
 ##                                                                    etag
-## 1  AB3BwFpKqzzqNRp2R0lDeKu90Tfa3HkhHdlCFf_EHePzkJdqolGOwG4hRIA6yQx8FGVw
-## 2  AB3BwFoDXnJokgz0e3vL83F8SjJFHMeQIIvoLqJChRjsFBt0VlWjbY8pSuAB2OUPtOqt
-## 3  AB3BwFqgx4i_gCCmEtEUpacihGgMrtIpk_zuEpHmZwVOff5M_G5gH7mx4GEsARwZzckl
-## 4  AB3BwFp4AUHELfA-DZoAMQngljt-QNgNgYI612an2QcASF4hA7A21mTPOfwYuP1vGGTr
-## 5  AB3BwFqBOE9CoNhxgOVRmcFsiB-8wSANYCKB05zG0cA49CpUqoEyGHVA8jGBl_SvCiN9
-## 6  AB3BwFp13lDUB8wF5XeBT97RzZ_OwXT5fJqkRjuc_JdRPjQWq1B_-aZIF5Q4EKCtfHN1
-## 7  AB3BwFrJhGRiGcN1BfCh5mhKTHKBN6Q5OHwjVToO4BCkXjLairh0xd8jb_GYu7fLiQvH
-## 8  AB3BwFrUnhPclAVxl2xTGzFfTJH1adryp8Sg1rs6q67675wkG6lbILcrCF5O-RPYnMe-
-## 9  AB3BwFprd5MYoEm-D3i9aoznl2oavidVkCW6oWTBvCK-ISzZLBgqGtdxEF8yBI68D8ej
-## 10 AB3BwFriyAOQB-GP8hTOaDDLnIc4LARa20iJ3Vw4VuB4pINCpDgmIsKXiPLAuE-Xw5C3
-## 11 AB3BwFrrhiZ9n5N6pTSiSB3_RMdDAlRWGEzigObBFrqpfbNcNxy8nmLF09fdleYi-JEB
-## 12 AB3BwFp1Qpq7h73Exaf6CpKq-JkjRA0evwbRO6CQSCHUNrB3ITC-3MfD5gNpdXRGIgY7
-## 13 AB3BwFqJtnLx43qzp_PMXZm4dkRugqI_eahm-AyHdt5ul2rwccxHLxouWPx3t31NnRHw
-## 14 AB3BwFpj4Elx3oezSXENTMURBKntdcXn09er8AMj4BhAhl-z0vWv3g6UgEu2S2aGiYDb
-## 15 AB3BwFpXdDE_BffV1ArAQxH_yIzUvWwR_bKYpMIdm_yJskT8RUO4VDKhN9UVU44nalt-
-## 16 AB3BwFrEyUTTlDZHRn-d3z_mzI9HzlXqO8YPUX6Ouh7WdwO3KraOYUrDuF1S5jlA5LlT
-## 17 AB3BwFprIUS623Yk93evv_TQp_8uLaFsoeIVEAnbX1HJyixRjbVZDz2sCbx6F2AzyPu8</code></pre>
+## 1  AB3BwFrs0we5pJkUFHWEsvM7VUFUguSxO8LRDda8CFEmHpHAFtRpGzs-iwwLxmE8ThNM
+## 2  AB3BwFpZIHPjPo-M1hLmbUkqCPpddN_k6aGUkaDTzAqYWrLqnxJ_O47J_23rcGq2qbtZ
+## 3  AB3BwFq6KmJRKcS9OPZHDj5XgSRxP7mxPMx8z56itGvKQk6-4NaxCGr6hmFelVcjRky_
+## 4  AB3BwFpDERe8xTeS5XZonzp2VBWedQXP6-JeDDrwT6LtWYwiase6Z5BdY9rxcorbEj05
+## 5  AB3BwFqVzk2nDcMAbjUphs17m5b7SNSOKCkuR20mJWZXrSBrzt_8MJjGsMnrU59XtWcD
+## 6  AB3BwFrc7DK9f_L3JpvY7fY0lRL2_tnC384WDHZEEwFYBj176B_Fs6tZ5QBgbR9Fst1Y
+## 7  AB3BwFr6IvZAUORe3LT38ISAYDl9SaUzg8kioeKDGyd26WKX2HmR3ZDvThOHe4AYu16A
+## 8  AB3BwFrrQKLSY8ImlGwc14joppMNDlaUwTblqHdI-WWNsc9ArI177acAfXWFlivejx8Z
+## 9  AB3BwFqrQYI76nPacd0lftA7P49CVfZfMGU3VqQuM6Gdife8x8GnVu86-NOsSKSq4akD
+## 10 AB3BwFqCgVfVBxuJ9DepxZZTHjPLcSwuM4dmcu9s1Scdo5TfYGCfK6fSApUABGQboIXf
+## 11 AB3BwFpBpwvNvWAwniCgs6KJNiGfsCfxtfTSLw3LmnxzztwLn3fbGueyyxB4Ae_R_yxN
+## 12 AB3BwFrknkaqUu9gl2xnO0InPgYg8I9hVPbllMMS5JehHcr4D0P8G-HLIRMgIDUMUltN
+## 13 AB3BwFqeV1kVJ5J4W2x-j1P7Lq7PsgJQwJOVRVrgOj2WxjM1X2eyAp0E2QvwSpqilzRr
+## 14 AB3BwFq2sev0SPKSn41k0Ok6_gMXz73kaJADGffca2eAdfXg2M01jZ5ZD4C_kMtj2t6n
+## 15 AB3BwFp5bElZv5OdHg969ccumydhcoLBo1oTMvMW5zsuF6XibWL9wtjw0YIVyximSfj4
+## 16 AB3BwFp9E9m1P-hh4hI-yN7STYRh7b7NZMSEfg04V7bW-AiFP0vmkSBLYhDNRl4sSJAj
+## 17 AB3BwFo4TgCKNN4fqfuW3uTwpH29-W-2tNjBpA-8soJurH-95vIDsUnphZgDPIEbM5BJ</code></pre>
 <div id="get-info-about-our-target-column" class="section level3">
 <h3 class="hasAnchor">
 <a href="#get-info-about-our-target-column" class="anchor"></a>Get info about our target column</h3>
@@ -514,7 +514,7 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 ## displayName:          V16 
 ## dataType:             CATEGORY 
 ## distinctValueCount:   4 
-## eTag:                 AB3BwFrZj-57hIpJnM92bcRsSC51lCg825KIxFn8f5M0L1y5E0rSgjgcDpBqB98Y6ubE</code></pre>
+## eTag:                 AB3BwFr-4W_21h3Yf_VnJ4sfVk7sP8ys3B8pSsO1CP8qiTPMozWsMPIMIBc8FjX8P-Av</code></pre>
 </div>
 </div>
 <div id="set-label-or-target-column" class="section level2">
@@ -695,17 +695,17 @@ GCAT_DEFAULT_REGION="us-central1"</code></pre>
 <span class="op">)</span>
 <span class="va">batch_predictions</span></code></pre></div>
 <pre><code>## $name
-## [1] "projects/736862006196/locations/us-central1/operations/TBL8301605534679695360"
+## [1] "projects/736862006196/locations/us-central1/operations/TBL8706366551189618688"
 ## 
 ## $metadata
 ## $metadata$`@type`
 ## [1] "type.googleapis.com/google.cloud.automl.v1beta1.OperationMetadata"
 ## 
 ## $metadata$createTime
-## [1] "2021-04-21T00:21:16.339862Z"
+## [1] "2021-04-21T00:46:55.224733Z"
 ## 
 ## $metadata$updateTime
-## [1] "2021-04-21T00:21:16.339862Z"
+## [1] "2021-04-21T00:46:55.224733Z"
 ## 
 ## $metadata$batchPredictDetails
 ## $metadata$batchPredictDetails$inputConfig
