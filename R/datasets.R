@@ -138,9 +138,9 @@ gcat_get_dataset <- function(projectId = gcat_project_get(),
 
 }
 
-#' Creates a dataset (DOES NOT WORK)
+#' Creates a dataset 
 #'
-#' Currently broken, see \href{https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1}{issue} for more.
+#' Finicky, see \href{https://github.com/justinjm/googleCloudAutoMLTablesR/issues/1}{issue} for more
 #'
 #' @param projectId GCP project id
 #' @param locationId location of GCP resources
